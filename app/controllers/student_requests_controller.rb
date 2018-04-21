@@ -93,6 +93,7 @@ class StudentRequestsController < ApplicationController
     @student_request = StudentRequest.find params[:id]
     @student_request.state = StudentRequest::APPROVED_STATE
     @student_request.save
+    email_the_status()
     redirect_to student_requests_adminview_path
   end
 
@@ -100,6 +101,7 @@ class StudentRequestsController < ApplicationController
     @student_request = StudentRequest.find params[:id]
     @student_request.state = StudentRequest::REJECTED_STATE
     @student_request.save
+    email_the_status()
     redirect_to student_requests_adminview_path
   end
 
@@ -108,10 +110,11 @@ class StudentRequestsController < ApplicationController
     @student_request = StudentRequest.find params[:id]
     @student_request.state = StudentRequest::HOLD_STATE
     @student_request.save
+    email_the_status()
     redirect_to student_requests_adminview_path
   end
   
-  def email_the_status
+  def email_the_status()
     @student_request = StudentRequest.find params[:id]
     @student = Student.where(:uin => @student_request.uin)
     StudentMailer.update_force_state(@student[0],@student_request).deliver
