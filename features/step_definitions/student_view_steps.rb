@@ -33,13 +33,38 @@ Then(/^I should see my personal information$/) do
 end
 
 And (/^I click OK$/) do
-  click_button('Confirm')
+  click_button('Back')
+end
+
+And (/^I click Update$/) do
+  click_button('Update')
 end
 
 Then (/^I should go back to dashboard$/) do
   page.should have_content("New Force Request")
   page.should have_content("Your Profile")
   page.should have_content("Change Your Password")
+end
+
+And (/^I should see update success$/) do
+  page.should have_content("The change has been applied")
+end
+
+
+When (/^I fill out the UIN worng$/) do
+    fill_in('UIN', :with => "000000000")
+end
+
+When (/^I fill out the email worng$/) do
+    fill_in('Email', :with => "Will@tamu.edu")
+end
+
+Then (/^I should see error message for same UIN$/) do 
+    page.should have_content("The new UIN has already been taken.")
+end
+
+Then (/^I should see error message for same email$/) do 
+    page.should have_content("The new email has already been taken.")
 end
 
 ############################################################################################################
@@ -75,8 +100,8 @@ Then(/^I should see a confirm message$/) do
   page.should have_content("600")
 end
 
-When(/^I click on Withdraw$/) do
-  click_button('Withdraw')
+When(/^I click on Delete$/) do
+  click_button('Delete')
 end
 
 Then(/^I should not see that request on Student Dashboard Page$/) do
@@ -137,7 +162,6 @@ Then(/^I stay on the page on recieve another warining$/) do
 end
 
 When(/^I withdraw this request$/) do
-  # page.should have_content("Cancel")
   click_button('Cancel')
 end
 

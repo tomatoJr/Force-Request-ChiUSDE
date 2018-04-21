@@ -8,7 +8,7 @@ Background: students have been added to database
 Given the following students exist:
   | name           | uin        | password   | email              |
   | Andrew Bregger | 123123123  | 654321     | adb3649@tamu.edu   |  
-  | Adam will      | 789789789  | 456789     | Will@tamu.edu      |  
+  | Adam will      | 456789789  | 456789     | Will@tamu.edu      |  
 
 Scenario: Student SignUp with incorrect information
 Given I am a student want to sign up for an account
