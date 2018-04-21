@@ -1,6 +1,6 @@
 
 %h2 Student information
-%table#student_requests1.sortable
+%table
   %thead
   - @student_by_uin.each do |record|
     %tr
@@ -34,17 +34,20 @@
       %th Course ID
       %th Section ID
       %th State
-      %th Student Notes
-      %th Actions
       %th Creation Date
-      %th My Memos    
+      %th Student Notes      
+      %th My Memos       
+      %th Actions
+  
+      
   %tbody
     - @student_by_uin.each do |record|
       %tr
         %td= record.course_id
         %td= record.section_id
         %td= record.state
+        %td= record.creation_date.strftime("%Y-%m-%d %H:%M:%S")        
         %td= record.notes
-        %td= record.creation_date.strftime("%Y-%m-%d %H:%M:%S")
+        %td= record.notes_to_student         
         %td= (link_to 'Approve', {:action => "approve", :controller => "student_requests",:id => record.request_id}, :method => :put) + "<br>".html_safe+ (link_to 'Hold', {:action => "hold", :controller => "student_requests",:id => record.request_id}, :method => :put) + "<br>".html_safe+ (link_to 'Reject', {:action => "reject", :controller => "student_requests",:id => record.request_id}, :method => :put) 
-        %td= record.notes_to_student              
+             

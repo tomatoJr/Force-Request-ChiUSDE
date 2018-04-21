@@ -17,7 +17,7 @@ class StudentRequestsController < ApplicationController
   def new
     # default: render 'new' template
     @students = Student.where(:uin => session_get(:uin))
-    initForNewForceRequest
+    initForNewForceRequest    
     render :new
   end
 
@@ -109,6 +109,17 @@ class StudentRequestsController < ApplicationController
     @student_request.state = StudentRequest::HOLD_STATE
     @student_request.save
     redirect_to student_requests_adminview_path
+  end
+  
+  def email_the_status
+    @student_request = StudentRequest.find params[:id]
+    @student = Student.where(:uin => @student_request.uin)
+    StudentMailer.update_force_state(@student[0],@student_request).deliver
+  end
+  
+  def Memo
+  
+  
   end
 
 

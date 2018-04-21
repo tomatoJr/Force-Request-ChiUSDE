@@ -26,43 +26,39 @@
           %thead 
             %tr
               %th 
-              // %th Id
               %th UIN
               %th Full Name
               %th Major
               %th Class
               %th Minor
-              %th Course
               %th Section
               %th Expected Graduation
-              // %th Request Semester
-              %th State
-              // %th Priority
               %th Creation date
-              %th Email
+              %th State 
+              %th Memos              
               %th Actions
-        
+
+              
+              
           %tbody
             - @coursestudentlist[course].each do |record|
               %tr{:class => "#{cycle('oddrow', 'evenrow')}"}
                 %td= check_box_tag "request_ids[]", record.request_id, false, data: { "mail" => "#{record.email}"}, "sub" => course 
-                // %td %a{:onclick => "return getDetailsById('#{record.request_id}')"} #{record.request_id}
                 %td
                   %a{:onclick => "return buttonclick(#{record.uin});"} #{record.uin}
                 %td= record.name
                 %td= record.major
                 %td= record.classification
                 %td= record.minor
-                %td= record.course_id
                 %td= record.section_id
                 %td= record.expected_graduation
                 // %td= record.request_semester
-                %td= record.state
                 // %td= record.priority
                 %td= record.creation_date.strftime("%Y-%m-%d %H:%M:%S")
-                %td= mail_to record.email, "email", subject: "Force Request System: Regarding course #{record.course_id}" 
-                %td= (link_to 'Approve', {:action => "approve", :controller => "student_requests",:id => record.request_id}, :method => :put) + "<br>".html_safe+ (link_to 'Hold', {:action => "hold", :controller => "student_requests",:id => record.request_id}, :method => :put) + "<br>".html_safe+ (link_to 'Reject', {:action => "reject", :controller => "student_requests",:id => record.request_id}, :method => :put) 
-                
+                %td= record.state   
+                %td= record.notes_to_student                
+                %td= (link_to 'Approve', {:action => "approve", :controller => "student_requests",:id => record.request_id}, :method => :put) + "<br>".html_safe+ (link_to 'Hold', {:action => "hold", :controller => "student_requests",:id => record.request_id}, :method => :put) + "<br>".html_safe+ (link_to 'Reject', {:action => "reject", :controller => "student_requests",:id => record.request_id}, :method => :put) + "<br>".html_safe + (link_to 'Email')+ "<br>".html_safe + (link_to 'Memos')
+
                 
             %table{ :class => "multiUpdate" }
               %tr
