@@ -10,6 +10,7 @@ Then I should be on Admin View page
 And I should see all requests here
 
 
+
 Scenario: Admin Actions
 Given I am on the Login Page as admin
 And I use admin account to login

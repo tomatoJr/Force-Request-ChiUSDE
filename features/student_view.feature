@@ -45,8 +45,6 @@ When I fill out the email worng
 And I click Update
 Then I should see error message for same email
 
-
-
 Scenario: Add/withdraw new requests
 When I am on the Login Page
 When I login with correct login info

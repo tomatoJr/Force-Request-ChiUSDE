@@ -14,27 +14,27 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2018-04-21T16:33:47-05:00">2018-04-21T16:33:47-05:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2018-04-21T16:53:38-05:00">2018-04-21T16:53:38-05:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="yellow">82.41%</span></span>
+    (<span class="covered_percent"><span class="yellow">82.87%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         5.13
+         5.36
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>34</b> files in total.
-    <b>972</b> relevant lines. 
-    <span class="green"><b>801</b> lines covered</span> and
-    <span class="red"><b>171</b> lines missed </span>
+    <b>969</b> relevant lines. 
+    <span class="green"><b>803</b> lines covered</span> and
+    <span class="red"><b>166</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -77,7 +77,7 @@
         <td>231</td>
         <td>128</td>
         <td>103</td>
-        <td>7.0</td>
+        <td>7.8</td>
       </tr>
       
       <tr>
@@ -187,7 +187,7 @@
         <td>78</td>
         <td>76</td>
         <td>2</td>
-        <td>23.7</td>
+        <td>23.9</td>
       </tr>
       
       <tr>
@@ -332,12 +332,12 @@
       
       <tr>
         <td class="strong"><a href="#24e21420a4f6c127c5223330f6037bc6ddad4d51" class="src_link" title="features/step_definitions/admin_steps.rb">features/step_definitions/admin_steps.rb</a></td>
-        <td class="yellow strong">82.35 %</td>
-        <td>162</td>
-        <td>85</td>
-        <td>70</td>
-        <td>15</td>
-        <td>1.3</td>
+        <td class="yellow strong">87.8 %</td>
+        <td>158</td>
+        <td>82</td>
+        <td>72</td>
+        <td>10</td>
+        <td>1.4</td>
       </tr>
       
       <tr>
@@ -1796,14 +1796,14 @@
           <code class="ruby">        @students = StudentRequest.where(course_id: course).where.not(state: StudentRequest::WITHDRAWN_STATE)</code>
         </li>
       
-        <li class="covered" data-hits="588" data-linenumber="192">
-          <span class="hits">588</span>
+        <li class="covered" data-hits="678" data-linenumber="192">
+          <span class="hits">678</span>
           
           <code class="ruby">        @students = @students.reject{ |s| @state_selected[s.state] == false}</code>
         </li>
       
-        <li class="covered" data-hits="588" data-linenumber="193">
-          <span class="hits">588</span>
+        <li class="covered" data-hits="678" data-linenumber="193">
+          <span class="hits">678</span>
           
           <code class="ruby">        @students = @students.reject{ |s| @priority_selected[s.priority] == false}</code>
         </li>
@@ -7555,8 +7555,8 @@
           <code class="ruby">        all.each do |student_request|</code>
         </li>
       
-        <li class="covered" data-hits="95" data-linenumber="249">
-          <span class="hits">95</span>
+        <li class="covered" data-hits="110" data-linenumber="249">
+          <span class="hits">110</span>
           
           <code class="ruby">          csv &lt;&lt; student_request.attributes.values_at(*column_names)</code>
         </li>
@@ -9305,11 +9305,11 @@
         <div class="source_table" id="24e21420a4f6c127c5223330f6037bc6ddad4d51">
   <div class="header">
     <h3>features/step_definitions/admin_steps.rb</h3>
-    <h4><span class="yellow">82.35 %</span> covered</h4>
+    <h4><span class="yellow">87.8 %</span> covered</h4>
     <div>
-      <b>85</b> relevant lines. 
-      <span class="green"><b>70</b> lines covered</span> and
-      <span class="red"><b>15</b> lines missed.</span>
+      <b>82</b> relevant lines. 
+      <span class="green"><b>72</b> lines covered</span> and
+      <span class="red"><b>10</b> lines missed.</span>
     </div>
   </div>
   
@@ -9892,292 +9892,292 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="97">
+        <li class="covered" data-hits="1" data-linenumber="97">
+          <span class="hits">1</span>
+          
+          <code class="ruby">When(/^I click approve$/) do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="98">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    page.should have_content(&quot;approve&quot;)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="99">
+          
+          
+          <code class="ruby">    click_link(&#39;approve&#39;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="100">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="101">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="98">
-          
-          
-          <code class="ruby"> </code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="99">
+        <li class="covered" data-hits="1" data-linenumber="102">
           <span class="hits">1</span>
           
-          <code class="ruby">When(/^I click archive all and see a pop window and click ok$/) do</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="100">
-          
-          
-          <code class="ruby">    pop_window = window_opened_by do</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="101">
-          
-          
-          <code class="ruby">        click_link(&#39;Archive All Force Request Data to Archival Database&#39;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="102">
-          
-          
-          <code class="ruby">    end</code>
+          <code class="ruby">When(/^I click hold$/) do</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="103">
           
           
-          <code class="ruby">    within_window pop_window do</code>
+          <code class="ruby">    click_link(&#39;hold&#39;)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="104">
+        <li class="never" data-hits="" data-linenumber="104">
           
           
-          <code class="ruby">      click_button &#39;OK&#39;</code>
+          <code class="ruby">end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="105">
           
           
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="106">
-          
-          
-          <code class="ruby">end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="107">
-          
-          
           <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="106">
+          <span class="hits">1</span>
+          
+          <code class="ruby">When(/^I click reject$/) do</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="107">
+          
+          
+          <code class="ruby">    click_link(&#39;reject&#39;)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="108">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">end</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="109">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="109">
           
-          <code class="ruby">When(/^I filter the requests$/) do</code>
+          
+          <code class="ruby"></code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="110">
           <span class="hits">1</span>
           
-          <code class="ruby">    check(&#39;state_sel_Rejected&#39;)</code>
+          <code class="ruby">And (/I should see approve$/) do</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="111">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="111">
           
-          <code class="ruby">    check(&#39;state_sel_Approved&#39;)</code>
+          
+          <code class="ruby">    page.should have_content(&quot;approved&quot;) </code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="112">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    within(&#39;div[class = filter_form1]&#39;)  do </code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="113">
-          <span class="hits">1</span>
-          
-          <code class="ruby">        click_button(&#39;Refresh&#39;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="114">
-          
-          
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="115">
+        <li class="never" data-hits="" data-linenumber="112">
           
           
           <code class="ruby">end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="113">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="114">
+          <span class="hits">1</span>
+          
+          <code class="ruby">And (/I should see hold$/) do</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="115">
+          
+          
+          <code class="ruby">    page.should have_content(&quot;hold&quot;) </code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="116">
           
           
+          <code class="ruby">end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="117">
+          
+          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="117">
+        <li class="covered" data-hits="1" data-linenumber="118">
           <span class="hits">1</span>
           
-          <code class="ruby">When(/^I filter the requests with priority$/) do</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="118">
-          
-          
-          <code class="ruby">    uncheck(&#39;priority_sel_High&#39;)</code>
+          <code class="ruby">And (/I should see reject$/) do</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="119">
           
           
-          <code class="ruby">    uncheck(&#39;priority_sel_Low&#39;)</code>
+          <code class="ruby">    page.should have_content(&quot;rejected&quot;) </code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="120">
+        <li class="never" data-hits="" data-linenumber="120">
           
           
-          <code class="ruby">    within(&#39;div[class = filter_form1]&#39;)  do </code>
+          <code class="ruby">end</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="121">
+        <li class="never" data-hits="" data-linenumber="121">
           
           
-          <code class="ruby">        click_button(&#39;Refresh&#39;)</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="122">
           
           
+          <code class="ruby"> </code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="123">
+          <span class="hits">1</span>
+          
+          <code class="ruby">When(/^I click archive all and see a pop window and click ok$/) do</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="124">
+          
+          
+          <code class="ruby">    pop_window = window_opened_by do</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="125">
+          
+          
+          <code class="ruby">        click_link(&#39;Archive All Force Request Data to Archival Database&#39;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="126">
+          
+          
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="123">
+        <li class="missed" data-hits="0" data-linenumber="127">
           
           
-          <code class="ruby">end</code>
+          <code class="ruby">    within_window pop_window do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="124">
+        <li class="missed" data-hits="0" data-linenumber="128">
           
           
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="125">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="126">
-          <span class="hits">1</span>
-          
-          <code class="ruby">Then(/^I have the requests in desired domain$/) do</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="127">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    page.should have_content(&quot;Admin Dashboard Page&quot;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="128">
-          
-          
-          <code class="ruby">end</code>
+          <code class="ruby">      click_button &#39;OK&#39;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="129">
           
           
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="130">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="131">
+          
+          
           <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="130">
-          <span class="hits">1</span>
-          
-          <code class="ruby">When(/^I click course name button$/) do</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="131">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    click_button(&#39;CSCE 026&#39;)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="132">
           
           
-          <code class="ruby">end</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="133">
+        <li class="covered" data-hits="1" data-linenumber="133">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">When(/^I filter the requests$/) do</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="134">
           <span class="hits">1</span>
           
-          <code class="ruby">Then(/^the page collapse$/) do</code>
+          <code class="ruby">    check(&#39;state_sel_Rejected&#39;)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="135">
           <span class="hits">1</span>
           
-          <code class="ruby">    page.has_content?(&#39;	FRS44fe477f6025c48c6fb9&#39;)</code>
+          <code class="ruby">    check(&#39;state_sel_Approved&#39;)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="136">
+        <li class="covered" data-hits="1" data-linenumber="136">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    within(&#39;div[class = filter_form1]&#39;)  do </code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="137">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        click_button(&#39;Refresh&#39;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="138">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="139">
           
           
           <code class="ruby">end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="137">
+        <li class="never" data-hits="" data-linenumber="140">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="138">
-          <span class="hits">1</span>
-          
-          <code class="ruby">When(/^I select state and click update$/) do</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="139">
-          
-          
-          <code class="ruby">    within(&#39;div[id = student_requests_026]&#39;)  do</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="140">
-          
-          
-          <code class="ruby">        select(&#39;Approved&#39;, from: &#39;multi_state_sel&#39;)</code>
-        </li>
-      
         <li class="never" data-hits="" data-linenumber="141">
           
           
-          <code class="ruby">        # select(&#39;Very High&#39;, from:&#39;multi_priority_sel&#39;)</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="142">
+        <li class="never" data-hits="" data-linenumber="142">
           
           
-          <code class="ruby">        click_button(&#39;Update Selected&#39;)</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="143">
+        <li class="covered" data-hits="1" data-linenumber="143">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">        click_link(&#39;Download as Excel Sheet&#39;)</code>
+          <code class="ruby">Then(/^I have the requests in desired domain$/) do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="144">
+        <li class="covered" data-hits="1" data-linenumber="144">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">    end</code>
+          <code class="ruby">    page.should have_content(&quot;Admin Dashboard Page&quot;)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="145">
@@ -10192,40 +10192,40 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="147">
+        <li class="covered" data-hits="1" data-linenumber="147">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">When(/^I click course name button$/) do</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="148">
           <span class="hits">1</span>
           
-          <code class="ruby">Then(/^I Should see the desired domain of one class$/) do</code>
+          <code class="ruby">    click_button(&#39;CSCE 026&#39;)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="149">
+        <li class="never" data-hits="" data-linenumber="149">
           
           
-          <code class="ruby">    page.should have_content(&quot;request_id&quot;)</code>
+          <code class="ruby">end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="150">
           
           
-          <code class="ruby">    # within(&#39;div[id = main]&#39;)  do</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="151">
+        <li class="covered" data-hits="1" data-linenumber="151">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">    #     click_on(&#39;download_table&#39;)</code>
+          <code class="ruby">Then(/^the page collapse$/) do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="152">
+        <li class="covered" data-hits="1" data-linenumber="152">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">    # end</code>
+          <code class="ruby">    page.has_content?(&#39;	FRS44fe477f6025c48c6fb9&#39;)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="153">
@@ -10246,46 +10246,22 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="156">
-          <span class="hits">1</span>
-          
-          <code class="ruby">When(/^I click the title$/) do</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="157">
-          
-          
-          <code class="ruby">    click_on(&#39;CSE Force Request System&#39;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="158">
-          
-          
-          <code class="ruby">end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="159">
+        <li class="never" data-hits="" data-linenumber="156">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="160">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="157">
           
-          <code class="ruby">Then(/^I should be on login page$/) do</code>
+          
+          <code class="ruby"></code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="161">
+        <li class="never" data-hits="" data-linenumber="158">
           
           
-          <code class="ruby">    page.should have_content(&quot;Login Page&quot;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="162">
-          
-          
-          <code class="ruby">end</code>
+          <code class="ruby"></code>
         </li>
       
     </ol>
