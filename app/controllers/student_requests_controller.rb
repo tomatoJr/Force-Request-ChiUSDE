@@ -201,7 +201,7 @@ class StudentRequestsController < ApplicationController
     isUpdated = false
     @student_request = StudentRequest.find params[:id]
     if(@student_request.state == StudentRequest::WITHDRAWN_STATE)
-      flash[:warning] = "Request has already been withdrawn by student. Please refresh your Page."
+      flash[:warning] = "Request has already been withdrawn by the student. Please refresh your Page."
     else
       if(StudentRequest::STATES_AVAILABLE_TO_ADMIN.include? params[:state])
         @student_request.state = params[:state]
@@ -257,13 +257,13 @@ class StudentRequestsController < ApplicationController
       #check if the uin of student is valid
         @user = Student.where("email = '#{params[:session][:email]}'")
         if @user[0].nil?#the user doesn't sign up
-            flash[:warning] = "The account doesn't exsit. Please sign up first."
+            flash[:warning] = "The account doesn't exist. Please sign up first."
             redirect_to root_path
             return#tricky
         end
         @cur_user = Student.where("email ='#{params[:session][:email]}' and password ='#{params[:session][:password]}'")
         if @cur_user[0].nil?#the UIN or Password don't match
-          flash[:warning] = "Entered Email and Password didn't match. Try again."
+          flash[:warning] = "The Email and Password you entered didn't match. Try again."
           redirect_to root_path
         else
           # check if the current student activate his account
@@ -324,7 +324,7 @@ class StudentRequestsController < ApplicationController
       params[:request_ids].each { |id|
         @student_request = StudentRequest.find id
         if(@student_request.state == StudentRequest::WITHDRAWN_STATE)
-          flash[:warning] = "Student has already withdraw his request"
+          flash[:warning] = "Student has already withdrawn their request"
         else
           if(params[:multi_state_sel] != "Select State")
             isUpdate = true

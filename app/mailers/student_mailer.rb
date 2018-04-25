@@ -21,7 +21,7 @@ class StudentMailer < ActionMailer::Base
     def update_force_state(student, req)
         @student = student
         @req =req
-        mail(:to => @student.email, :subject => "Updates on Your force request")
+        mail(:to => @student.email, :subject => "Updates on Your Force Request")
     
     end
 end
