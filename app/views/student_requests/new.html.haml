@@ -10,31 +10,31 @@
           %td
             = label :student_request, :name, 'Full Name'
           %td  
-            = @students[0].name
+            = @student.name
 
         %tr
           %td  
             = label :student_request, :major, 'Major'
           %td
-            = @students[0].major
+            = @student.major
 
         %tr
           %td   
             = label :student_request, :classification, 'Classification'
           %td
-            = @students[0].classification
+            = @student.classification
             
         %tr
           %td    
             = label :student_request, :minor, 'Minor'
           %td  
-            = text_field :student_request, 'minor',  class: 'input-field', value: @students[0].minor, :readonly => true
+            = text_field :student_request, 'minor',  class: 'input-field', value: @student.minor, :readonly => true
 
         %tr
           %td 
             = label :student_request, :email, 'Email'
           %td  
-            = @students[0].email
+            = @student.email
 
         %tr
           %td   
