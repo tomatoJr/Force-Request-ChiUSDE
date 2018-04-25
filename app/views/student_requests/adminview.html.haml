@@ -57,7 +57,7 @@
                 %td= record.creation_date.strftime("%Y-%m-%d %H:%M:%S")
                 %td= record.state   
                 %td= record.notes_to_student                
-                %td= (link_to 'Approve', {:action => "approve", :controller => "student_requests",:id => record.request_id}, :method => :put) + "<br>".html_safe+ (link_to 'Hold', {:action => "hold", :controller => "student_requests",:id => record.request_id}, :method => :put) + "<br>".html_safe+ (link_to 'Reject', {:action => "reject", :controller => "student_requests",:id => record.request_id}, :method => :put) + "<br>".html_safe + (link_to 'Email')+ "<br>".html_safe + (link_to 'Memos')
+                %td= (link_to 'Approve', {:action => "approve", :controller => "student_requests",:id => record.request_id}, :method => :put) + "<br>".html_safe+ (link_to 'Hold', {:action => "hold", :controller => "student_requests",:id => record.request_id}, :method => :put) + "<br>".html_safe+ (link_to 'Reject', {:action => "reject", :controller => "student_requests",:id => record.request_id}, :method => :put) + "<br>".html_safe + (link_to 'Memos')
 
                 
             %table{ :class => "multiUpdate" }
