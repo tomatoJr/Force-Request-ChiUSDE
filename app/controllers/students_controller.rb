@@ -87,7 +87,7 @@ class StudentsController < ApplicationController
                     redirect_to students_signup_path
                 end
             else#the student has signed up
-                flash[:warning] = "An account associated with "+params[:session][:uin]+" has been created. Please contact your ADMIN if you think this is a mistake."
+                flash[:warning] = "An account associated with "+params[:session][:uin]+"or"+params[:session][:uin]+" has been created. Please contact an advisor if you think this is a mistake."
                 redirect_to root_path
             end
         else            

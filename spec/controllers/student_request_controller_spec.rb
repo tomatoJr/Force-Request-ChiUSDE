@@ -351,7 +351,7 @@ describe StudentRequestsController, :type => :controller do
 
         put :updaterequestbyadmin, :id => 14
 
-        expect(flash[:warning]).to eq("Request has already been withdrawn by student. Please refresh your Page.")
+        expect(flash[:warning]).to eq("Request has already been withdrawn by the student. Please refresh your Page.")
     end
 
     it "should add admin notes if available" do
@@ -419,7 +419,7 @@ describe StudentRequestsController, :type => :controller do
 
       post :login, params: { 'session' => { :user => "student"}}
 
-      expect(flash[:warning]).to eq("The account doesn't exsit. Please sign up first.")
+      expect(flash[:warning]).to eq("The account doesn't exist. Please sign up first.")
     end
 
     it "should redirect to rooth path when account doesn't exist" do
