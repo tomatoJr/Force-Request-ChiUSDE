@@ -10,15 +10,14 @@
     %strong Filter Requests - State:
     %br
     %table
+      %col{:width => "20"}
       %tbody
         %tr
         - @all_states.each do |state|
-          %col{:width => "25"}
           %td= check_box_tag "state_sel[#{state}]", 'true', @state_selected[state]
           %td= state
         %tr
         - @all_semesters.each do |semester|
-          %col{:width => "25"}
           %td= check_box_tag "semester_sel[#{semester}]", 'true', @semester_selected[semester]
           %td= semester
     = submit_tag 'Refresh', class: "filter"
