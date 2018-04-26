@@ -12,12 +12,12 @@
     %table
       %tr
       - @all_states.each do |state|
-          %td= check_box_tag "state_sel[#{state}]", 'true', @state_selected[state]
-          %td= state
+        %td= check_box_tag "state_sel[#{state}]", 'true', @state_selected[state]
+        %td= state
       %tr
       - @all_semesters.each do |semester|
-          %td= check_box_tag "semester_sel[#{semester}]", 'true', @semester_selected[semester]
-          %td= semester
+        %td= check_box_tag "semester_sel[#{semester}]", 'true', @semester_selected[semester]
+        %td= semester
     = submit_tag 'Refresh', class: "filter"
 
 - @allcourses.each do |course|
