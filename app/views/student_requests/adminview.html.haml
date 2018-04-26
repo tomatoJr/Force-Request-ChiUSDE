@@ -21,7 +21,7 @@
   // - if @coursestudentlist[course].length != 0
   // - if @coursestudentlist[course].length != 0
   %h4
-  %input{:onclick => "return toggleMe('student_requests_#{course}')", :type => "button", :value => "CSCE #{course}", :class => "course_id_button"}
+  %input{:onclick => "return toggleMe('student_requests_#{course}', '#{course}')", :type => "button", :value => "(-) CSCE #{course}", :id => course, :class => "course_id_button"}
   %div{:id => "student_requests_#{course}"}
     = form_tag(student_requests_multiupdate_path(), method: "put") do
       %table#student_requests.sortableadmin

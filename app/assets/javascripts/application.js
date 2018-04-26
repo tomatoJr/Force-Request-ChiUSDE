@@ -14,14 +14,17 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-function toggleMe(a){
+function toggleMe(a, b){
 	var e=document.getElementById(a);
+	var butt=document.getElementById(b);
 	if(!e)return true;
 	if(e.style.display=="none"){
 	e.style.display="block"
+	butt.value = "(-) CSCE " + b
 	}
 	else{
 	e.style.display="none"
+	butt.value = "(+) CSCE " + b
 	}
 	return true;
 }
