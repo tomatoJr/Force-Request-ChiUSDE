@@ -10,11 +10,12 @@
     %strong Filter Requests - State:
     %br
     %table
+      %col{:width => "20"}
       %tbody
         %tr
         - @all_states.each do |state|
-          %td= check_box_tag "state_sel[#{state}]", 'true', @state_selected[state]
-          %td= state
+          %td{:width => "20"}= check_box_tag "state_sel[#{state}]", 'true', @state_selected[state]
+          %td{:width => "20"}= state
         %tr
         - @all_semesters.each do |semester|
           %td= check_box_tag "semester_sel[#{semester}]", 'true', @semester_selected[semester]
