@@ -3,11 +3,11 @@ require 'rails_helper'
 
 describe StudentRequestsController, :type => :controller do
   describe "Create Student Request: " do
-    context 'on a student request that already exists' do
-          xit 'should set the appropriate variable' do
+    context 'on a a student request that already exists' do
+          it 'should set the appropriate variable' do
             #Given
             student = FactoryGirl.create(:student)
-            Student.should_receive(:find_by_uin).once.and_return(student)
+            Student.should_receive(:where).once.and_return([student])
             student_request = FactoryGirl.create(:student_request)
             #StudentRequest.should_receive(:exists?).with(:uin => student_request.uin, :course_id => student_request.course_id, :section_id => student_request.section_id).once.and_return(true)
             StudentRequest.should_receive(:exists?).once.and_return(true)
@@ -40,9 +40,8 @@ describe StudentRequestsController, :type => :controller do
 
         #Given
         student = FactoryGirl.create(:student)
-        puts "****************************This is the student name: #{student.name}"
         student_request = FactoryGirl.create(:student_request)
-        Student.should_receive(:find_by_uin).once.and_return(student)
+        Student.should_receive(:where).once.and_return([student])
         StudentMailer.should_receive(:confirm_force_request).once.and_return( double("Mailer", :deliver => true) );
 
 
@@ -54,9 +53,7 @@ describe StudentRequestsController, :type => :controller do
                                            :email => student_request.email,
                                            :request_semester => student_request.request_semester,
                                            :course_id => student_request.course_id,
-                                           :phone => student_request.phone,
-                                           :section_id => student_request.section_id
-        }
+                                           :phone => student_request.phone}
 
         #Then
         expect(flash[:notice]).to eq("Student Request was successfully created.")
@@ -72,7 +69,7 @@ describe StudentRequestsController, :type => :controller do
         #Given
         student = FactoryGirl.create(:student)
         student_request = FactoryGirl.create(:student_request)
-        Student.should_receive(:find_by_uin).once.and_return(student)
+        Student.should_receive(:where).once.and_return([student])
 
 
         #When
@@ -354,7 +351,7 @@ describe StudentRequestsController, :type => :controller do
 
         put :updaterequestbyadmin, :id => 14
 
-        expect(flash[:warning]).to eq("Request has already been withdrawn by the student. Please refresh your Page.")
+        expect(flash[:warning]).to eq("Request has already been withdrawn by student. Please refresh your Page.")
     end
 
     it "should add admin notes if available" do
@@ -382,7 +379,7 @@ describe StudentRequestsController, :type => :controller do
   describe "login" do
     #post 'student_requests/login' => 'student_requests#login'
     it "should set current_state to nil when logging in" do
-      Admin.should_receive(:find_by_email).once.and_return(nil)
+      Admin.should_receive(:where).once.and_return([nil])
 
       post :login, params: { 'session' => { :user => "admin"}}
 
@@ -390,15 +387,15 @@ describe StudentRequestsController, :type => :controller do
     end
 
     it "should display a flash warning when account doesn't exist" do
-      Admin.should_receive(:find_by_email).once.and_return(nil)
+      Admin.should_receive(:where).once.and_return([nil])
 
       post :login, params: { 'session' => { :user => "admin"}}
 
-      expect(flash[:warning]).to eq("The admin account doesn't exist")
+      expect(flash[:warning]).to eq("Your Email or Password is Incorrect.")
     end
 
     it "should redirect to rooth path when account doesn't exist" do
-      Admin.should_receive(:find_by_email).once.and_return(nil)
+      Admin.should_receive(:where).once.and_return([nil])
 
       post :login, params: { 'session' => { :user => "admin"}}
 
@@ -407,7 +404,7 @@ describe StudentRequestsController, :type => :controller do
 
     it "should set the current user to the returned user" do
       admin = FactoryGirl.create(:admin)
-      Admin.should_receive(:find_by_email).with("IAmSchaeffer@tamu.edu").once.and_return(admin)
+      Admin.should_receive(:where).with("email ='IAmSchaeffer@tamu.edu' and password ='SchaefferDoesntKnow'").once.and_return([admin])
 
       post :login, params: { 'session' => { :user => "admin", :email =>"IAmSchaeffer@tamu.edu", :password => "SchaefferDoesntKnow"}}
 
@@ -418,7 +415,7 @@ describe StudentRequestsController, :type => :controller do
     end
 
     it "should display a flash warning when account doesn't exist" do
-      Student.should_receive(:find_by_email).once.and_return(nil)
+      Student.should_receive(:where).once.and_return([nil])
 
       post :login, params: { 'session' => { :user => "student"}}
 
@@ -426,7 +423,7 @@ describe StudentRequestsController, :type => :controller do
     end
 
     it "should redirect to rooth path when account doesn't exist" do
-      Student.should_receive(:find_by_email).once.and_return(nil)
+      Student.should_receive(:where).once.and_return([nil])
 
       post :login, params: { 'session' => { :user => "student"}}
 
@@ -434,7 +431,7 @@ describe StudentRequestsController, :type => :controller do
     end
 
     it "should redirect to rooth path when account doesn't exist" do
-      Student.should_receive(:find_by_email).once.and_return(nil)
+      Student.should_receive(:where).once.and_return([nil])
 
       post :login, params: { 'session' => { :user => "student"}}
 
@@ -444,10 +441,12 @@ describe StudentRequestsController, :type => :controller do
     it "should set the current user when the email has been confirmed" do
       student = FactoryGirl.create(:student)
       student.email_confirmed = true
-      Student.should_receive(:find_by_email).with('johndoe@tamu.edu').once.and_return(student)
-    
+      Student.should_receive(:where).with("email = 'johndoe@tamu.edu'").once.and_return([student])
+      Student.should_receive(:where).with("email ='johndoe@tamu.edu' and password ='DarthVader123'").once.and_return([student])
+
+
       post :login, params: { 'session' => { :user => "student", :email =>'johndoe@tamu.edu', :password => "DarthVader123"}}
-      
+
       expect(request.session[:name].to_s).to eq("John Doe")
       expect(request.session[:current_state]).to eq("student")
       expect(request.session[:uin]).to eq("12345678")
@@ -457,8 +456,9 @@ describe StudentRequestsController, :type => :controller do
     it "should set issue a flash warning when email has not been confirmed" do
       student = FactoryGirl.create(:student)
       student.email_confirmed = false
-      Student.should_receive(:find_by_email).with('johndoe@tamu.edu').once.and_return(student)
-      
+      Student.should_receive(:where).with("email = 'johndoe@tamu.edu'").once.and_return([student])
+      Student.should_receive(:where).with("email ='johndoe@tamu.edu' and password ='DarthVader123'").once.and_return([student])
+
       post :login, params: { 'session' => { :user => "student", :email =>'johndoe@tamu.edu', :password => "DarthVader123"}}
 
       expect(flash[:warning]).to eq("The account has not been activated. Please check your email to activate your account!")
@@ -467,7 +467,8 @@ describe StudentRequestsController, :type => :controller do
     it "should redirect to root path when email has not been confirmed" do
       student = FactoryGirl.create(:student)
       student.email_confirmed = false
-      Student.should_receive(:find_by_email).with('johndoe@tamu.edu').once.and_return(student)
+      Student.should_receive(:where).with("email = 'johndoe@tamu.edu'").once.and_return([student])
+      Student.should_receive(:where).with("email ='johndoe@tamu.edu' and password ='DarthVader123'").once.and_return([student])
       
       post :login, params: { 'session' => { :user => "student", :email =>'johndoe@tamu.edu', :password => "DarthVader123"}}
 

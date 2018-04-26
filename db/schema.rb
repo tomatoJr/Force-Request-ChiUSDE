@@ -18,9 +18,8 @@ ActiveRecord::Schema.define(version: 20170414191552) do
   create_table "admins", force: :cascade do |t|
     t.string "uin"
     t.string "name"
+    t.string "password"
     t.string "email"
-    t.string "encrypted_password"
-    t.string "encrypted_password_iv"
   end
 
   create_table "audits", force: :cascade do |t|
@@ -82,10 +81,8 @@ ActiveRecord::Schema.define(version: 20170414191552) do
     t.string   "phone"
     t.string   "expected_graduation"
     t.string   "request_semester"
-    t.string   "encrypted_course_id"
-    t.string   "encrypted_course_id_iv"
-    t.string   "encrypted_section_id"
-    t.string   "encrypted_section_id_iv"
+    t.string   "course_id"
+    t.string   "section_id"
     t.text     "notes"
     t.string   "state"
     t.string   "priority"
@@ -93,10 +90,10 @@ ActiveRecord::Schema.define(version: 20170414191552) do
     t.datetime "last_updated"
     t.text     "notes_to_student"
     t.text     "admin_notes"
-    # t.index ["course_id"], name: "index_student_requests_on_course_id", using: :btree
-    # t.index ["request_id"], name: "index_student_requests_on_request_id", unique: true, using: :btree
-    # t.index ["section_id"], name: "index_student_requests_on_section_id", using: :btree
-    # t.index ["state"], name: "index_student_requests_on_state", using: :btree
+    t.index ["course_id"], name: "index_student_requests_on_course_id", using: :btree
+    t.index ["request_id"], name: "index_student_requests_on_request_id", unique: true, using: :btree
+    t.index ["section_id"], name: "index_student_requests_on_section_id", using: :btree
+    t.index ["state"], name: "index_student_requests_on_state", using: :btree
   end
 
   create_table "students", force: :cascade do |t|
@@ -109,7 +106,8 @@ ActiveRecord::Schema.define(version: 20170414191552) do
     t.string   "firstname"
     t.string   "lastname"
     t.string   "minor"
-    t.string   "email"
+    t.string   "encrypted_email"
+    t.string   "encrypted_email_iv"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "email_confirmed",              default: false
