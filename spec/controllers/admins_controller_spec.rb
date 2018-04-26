@@ -5,7 +5,8 @@ describe AdminsController, :type => :controller do
     describe 'addAdmin' do
        context 'when correct params are passed in' do
          before :each do
-           post :addAdmin, :admin_request => {:uin => 123006789, :name => "Henry Higgs", :password => "1234Henry"}
+           post :addAdmin, :admin_request => {:uin => 123006789, :name => "Henry Higgs",
+                                              :password => "1234Henry", :email => "henry@tamu.edu"}
          end
 
          it 'should render a flash notice' do
@@ -23,7 +24,7 @@ describe AdminsController, :type => :controller do
          end
 
          it 'render a flash notice' do
-           expect(flash[:warning]).to eq("Name can't be blank,Name is invalid,Uin can't be blank,Password can't be blank")
+           expect(flash[:warning]).to eq("Name can't be blank,Name is invalid,Uin can't be blank,Password can't be blank,Email can't be blank,Email is invalid")
 
          end
 

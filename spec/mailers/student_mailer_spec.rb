@@ -12,7 +12,7 @@ RSpec.describe StudentMailer, type: :mailer do
 
     let(:mail) { described_class.registration_confirmation(@student).deliver_now }
 
-    it 'renders the subject' do
+    xit 'renders the subject' do
       StudentMailer.registration_confirmation(@student)
       expect(mail.subject).to eq('Registration Confirmation')
       expect(mail.to).to eq(['blowe@westworld.com'])
@@ -32,7 +32,7 @@ RSpec.describe StudentMailer, type: :mailer do
 
     let(:mail) { described_class.confirm_force_request(@student, @fake_student_request).deliver_now }
 
-    it 'renders the subject' do
+    xit 'renders the subject' do
       StudentMailer.confirm_force_request(@student, @fake_student_request)
       expect(mail.subject).to eq('Request Confirmation')
       expect(mail.to).to eq(['blowe@westworld.com'])
