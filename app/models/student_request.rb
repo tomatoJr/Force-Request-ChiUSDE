@@ -223,10 +223,7 @@ class StudentRequest < ActiveRecord::Base
     before_save :update_time
     
     before_create :set_creation_date
-    
-    attr_encrypted :course_id, key: ENV['COURSE_KEY'].truncate(32)
-    attr_encrypted :section_id, key: ENV['SECTION_KEY'].truncate(32)
-    
+  
     def set_creation_date
       # self.creation_date = DateTime.now()
       Time.zone = 'Central Time (US & Canada)'
