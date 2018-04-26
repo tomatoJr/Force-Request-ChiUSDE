@@ -9,7 +9,7 @@
   .filter_form1
     %strong Filter Requests - State:
     %br
-    %table
+    %tbody
       %tr
       - @all_states.each do |state|
         %td= check_box_tag "state_sel[#{state}]", 'true', @state_selected[state]
