@@ -26,8 +26,7 @@
         %th Section ID
         %th Request Time
         %th State
-        %th Notes By Me
-        %th Notes By Admin
+        %th My Notes
         %th Action
     %tbody
       - @student_requests.each do |record|
@@ -42,8 +41,7 @@
           %td= record.creation_date.strftime("%Y-%m-%d %H:%M:%S")
           %td= record.state
           %td= record.notes
-          %td= record.notes_to_student
           %td 
             -if record.state == StudentRequest::ACTIVE_STATE
-              = button_to 'Withdraw', {:action => "update", :id => record.request_id, :controller => "student_requests"}, :method => :put, :data => { confirm: 'Are you sure?', disable_with: 'loading...' }
+              = button_to 'Delete', {:action => "update", :id => record.request_id, :controller => "student_requests"}, :method => :put, :data => { confirm: 'Are you sure?', disable_with: 'loading...' }
 

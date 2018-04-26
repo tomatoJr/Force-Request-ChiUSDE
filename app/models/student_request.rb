@@ -188,7 +188,7 @@ class StudentRequest < ActiveRecord::Base
     end
     
     REQUEST_SEMESTER = []
-    for i in current_year..current_year+1
+    for i in current_year-2..current_year+1
       LIST_SEMESTER.each do |semester|
         if i == current_year and current_month <= 4
           REQUEST_SEMESTER << i.to_s + " " + semester

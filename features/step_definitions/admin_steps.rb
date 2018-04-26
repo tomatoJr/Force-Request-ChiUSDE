@@ -114,13 +114,6 @@ When(/^I filter the requests$/) do
     end
 end
 
-When(/^I filter the requests with priority$/) do
-    uncheck('priority_sel_High')
-    uncheck('priority_sel_Low')
-    within('div[class = filter_form1]')  do 
-        click_button('Refresh')
-    end
-end
 
 
 Then(/^I have the requests in desired domain$/) do
@@ -128,35 +121,14 @@ Then(/^I have the requests in desired domain$/) do
 end
 
 When(/^I click course name button$/) do
-    click_button('Course Name 026')
+    click_button('CSCE 026')
 end
 
 Then(/^the page collapse$/) do
     page.has_content?('	FRS44fe477f6025c48c6fb9')
 end
 
-When(/^I select state and click update$/) do
-    within('div[id = student_requests_026]')  do
-        select('Approved', from: 'multi_state_sel')
-        # select('Very High', from:'multi_priority_sel')
-        click_button('Update Selected')
-        click_link('Download as Excel Sheet')
-    end
-end
 
 
-Then(/^I Should see the desired domain of one class$/) do
-    page.should have_content("request_id")
-    # within('div[id = main]')  do
-    #     click_on('download_table')
-    # end
-end
 
 
-When(/^I click the title$/) do
-    click_on('CSE Force Request System')
-end
-
-Then(/^I should be on login page$/) do
-    page.should have_content("Login Page")
-end

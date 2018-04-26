@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   put 'student_requests/approve' => 'student_requests#approve'
   put 'student_requests/reject' => 'student_requests#reject'
   put 'student_requests/hold' => 'student_requests#hold'
+  put 'student_requests/email_the_status' => 'student_requests#email_the_status'
 
   
   delete 'student_requests/deleteall' => 'student_requests#deleteall'

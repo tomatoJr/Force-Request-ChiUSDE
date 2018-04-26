@@ -104,6 +104,7 @@ class StudentRequestsController < ApplicationController
     @student_request = StudentRequest.find params[:id]
     @student_request.state = StudentRequest::APPROVED_STATE
     @student_request.save
+  #  email_the_status()
     redirect_to student_requests_adminview_path
   end
 
@@ -111,6 +112,7 @@ class StudentRequestsController < ApplicationController
     @student_request = StudentRequest.find params[:id]
     @student_request.state = StudentRequest::REJECTED_STATE
     @student_request.save
+  #  email_the_status()
     redirect_to student_requests_adminview_path
   end
 
@@ -119,7 +121,19 @@ class StudentRequestsController < ApplicationController
     @student_request = StudentRequest.find params[:id]
     @student_request.state = StudentRequest::HOLD_STATE
     @student_request.save
+ #   email_the_status()
     redirect_to student_requests_adminview_path
+  end
+  
+  def email_the_status()
+    @student_request = StudentRequest.find params[:id]
+    @student = Student.where(:uin => @student_request.uin)
+    StudentMailer.update_force_state(@student[0],@student_request).deliver
+  end
+  
+  def Memo
+  
+  
   end
 
 
@@ -232,7 +246,7 @@ class StudentRequestsController < ApplicationController
     isUpdated = false
     @student_request = StudentRequest.find params[:id]
     if(@student_request.state == StudentRequest::WITHDRAWN_STATE)
-      flash[:warning] = "Request has already been withdrawn by student. Please refresh your Page."
+      flash[:warning] = "Request has already been withdrawn by the student. Please refresh your Page."
     else
       if(StudentRequest::STATES_AVAILABLE_TO_ADMIN.include? params[:state])
         @student_request.state = params[:state]
@@ -383,7 +397,7 @@ class StudentRequestsController < ApplicationController
       params[:request_ids].each { |id|
         @student_request = StudentRequest.find id
         if(@student_request.state == StudentRequest::WITHDRAWN_STATE)
-          flash[:warning] = "Student has already withdraw his request"
+          flash[:warning] = "Student has already withdrawn their request"
         else
           if(params[:multi_state_sel] != "Select State")
             isUpdate = true

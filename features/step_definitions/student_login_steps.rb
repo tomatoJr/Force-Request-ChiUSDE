@@ -41,11 +41,11 @@ Then(/^I should see a non-account exsits message$/) do
 end
 
 Then(/^I should see a error message$/) do
-  page.should have_content("Entered UIN and Password didn't match. Try again.")
+  page.should have_content("Entered Email and Password didn't match. Try again.")
 end
 
 Then(/^I should see a not-activated message$/) do
-  page.should have_content("The account has not been activate.")
+  page.should have_content("The account has not been activated.")
 end
 
 
