@@ -1,41 +1,42 @@
 class StudentRequest < ActiveRecord::Base
-  
+
   audited
-  # States of the students 
+  # States of the students
     ACTIVE_STATE = "Active"
     WITHDRAWN_STATE = "Withdraw"
     REJECTED_STATE = "Rejected"
     HOLD_STATE = "Hold"
     APPROVED_STATE = "Approved"
-    
+
+
     # Priority of the Students
     VERYHIGH_PRIORITY = "Very High"
     HIGH_PRIORITY = "High"
     NORMAL_PRIORITY = "Normal"
     LOW_PRIORITY = "Low"
     VERYLOW_PRIORITY = "Very Low"
-    
+
     STATES_AVAILABLE_TO_ADMIN = [StudentRequest::APPROVED_STATE, StudentRequest::REJECTED_STATE, StudentRequest::HOLD_STATE]
     PRIORITY_LIST = [StudentRequest::VERYHIGH_PRIORITY, StudentRequest::HIGH_PRIORITY, StudentRequest::NORMAL_PRIORITY, StudentRequest::LOW_PRIORITY, StudentRequest::VERYLOW_PRIORITY]
-    
+
     #Classification
     CLASSIFICATION_LIST = ['U1', 'U2', 'U3', 'U4', 'G']
-    MAJOR_LIST = [      
-             'None',    
-             'Computer Science', 
+    MAJOR_LIST = [
+             'None',
+             'Computer Science',
 
              'Computer Engineering',
              'Electrical Engineering',
-             'Applied Mathematical Sciences',            
-            
-             'Accounting', 
+             'Applied Mathematical Sciences',
+
+             'Accounting',
              'Aerospace Engineering',
-             'Agribusiness', 
-             'Agricultural Communications & Journalism', 
-             'Agricultural Economics', 
-             'Agricultural Leadership & Development', 
-             'Agricultural Economics', 
-             'Agricultural Science', 
+             'Agribusiness',
+             'Agricultural Communications & Journalism',
+             'Agricultural Economics',
+             'Agricultural Leadership & Development',
+             'Agricultural Economics',
+             'Agricultural Science',
              'Allied Health',
              'Animal Science',
              'Anthropology',
@@ -66,7 +67,7 @@ class StudentRequest < ActiveRecord::Base
              'Environmental Studies (Plant Pathology & Microbiology)',
              'Finance',
              'Food Science & Technology',
-             'Forensic & Investigative Sciences',            
+             'Forensic & Investigative Sciences',
              'Forestry',
              'Finance',
              'Genetics',
@@ -122,9 +123,9 @@ class StudentRequest < ActiveRecord::Base
              'Political Science',
              'Poultry Science',
              'Psychology',
-             'Public Health',            
-             'Rangeland Ecology & Management',            
-             'Recreation, Park & Tourism Sciences',            
+             'Public Health',
+             'Rangeland Ecology & Management',
+             'Recreation, Park & Tourism Sciences',
              'Renewable Natural Resources',
              'School Health',
              'Sociology',
@@ -153,25 +154,25 @@ class StudentRequest < ActiveRecord::Base
              'Visualization',
              'Wildlife & Fisheries Sciences',
              'Women\'s and Gender Studies',
-             'Zoology',           
+             'Zoology',
              'Others']
     # time = Time.new
     Time.zone = 'Central Time (US & Canada)'
     time = Time.zone.now()
-    
+
     # List Year and Semester
     CURRENT_YEAR = time.strftime("%Y")
     current_year = CURRENT_YEAR.to_i
     CURRENT_MONTH = time.strftime("%m")
     current_month = CURRENT_MONTH.to_i
-    
+
     LIST_YEAR = []
     for i in current_year..current_year+100
       LIST_YEAR << i.to_s
     end
-    
+
     LIST_SEMESTER = ['Spring', 'Fall', 'Summer']
-    
+
     YEAR_SEMESTER = []
     LIST_YEAR.each do |year|
       LIST_SEMESTER.each do |semester|
@@ -186,7 +187,7 @@ class StudentRequest < ActiveRecord::Base
         end
       end
     end
-    
+
     REQUEST_SEMESTER = []
     for i in current_year-2..current_year+1
       LIST_SEMESTER.each do |semester|
@@ -201,7 +202,7 @@ class StudentRequest < ActiveRecord::Base
         end
       end
     end
-    
+
     self.primary_key = "request_id"
     validates :uin, presence: true
     validates :name, presence: true
@@ -215,15 +216,15 @@ class StudentRequest < ActiveRecord::Base
     validates_format_of :course_id, :with => /^\d+$/, :multiline => true
     validates_format_of :section_id, :with => /^\d*$/, :multiline => true
     # validates_format_of :phone, :with => /1?\s*\W?\s*([2-9][0-8][0-9])\s*\W?\s*([2-9][0-9]{2})\s*\W?\s*([0-9]{4})(\se?x?t?(\d*))?/
-    #validates :classification, inclusion: { in: CLASSIFICATION_LIST, 
+    #validates :classification, inclusion: { in: CLASSIFICATION_LIST,
     #  message: "%{value} is not a valid classification" }
-    validates :request_semester, inclusion: { in: YEAR_SEMESTER, 
+    validates :request_semester, inclusion: { in: YEAR_SEMESTER,
       message: "%{value} is not a valid request semester" }
     before_create :create_request_id
     before_save :update_time
-    
+
     before_create :set_creation_date
-  
+
     def set_creation_date
       # self.creation_date = DateTime.now()
       Time.zone = 'Central Time (US & Canada)'
@@ -235,13 +236,13 @@ class StudentRequest < ActiveRecord::Base
       Time.zone = 'Central Time (US & Canada)'
       self.last_updated = Time.zone.now()
     end
-    
+
     def create_request_id
       begin
         self. request_id = "FRS" + SecureRandom.hex(10)
       end while self.class.exists?(:request_id => request_id)
     end
-    
+
     def self.to_csv(options = {})
       CSV.generate(options) do |csv|
         csv << column_names

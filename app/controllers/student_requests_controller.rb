@@ -17,7 +17,7 @@ class StudentRequestsController < ApplicationController
   def new
     # default: render 'new' template
     @students = Student.where(:uin => session_get(:uin))
-    initForNewForceRequest    
+    initForNewForceRequest
     render :new
   end
 
@@ -113,16 +113,16 @@ class StudentRequestsController < ApplicationController
  #   email_the_status()
     redirect_to student_requests_adminview_path
   end
-  
+
   def email_the_status()
     @student_request = StudentRequest.find params[:id]
     @student = Student.where(:uin => @student_request.uin)
     StudentMailer.update_force_state(@student[0],@student_request).deliver
   end
-  
+
   def Memo
-  
-  
+
+
   end
 
 
@@ -146,6 +146,7 @@ class StudentRequestsController < ApplicationController
       @all_priorities = [StudentRequest::VERYHIGH_PRIORITY, StudentRequest::HIGH_PRIORITY, StudentRequest::NORMAL_PRIORITY, StudentRequest::LOW_PRIORITY, StudentRequest::VERYLOW_PRIORITY]
       @all_states = [StudentRequest::ACTIVE_STATE, StudentRequest::REJECTED_STATE, StudentRequest::APPROVED_STATE, StudentRequest::HOLD_STATE]
       @default_states = [StudentRequest::ACTIVE_STATE, StudentRequest::HOLD_STATE]
+      @all_semesters = ['Fall', 'Spring', 'Summer']
       if params[:state_sel] == nil
         if session_get(:state_sel) != nil
           @all_states.each { |state|

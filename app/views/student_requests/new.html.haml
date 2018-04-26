@@ -9,60 +9,60 @@
         %tr
           %td
             = label :student_request, :name, 'Full Name'
-          %td  
+          %td
             = @students[0].name
 
         %tr
-          %td  
+          %td
             = label :student_request, :major, 'Major'
           %td
             = @students[0].major
 
         %tr
-          %td   
+          %td
             = label :student_request, :classification, 'Classification'
           %td
             = @students[0].classification
-            
-        %tr
-          %td    
-            = label :student_request, :minor, 'Minor'
-          %td  
-            = text_field :student_request, 'minor',  class: 'input-field', value: @students[0].minor, :readonly => true
 
         %tr
-          %td 
+          %td
+            = label :student_request, :minor, 'Minor'
+          %td
+            = @students[0].minor
+
+        %tr
+          %td
             = label :student_request, :email, 'Email'
-          %td  
+          %td
             = @students[0].email
 
         %tr
-          %td   
+          %td
             = label :student_request, :expected_graduation, 'Expected Graduation*'
-          %td 
+          %td
             = select :student_request, 'expected_graduation', @YearSemester
         %tr
-          %td   
+          %td
             = label :student_request, :request_semester, 'Request Semester*'
-          %td  
+          %td
             = select :student_request, 'request_semester', @requestSemester, :required => true
         %tr
-          %td   
+          %td
             = label :student_request, :course_id, 'Course Id*'
-          %td  
+          %td
             = text_field :student_request, 'course_id', class: 'input-field', :required => true, placeholder: 'i.e. to choose course CSCE 629-600, enter 629', :pattern => "[0-9]{3}", :oninvalid => "this.setCustomValidity('Please enter 3 numbers of Course ID')", :oninput => "this.setCustomValidity('')", :required => true
         %tr
-          %td   
+          %td
             = label :student_request, :section_id, 'Section Id*'
-          %td  
+          %td
             = text_field :student_request, 'section_id', class: 'input-field', :required => true, placeholder: 'i.e. to choose course CSCE 629-600, enter 600', :pattern => "[0-9]{3}", :oninvalid => "this.setCustomValidity('Please enter 3 numbers of Section ID')", :oninput => "this.setCustomValidity('')", :required => true
         %tr
-          %td   
+          %td
             = label :student_request, :notes, 'Notes '
-          %td  
+          %td
             = text_area :student_request, 'notes', class: 'notes'
-      
+
       = submit_tag 'Save', :id => 'request_button_left'
-      
+
     =  form_tag(students_show_path, method: :get) do
       = submit_tag 'Cancel', :id => 'request_button_right'
