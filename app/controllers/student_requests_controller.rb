@@ -143,6 +143,7 @@ class StudentRequestsController < ApplicationController
     else
       @state_selected = {}
       @priority_selected = {}
+      @semester_selected = {}
       @all_priorities = [StudentRequest::VERYHIGH_PRIORITY, StudentRequest::HIGH_PRIORITY, StudentRequest::NORMAL_PRIORITY, StudentRequest::LOW_PRIORITY, StudentRequest::VERYLOW_PRIORITY]
       @all_states = [StudentRequest::ACTIVE_STATE, StudentRequest::REJECTED_STATE, StudentRequest::APPROVED_STATE, StudentRequest::HOLD_STATE]
       @default_states = [StudentRequest::ACTIVE_STATE, StudentRequest::HOLD_STATE]
@@ -179,6 +180,23 @@ class StudentRequestsController < ApplicationController
           @priority_selected[priority] = params[:priority_sel].has_key?(priority)
         }
         session_update(:priority_sel, params[:priority_sel])
+      end
+      
+      if params[:semester_sel] == nil
+        if session_get(:semester_sel) != nil
+          @all_semesters.each { |semester|
+            @semester_selected[semester] = session_get(:semester_sel).has_key?(semester)
+          }
+        else
+          @all_semesters.each { |semester|
+            @semester_selected[semester] = @all_semesters.include?(semester)
+          }
+        end
+      else
+        @all_semesters.each { |semester|
+          @semester_selected[semester] = params[:semester_sel].has_key?(semester)
+        }
+        session_update(:semester_sel, params[:semester_sel])
       end
 
       @allAdminStates = ["Select State",StudentRequest::APPROVED_STATE, StudentRequest::REJECTED_STATE, StudentRequest::HOLD_STATE]
