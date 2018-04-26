@@ -46,7 +46,6 @@ class StudentRequestsController < ApplicationController
 
   def create  #create force requests by student
     @student = Student.find_by_uin(session[:uin])
-    puts "*****************Inside create: #{@student.name}"
     student_request_params_with_uin = {:uin => session[:uin], :name  => @student.name, :major => @student.major,
                                         :email => @student.email, :classification => @student.classification}
     student_request_params_with_uin.merge!(student_request_params)#update the session[:uin] to :uin in student_request
