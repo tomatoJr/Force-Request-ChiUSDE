@@ -14,12 +14,12 @@
       %tbody
         %tr
         - @all_states.each do |state|
-          %td{:width => "20%"}= check_box_tag "state_sel[#{state}]", 'true', @state_selected[state]
-          %td{:width => "20%"}= state
+          %td= check_box_tag "state_sel[#{state}]", 'true', @state_selected[state]
+          %td= state
         %tr
         - @all_semesters.each do |semester|
-          %td{:width => "20%"}= check_box_tag "semester_sel[#{semester}]", 'true', @semester_selected[semester]
-          %td{:width => "20%"}= semester
+          %td= check_box_tag "semester_sel[#{semester}]", 'true', @semester_selected[semester]
+          %td= semester
     = submit_tag 'Refresh', class: "filter"
 
 - @allcourses.each do |course|
