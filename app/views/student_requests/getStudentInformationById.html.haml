@@ -1,5 +1,5 @@
 %h2 Request Id Details
-%table#student_requests.sortable
+%table
   %thead
   - @student_by_id.each do |record|
     %tr
@@ -36,9 +36,6 @@
       %th Notes by Student
       %td= record.notes
     %tr  
-      %th Notes by Admin for Student
-      %td= record.notes_to_student
-    %tr  
       %th Notes by Admin for tracking
       %td= record.admin_notes
     %tr  
@@ -47,10 +44,9 @@
         %center
           = form_tag('/student_requests/updaterequestbyadmin', method: "put") do
             = hidden_field_tag 'id', record.request_id
-            %textarea{:name => "notes_for_student", :placeholder => "Notes for student", :class => "notes"}
+            //%textarea{:name => "notes_for_student", :placeholder => "Notes for student", :class => "notes"}
             %textarea{:name => "notes_for_myself", :placeholder => "Notes for Myself", :class => "notes"}
             = select_tag("state", options_for_select(@allAdminStates))
-            = select_tag("priority", options_for_select(@allPriorityStates))
             = submit_tag 'Update'
         
         

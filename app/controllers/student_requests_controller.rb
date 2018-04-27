@@ -120,10 +120,7 @@ class StudentRequestsController < ApplicationController
     StudentMailer.update_force_state(@student[0],@student_request).deliver
   end
   
-  def Memo
-  
-  
-  end
+
 
 
 
@@ -163,22 +160,6 @@ class StudentRequestsController < ApplicationController
         session_update(:state_sel, params[:state_sel])
       end
 
-      if params[:priority_sel] == nil
-        if session_get(:priority_sel) != nil
-          @all_priorities.each { |priority|
-            @priority_selected[priority] = session_get(:priority_sel).has_key?(priority)
-          }
-        else
-          @all_priorities.each { |priority|
-            @priority_selected[priority] = @all_priorities.include?(priority)
-          }
-        end
-      else
-        @all_priorities.each { |priority|
-          @priority_selected[priority] = params[:priority_sel].has_key?(priority)
-        }
-        session_update(:priority_sel, params[:priority_sel])
-      end
 
       @allAdminStates = ["Select State",StudentRequest::APPROVED_STATE, StudentRequest::REJECTED_STATE, StudentRequest::HOLD_STATE]
       @allViewAdminStates = [StudentRequest::ACTIVE_STATE,StudentRequest::APPROVED_STATE, StudentRequest::REJECTED_STATE, StudentRequest::HOLD_STATE]
@@ -190,7 +171,6 @@ class StudentRequestsController < ApplicationController
       @allcourses.each do |course|
         @students = StudentRequest.where(course_id: course).where.not(state: StudentRequest::WITHDRAWN_STATE)
         @students = @students.reject{ |s| @state_selected[s.state] == false}
-        @students = @students.reject{ |s| @priority_selected[s.priority] == false}
         @coursestudentlist[course] = @students
       end
       @allcourses = @allcourses.sort
@@ -207,20 +187,20 @@ class StudentRequestsController < ApplicationController
         @student_request.state = params[:state]
         isUpdated = true
       end
-      if(StudentRequest::PRIORITY_LIST.include? params[:priority])
-         @student_request.priority = params[:priority]
-         isUpdated = true
-      end
+    #  if(StudentRequest::PRIORITY_LIST.include? params[:priority])
+    #     @student_request.priority = params[:priority]
+    #     isUpdated = true
+    #  end
 
       unless params[:notes_for_myself].nil? or params[:notes_for_myself].empty?
         @student_request.admin_notes = params[:notes_for_myself]
         isUpdated = true
       end
 
-      unless params[:notes_for_student].nil? or params[:notes_for_student].empty?
-        @student_request.notes_to_student = params[:notes_for_student]
-        isUpdated = true
-      end
+    #  unless params[:notes_for_student].nil? or params[:notes_for_student].empty?
+    #    @student_request.notes_to_student = params[:notes_for_student]
+    #    isUpdated = true
+    #  end
 
       if(isUpdated)
         @student_request.save!
@@ -255,22 +235,26 @@ class StudentRequestsController < ApplicationController
           end
     elsif params[:session][:user] == 'student'
       #check if the uin of student is valid
-        ####@user = Student.where("email = '#{params[:session][:email]}'")
-        @user = Student.find_by_email(params[:session][:email])
+        @user = Student.where("email = ? ",params[:session][:email])
+        puts("*************")
+        puts(@user[0].email)
+        puts("*************")        
+        ####@user = Student.find_by_email(params[:session][:email])
         ####if @user[0].nil?#the user didn't sign up
         if @user.nil?#the user didn't sign up
             flash[:warning] = "The account doesn't exsit. Please sign up first."
             redirect_to root_path
             return#tricky
         end
-        ####@cur_user = Student.where("email ='#{params[:session][:email]}' and password ='#{params[:session][:password]}'")
-        @cur_user = Student.find_by_email_and_password(params[:session][:email], params[:session][:password])
+        @cur_user = Student.where("email ='#{params[:session][:email]}' and password ='#{params[:session][:password]}'")
+        ####@cur_user = Student.find_by_email_and_password(params[:session][:email], params[:session][:password])
         if @cur_user.nil?#the UIN or Password don't match
           flash[:warning] = "Entered Email and Password didn't match. Try again."
           redirect_to root_path
         else
+
           # check if the current student activate his account
-          if @cur_user.email_confirmed
+          if @cur_user[0].email_confirmed
             #update the session value which could be used in other pages
             session_update(:name, @cur_user[:name])
             session_update(:current_state, "student")
