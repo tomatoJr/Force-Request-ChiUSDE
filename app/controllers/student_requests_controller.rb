@@ -45,9 +45,9 @@ class StudentRequestsController < ApplicationController
   end
 
   def create  #create force requests by student
-    @students = Student.where(:uin => session_get(:uin))
-    student_request_params_with_uin = {:uin => session[:uin], :name  => @students[0].name, :major => @students[0].major,
-                                        :email => @students[0].email, :classification => @students[0].classification}
+    @student = Student.find_by_uin(session[:uin])
+    student_request_params_with_uin = {:uin => session[:uin], :name  => @student.name, :major => @student.major,
+                                      :email => @student.email, :classification => @student.classification}
     student_request_params_with_uin.merge!(student_request_params)#update the session[:uin] to :uin in student_request
     if StudentRequest.exists?(:uin => session_get(:uin), :course_id => params[:student_request][:course_id], :section_id => params[:student_request][:section_id])
         flash[:warning] = "You have already submitted a force request for CSCE" +  params[:student_request][:course_id] + "-" + params[:student_request][:section_id]
