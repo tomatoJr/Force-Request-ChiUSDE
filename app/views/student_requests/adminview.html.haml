@@ -25,19 +25,20 @@
       %table#student_requests.sortableadmin
         %thead 
           %tr
-            %th 
+            %th{:width => "3%"} 
             // %th Id
-            %th UIN
+            %th{:width => "8.1%"}  UIN
             %th Full Name
             %th Major
-            %th Class
+            %th{:width => "5.5%"} Class
             %th Minor
             %th Section
             %th Expected Graduation
             %th Request Semester
             %th State
             %th Creation date
-            %th My Notes
+            %th Admin Notes
+            %th add Notes
             %th Actions
       
         %tbody
@@ -56,7 +57,8 @@
               %td= record.request_semester
               %td= record.state
               %td= record.creation_date.strftime("%Y-%m-%d %H:%M:%S")
-              %td
+              %td= record.admin_notes
+              %td  
                 %a{:onclick => "return getDetailsById('#{record.request_id}')"} #{"Notes"}
               %td= (link_to 'Approve', {:action => "approve", :controller => "student_requests",:id => record.request_id}, :method => :put) + "<br>".html_safe+ (link_to 'Hold', {:action => "hold", :controller => "student_requests",:id => record.request_id}, :method => :put) + "<br>".html_safe+ (link_to 'Reject', {:action => "reject", :controller => "student_requests",:id => record.request_id}, :method => :put)   
               
