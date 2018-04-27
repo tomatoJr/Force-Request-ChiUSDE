@@ -67,17 +67,13 @@ class StudentsController < ApplicationController
         #check the reenter uin and email is same
         if params[:session][:uin2] == params[:session][:uin] and params[:session][:password2] == params[:session][:password]
             #use the uin and email to check if the student has signed up
-            ####@student = Student.find_by_email(params[:session][:email])
             @student = Student.where("email = ? OR uin = ?",params[:session][:email],params[:session][:uin] )
             if @student[0].nil?#the student hasn't signed up before
-            ####if @student.nil?
                 record = scrape_info(params[:session][:lastname], params[:session][:firstname], params[:session][:major], params[:session][:email])
                 if  record.length() != 0#scrape the record
                     # sign up email confirm feature
-
                     @newStudent = Student.new(:name => record['First Name']+' '+record['Last Name'], :firstname => record['First Name'], :lastname => record['Last Name'],  :uin => params[:session][:uin], :email => record['Email Address'], :password => params[:session][:password],
                                               :major => record['Major'], :classification => record['Classification'], :minor => params[:session][:minor])
-
                     if @newStudent.save#succeed to create the account of student
                         StudentMailer.registration_confirmation(@newStudent).deliver
                         flash[:notice] = "An account has been created. A email has been sent to the provided email address, click the link to activate your account."

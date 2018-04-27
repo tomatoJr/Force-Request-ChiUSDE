@@ -7,16 +7,14 @@ class Student < ActiveRecord::Base
     validates_format_of :name, :with => /\w+/, :multiline => true
     # # attr_accessor :name, :email
     
-    attr_encrypted :email, key: ENV['EMAIL_KEY'].truncate(32), iv: ENV['EMAIL_IV'].truncate(12), mode: :single_iv_and_salt, insecure_mode: true
-    attr_encrypted :password, key: ENV['PASSWORD_KEY'].truncate(32), iv: ENV['PASSWORD_IV'].truncate(12), mode: :single_iv_and_salt, insecure_mode: true
     
     before_create :confirmation_token
     
     def email_activate
         self.email_confirmed = true
         self.confirm_token = nil
-        save!(:validate => false)
-        #save!()
+        # save!(:validate => false)
+        save!()
     end
     
     def password_reset_done

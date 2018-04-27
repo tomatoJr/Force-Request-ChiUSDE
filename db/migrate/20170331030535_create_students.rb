@@ -85,14 +85,14 @@ class CreateStudents < ActiveRecord::Migration
 
   create_table "students", force: :cascade do |t|
     t.string   "uin"
+    t.string   "lastname"
+    t.string   "firstname"
+    t.string   "minor"
     t.string   "password"
     t.string   "major"
     t.string   "classification"
     t.string   "name"
-    t.string   "lastname"
-    t.string   "firstname"
     t.string   "email"
-    t.string   "minor"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
