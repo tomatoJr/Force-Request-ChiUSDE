@@ -127,9 +127,9 @@ class StudentsController < ApplicationController
     end
     #sent the reset forgotten password mail to student email
     def sent_reset_password_mail
-        @student = Student.where("uin ='#{params[:session][:uin]}'")
+        @student = Student.where("email ='#{params[:session][:email]}'")
         if @student[0].nil?#case : the UIN is not signed up
-            flash[:warning] = "There is no account associated with the given UIN."
+            flash[:warning] = "There is no account associated with the given email."
             redirect_to '/students/forget_password'  
         else
             @student[0].reset_password_confirmation_token#create the reset password confirmation token and the reset email sent time
@@ -160,7 +160,7 @@ class StudentsController < ApplicationController
             session_update(:current_state, "student")
             session_update(:uin, @student[0][:uin])
             flash[:notice] = "Your password has been changed!"
-            redirect_to students_show_path
+            redirect_to root_path
         else
             flash[:warning] = "The twice entered new password must be same!"
             redirect_to reset_password_url(@student[0].reset_password_confirm_token)

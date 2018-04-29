@@ -7,7 +7,19 @@
 = form_tag student_requests_adminview_path, :method => :get do
   %h4
   .filter_form1
-    %strong Filter Requests - State:
+    %strong Filter Requests - State: 
+    %br
+    %Strong Active: 
+    No action has been taken 
+    %br
+    %strong Approved: 
+    The force request has been approved by admin
+    %br
+    %strong Hold: 
+    The force request has not been approved nor rejected due to the course has reached its max capacity. The request is in the waiting list.
+    %br
+    %strong Rejected: 
+    The force request has been rejected
     %br
     %table
     - @all_states.each do |state|
