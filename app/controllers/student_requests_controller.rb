@@ -49,7 +49,20 @@ class StudentRequestsController < ApplicationController
     student_request_params_with_uin = {:uin => session[:uin], :name  => @students[0].name, :major => @students[0].major,
                                         :email => @students[0].email, :classification => @students[0].classification}
     student_request_params_with_uin.merge!(student_request_params)#update the session[:uin] to :uin in student_request
-    if StudentRequest.exists?(:uin => session_get(:uin), :course_id => params[:student_request][:course_id], :section_id => params[:student_request][:section_id])
+    # if StudentRequest.exists?(:uin => session_get(:uin), :course_id => params[:student_request][:course_id], :section_id => params[:student_request][:section_id])
+    @student_requests = StudentRequest.where(:email => @students[0].email)
+    
+    ##### HACK!!!!!! Because course id and section id are encrypted data (FERPA) it cannot be searched by.
+    found = false
+    @student_requests.each do |r|
+      if r.course_id == params[:student_request][:course_id] and
+         r.section_id == params[:student_request][:section_id]
+         found = true
+         break
+      end
+    end
+    # if StudentRequest.exists?(:uin => session_get(:uin), :course_id => params[:student_request][:course_id], :section_id => params[:student_request][:section_id])
+    if found
         flash[:warning] = "You have already submitted a force request for CSCE" +  params[:student_request][:course_id] + "-" + params[:student_request][:section_id]
         initForNewForceRequest
         render :new
@@ -163,16 +176,24 @@ class StudentRequestsController < ApplicationController
 
       @allAdminStates = ["Select State",StudentRequest::APPROVED_STATE, StudentRequest::REJECTED_STATE, StudentRequest::HOLD_STATE]
       @allViewAdminStates = [StudentRequest::ACTIVE_STATE,StudentRequest::APPROVED_STATE, StudentRequest::REJECTED_STATE, StudentRequest::HOLD_STATE]
-
-      @allcourses = StudentRequest.select(:course_id).map(&:course_id).uniq
+  
+  
+      allcourses = StudentRequest.all
+      
       @coursestudentlist = Hash.new
-
-      @allcourses.each do |course|
-        @students = StudentRequest.where(course_id: course).where.not(state: StudentRequest::WITHDRAWN_STATE)
-        @students = @students.reject{ |s| @state_selected[s.state] == false}
-        @coursestudentlist[course] = @students
+      
+      allcourses.each do |req|
+        next if req.state == StudentRequest::WITHDRAWN_STATE
+        next if @state_selected[req.state] == false
+        
+        if !@coursestudentlist.has_key?(req.course_id)
+          @coursestudentlist[req.course_id] = []
+        end
+        
+        @coursestudentlist[req.course_id].push(req) 
       end
-      @allcourses = @allcourses.sort
+      
+      # @coursestudentlist = @coursestudentlist.sort
     end
   end
 
@@ -220,44 +241,52 @@ class StudentRequestsController < ApplicationController
 
     if params[:session][:user] == 'admin'
         #check if the uin of admin is valid
-          @cur_user = Admin.where("email ='#{params[:session][:email]}' and password ='#{params[:session][:password]}'")
+          # @cur_user = Admin.where("email ='#{params[:session][:email]}' and password ='#{params[:session][:password]}'")
+          @cur_user = Admin.where("email = '#{params[:session][:email]}'")
           if @cur_user[0].nil?
-            flash[:warning] = "Your Email or Password is Incorrect."
+            # flash[:warning] = "Your Email or Password is Incorrect."
+            flash[:warning] = "The admin account doesn't exist"
             redirect_to root_path
           else
-            #update the session value which could be used in other pages
-            session_update(:name, @cur_user[0][:name])
-            #:current_state could indicate the current user is admin or student
-            session_update(:current_state, "admin")
-            session_update(:uin, @cur_user[0][:uin])
-            redirect_to student_requests_adminview_path
+            if @cur_user[0].password == params[:session][:password]
+              #update the session value which could be used in other pages
+              session_update(:name, @cur_user[0][:name])
+              #:current_state could indicate the current user is admin or student
+              session_update(:current_state, "admin")
+              session_update(:uin, @cur_user[0][:uin])
+              redirect_to student_requests_adminview_path
+            else
+              flash[:warning] = "Your Email or Password is Incorrect"
+              redirect_to root_path
+            end
           end
     elsif params[:session][:user] == 'student'
       #check if the uin of student is valid
-        @user = Student.where("email = '#{params[:session][:email]}'")
-        if @user[0].nil?#the user doesn't sign up
-            flash[:warning] = "The account doesn't exsit. Please sign up first."
-            redirect_to root_path
-            return#tricky
-        end
-        @cur_user = Student.where("email ='#{params[:session][:email]}' and password ='#{params[:session][:password]}'")
-        if @cur_user[0].nil?#the UIN or Password don't match
-          flash[:warning] = "Entered Email and Password didn't match. Try again."
+      @user = Student.where("email = '#{params[:session][:email]}'")
+      if @user[0].nil?#the user doesn't sign up
+          flash[:warning] = "The account doesn't exsit. Please sign up first."
           redirect_to root_path
-        else
-          # check if the current student activate his account
-          if @cur_user[0].email_confirmed
+          return#tricky
+      else
+        puts "User password: #{@user[0].password}"
+        puts "Given password: #{params[:session][:password]}"
+        
+        if @user[0].password == params[:session][:password]
+          if @user[0].email_confirmed
             #update the session value which could be used in other pages
-            session_update(:name, @cur_user[0][:name])
+            session_update(:name, @user[0][:name])
             session_update(:current_state, "student")
-            session_update(:uin, @cur_user[0][:uin])
+            session_update(:uin, @user[0][:uin])
             redirect_to students_show_path
           else
             flash[:warning] = "The account has not been activated. Please check your email to activate your account!"
             redirect_to root_path
           end
+        else
+          flash[:warning] = "Entered Email and Password didn't match. Try again."
+          redirect_to root_path
         end
-
+      end
     end
   end
 

@@ -1,0 +1,25 @@
+      @cur_user = Student.where("email ='#{params[:session][:email]}' and password ='#{params[:session][:password]}'")
+      if @cur_user[0].nil?#the UIN or Password don't match
+      else
+        # check if the current student activate his account
+        if @cur_user[0].email_confirmed
+          #update the session value which could be used in other pages
+          session_update(:name, @cur_user[0][:name])
+          session_update(:current_state, "student")
+          session_update(:uin, @cur_user[0][:uin])
+          redirect_to students_show_path
+        else
+          flash[:warning] = "The account has not been activated. Please check your email to activate your account!"
+          redirect_to root_path
+        end
+      end
+      
+      @allcourses = StudentRequest.select(:course_id).map(&:course_id).uniq
+      @coursestudentlist = Hash.new
+
+      @allcourses.each do |course|
+        @students = StudentRequest.where(course_id: course).where.not(state: StudentRequest::WITHDRAWN_STATE)
+        @students = @students.reject{ |s| @state_selected[s.state] == false}
+        @coursestudentlist[course] = @students
+      end
+      @allcourses = @allcourses.sort
