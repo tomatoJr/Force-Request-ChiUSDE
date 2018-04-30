@@ -5,10 +5,8 @@ default: &default
   pool: 5
   timeout: 5000
   template: template0
-  username: movzetxstptfwp
-  password: 89513f6c7565f2bc9dab8b527c10e146a780cb9cfcf5db9685a4eda2f28730cd
-  # username: postgres
-  # password: admin
+  username: postgres
+  password: admin
 
 development:
   <<: *default
