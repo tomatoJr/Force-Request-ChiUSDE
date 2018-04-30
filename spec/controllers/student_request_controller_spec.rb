@@ -72,11 +72,12 @@ describe StudentRequestsController, :type => :controller do
         student = FactoryGirl.create(:student)
         student_request = FactoryGirl.create(:student_request)
         Student.should_receive(:where).once.and_return([student])
+        StudentRequest.should_receive(:where).once.and_return([student_request])
 
 
         #When
+        #post :create, :student_request => {:name => student_request.name}
         post :create, :student_request => {:name => student_request.name}
-
 
         #Then
         expect(flash[:warning]).to eq("Uin can't be blank, Major can't be blank, Classification can't be blank, Request semester can't be blank, Request semester  is not a valid request semester, Course can't be blank, Course is invalid")
@@ -198,9 +199,12 @@ describe StudentRequestsController, :type => :controller do
   describe "Admin Actions" do
     it "should approve a student request" do
       #Given
+      student = FactoryGirl.create(:student)
       student_request = FactoryGirl.create(:student_request)
-      StudentRequest.should_receive(:find).with("14").once.and_return(student_request)
+      StudentRequest.should_receive(:find).with("14").twice.and_return(student_request)
+      Student.should_receive(:where).once.and_return([student])
       student_request.should_receive(:save)
+      StudentMailer.should_receive(:update_force_state).once.and_return( double("Mailer", :deliver => true) );
 
       #When
       put :approve, :id => 14
@@ -213,8 +217,10 @@ describe StudentRequestsController, :type => :controller do
     it "should Reject a student request" do
       #Given
       student_request = FactoryGirl.create(:student_request)
-      StudentRequest.should_receive(:find).with("14").once.and_return(student_request)
+      StudentRequest.should_receive(:find).with("14").twice.and_return(student_request)
       student_request.should_receive(:save)
+      StudentMailer.should_receive(:update_force_state).once.and_return( double("Mailer", :deliver => true) );
+
 
       #When
       put :reject, :id => 14
@@ -471,7 +477,7 @@ describe StudentRequestsController, :type => :controller do
       student.email_confirmed = false
       Student.should_receive(:where).with("email = 'johndoe@tamu.edu'").once.and_return([student])
      # Student.should_receive(:where).with("email ='johndoe@tamu.edu' and password ='DarthVader123'").once.and_return([student])
-      
+
       post :login, params: { 'session' => { :user => "student", :email =>'johndoe@tamu.edu', :password => "DarthVader123"}}
 
       assert_response :redirect, :action => root_path
