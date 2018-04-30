@@ -204,6 +204,8 @@ class StudentRequestsController < ApplicationController
       allcourses.each do |req|
         next if req.state == StudentRequest::WITHDRAWN_STATE
         next if @state_selected[req.state] == false
+        next if @request_semester_selected[req.semester] == false
+        
         
         if !@coursestudentlist.has_key?(req.course_id)
           @coursestudentlist[req.course_id] = []
