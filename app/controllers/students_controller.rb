@@ -72,8 +72,11 @@ class StudentsController < ApplicationController
                 record = scrape_info(params[:session][:lastname], params[:session][:firstname], params[:session][:major], params[:session][:email])
                 if  record.length() != 0#scrape the record
                     # sign up email confirm feature
+                    puts "Creating password: #{params[:session][:firstname]}"
                     @newStudent = Student.new(:name => record['First Name']+' '+record['Last Name'], :firstname => record['First Name'], :lastname => record['Last Name'],  :uin => params[:session][:uin], :email => record['Email Address'], :password => params[:session][:password],
                                               :major => record['Major'], :classification => record['Classification'], :minor => params[:session][:minor])
+                    puts "Created Password: #{@newStudent.password}"
+                    puts "Encrypted Password: #{@newStudent.encrypted_password}"
                     if @newStudent.save#succeed to create the account of student
                         StudentMailer.registration_confirmation(@newStudent).deliver
                         flash[:notice] = "An account has been created. A email has been sent to the provided email address, click the link to activate your account."
