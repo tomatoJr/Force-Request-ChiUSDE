@@ -18,6 +18,11 @@
           = text_field :admin_request, 'name', class: 'input-field', :required => true
       %tr
         %td
+          = label :name, 'Email of new Admin'
+        %td
+          = text_field :admin_request, 'email', class: 'input-field', :required => true          
+      %tr
+        %td
           = label :uin, 'Password of new Admin'
         %td
           = password_field :admin_request, 'password', class: 'input-field', :required => true

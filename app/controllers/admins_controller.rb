@@ -6,7 +6,8 @@ class AdminsController < ApplicationController
     admin_request_params = {:uin => params[:admin_request][:uin],
                             :name => params[:admin_request][:name],
                             :password => params[:admin_request][:password],
-                            :email => params[:admin_request][:password]}
+                            :email => params[:admin_request][:email]}
+                            
     @admin_request = Admin.new(admin_request_params)
     if @admin_request.save
       flash[:notice] = "Admin was successfully created."
