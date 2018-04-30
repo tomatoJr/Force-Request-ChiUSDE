@@ -28,7 +28,7 @@
           %td    
             = label :student_request, :minor, 'Minor'
           %td  
-            = text_field :student_request, 'minor',  class: 'input-field', value: @students[0].minor, :readonly => true
+            = @students[0].minor
 
         %tr
           %td 

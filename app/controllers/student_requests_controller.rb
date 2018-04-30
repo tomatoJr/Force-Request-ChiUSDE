@@ -28,7 +28,8 @@ class StudentRequestsController < ApplicationController
       redirect_to student_requests_adminprivileges_path
     else
       student_request_params_with_uin = {:uin => params[:admin_request][:uin], :name  => @students[0].name, :major => @students[0].major,
-                                        :email => @students[0].email, :classification => @students[0].classification}
+                                        :email => @students[0].email, :classification => @students[0].classification,
+                                        :minor => @students[0].minor}
       student_request_params_with_uin.merge!(student_request_params)#update the session[:uin] to :uin in student_request
       @student_request = StudentRequest.new(student_request_params_with_uin)
       @student_request.state = StudentRequest::ACTIVE_STATE
@@ -47,7 +48,7 @@ class StudentRequestsController < ApplicationController
   def create  #create force requests by student
     @students = Student.where(:uin => session_get(:uin))
     student_request_params_with_uin = {:uin => session[:uin], :name  => @students[0].name, :major => @students[0].major,
-                                        :email => @students[0].email, :classification => @students[0].classification}
+                                        :email => @students[0].email, :classification => @students[0].classification, :minor => @students[0].minor}
     student_request_params_with_uin.merge!(student_request_params)#update the session[:uin] to :uin in student_request
     # if StudentRequest.exists?(:uin => session_get(:uin), :course_id => params[:student_request][:course_id], :section_id => params[:student_request][:section_id])
     @student_requests = StudentRequest.where(:email => @students[0].email)
@@ -233,10 +234,15 @@ class StudentRequestsController < ApplicationController
     #     isUpdated = true
     #  end
 
-      unless params[:notes_for_myself].nil? or params[:notes_for_myself].empty?
+     # unless params[:notes_for_myself].nil? or params[:notes_for_myself].empty?
+      if params[:notes_for_myself].nil? or params[:notes_for_myself].empty?
+        @student_request.admin_notes = nil
+      else
         @student_request.admin_notes = params[:notes_for_myself]
-        isUpdated = true
       end
+      
+      isUpdated = true
+  #    end
 
     #  unless params[:notes_for_student].nil? or params[:notes_for_student].empty?
     #    @student_request.notes_to_student = params[:notes_for_student]

@@ -69,9 +69,9 @@
               %tr{:class => "#{cycle('oddrow', 'evenrow')}"}
                 %td= check_box_tag "request_ids[]", record.request_id, false, data: { "mail" => "#{record.email}"}, "sub" => course 
                 // %td %a{:onclick => "return getDetailsById('#{record.request_id}')"} #{record.request_id}
+                %td= record.uin
                 %td
-                  %a{:onclick => "return buttonclick(#{record.uin});"} #{record.uin}
-                %td= record.name
+                  %a{:onclick => "return buttonclick(#{record.uin});"} #{record.name}
                 %td= record.major
                 %td= record.classification
                 %td= record.minor
