@@ -52,10 +52,13 @@ class StudentRequestsController < ApplicationController
     student_request_params_with_uin.merge!(student_request_params)#update the session[:uin] to :uin in student_request
     # if StudentRequest.exists?(:uin => session_get(:uin), :course_id => params[:student_request][:course_id], :section_id => params[:student_request][:section_id])
     @student_requests = StudentRequest.where(:email => @students[0].email)
-    
+
     ##### HACK!!!!!! Because course id and section id are encrypted data (FERPA) it cannot be searched by.
     found = false
     @student_requests.each do |r|
+
+
+
       if r.course_id == params[:student_request][:course_id] and
          r.section_id == params[:student_request][:section_id]
          found = true
@@ -124,16 +127,15 @@ class StudentRequestsController < ApplicationController
     @student_request = StudentRequest.find params[:id]
     @student_request.state = StudentRequest::HOLD_STATE
     @student_request.save
- #   email_the_status()
     redirect_to student_requests_adminview_path
   end
-  
+
   def email_the_status()
     @student_request = StudentRequest.find params[:id]
     @student = Student.where(:uin => @student_request.uin)
     StudentMailer.update_force_state(@student[0],@student_request).deliver
   end
-  
+
 
 
 
@@ -157,7 +159,7 @@ class StudentRequestsController < ApplicationController
       @all_request_semesters = [StudentRequest::SPRING, StudentRequest::FALL, StudentRequest::SUMMER,StudentRequest::NSPRING, StudentRequest::NFALL, StudentRequest::NSUMMER]
       @all_states = [StudentRequest::ACTIVE_STATE, StudentRequest::REJECTED_STATE, StudentRequest::APPROVED_STATE, StudentRequest::HOLD_STATE]
       @default_states = [StudentRequest::ACTIVE_STATE, StudentRequest::HOLD_STATE, StudentRequest::APPROVED_STATE]
-      
+
       if params[:state_sel] == nil
         if session_get(:state_sel) != nil
           @all_states.each { |state|
@@ -174,7 +176,7 @@ class StudentRequestsController < ApplicationController
         }
         session_update(:state_sel, params[:state_sel])
       end
-      
+
       if params[:request_semester_sel] == nil
         if session_get(:request_semester_sel) != nil
           @all_request_semesters.each { |request_semester|
@@ -191,30 +193,30 @@ class StudentRequestsController < ApplicationController
         }
         session_update(:request_semester_sel, params[:request_semester_sel])
       end
-      
+
 
 
       @allAdminStates = ["Select State",StudentRequest::APPROVED_STATE, StudentRequest::REJECTED_STATE, StudentRequest::HOLD_STATE]
       @allViewAdminStates = [StudentRequest::ACTIVE_STATE,StudentRequest::APPROVED_STATE, StudentRequest::REJECTED_STATE, StudentRequest::HOLD_STATE]
-  
-  
+
+
       allcourses = StudentRequest.all
-      
+
       @coursestudentlist = Hash.new
-      
+
       allcourses.each do |req|
         next if req.state == StudentRequest::WITHDRAWN_STATE
         next if @state_selected[req.state] == false
         next if @request_semester_selected[req.request_semester] == false
-        
-        
+
+
         if !@coursestudentlist.has_key?(req.course_id)
           @coursestudentlist[req.course_id] = []
         end
-        
-        @coursestudentlist[req.course_id].push(req) 
+
+        @coursestudentlist[req.course_id].push(req)
       end
-      
+
       @courselist = @coursestudentlist.keys.sort
     end
   end
@@ -299,7 +301,7 @@ class StudentRequestsController < ApplicationController
       else
         puts "User password: #{@user[0].password}"
         puts "Given password: #{params[:session][:password]}"
-        
+
         if @user[0].password == params[:session][:password]
           if @user[0].email_confirmed
             #update the session value which could be used in other pages

@@ -2,15 +2,43 @@ require 'spec_helper'
 require 'rails_helper'
 
 describe StudentRequestsController, :type => :controller do
+  describe "MultiUpdate" do
+    it  'should issue a flash warning when attempting to update a withdrawn request' do
+      student_request = FactoryGirl.create(:student_request)
+      student_request.state = StudentRequest::WITHDRAWN_STATE
+      StudentRequest.should_receive(:find).with("14").and_return(student_request)
+
+      put :multiupdate, :request_ids => ["14"]
+
+      expect(flash[:warning]).to eq("Student has already withdrawn their request")
+    end
+
+
+    it 'should update the student_request' do
+
+      student_request = FactoryGirl.create(:student_request)
+      StudentRequest.should_receive(:find).with("14").and_return(student_request)
+
+
+      put :multiupdate,  :request_ids => ["14"], :multi_state_sel => StudentRequest::WITHDRAWN_STATE
+
+  expect(assigns(:student_request).state).to eq(StudentRequest::WITHDRAWN_STATE)
+      # assigns(:student_request) should eq(StudentRequest::WITHDRAWN_STATE)
+
+    end
+  end
+
+
   describe "Create Student Request: " do
     context 'on a a student request that already exists' do
-          xit 'should set the appropriate variable' do
+          it 'should display a flash warning and navigate to the :new' do
             #Given
             student = FactoryGirl.create(:student)
             Student.should_receive(:where).once.and_return([student])
             student_request = FactoryGirl.create(:student_request)
             #StudentRequest.should_receive(:exists?).with(:uin => student_request.uin, :course_id => student_request.course_id, :section_id => student_request.section_id).once.and_return(true)
-            StudentRequest.should_receive(:exists?).once.and_return(true)
+            #StudentRequest.should_receive(:exists?).once.and_return(true)
+            StudentRequest.should_receive(:where).and_return([student_request])
             Major.should_receive(:pluck).with(:major_id).once.and_return("Computer Science")
 
             #When
@@ -72,11 +100,12 @@ describe StudentRequestsController, :type => :controller do
         student = FactoryGirl.create(:student)
         student_request = FactoryGirl.create(:student_request)
         Student.should_receive(:where).once.and_return([student])
+        StudentRequest.should_receive(:where).once.and_return([student_request])
 
 
         #When
+        #post :create, :student_request => {:name => student_request.name}
         post :create, :student_request => {:name => student_request.name}
-
 
         #Then
         expect(flash[:warning]).to eq("Uin can't be blank, Major can't be blank, Classification can't be blank, Request semester can't be blank, Request semester  is not a valid request semester, Course can't be blank, Course is invalid")
@@ -198,9 +227,12 @@ describe StudentRequestsController, :type => :controller do
   describe "Admin Actions" do
     it "should approve a student request" do
       #Given
+      student = FactoryGirl.create(:student)
       student_request = FactoryGirl.create(:student_request)
-      StudentRequest.should_receive(:find).with("14").once.and_return(student_request)
+      StudentRequest.should_receive(:find).with("14").twice.and_return(student_request)
+      Student.should_receive(:where).once.and_return([student])
       student_request.should_receive(:save)
+      StudentMailer.should_receive(:update_force_state).once.and_return( double("Mailer", :deliver => true) );
 
       #When
       put :approve, :id => 14
@@ -213,8 +245,10 @@ describe StudentRequestsController, :type => :controller do
     it "should Reject a student request" do
       #Given
       student_request = FactoryGirl.create(:student_request)
-      StudentRequest.should_receive(:find).with("14").once.and_return(student_request)
+      StudentRequest.should_receive(:find).with("14").twice.and_return(student_request)
       student_request.should_receive(:save)
+      StudentMailer.should_receive(:update_force_state).once.and_return( double("Mailer", :deliver => true) );
+
 
       #When
       put :reject, :id => 14
@@ -471,7 +505,7 @@ describe StudentRequestsController, :type => :controller do
       student.email_confirmed = false
       Student.should_receive(:where).with("email = 'johndoe@tamu.edu'").once.and_return([student])
      # Student.should_receive(:where).with("email ='johndoe@tamu.edu' and password ='DarthVader123'").once.and_return([student])
-      
+
       post :login, params: { 'session' => { :user => "student", :email =>'johndoe@tamu.edu', :password => "DarthVader123"}}
 
       assert_response :redirect, :action => root_path
