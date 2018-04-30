@@ -195,7 +195,6 @@ class StudentRequestsController < ApplicationController
 
       @allAdminStates = ["Select State",StudentRequest::APPROVED_STATE, StudentRequest::REJECTED_STATE, StudentRequest::HOLD_STATE]
       @allViewAdminStates = [StudentRequest::ACTIVE_STATE,StudentRequest::APPROVED_STATE, StudentRequest::REJECTED_STATE, StudentRequest::HOLD_STATE]
-<<<<<<< HEAD
   
   
       allcourses = StudentRequest.all
@@ -211,19 +210,6 @@ class StudentRequestsController < ApplicationController
         end
         
         @coursestudentlist[req.course_id].push(req) 
-=======
-      @allPriorityStates = ["Select Semester",StudentRequest::SPRING, StudentRequest::SUMMER, StudentRequest::FALL,StudentRequest::NSPRING, StudentRequest::NFALL, StudentRequest::NSUMMER]
-      
-      
-      @allcourses = StudentRequest.select(:course_id).map(&:course_id).uniq
-      @coursestudentlist = Hash.new
-
-      @allcourses.each do |course|
-        @students = StudentRequest.where(course_id: course).where.not(state: StudentRequest::WITHDRAWN_STATE)
-        @students = @students.reject{ |s| @state_selected[s.state] == false}
-        @students = @students.reject{ |s| @request_semester_selected[s.request_semester] == false}
-        @coursestudentlist[course] = @students
->>>>>>> 4b8d786422462f9130b6a3a5b7c839bc7db9aed3
       end
       
       # @coursestudentlist = @coursestudentlist.sort
@@ -281,8 +267,8 @@ class StudentRequestsController < ApplicationController
             flash[:warning] = "The admin account doesn't exist"
             redirect_to root_path
           else
-            puts "User password: #{@cur_user[0].password}"
-            puts "Given password: #{params[:session][:password]}"
+            # puts "User password: #{@cur_user[0].password}"
+            # puts "Given password: #{params[:session][:password]}"
             if @cur_user[0].password == params[:session][:password]
               #update the session value which could be used in other pages
               session_update(:name, @cur_user[0][:name])
