@@ -248,7 +248,7 @@ class StudentRequestsController < ApplicationController
             flash[:warning] = "The admin account doesn't exist"
             redirect_to root_path
           else
-            puts "User password: #{@user[0].password}"
+            puts "User password: #{@cur_user[0].password}"
             puts "Given password: #{params[:session][:password]}"
             if @cur_user[0].password == params[:session][:password]
               #update the session value which could be used in other pages
