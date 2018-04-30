@@ -212,8 +212,8 @@ class StudentRequest < ActiveRecord::Base
     validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
     validates :request_semester, presence: true
     validates :course_id, presence: true
-    # validates_format_of :course_id, :with => /^\d+$/, :multiline => true
-    # validates_format_of :section_id, :with => /^\d*$/, :multiline => true
+    validates_format_of :course_id, :with => /^\d+$/, :multiline => true
+    validates_format_of :section_id, :with => /^\d*$/, :multiline => true
     # validates_format_of :phone, :with => /1?\s*\W?\s*([2-9][0-8][0-9])\s*\W?\s*([2-9][0-9]{2})\s*\W?\s*([0-9]{4})(\se?x?t?(\d*))?/
     #validates :classification, inclusion: { in: CLASSIFICATION_LIST, 
     #  message: "%{value} is not a valid classification" }

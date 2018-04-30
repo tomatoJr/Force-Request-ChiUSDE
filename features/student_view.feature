@@ -89,5 +89,5 @@ Scenario: Student Forget Password
 When I am on the Login Page
 And I click forget password
 Then I should be on reset password page
-When I input my uin and click reset
+When I input my Email and click reset
 Then I should see a message

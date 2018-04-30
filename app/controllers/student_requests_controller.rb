@@ -341,11 +341,11 @@ class StudentRequestsController < ApplicationController
             @student_request.state = params[:multi_state_sel]
             @student_request.save!
           end
-          if(params[:multi_priority_sel] != "Select Priority")
-            isUpdate = true
-            @student_request.priority = params[:multi_priority_sel]
-            @student_request.save!
-          end
+          # if(params[:multi_priority_sel] != "Select Priority")
+          #   isUpdate = true
+          #   @student_request.priority = params[:multi_priority_sel]
+          #   @student_request.save!
+          # end
         end
       }
       if(isUpdate)

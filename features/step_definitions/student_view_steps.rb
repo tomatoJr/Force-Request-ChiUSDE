@@ -199,8 +199,8 @@ Then(/^I should be on reset password page$/) do
   page.has_content?("Reset Your Password")
 end
 
-When(/^I input my uin and click reset$/) do
-  fill_in('Enter your UIN', :with => '123123123')
+When(/^I input my Email and click reset$/) do
+  fill_in('Enter your Email', :with => 'Will@tamu.edu')
   click_button('Reset')
 end
 
