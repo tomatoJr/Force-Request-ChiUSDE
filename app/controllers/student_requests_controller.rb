@@ -107,7 +107,7 @@ class StudentRequestsController < ApplicationController
     @student_request = StudentRequest.find params[:id]
     @student_request.state = StudentRequest::APPROVED_STATE
     @student_request.save
-  #  email_the_status()
+    email_the_status()
     redirect_to student_requests_adminview_path
   end
 
@@ -115,7 +115,7 @@ class StudentRequestsController < ApplicationController
     @student_request = StudentRequest.find params[:id]
     @student_request.state = StudentRequest::REJECTED_STATE
     @student_request.save
-  #  email_the_status()
+    email_the_status()
     redirect_to student_requests_adminview_path
   end
 
@@ -319,30 +319,18 @@ class StudentRequestsController < ApplicationController
     end
   end
 
-
-  def homeRedirect
-    @currentstate = session_get(:current_state)
-    if @currentstate == "admin"
-      redirect_to student_requests_adminview_path
-    elsif @currentstate == "student"
-      redirect_to student_requests_path
-    else
-      redirect_to root_path
-    end
-  end
-
   def logout
     session_remove
     session_update(:current_state, nil)
     redirect_to root_path
   end
 
-  def getSpreadsheet
-    @student_by_course = StudentRequest.where(course_id: params[:course_id])
-    respond_to do |format|
-    format.csv { send_data @student_by_course.to_csv, :filename => params[:course_id]+".csv" }
-    end
-  end
+  # def getSpreadsheet
+  #   @student_by_course = StudentRequest.where(course_id: params[:course_id])
+  #   respond_to do |format|
+  #   format.csv { send_data @student_by_course.to_csv, :filename => params[:course_id]+".csv" }
+  #   end
+  # end
 
   def getSpreadsheetAllCourses
     @student = StudentRequest.all
@@ -406,62 +394,22 @@ class StudentRequestsController < ApplicationController
     initForNewForceRequest
   end
 
-  # def addadmin
-  #   admin_request_params = {:uin => params[:admin_request][:uin],
-  #                           :name => params[:admin_request][:name],
-  #                           :password => params[:admin_request][:password]}
-  #   @admin_request = Admin.new(admin_request_params)
-  #   if @admin_request.save
-  #     flash[:notice] = "Admin was successfully created."
-  #     redirect_to student_requests_adminview_path
-  #   else
-  #     flash[:warning] = @admin_request.errors.full_messages.join(",")
-  #     redirect_to student_requests_adminview_path
-  #   end
-  # end
-
-  # def add_student
-  #   @classificationList = StudentRequest::CLASSIFICATION_LIST
-  #   @majorList = Major.pluck(:major_id)
-  #   if params[:session][:uin2] == params[:session][:uin]
-  #     @students = Student.where("uin = '#{params[:session][:uin]}'")
-  #     if @students[0].nil?
-  #       #if scrape_info(params[:session][:name], params[:session][:email]) != {}
-  #         # record = scrape_info(params[:session][:name], params[:session][:email])
-  #         @newStudent = Student.create!(:name => params[:session][:name], :uin => params[:session][:uin], :email => params[:session][:email], :password => params[:session][:password],
-  #                                             :major => params[:session][:major], :classification => params[:session][:classification])
-  #         flash[:notice] = "Name:#{@newStudent.name}, UIN: #{@newStudent.uin}, Email: #{@newStudent.email} signed up successfully."
-  #         redirect_to student_requests_adminprivileges_path
-  #       #else
-  #         #flash[:notice] = "Student information is incorrect!\nPlease use TAMU email!\nUse name as which is on Student ID!"
-  #         #redirect_to student_requests_adminprivileges_path
-  #       #end
-  #     else
-  #       flash[:notice] = "Student record is already there"
-  #       redirect_to student_requests_adminprivileges_path
-  #     end
-  #   else
-  #     flash[:notice] = "The twice entered UIN must be same!"
-  #     redirect_to student_requests_adminprivileges_path
-  #   end
-  # end
-
-
   def getStudentInformationById
     @allAdminStates = ["Select State",StudentRequest::APPROVED_STATE, StudentRequest::REJECTED_STATE, StudentRequest::HOLD_STATE]
     @allPriorityStates = ["Select Priority",StudentRequest::VERYHIGH_PRIORITY, StudentRequest::HIGH_PRIORITY, StudentRequest::NORMAL_PRIORITY, StudentRequest::LOW_PRIORITY, StudentRequest::VERYLOW_PRIORITY]
     @student_by_id =  StudentRequest.where(request_id: params[:id])
   end
 
-  def deleteall
-    @student_requests = StudentRequest.all.as_json
-    @student_requests.each do |record|
-      record.delete('id')
-      StudentRequestArchival.create!(record)
-    end
-    StudentRequest.delete_all
-    redirect_to student_requests_adminview_path
-  end
+  # def deleteall
+  #   @student_requests = StudentRequest.all.as_json
+  #   @student_requests.each do |record|
+  #     record.delete('id')
+  #     StudentRequestArchival.create!(record)
+  #   end
+  #   StudentRequest.delete_all
+  #   redirect_to student_requests_adminview_path
+  # end
+  
   def cancel
   end
 

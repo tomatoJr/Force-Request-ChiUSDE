@@ -23,3 +23,6 @@
         @coursestudentlist[course] = @students
       end
       @allcourses = @allcourses.sort
+      
+      
+      // %a{:onclick => "return getDetailsById('#{record.request_id}')"} #{"View Details"}

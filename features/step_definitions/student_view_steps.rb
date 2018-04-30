@@ -83,7 +83,6 @@ And(/^I complete the form$/) do
   page.has_content?("123123123")
   select(@student_request[:expected_graduation], from:'Expected Graduation*')
   select(@student_request[:request_semester], from:'Request Semester*')
-  fill_in('Minor', :with => @student_request[:minor])
   fill_in('Course Id*', :with => @student_request[:course_id])
   fill_in('Section Id*', :with => @student_request[:section_id]) 
 end

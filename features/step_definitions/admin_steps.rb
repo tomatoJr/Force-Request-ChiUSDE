@@ -129,6 +129,42 @@ Then(/^the page collapse$/) do
 end
 
 
+When (/^I click Approve$/) do
+    page.first(:link, 'Approve').click
+end
 
+Then (/^I should see Approved$/) do
+    page.should have_content("Approved")
+end
 
+When (/^I click Reject$/) do
+    page.first(:link, 'Reject').click
+end
 
+Then (/^I should see Rejected/) do
+    page.should have_content("Rejected")
+end
+
+When (/^I click Hold/) do
+    page.first(:link, 'Hold').click
+end
+
+Then (/^I should see Hold/) do
+    page.should have_content("Hold")
+end
+
+When (/^I click View Details/) do
+    page.first('View Details').click
+end
+
+Then (/^I should see Request Id Details/) do
+    page.should have_content("Request Id Details")
+end
+
+And (/^I click first Update Selected/) do
+    page.first(:button, 'Update Selected').click
+end
+
+Then (/^I should see Nothing has been selected for Update/) do
+    page.should have_content("Nothing has been selected for Update")
+end
