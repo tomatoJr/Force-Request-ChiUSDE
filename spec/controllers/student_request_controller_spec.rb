@@ -11,9 +11,24 @@ describe StudentRequestsController, :type => :controller do
       put :multiupdate, :request_ids => ["14"]
 
       expect(flash[:warning]).to eq("Student has already withdrawn their request")
+    end
+
+
+    it 'should update the student_request' do
+
+      student_request = FactoryGirl.create(:student_request)
+      StudentRequest.should_receive(:find).with("14").and_return(student_request)
+
+
+      put :multiupdate,  :request_ids => ["14"], :multi_state_sel => StudentRequest::WITHDRAWN_STATE
+
+  expect(assigns(:student_request).state).to eq(StudentRequest::WITHDRAWN_STATE)
+      # assigns(:student_request) should eq(StudentRequest::WITHDRAWN_STATE)
 
     end
   end
+
+
   describe "Create Student Request: " do
     context 'on a a student request that already exists' do
           it 'should display a flash warning and navigate to the :new' do
