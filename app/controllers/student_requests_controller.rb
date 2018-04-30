@@ -214,7 +214,7 @@ class StudentRequestsController < ApplicationController
         @coursestudentlist[req.course_id].push(req) 
       end
       
-      # @coursestudentlist = @coursestudentlist.sort
+      @courselist = @coursestudentlist.keys.sort
     end
   end
 
