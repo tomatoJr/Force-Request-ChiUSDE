@@ -4,13 +4,14 @@ require 'rails_helper'
 describe StudentRequestsController, :type => :controller do
   describe "Create Student Request: " do
     context 'on a a student request that already exists' do
-          xit 'should set the appropriate variable' do
+          it 'should display a flash warning and navigate to the :new' do
             #Given
             student = FactoryGirl.create(:student)
             Student.should_receive(:where).once.and_return([student])
             student_request = FactoryGirl.create(:student_request)
             #StudentRequest.should_receive(:exists?).with(:uin => student_request.uin, :course_id => student_request.course_id, :section_id => student_request.section_id).once.and_return(true)
-            StudentRequest.should_receive(:exists?).once.and_return(true)
+            #StudentRequest.should_receive(:exists?).once.and_return(true)
+            StudentRequest.should_receive(:where).and_return([student_request])
             Major.should_receive(:pluck).with(:major_id).once.and_return("Computer Science")
 
             #When

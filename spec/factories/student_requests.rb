@@ -9,6 +9,7 @@ FactoryGirl.define do
     request_semester "2019 Spring"
     course_id "633"
     phone "9793459799"
+    section_id "505"
   end
 
   factory :student do

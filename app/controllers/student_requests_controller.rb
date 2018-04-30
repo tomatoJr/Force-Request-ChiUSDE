@@ -55,6 +55,9 @@ class StudentRequestsController < ApplicationController
     ##### HACK!!!!!! Because course id and section id are encrypted data (FERPA) it cannot be searched by.
     found = false
     @student_requests.each do |r|
+
+
+
       if r.course_id == params[:student_request][:course_id] and
          r.section_id == params[:student_request][:section_id]
          found = true
@@ -62,6 +65,7 @@ class StudentRequestsController < ApplicationController
       end
     end
     # if StudentRequest.exists?(:uin => session_get(:uin), :course_id => params[:student_request][:course_id], :section_id => params[:student_request][:section_id])
+puts "**************** Found is #{found}"
     if found
         flash[:warning] = "You have already submitted a force request for CSCE" +  params[:student_request][:course_id] + "-" + params[:student_request][:section_id]
         initForNewForceRequest
