@@ -65,7 +65,6 @@ class StudentRequestsController < ApplicationController
       end
     end
     # if StudentRequest.exists?(:uin => session_get(:uin), :course_id => params[:student_request][:course_id], :section_id => params[:student_request][:section_id])
-puts "**************** Found is #{found}"
     if found
         flash[:warning] = "You have already submitted a force request for CSCE" +  params[:student_request][:course_id] + "-" + params[:student_request][:section_id]
         initForNewForceRequest
@@ -313,18 +312,6 @@ puts "**************** Found is #{found}"
           redirect_to root_path
         end
       end
-    end
-  end
-
-
-  def homeRedirect
-    @currentstate = session_get(:current_state)
-    if @currentstate == "admin"
-      redirect_to student_requests_adminview_path
-    elsif @currentstate == "student"
-      redirect_to student_requests_path
-    else
-      redirect_to root_path
     end
   end
 

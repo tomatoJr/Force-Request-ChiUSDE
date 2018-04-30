@@ -2,6 +2,18 @@ require 'spec_helper'
 require 'rails_helper'
 
 describe StudentRequestsController, :type => :controller do
+  describe "MultiUpdate" do
+    it  'should issue a flash warning when attempting to update a withdrawn request' do
+      student_request = FactoryGirl.create(:student_request)
+      student_request.state = StudentRequest::WITHDRAWN_STATE
+      StudentRequest.should_receive(:find).with("14").and_return(student_request)
+
+      put :multiupdate, :request_ids => ["14"]
+
+      expect(flash[:warning]).to eq("Student has already withdrawn their request")
+
+    end
+  end
   describe "Create Student Request: " do
     context 'on a a student request that already exists' do
           it 'should display a flash warning and navigate to the :new' do
