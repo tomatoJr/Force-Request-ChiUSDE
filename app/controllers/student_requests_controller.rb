@@ -139,10 +139,11 @@ class StudentRequestsController < ApplicationController
       redirect_to root_path
     else
       @state_selected = {}
-      @priority_selected = {}
-      @all_priorities = [StudentRequest::VERYHIGH_PRIORITY, StudentRequest::HIGH_PRIORITY, StudentRequest::NORMAL_PRIORITY, StudentRequest::LOW_PRIORITY, StudentRequest::VERYLOW_PRIORITY]
+      @request_semester_selected = {}
+      @all_request_semesters = [StudentRequest::SPRING, StudentRequest::FALL, StudentRequest::SUMMER,StudentRequest::NSPRING, StudentRequest::NFALL, StudentRequest::NSUMMER]
       @all_states = [StudentRequest::ACTIVE_STATE, StudentRequest::REJECTED_STATE, StudentRequest::APPROVED_STATE, StudentRequest::HOLD_STATE]
-      @default_states = [StudentRequest::ACTIVE_STATE, StudentRequest::HOLD_STATE]
+      @default_states = [StudentRequest::ACTIVE_STATE, StudentRequest::HOLD_STATE, StudentRequest::APPROVED_STATE]
+      
       if params[:state_sel] == nil
         if session_get(:state_sel) != nil
           @all_states.each { |state|
@@ -159,17 +160,38 @@ class StudentRequestsController < ApplicationController
         }
         session_update(:state_sel, params[:state_sel])
       end
+      
+      if params[:request_semester_sel] == nil
+        if session_get(:request_semester_sel) != nil
+          @all_request_semesters.each { |request_semester|
+            @request_semester_selected[request_semester] = session_get(:request_semester_sel).has_key?(request_semester)
+          }
+        else
+          @all_request_semesters.each { |request_semester|
+            @request_semester_selected[request_semester] = @all_request_semesters.include?(request_semester)
+          }
+        end
+      else
+        @all_request_semesters.each { |request_semester|
+          @request_semester_selected[request_semester] = params[:request_semester_sel].has_key?(request_semester)
+        }
+        session_update(:request_semester_sel, params[:request_semester_sel])
+      end
+      
 
 
       @allAdminStates = ["Select State",StudentRequest::APPROVED_STATE, StudentRequest::REJECTED_STATE, StudentRequest::HOLD_STATE]
       @allViewAdminStates = [StudentRequest::ACTIVE_STATE,StudentRequest::APPROVED_STATE, StudentRequest::REJECTED_STATE, StudentRequest::HOLD_STATE]
-
+      @allPriorityStates = ["Select Semester",StudentRequest::SPRING, StudentRequest::SUMMER, StudentRequest::FALL,StudentRequest::NSPRING, StudentRequest::NFALL, StudentRequest::NSUMMER]
+      
+      
       @allcourses = StudentRequest.select(:course_id).map(&:course_id).uniq
       @coursestudentlist = Hash.new
 
       @allcourses.each do |course|
         @students = StudentRequest.where(course_id: course).where.not(state: StudentRequest::WITHDRAWN_STATE)
         @students = @students.reject{ |s| @state_selected[s.state] == false}
+        @students = @students.reject{ |s| @request_semester_selected[s.request_semester] == false}
         @coursestudentlist[course] = @students
       end
       @allcourses = @allcourses.sort

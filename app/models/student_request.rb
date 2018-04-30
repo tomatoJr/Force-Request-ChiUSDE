@@ -15,8 +15,28 @@ class StudentRequest < ActiveRecord::Base
     LOW_PRIORITY = "Low"
     VERYLOW_PRIORITY = "Very Low"
     
+    Time.zone = 'Central Time (US & Canada)'
+    time = Time.zone.now()
+        # List Year and Semester
+    CURRENT_YEAR = time.strftime("%Y")
+    current_year = CURRENT_YEAR.to_i
+    CURRENT_MONTH = time.strftime("%m")
+    current_month = CURRENT_MONTH.to_i
+    next_year = current_year +1;
+    
+    
+    SPRING = current_year.to_s + " Spring"
+    FALL = current_year.to_s + " Fall"
+    SUMMER = current_year.to_s + " Summer"
+    NSPRING = next_year.to_s + " Spring"
+    NFALL = next_year.to_s + " Spring"
+    NSUMMER = next_year.to_s + " Spring"
+    
+    
     STATES_AVAILABLE_TO_ADMIN = [StudentRequest::APPROVED_STATE, StudentRequest::REJECTED_STATE, StudentRequest::HOLD_STATE]
     PRIORITY_LIST = [StudentRequest::VERYHIGH_PRIORITY, StudentRequest::HIGH_PRIORITY, StudentRequest::NORMAL_PRIORITY, StudentRequest::LOW_PRIORITY, StudentRequest::VERYLOW_PRIORITY]
+    SEMESTER_LIST = [StudentRequest::NSPRING, StudentRequest::NFALL, StudentRequest::NSUMMER,StudentRequest::SPRING, StudentRequest::FALL, StudentRequest::SUMMER]
+    
     
     #Classification
     CLASSIFICATION_LIST = ['U1', 'U2', 'U3', 'U4', 'G']
@@ -156,14 +176,9 @@ class StudentRequest < ActiveRecord::Base
              'Zoology',           
              'Others']
     # time = Time.new
-    Time.zone = 'Central Time (US & Canada)'
-    time = Time.zone.now()
+
     
-    # List Year and Semester
-    CURRENT_YEAR = time.strftime("%Y")
-    current_year = CURRENT_YEAR.to_i
-    CURRENT_MONTH = time.strftime("%m")
-    current_month = CURRENT_MONTH.to_i
+
     
     LIST_YEAR = []
     for i in current_year..current_year+100
@@ -188,7 +203,7 @@ class StudentRequest < ActiveRecord::Base
     end
     
     REQUEST_SEMESTER = []
-    for i in current_year-2..current_year+1
+    for i in current_year..current_year+1
       LIST_SEMESTER.each do |semester|
         if i == current_year and current_month <= 4
           REQUEST_SEMESTER << i.to_s + " " + semester
