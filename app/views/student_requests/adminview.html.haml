@@ -27,6 +27,17 @@
         %td= check_box_tag "state_sel[#{state}]", 'true', @state_selected[state]      
         %td= state
     = submit_tag 'Refresh', class: "filter"
+  .filter_form2
+    %strong Filter Requests - Request Semester:
+    %br
+    %table
+    - @all_request_semesters.each do |request_semester, index|
+      %td= check_box_tag "request_semester_sel[#{request_semester}]", 'true', @request_semester_selected[request_semester]    
+      %td= request_semester
+
+    %br
+    = submit_tag 'Refresh', class: "filter"
+
 
 - @coursestudentlist.each_key do |course|
   // - if @coursestudentlist[course].length != 0
