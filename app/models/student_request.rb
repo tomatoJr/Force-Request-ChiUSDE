@@ -29,8 +29,8 @@ class StudentRequest < ActiveRecord::Base
     FALL = current_year.to_s + " Fall"
     SUMMER = current_year.to_s + " Summer"
     NSPRING = next_year.to_s + " Spring"
-    NFALL = next_year.to_s + " Spring"
-    NSUMMER = next_year.to_s + " Spring"
+    NFALL = next_year.to_s + " Fall"
+    NSUMMER = next_year.to_s + " Summer"
     
     
     STATES_AVAILABLE_TO_ADMIN = [StudentRequest::APPROVED_STATE, StudentRequest::REJECTED_STATE, StudentRequest::HOLD_STATE]
