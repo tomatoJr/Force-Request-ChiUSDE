@@ -402,15 +402,16 @@ class StudentRequestsController < ApplicationController
     @student_by_id =  StudentRequest.where(request_id: params[:id])
   end
 
-  # def deleteall
-  #   @student_requests = StudentRequest.all.as_json
-  #   @student_requests.each do |record|
-  #     record.delete('id')
-  #     StudentRequestArchival.create!(record)
-  #   end
-  #   StudentRequest.delete_all
-  #   redirect_to student_requests_adminview_path
-  # end
+  def deleteall
+    @student_requests = StudentRequest.all.as_json
+    @student_requests.each do |record|
+      record.delete('id')
+      StudentRequestArchival.create!(record)
+    end
+    StudentRequest.delete_all
+    puts("here**********************************")
+    redirect_to student_requests_adminview_path
+  end
   
   def cancel
   end

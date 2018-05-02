@@ -455,7 +455,7 @@ describe StudentRequestsController, :type => :controller do
 
       post :login, params: { 'session' => { :user => "student"}}
 
-      expect(flash[:warning]).to eq("The account doesn't exsit. Please sign up first.")
+      expect(flash[:warning]).to eq("The account doesn't exist. Please sign up first.")
     end
 
     it "should redirect to rooth path when account doesn't exist" do
