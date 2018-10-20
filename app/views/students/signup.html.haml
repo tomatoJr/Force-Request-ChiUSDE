@@ -6,12 +6,12 @@
         %td
           = label :session, :firstname, 'Enter FirstName'
         %td
-          = text_field(:session, :firstname, class: 'input-field', :pattern => "([A-Za-z]+)", :oninvalid => "this.setCustomValidity('Please enter Your FirstName')", :oninput => "this.setCustomValidity('')", :required => true)
+          = text_field(:session, :firstname, class: 'input-field', :pattern => "([A-Za-z\s]+)", :oninvalid => "this.setCustomValidity('Please enter Your FirstName')", :oninput => "this.setCustomValidity('')", :required => true)
       %tr
         %td
           = label :session, :lastname, 'Enter LastName'
         %td
-          = text_field(:session, :lastname, class: 'input-field', :pattern => "([A-Za-z]+)", :oninvalid => "this.setCustomValidity('Please enter Your LastName')", :oninput => "this.setCustomValidity('')", :required => true)
+          = text_field(:session, :lastname, class: 'input-field', :pattern => "([A-Za-z\s]+)", :oninvalid => "this.setCustomValidity('Please enter Your LastName')", :oninput => "this.setCustomValidity('')", :required => true)
              
       
       %tr

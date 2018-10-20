@@ -93,10 +93,6 @@ ActiveRecord::Schema.define(version: 20170414191552) do
     t.datetime "last_updated"
     t.text     "notes_to_student"
     t.text     "admin_notes"
-    # t.index ["course_id"], name: "index_student_requests_on_course_id", using: :btree
-    # t.index ["request_id"], name: "index_student_requests_on_request_id", unique: true, using: :btree
-    # t.index ["section_id"], name: "index_student_requests_on_section_id", using: :btree
-    # t.index ["state"], name: "index_student_requests_on_state", using: :btree
   end
 
   create_table "students", force: :cascade do |t|

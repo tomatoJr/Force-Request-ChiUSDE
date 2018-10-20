@@ -61,7 +61,7 @@ end
 group :production do
   gem 'rubycas-client', :git => 'git://github.com/shubham7jain/rubycas-client.git'
   gem 'rails_12factor'
-  gem 'pg', '0.21.0'
+  gem 'pg', '~> 0.21.0'
 end
 
 # Gemfile
@@ -72,7 +72,7 @@ group :test do
   gem 'selenium-webdriver'
   gem 'simplecov', :require => false
   gem "factory_girl_rails", "~> 4.0"
-  gem 'pg', '0.21.0'
+  gem 'pg', '~> 0.21.0'
   gem 'rubycas-client', :git => 'git://github.com/shubham7jain/rubycas-client.git'
   gem 'rails-controller-testing'
 end

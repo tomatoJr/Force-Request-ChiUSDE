@@ -22,6 +22,7 @@
         %th Request Semester
         %th Request Time
         %th State
+        %th Priority
         %th My Notes
         %th Action
     %tbody
@@ -32,6 +33,7 @@
           %td= record.request_semester
           %td= record.creation_date.strftime("%Y-%m-%d %H:%M:%S")
           %td= record.state
+          %td= record.priority
           %td= record.notes
           %td 
             -if record.state == StudentRequest::ACTIVE_STATE or record.state == StudentRequest::HOLD_STATE
