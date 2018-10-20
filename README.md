@@ -20,12 +20,13 @@ Jiechen Zhong
 ----------
 Developer Team 2018
 -------------
-Andrew Bregger,
-Curtis Green,
-James Motes<br>
-Josh Howell,
-Junqi Yang,
-Will Adams
+Nishant Aditya,
+Sulav Adhikari,
+Abdullah Abdul Kader
+Niti Jain,
+Ramesh Ghimiri,
+K Abhishek Das,
+Shamshu Shahid Raja Mohamed
 
 
 #### <i class="icon-folder-open"></i> Customer Interview Link:
