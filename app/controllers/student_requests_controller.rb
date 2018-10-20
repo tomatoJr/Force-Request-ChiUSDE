@@ -8,7 +8,7 @@ class StudentRequestsController < ApplicationController
   # before_filter CASClient::Frameworks::Rails::Filter
 
   def student_request_params
-    params.require(:student_request).permit(:request_id, :uin, :name, :major , :classification, :minor, :email, :phone, :expected_graduation, :request_semester, :course_id, :section_id, :notes, :state )
+    params.require(:student_request).permit(:request_id, :uin, :name, :major , :classification, :minor, :email, :phone, :expected_graduation, :request_semester, :course_id, :section_id, :notes, :state, :priority)
   end
 
   def index
@@ -73,7 +73,7 @@ class StudentRequestsController < ApplicationController
     else
         @student_request = StudentRequest.new(student_request_params_with_uin)
         @student_request.state = StudentRequest::ACTIVE_STATE
-        @student_request.priority = StudentRequest::NORMAL_PRIORITY
+        #@student_request.priority = StudentRequest::NORMAL_PRIORITY
 
         if @student_request.save
           flash[:notice] = "Student Request was successfully created."
@@ -386,6 +386,7 @@ class StudentRequestsController < ApplicationController
     @classificationList = StudentRequest::CLASSIFICATION_LIST
     @YearSemester = StudentRequest::YEAR_SEMESTER
     @requestSemester = StudentRequest::REQUEST_SEMESTER
+    @requestPriority = StudentRequest::PRIORITY_LIST
     @majorList = Major.pluck(:major_id)
   end
 

@@ -234,6 +234,8 @@ class StudentRequest < ActiveRecord::Base
     #  message: "%{value} is not a valid classification" }
     validates :request_semester, inclusion: { in: YEAR_SEMESTER, 
       message: "%{value} is not a valid request semester" }
+    validates :priority, inclusion: {in: PRIORITY_LIST,
+      message: "%{value} is not a valid prioroty"}
       
     attr_encrypted :course_id, key: ENV['COURSE_KEY'].truncate(32)
     attr_encrypted :section_id, key: ENV['SECTION_KEY'].truncate(32)
