@@ -9,7 +9,6 @@
 # production:
 #   stripe_api_key: sk_live_EeHnL644i6zo4Iyq4v1KdV9H
 #   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
-
 PASSWORD_KEY: V\x8B\xE1\"R%4\x94p\v9\x84\xAF\xF2\r9\"\xBEf\xDB\bn\xCD\xE9\xC81/\xE0\x13Af\xE6
 
 COURSE_KEY: \x9D\x06\xB1k\xBC\\}\xAF\x88dl\xF9s\xFCz;\xD7\xADip\xC6\"\x82\x83\xD4$\x1Cpr\xAE\x17\x01

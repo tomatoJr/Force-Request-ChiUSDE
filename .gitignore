@@ -26,3 +26,6 @@ coverage/index.html
 
 Ignore database setup files
 config/database.yml
+
+# Ignore application configuration
+/config/application.yml
