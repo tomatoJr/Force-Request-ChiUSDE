@@ -182,7 +182,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
     public_suffix (3.0.2)
-    rack (2.0.4)
+    rack (2.0.5)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.0.2)
@@ -270,7 +270,7 @@ GEM
     simplecov-html (0.10.2)
     spring (2.0.2)
       activesupport (>= 4.2)
-    sprockets (3.7.1)
+    sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-rails (3.2.1)
@@ -332,6 +332,7 @@ DEPENDENCIES
   selenium-webdriver
   simplecov
   spring
+  sprockets (~> 3.7.2)
   themoviedb
   turbolinks
   tzinfo-data
