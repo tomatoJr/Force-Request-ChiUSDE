@@ -89,5 +89,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   
   config.public_file_server.enabled = true
-  config.assets.compile = false
+  config.assets.compile = true
 end
