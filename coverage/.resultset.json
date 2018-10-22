@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/JoshuaHowell/Desktop/Texas A&M/Software_Engineering/Force-Request-ChiUSDE/spec/rails_helper.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/spec/rails_helper.rb": [
         null,
         1,
         1,
@@ -60,14 +60,14 @@
         null,
         null
       ],
-      "/Users/JoshuaHowell/Desktop/Texas A&M/Software_Engineering/Force-Request-ChiUSDE/spec/support/factory_girl.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/spec/support/factory_girl.rb": [
         null,
         null,
         1,
         1,
         null
       ],
-      "/Users/JoshuaHowell/Desktop/Texas A&M/Software_Engineering/Force-Request-ChiUSDE/app/controllers/admins_controller.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/app/controllers/admins_controller.rb": [
         1,
         1,
         1,
@@ -91,7 +91,7 @@
         null,
         null
       ],
-      "/Users/JoshuaHowell/Desktop/Texas A&M/Software_Engineering/Force-Request-ChiUSDE/app/controllers/application_controller.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/app/controllers/application_controller.rb": [
         1,
         1,
         null,
@@ -105,7 +105,7 @@
         1,
         null
       ],
-      "/Users/JoshuaHowell/Desktop/Texas A&M/Software_Engineering/Force-Request-ChiUSDE/spec/controllers/student_controller_spec.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/spec/controllers/student_controller_spec.rb": [
         1,
         1,
         null,
@@ -196,7 +196,7 @@
         null,
         null
       ],
-      "/Users/JoshuaHowell/Desktop/Texas A&M/Software_Engineering/Force-Request-ChiUSDE/app/controllers/student_requests_controller.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/app/controllers/student_requests_controller.rb": [
         1,
         null,
         1,
@@ -228,6 +228,7 @@
         null,
         4,
         null,
+        null,
         4,
         4,
         4,
@@ -259,25 +260,25 @@
         null,
         null,
         3,
-        1,
-        1,
+        2,
+        2,
         null,
         null,
         null,
         3,
-        1,
-        1,
-        1,
-        null,
         2,
         2,
         2,
         null,
-        2,
+        1,
         1,
         null,
+        null,
         1,
-        1,
+        0,
+        null,
+        0,
+        0,
         null,
         1,
         1,
@@ -434,21 +435,26 @@
         null,
         null,
         null,
-        3,
-        1,
-        1,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
         null,
         3,
         2,
-        2,
         null,
         1,
+        null,
+        null,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        3,
+        3,
+        3,
+        null,
+        0,
         null,
         null,
         null,
@@ -520,10 +526,10 @@
         0,
         null,
         null,
-        1,
-        0,
-        0,
-        0,
+        null,
+        null,
+        null,
+        null,
         null,
         null,
         null,
@@ -576,10 +582,11 @@
         null,
         null,
         1,
-        5,
-        5,
-        5,
-        5,
+        6,
+        6,
+        6,
+        6,
+        6,
         null,
         null,
         1,
@@ -587,47 +594,6 @@
         0,
         null,
         0,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
         null,
         null,
         1,
@@ -644,6 +610,8 @@
         null,
         0,
         0,
+        0,
+        null,
         null,
         1,
         null,
@@ -653,7 +621,7 @@
         null,
         null
       ],
-      "/Users/JoshuaHowell/Desktop/Texas A&M/Software_Engineering/Force-Request-ChiUSDE/spec/controllers/student_request_controller_spec.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/spec/controllers/student_request_controller_spec.rb": [
         1,
         1,
         null,
@@ -743,7 +711,7 @@
         null,
         null,
         1,
-        1,
+        0,
         null,
         null,
         null,
@@ -765,7 +733,7 @@
         null,
         null,
         1,
-        1,
+        0,
         null,
         null,
         null,
@@ -1172,7 +1140,7 @@
         null,
         null
       ],
-      "/Users/JoshuaHowell/Desktop/Texas A&M/Software_Engineering/Force-Request-ChiUSDE/spec/helpers/users_helper_spec.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/spec/helpers/users_helper_spec.rb": [
         1,
         null,
         null,
@@ -1189,7 +1157,7 @@
         1,
         null
       ],
-      "/Users/JoshuaHowell/Desktop/Texas A&M/Software_Engineering/Force-Request-ChiUSDE/spec/mailers/student_mailer_spec.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/spec/mailers/student_mailer_spec.rb": [
         null,
         null,
         null,
@@ -1236,7 +1204,7 @@
         null,
         null
       ],
-      "/Users/JoshuaHowell/Desktop/Texas A&M/Software_Engineering/Force-Request-ChiUSDE/app/mailers/student_mailer.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/app/mailers/student_mailer.rb": [
         1,
         1,
         null,
@@ -1265,7 +1233,7 @@
         null,
         null
       ],
-      "/Users/JoshuaHowell/Desktop/Texas A&M/Software_Engineering/Force-Request-ChiUSDE/spec/models/student_requests_model_spec.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/spec/models/student_requests_model_spec.rb": [
         null,
         1,
         1,
@@ -1303,7 +1271,7 @@
         null,
         null
       ],
-      "/Users/JoshuaHowell/Desktop/Texas A&M/Software_Engineering/Force-Request-ChiUSDE/app/models/student_request.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/app/models/student_request.rb": [
         1,
         null,
         1,
@@ -1497,12 +1465,12 @@
         1,
         101,
         303,
-        3,
-        300,
         0,
-        300,
-        100,
-        200,
+        303,
+        0,
+        303,
+        101,
+        202,
         200,
         null,
         null,
@@ -1512,12 +1480,12 @@
         1,
         2,
         6,
-        3,
-        3,
         0,
-        3,
-        1,
+        6,
+        0,
+        6,
         2,
+        4,
         2,
         null,
         null,
@@ -1540,6 +1508,8 @@
         null,
         1,
         null,
+        1,
+        null,
         null,
         1,
         1,
@@ -1551,8 +1521,8 @@
         null,
         1,
         null,
-        31,
-        31,
+        30,
+        30,
         null,
         null,
         1,
@@ -1563,8 +1533,8 @@
         null,
         1,
         null,
-        31,
-        31,
+        30,
+        30,
         null,
         null,
         1,
@@ -1577,7 +1547,7 @@
         null,
         null
       ],
-      "/Users/JoshuaHowell/Desktop/Texas A&M/Software_Engineering/Force-Request-ChiUSDE/spec/models/student_spec.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/spec/models/student_spec.rb": [
         1,
         1,
         null,
@@ -1641,7 +1611,7 @@
         null,
         null
       ],
-      "/Users/JoshuaHowell/Desktop/Texas A&M/Software_Engineering/Force-Request-ChiUSDE/app/models/student.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/app/models/student.rb": [
         1,
         1,
         1,
@@ -1687,14 +1657,14 @@
         null,
         null
       ],
-      "/Users/JoshuaHowell/Desktop/Texas A&M/Software_Engineering/Force-Request-ChiUSDE/spec/views/users/new.html.erb_spec.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/spec/views/users/new.html.erb_spec.rb": [
         1,
         null,
         1,
         1,
         null
       ],
-      "/Users/JoshuaHowell/Desktop/Texas A&M/Software_Engineering/Force-Request-ChiUSDE/app/models/admin.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/app/models/admin.rb": [
         1,
         1,
         1,
@@ -1704,12 +1674,12 @@
         1,
         null
       ],
-      "/Users/JoshuaHowell/Desktop/Texas A&M/Software_Engineering/Force-Request-ChiUSDE/app/models/major.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/app/models/major.rb": [
         1,
         null
       ]
     },
-    "timestamp": 1525124870
+    "timestamp": 1540154198
   },
   "Cucumber Features": {
     "coverage": {
@@ -1918,6 +1888,10 @@
         1,
         1,
         1,
+<<<<<<< HEAD
+=======
+        1,
+>>>>>>> d7daa919c546be257dada47e4e250d44dc02a767
         null,
         null,
         1,
@@ -2377,7 +2351,11 @@
         1,
         1,
         1,
+<<<<<<< HEAD
         40,
+=======
+        5,
+>>>>>>> d7daa919c546be257dada47e4e250d44dc02a767
         null,
         null,
         null,
@@ -3074,6 +3052,9 @@
         null,
         null,
         null,
+        null,
+        null,
+        null,
         0,
         0,
         0,
@@ -3085,8 +3066,14 @@
         0,
         0,
         null,
+<<<<<<< HEAD
         2,
         2,
+=======
+        1,
+        1,
+        null,
+>>>>>>> d7daa919c546be257dada47e4e250d44dc02a767
         null,
         null,
         2,
@@ -3219,6 +3206,7 @@
         14,
         null,
         14,
+<<<<<<< HEAD
         560,
         560,
         559,
@@ -3229,6 +3217,18 @@
         null,
         null,
         559,
+=======
+        70,
+        70,
+        69,
+        null,
+        null,
+        69,
+        42,
+        null,
+        null,
+        69,
+>>>>>>> d7daa919c546be257dada47e4e250d44dc02a767
         null,
         null,
         14,
@@ -3397,11 +3397,19 @@
         null,
         null,
         1,
+<<<<<<< HEAD
         7,
         7,
         7,
         7,
         7,
+=======
+        6,
+        6,
+        6,
+        6,
+        6,
+>>>>>>> d7daa919c546be257dada47e4e250d44dc02a767
         null,
         null,
         1,
@@ -3699,10 +3707,16 @@
         null,
         null,
         0,
+<<<<<<< HEAD
+        null,
+=======
+>>>>>>> d7daa919c546be257dada47e4e250d44dc02a767
         null,
         null,
         1,
         1,
+        1,
+        null,
         1,
         null,
         1,
@@ -3720,6 +3734,7 @@
         null,
         null,
         null,
+<<<<<<< HEAD
         1,
         4,
         4,
@@ -3732,8 +3747,25 @@
         null,
         null,
         1,
+=======
+>>>>>>> d7daa919c546be257dada47e4e250d44dc02a767
+        1,
+        4,
+        4,
+        null,
+        4,
+        null,
+        3,
+        3,
+        2,
+        null,
+        null,
+        1,
+<<<<<<< HEAD
+=======
         1,
         1,
+>>>>>>> d7daa919c546be257dada47e4e250d44dc02a767
         0,
         0,
         null,
@@ -3893,6 +3925,10 @@
         null
       ]
     },
+<<<<<<< HEAD
     "timestamp": 1540227918
+=======
+    "timestamp": 1540154390
+>>>>>>> d7daa919c546be257dada47e4e250d44dc02a767
   }
 }
