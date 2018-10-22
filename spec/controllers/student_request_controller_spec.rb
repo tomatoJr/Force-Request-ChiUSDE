@@ -81,6 +81,7 @@ describe StudentRequestsController, :type => :controller do
                                            :email => student_request.email,
                                            :request_semester => student_request.request_semester,
                                            :course_id => student_request.course_id,
+                                           :priority =>student_request.priority,
                                            :phone => student_request.phone,
                                            :section_id => 505
         }
@@ -116,6 +117,10 @@ describe StudentRequestsController, :type => :controller do
 
   describe "Update Request" do
     context "When Student Request ACTIVE_STATE" do
+      it "should be able to check priority" do
+          student_request = FactoryGirl.create(:student_request)
+          expect(student_request.priority).to eq(StudentRequest::HIGH_PRIORITY)
+      end
       it "should update the state to WITHDRAWN_STATE" do
           #GIVEN
           student_request = FactoryGirl.create(:student_request)

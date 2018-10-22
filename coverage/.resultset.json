@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/ec2-user/environment/Force-Request-ChiUSDE/spec/rails_helper.rb": [
+      "/home/ec2-user/environment/p/Force-Request-ChiUSDE/spec/rails_helper.rb": [
         null,
         1,
         1,
@@ -60,14 +60,14 @@
         null,
         null
       ],
-      "/home/ec2-user/environment/Force-Request-ChiUSDE/spec/support/factory_girl.rb": [
+      "/home/ec2-user/environment/p/Force-Request-ChiUSDE/spec/support/factory_girl.rb": [
         null,
         null,
         1,
         1,
         null
       ],
-      "/home/ec2-user/environment/Force-Request-ChiUSDE/app/controllers/admins_controller.rb": [
+      "/home/ec2-user/environment/p/Force-Request-ChiUSDE/app/controllers/admins_controller.rb": [
         1,
         1,
         1,
@@ -91,7 +91,7 @@
         null,
         null
       ],
-      "/home/ec2-user/environment/Force-Request-ChiUSDE/app/controllers/application_controller.rb": [
+      "/home/ec2-user/environment/p/Force-Request-ChiUSDE/app/controllers/application_controller.rb": [
         1,
         1,
         null,
@@ -105,7 +105,7 @@
         1,
         null
       ],
-      "/home/ec2-user/environment/Force-Request-ChiUSDE/spec/controllers/student_controller_spec.rb": [
+      "/home/ec2-user/environment/p/Force-Request-ChiUSDE/spec/controllers/student_controller_spec.rb": [
         1,
         1,
         null,
@@ -196,7 +196,7 @@
         null,
         null
       ],
-      "/home/ec2-user/environment/Force-Request-ChiUSDE/app/controllers/student_requests_controller.rb": [
+      "/home/ec2-user/environment/p/Force-Request-ChiUSDE/app/controllers/student_requests_controller.rb": [
         1,
         null,
         1,
@@ -621,7 +621,7 @@
         null,
         null
       ],
-      "/home/ec2-user/environment/Force-Request-ChiUSDE/spec/controllers/student_request_controller_spec.rb": [
+      "/home/ec2-user/environment/p/Force-Request-ChiUSDE/spec/controllers/student_request_controller_spec.rb": [
         1,
         1,
         null,
@@ -709,27 +709,6 @@
         null,
         null,
         null,
-        null,
-        1,
-        0,
-        null,
-        null,
-        null,
-        null,
-        null,
-        1,
-        1,
-        null,
-        null,
-        1,
-        1,
-        1,
-        1,
-        null,
-        null,
-        null,
-        null,
-        1,
         null,
         null,
         1,
@@ -738,8 +717,34 @@
         null,
         null,
         null,
+        null,
         1,
         1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
         1,
         null,
         1,
@@ -1140,7 +1145,7 @@
         null,
         null
       ],
-      "/home/ec2-user/environment/Force-Request-ChiUSDE/spec/helpers/users_helper_spec.rb": [
+      "/home/ec2-user/environment/p/Force-Request-ChiUSDE/spec/helpers/users_helper_spec.rb": [
         1,
         null,
         null,
@@ -1157,7 +1162,7 @@
         1,
         null
       ],
-      "/home/ec2-user/environment/Force-Request-ChiUSDE/spec/mailers/student_mailer_spec.rb": [
+      "/home/ec2-user/environment/p/Force-Request-ChiUSDE/spec/mailers/student_mailer_spec.rb": [
         null,
         null,
         null,
@@ -1204,7 +1209,7 @@
         null,
         null
       ],
-      "/home/ec2-user/environment/Force-Request-ChiUSDE/app/mailers/student_mailer.rb": [
+      "/home/ec2-user/environment/p/Force-Request-ChiUSDE/app/mailers/student_mailer.rb": [
         1,
         1,
         null,
@@ -1233,7 +1238,7 @@
         null,
         null
       ],
-      "/home/ec2-user/environment/Force-Request-ChiUSDE/spec/models/student_requests_model_spec.rb": [
+      "/home/ec2-user/environment/p/Force-Request-ChiUSDE/spec/models/student_requests_model_spec.rb": [
         null,
         1,
         1,
@@ -1271,7 +1276,7 @@
         null,
         null
       ],
-      "/home/ec2-user/environment/Force-Request-ChiUSDE/app/models/student_request.rb": [
+      "/home/ec2-user/environment/p/Force-Request-ChiUSDE/app/models/student_request.rb": [
         1,
         null,
         1,
@@ -1521,20 +1526,20 @@
         null,
         1,
         null,
-        30,
-        30,
+        31,
+        31,
         null,
         null,
         1,
         null,
-        34,
-        34,
+        35,
+        35,
         null,
         null,
         1,
         null,
-        30,
-        30,
+        31,
+        31,
         null,
         null,
         1,
@@ -1547,7 +1552,7 @@
         null,
         null
       ],
-      "/home/ec2-user/environment/Force-Request-ChiUSDE/spec/models/student_spec.rb": [
+      "/home/ec2-user/environment/p/Force-Request-ChiUSDE/spec/models/student_spec.rb": [
         1,
         1,
         null,
@@ -1611,7 +1616,7 @@
         null,
         null
       ],
-      "/home/ec2-user/environment/Force-Request-ChiUSDE/app/models/student.rb": [
+      "/home/ec2-user/environment/p/Force-Request-ChiUSDE/app/models/student.rb": [
         1,
         1,
         1,
@@ -1657,14 +1662,14 @@
         null,
         null
       ],
-      "/home/ec2-user/environment/Force-Request-ChiUSDE/spec/views/users/new.html.erb_spec.rb": [
+      "/home/ec2-user/environment/p/Force-Request-ChiUSDE/spec/views/users/new.html.erb_spec.rb": [
         1,
         null,
         1,
         1,
         null
       ],
-      "/home/ec2-user/environment/Force-Request-ChiUSDE/app/models/admin.rb": [
+      "/home/ec2-user/environment/p/Force-Request-ChiUSDE/app/models/admin.rb": [
         1,
         1,
         1,
@@ -1674,12 +1679,12 @@
         1,
         null
       ],
-      "/home/ec2-user/environment/Force-Request-ChiUSDE/app/models/major.rb": [
+      "/home/ec2-user/environment/p/Force-Request-ChiUSDE/app/models/major.rb": [
         1,
         null
       ]
     },
-    "timestamp": 1540154198
+    "timestamp": 1540236644
   },
   "Cucumber Features": {
     "coverage": {
