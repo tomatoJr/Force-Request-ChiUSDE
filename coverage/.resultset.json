@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/JoshuaHowell/Desktop/Texas A&M/Software_Engineering/Force-Request-ChiUSDE/spec/rails_helper.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/spec/rails_helper.rb": [
         null,
         1,
         1,
@@ -60,14 +60,14 @@
         null,
         null
       ],
-      "/Users/JoshuaHowell/Desktop/Texas A&M/Software_Engineering/Force-Request-ChiUSDE/spec/support/factory_girl.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/spec/support/factory_girl.rb": [
         null,
         null,
         1,
         1,
         null
       ],
-      "/Users/JoshuaHowell/Desktop/Texas A&M/Software_Engineering/Force-Request-ChiUSDE/app/controllers/admins_controller.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/app/controllers/admins_controller.rb": [
         1,
         1,
         1,
@@ -91,7 +91,7 @@
         null,
         null
       ],
-      "/Users/JoshuaHowell/Desktop/Texas A&M/Software_Engineering/Force-Request-ChiUSDE/app/controllers/application_controller.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/app/controllers/application_controller.rb": [
         1,
         1,
         null,
@@ -105,7 +105,7 @@
         1,
         null
       ],
-      "/Users/JoshuaHowell/Desktop/Texas A&M/Software_Engineering/Force-Request-ChiUSDE/spec/controllers/student_controller_spec.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/spec/controllers/student_controller_spec.rb": [
         1,
         1,
         null,
@@ -196,7 +196,7 @@
         null,
         null
       ],
-      "/Users/JoshuaHowell/Desktop/Texas A&M/Software_Engineering/Force-Request-ChiUSDE/app/controllers/student_requests_controller.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/app/controllers/student_requests_controller.rb": [
         1,
         null,
         1,
@@ -228,6 +228,7 @@
         null,
         4,
         null,
+        null,
         4,
         4,
         4,
@@ -259,25 +260,25 @@
         null,
         null,
         3,
-        1,
-        1,
+        2,
+        2,
         null,
         null,
         null,
         3,
-        1,
-        1,
-        1,
-        null,
         2,
         2,
         2,
         null,
-        2,
+        1,
         1,
         null,
+        null,
         1,
-        1,
+        0,
+        null,
+        0,
+        0,
         null,
         1,
         1,
@@ -434,21 +435,26 @@
         null,
         null,
         null,
-        3,
-        1,
-        1,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
         null,
         3,
         2,
-        2,
         null,
         1,
+        null,
+        null,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        3,
+        3,
+        3,
+        null,
+        0,
         null,
         null,
         null,
@@ -520,10 +526,10 @@
         0,
         null,
         null,
-        1,
-        0,
-        0,
-        0,
+        null,
+        null,
+        null,
+        null,
         null,
         null,
         null,
@@ -576,10 +582,11 @@
         null,
         null,
         1,
-        5,
-        5,
-        5,
-        5,
+        6,
+        6,
+        6,
+        6,
+        6,
         null,
         null,
         1,
@@ -587,47 +594,6 @@
         0,
         null,
         0,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
         null,
         null,
         1,
@@ -644,6 +610,8 @@
         null,
         0,
         0,
+        0,
+        null,
         null,
         1,
         null,
@@ -653,7 +621,7 @@
         null,
         null
       ],
-      "/Users/JoshuaHowell/Desktop/Texas A&M/Software_Engineering/Force-Request-ChiUSDE/spec/controllers/student_request_controller_spec.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/spec/controllers/student_request_controller_spec.rb": [
         1,
         1,
         null,
@@ -743,7 +711,7 @@
         null,
         null,
         1,
-        1,
+        0,
         null,
         null,
         null,
@@ -765,7 +733,7 @@
         null,
         null,
         1,
-        1,
+        0,
         null,
         null,
         null,
@@ -1172,7 +1140,7 @@
         null,
         null
       ],
-      "/Users/JoshuaHowell/Desktop/Texas A&M/Software_Engineering/Force-Request-ChiUSDE/spec/helpers/users_helper_spec.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/spec/helpers/users_helper_spec.rb": [
         1,
         null,
         null,
@@ -1189,7 +1157,7 @@
         1,
         null
       ],
-      "/Users/JoshuaHowell/Desktop/Texas A&M/Software_Engineering/Force-Request-ChiUSDE/spec/mailers/student_mailer_spec.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/spec/mailers/student_mailer_spec.rb": [
         null,
         null,
         null,
@@ -1236,7 +1204,7 @@
         null,
         null
       ],
-      "/Users/JoshuaHowell/Desktop/Texas A&M/Software_Engineering/Force-Request-ChiUSDE/app/mailers/student_mailer.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/app/mailers/student_mailer.rb": [
         1,
         1,
         null,
@@ -1265,7 +1233,7 @@
         null,
         null
       ],
-      "/Users/JoshuaHowell/Desktop/Texas A&M/Software_Engineering/Force-Request-ChiUSDE/spec/models/student_requests_model_spec.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/spec/models/student_requests_model_spec.rb": [
         null,
         1,
         1,
@@ -1303,7 +1271,7 @@
         null,
         null
       ],
-      "/Users/JoshuaHowell/Desktop/Texas A&M/Software_Engineering/Force-Request-ChiUSDE/app/models/student_request.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/app/models/student_request.rb": [
         1,
         null,
         1,
@@ -1497,12 +1465,12 @@
         1,
         101,
         303,
-        3,
-        300,
         0,
-        300,
-        100,
-        200,
+        303,
+        0,
+        303,
+        101,
+        202,
         200,
         null,
         null,
@@ -1512,12 +1480,12 @@
         1,
         2,
         6,
-        3,
-        3,
         0,
-        3,
-        1,
+        6,
+        0,
+        6,
         2,
+        4,
         2,
         null,
         null,
@@ -1540,6 +1508,8 @@
         null,
         1,
         null,
+        1,
+        null,
         null,
         1,
         1,
@@ -1551,8 +1521,8 @@
         null,
         1,
         null,
-        31,
-        31,
+        30,
+        30,
         null,
         null,
         1,
@@ -1563,8 +1533,8 @@
         null,
         1,
         null,
-        31,
-        31,
+        30,
+        30,
         null,
         null,
         1,
@@ -1577,7 +1547,7 @@
         null,
         null
       ],
-      "/Users/JoshuaHowell/Desktop/Texas A&M/Software_Engineering/Force-Request-ChiUSDE/spec/models/student_spec.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/spec/models/student_spec.rb": [
         1,
         1,
         null,
@@ -1641,7 +1611,7 @@
         null,
         null
       ],
-      "/Users/JoshuaHowell/Desktop/Texas A&M/Software_Engineering/Force-Request-ChiUSDE/app/models/student.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/app/models/student.rb": [
         1,
         1,
         1,
@@ -1687,14 +1657,14 @@
         null,
         null
       ],
-      "/Users/JoshuaHowell/Desktop/Texas A&M/Software_Engineering/Force-Request-ChiUSDE/spec/views/users/new.html.erb_spec.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/spec/views/users/new.html.erb_spec.rb": [
         1,
         null,
         1,
         1,
         null
       ],
-      "/Users/JoshuaHowell/Desktop/Texas A&M/Software_Engineering/Force-Request-ChiUSDE/app/models/admin.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/app/models/admin.rb": [
         1,
         1,
         1,
@@ -1704,16 +1674,16 @@
         1,
         null
       ],
-      "/Users/JoshuaHowell/Desktop/Texas A&M/Software_Engineering/Force-Request-ChiUSDE/app/models/major.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/app/models/major.rb": [
         1,
         null
       ]
     },
-    "timestamp": 1525124870
+    "timestamp": 1540154198
   },
   "Cucumber Features": {
     "coverage": {
-      "/home/ubuntu/workspace/config/environment.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/config/environment.rb": [
         null,
         1,
         null,
@@ -1727,7 +1697,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/config/application.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/config/application.rb": [
         1,
         null,
         1,
@@ -1756,12 +1726,12 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/config/boot.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/config/boot.rb": [
         1,
         null,
         1
       ],
-      "/home/ubuntu/workspace/config/environments/test.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/config/environments/test.rb": [
         1,
         null,
         null,
@@ -1823,7 +1793,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/config/initializers/assets.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/config/initializers/assets.rb": [
         null,
         null,
         null,
@@ -1836,7 +1806,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/config/initializers/backtrace_silencers.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/config/initializers/backtrace_silencers.rb": [
         null,
         null,
         null,
@@ -1845,18 +1815,18 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/config/initializers/cookies_serializer.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/config/initializers/cookies_serializer.rb": [
         null,
         null,
         1
       ],
-      "/home/ubuntu/workspace/config/initializers/filter_parameter_logging.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/config/initializers/filter_parameter_logging.rb": [
         null,
         null,
         null,
         1
       ],
-      "/home/ubuntu/workspace/config/initializers/inflections.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/config/initializers/inflections.rb": [
         null,
         null,
         null,
@@ -1874,7 +1844,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/config/initializers/mime_types.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/config/initializers/mime_types.rb": [
         null,
         null,
         null,
@@ -1884,12 +1854,12 @@
         1,
         null
       ],
-      "/home/ubuntu/workspace/config/initializers/session_store.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/config/initializers/session_store.rb": [
         null,
         null,
         1
       ],
-      "/home/ubuntu/workspace/config/initializers/wrap_parameters.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/config/initializers/wrap_parameters.rb": [
         null,
         null,
         null,
@@ -1905,8 +1875,10 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/spec/factories/student_requests.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/spec/factories/student_requests.rb": [
         null,
+        1,
+        1,
         1,
         1,
         1,
@@ -1934,7 +1906,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/config/routes.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/config/routes.rb": [
         1,
         null,
         1,
@@ -2002,7 +1974,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/features/support/seeds.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/features/support/seeds.rb": [
         null,
         null,
         null,
@@ -2060,7 +2032,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/app/models/student.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/app/models/student.rb": [
         1,
         1,
         1,
@@ -2106,7 +2078,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/app/models/student_request.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/app/models/student_request.rb": [
         1,
         null,
         1,
@@ -2300,12 +2272,12 @@
         1,
         101,
         303,
-        3,
-        300,
         0,
-        300,
-        100,
-        200,
+        303,
+        0,
+        303,
+        101,
+        202,
         200,
         null,
         null,
@@ -2315,12 +2287,12 @@
         1,
         2,
         6,
-        3,
-        3,
         0,
-        3,
-        1,
+        6,
+        0,
+        6,
         2,
+        4,
         2,
         null,
         null,
@@ -2340,6 +2312,8 @@
         1,
         null,
         null,
+        null,
+        1,
         null,
         1,
         null,
@@ -2374,17 +2348,17 @@
         1,
         1,
         1,
-        135,
+        5,
         null,
         null,
         null,
         null
       ],
-      "/home/ubuntu/workspace/app/models/major.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/app/models/major.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/app/models/admin.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/app/models/admin.rb": [
         1,
         1,
         1,
@@ -2394,7 +2368,7 @@
         1,
         null
       ],
-      "/home/ubuntu/workspace/features/step_definitions/admin_actions_steps.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/features/step_definitions/admin_actions_steps.rb": [
         1,
         1,
         null,
@@ -2403,7 +2377,7 @@
         1,
         null
       ],
-      "/home/ubuntu/workspace/features/step_definitions/admin_steps.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/features/step_definitions/admin_steps.rb": [
         1,
         8,
         null,
@@ -2575,7 +2549,7 @@
         1,
         null
       ],
-      "/home/ubuntu/workspace/features/step_definitions/student_login_steps.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/features/step_definitions/student_login_steps.rb": [
         1,
         1,
         1,
@@ -2630,7 +2604,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/features/step_definitions/student_signup_steps.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/features/step_definitions/student_signup_steps.rb": [
         1,
         10,
         20,
@@ -2769,7 +2743,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/features/step_definitions/student_view_steps.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/features/step_definitions/student_view_steps.rb": [
         1,
         7,
         7,
@@ -2989,7 +2963,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/app/controllers/student_requests_controller.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/app/controllers/student_requests_controller.rb": [
         1,
         null,
         1,
@@ -3049,6 +3023,9 @@
         1,
         1,
         null,
+        null,
+        null,
+        null,
         0,
         0,
         0,
@@ -3062,7 +3039,7 @@
         null,
         1,
         1,
-        1,
+        null,
         null,
         1,
         1,
@@ -3116,7 +3093,6 @@
         1,
         1,
         1,
-        null,
         1,
         null,
         null,
@@ -3195,16 +3171,16 @@
         14,
         null,
         14,
-        1890,
-        1890,
-        1889,
+        70,
+        70,
+        69,
         null,
         null,
-        1889,
+        69,
         42,
         null,
         null,
-        1889,
+        69,
         null,
         null,
         14,
@@ -3377,6 +3353,7 @@
         6,
         6,
         6,
+        6,
         null,
         null,
         1,
@@ -3392,14 +3369,15 @@
         0,
         null,
         null,
+        1,
+        0,
+        0,
+        0,
+        0,
         null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
+        0,
+        0,
+        0,
         null,
         null,
         1,
@@ -3410,7 +3388,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/app/controllers/application_controller.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/app/controllers/application_controller.rb": [
         1,
         1,
         null,
@@ -3424,11 +3402,11 @@
         1,
         null
       ],
-      "/home/ubuntu/workspace/app/helpers/application_helper.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/app/helpers/scrape_helper.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/app/helpers/scrape_helper.rb": [
         1,
         1,
         5,
@@ -3553,7 +3531,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/app/helpers/session_helper.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/app/helpers/session_helper.rb": [
         1,
         null,
         1,
@@ -3569,15 +3547,15 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/app/helpers/student_requests_helper.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/app/helpers/student_requests_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/app/helpers/users_helper.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/app/helpers/users_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/app/controllers/admins_controller.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/app/controllers/admins_controller.rb": [
         1,
         1,
         1,
@@ -3601,7 +3579,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/app/controllers/students_controller.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/app/controllers/students_controller.rb": [
         1,
         1,
         1,
@@ -3663,24 +3641,22 @@
         null,
         null,
         null,
-        null,
-        null,
         1,
-        4,
-        4,
-        null,
-        4,
-        null,
-        3,
-        3,
         2,
         2,
         null,
         1,
         1,
+        1,
+        null,
+        null,
+        0,
+        null,
         null,
         1,
         1,
+        1,
+        null,
         1,
         1,
         1,
@@ -3694,8 +3670,28 @@
         1,
         null,
         null,
+        null,
+        null,
+        1,
+        4,
+        4,
+        null,
+        4,
+        null,
+        3,
+        3,
+        2,
+        null,
+        null,
         1,
         1,
+        1,
+        0,
+        0,
+        null,
+        0,
+        0,
+        null,
         null,
         null,
         1,
@@ -3819,7 +3815,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/app/mailers/student_mailer.rb": [
+      "/home/ec2-user/environment/Force-Request-ChiUSDE/app/mailers/student_mailer.rb": [
         1,
         1,
         null,
@@ -3849,6 +3845,6 @@
         null
       ]
     },
-    "timestamp": 1525128666
+    "timestamp": 1540154390
   }
 }
