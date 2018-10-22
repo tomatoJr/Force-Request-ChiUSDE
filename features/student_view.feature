@@ -57,6 +57,7 @@ Then I should be on Student Dashboard Page
 When I click on Delete
 Then I should not see that request on Student Dashboard Page
 
+
 Scenario: Student change password with right information
 When I am on the Login Page
 When I login with correct login info
@@ -91,3 +92,14 @@ And I click forget password
 Then I should be on reset password page
 When I input my Email and click reset
 Then I should see a message
+
+#New Cucumber test added
+Scenario: Add priority on requests
+When I am on the Login Page
+When I login with correct login info
+Then I should be on Student Dashboard Page
+When I click on New Force Request
+And I assign priority to the request
+And I click Save Request
+Then I should see the request with priority
+Then I should be on Student Dashboard Page

@@ -208,6 +208,25 @@ Then (/^I should see a message$/) do
 end
 
 
+################################################################################################################
+#Priority
+################################################################################################################
+
+
+And(/^I assign priority to the request$/) do
+  @student_request = {:minor=>"None", :expected_graduation=>"2018 Fall", :request_semester=>"2018 Fall", :course_id=>"606", :section_id => "600" , :priority => "High"}
+  page.has_content?("123123123")
+  select(@student_request[:expected_graduation], from:'Expected Graduation*')
+  select(@student_request[:request_semester], from:'Request Semester*')
+  fill_in('Course Id*', :with => @student_request[:course_id])
+  fill_in('Section Id*', :with => @student_request[:section_id]) 
+  select(@student_request[:priority], from:'Priority*')
+end
+
+Then(/^I should see the request with priority$/) do
+  page.should have_content("Student Request was successfully created.")
+  page.should have_content("High")
+end
 
 
 
