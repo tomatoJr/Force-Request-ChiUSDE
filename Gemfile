@@ -28,9 +28,13 @@ gem "audited", "~> 4.3"
 gem "attr_encrypted", "~> 3.0.0"
 
 gem "figaro"
+<<<<<<< HEAD
+gem 'pg', '~> 0.21'
+=======
 
 gem 'sprockets', '~> 3.7.2'
 
+>>>>>>> d7daa919c546be257dada47e4e250d44dc02a767
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -63,9 +67,9 @@ end
 group :production do
   gem 'rubycas-client', :git => 'git://github.com/shubham7jain/rubycas-client.git'
   gem 'rails_12factor'
-  gem 'pg', '~> 0.21.0'
+  
 end
-
+#gem 'pg', '~> 0.21'
 # Gemfile
 group :test do
   gem 'cucumber-rails', :require => false
@@ -74,7 +78,7 @@ group :test do
   gem 'selenium-webdriver'
   gem 'simplecov', :require => false
   gem "factory_girl_rails", "~> 4.0"
-  gem 'pg', '~> 0.21.0'
+  #gem 'pg', '~> 0.21'
   gem 'rubycas-client', :git => 'git://github.com/shubham7jain/rubycas-client.git'
   gem 'rails-controller-testing'
 end

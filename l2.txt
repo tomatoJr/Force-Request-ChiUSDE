@@ -1,0 +1,75 @@
+.............FF...............***..*....F..User password: DarthVader123
+Given password: DarthVader123
+.User password: DarthVader123
+Given password: DarthVader123
+.User password: DarthVader123
+Given password: DarthVader123
+.*................*
+
+Pending: (Failures listed here are expected and do not affect your suite's status)
+
+  1) StudentRequestsController Load Admin Page should set the priority when params has a :priority_sel but session does not
+     # Temporarily skipped with xit
+     # ./spec/controllers/student_request_controller_spec.rb:325
+
+  2) StudentRequestsController Load Admin Page should set the priority when neither  params nor session has :priority_sel
+     # Temporarily skipped with xit
+     # ./spec/controllers/student_request_controller_spec.rb:345
+
+  3) StudentRequestsController Load Admin Page should set the priority from the params when available
+     # Temporarily skipped with xit
+     # ./spec/controllers/student_request_controller_spec.rb:365
+
+  4) StudentRequestsController updaterequestbyadmin should add notes to a student if available
+     # Temporarily skipped with xit
+     # ./spec/controllers/student_request_controller_spec.rb:408
+
+  5) UsersHelper add some examples to (or delete) /home/ec2-user/environment/p/Force-Request-ChiUSDE/spec/helpers/users_helper_spec.rb
+     # Not yet implemented
+     # ./spec/helpers/users_helper_spec.rb:14
+
+  6) users/new.html.erb add some examples to (or delete) /home/ec2-user/environment/p/Force-Request-ChiUSDE/spec/views/users/new.html.erb_spec.rb
+     # Not yet implemented
+     # ./spec/views/users/new.html.erb_spec.rb:4
+
+Failures:
+
+  1) StudentRequestsController Create Student Request:  on properly formatted create request creates a student request
+     Failure/Error: expect(flash[:notice]).to eq("Student Request was successfully created.")
+
+       expected: "Student Request was successfully created."
+            got: nil
+
+       (compared using ==)
+     # ./spec/controllers/student_request_controller_spec.rb:90:in `block (4 levels) in <top (required)>'
+
+  2) StudentRequestsController Create Student Request:  on mal formatted create request attempts to create a new a New Force Request
+     Failure/Error: expect(flash[:warning]).to eq("Uin can't be blank, Major can't be blank, Classification can't be blank, Request semester can't be blank, Request semester  is not a valid request semester, Course can't be blank, Course is invalid")
+
+       expected: "Uin can't be blank, Major can't be blank, Classification can't be blank, Request semester can't be blank, Request semester  is not a valid request semester, Course can't be blank, Course is invalid"
+            got: "Uin can't be blank, Major can't be blank, Classification can't be blank, Request semester can't be b...valid request semester, Course can't be blank, Course is invalid, Priority  is not a valid prioroty"
+
+       (compared using ==)
+     # ./spec/controllers/student_request_controller_spec.rb:112:in `block (4 levels) in <top (required)>'
+
+  3) StudentRequestsController login should display a flash warning when account doesn't exist
+     Failure/Error: expect(flash[:warning]).to eq("The account doesn't exist. Please sign up first.")
+
+       expected: "The account doesn't exist. Please sign up first."
+            got: "The account doesn't exsit. Please sign up first."
+
+       (compared using ==)
+     # ./spec/controllers/student_request_controller_spec.rb:463:in `block (3 levels) in <top (required)>'
+
+3 deprecation warnings total
+
+Finished in 1.86 seconds (files took 2.06 seconds to load)
+64 examples, 3 failures, 6 pending
+
+Failed examples:
+
+rspec ./spec/controllers/student_request_controller_spec.rb:67 # StudentRequestsController Create Student Request:  on properly formatted create request creates a student request
+rspec ./spec/controllers/student_request_controller_spec.rb:98 # StudentRequestsController Create Student Request:  on mal formatted create request attempts to create a new a New Force Request
+rspec ./spec/controllers/student_request_controller_spec.rb:458 # StudentRequestsController login should display a flash warning when account doesn't exist
+
+Coverage report generated for RSpec to /home/ec2-user/environment/p/Force-Request-ChiUSDE/coverage. 657 / 734 LOC (89.51%) covered.
