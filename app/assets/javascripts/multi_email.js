@@ -13,5 +13,5 @@ function multi_email(subject) {
     
     uniq_email_list.join(',');
     if (uniq_email_list.length >= 1)
-        window.open("mailto:" + uniq_email_list + "?subject=" + "Force Request System: Regarding course " + subject);
+        window.open("mailto:" + uniq_email_list + "?subject=" + "Force Request System: Regarding course " + subject + "&body=");
 }

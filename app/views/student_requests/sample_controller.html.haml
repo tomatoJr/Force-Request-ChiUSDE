@@ -1,0 +1,5 @@
+%h1 Compose Message
+= form_tag(student_requests_multiupdate_path(), method: "put") do
+
+  = text_area 'email_message', nil, rows: 10, cols: 25, placeholder: 'Enter message here', class: 'notes'
+  = submit_tag 'Confirm', :id => 'submit_button'

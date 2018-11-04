@@ -44,7 +44,7 @@
     %h4
     %input{:onclick => "return toggleMe('student_requests_#{course}', '#{course}')", :type => "button", :value => "(-) CSCE #{course}", :id => course, :class => "course_id_button"}
     %div{:id => "student_requests_#{course}"}
-      = form_tag(student_requests_multiupdate_path(), method: "put") do
+      = form_tag(student_requests_sample_controller_path(), method: "put") do
         %table#student_requests.sortableadmin
           %thead 
             %tr
@@ -87,7 +87,7 @@
                   %a{:onclick => "return getDetailsById('#{record.request_id}')"} #{"View Details"}
                   
                   
-                %td= (link_to 'Approve', {:action => "approve", :controller => "student_requests",:id => record.request_id}, :method => :put) + "<br>".html_safe+ (link_to 'Hold', {:action => "hold", :controller => "student_requests",:id => record.request_id}, :method => :put) + "<br>".html_safe+ (link_to 'Reject', {:action => "reject", :controller => "student_requests",:id => record.request_id}, :method => :put)   
+                %td= (link_to 'Approve', {:action => "approve", :controller => "student_requests",:id => record.request_id, :message => "You have been approved"}, :method => :put) + "<br>".html_safe+ (link_to 'Hold', {:action => "hold", :controller => "student_requests", :id => record.request_id,:message => "You are on Hold"}, :method => :put) + "<br>".html_safe+ (link_to 'Reject', {:action => "reject", :controller => "student_requests",:id => record.request_id, :message => "You have been Rejected"}, :method => :put)   
                 
             %table{ :class => "multiUpdate" }
               %tr

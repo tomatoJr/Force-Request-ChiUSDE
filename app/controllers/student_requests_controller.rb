@@ -133,10 +133,16 @@ class StudentRequestsController < ApplicationController
   def email_the_status()
     @student_request = StudentRequest.find params[:id]
     @student = Student.where(:uin => @student_request.uin)
-    StudentMailer.update_force_state(@student[0],@student_request).deliver
+    @messages = params[:message]
+    StudentMailer.update_force_state(@student[0],@student_request,@messages).deliver
   end
 
-
+  def temporary_email(id, message)
+    @student_request = StudentRequest.find(id)
+    @student = Student.where(:uin => @student_request.uin)
+    @messages = message
+    StudentMailer.update_force_state(@student[0],@student_request,@messages).deliver
+  end
 
 
 
@@ -344,19 +350,39 @@ class StudentRequestsController < ApplicationController
   def getStudentInformationByUin
     @student_by_uin = StudentRequest.where(uin: params[:uin])
   end
-
+  
+  def sample_controller
+    session[:request_ids] = params[:request_ids]
+    session[:multi_state_sel] = params[:multi_state_sel]
+    @textmessage = "This is a sample message"
+    # @array_of_students= []
+    
+    # @temp = params[:multi_state_sel]
+    # if(params[:request_ids] != nil)
+    #   params[:request_ids].each { |id|
+    #     @student_request = StudentRequest.find id
+    #     student = Student.where(:uin => @student_request.uin)
+    #     @array_of_students << student[0]
+    #     puts @array_of_students
+    #   }
+    # end
+  end
+  
   def multiupdate
-    if (params[:request_ids] != nil)
+    if (session[:request_ids] != nil)
       isUpdate = false
-      params[:request_ids].each { |id|
+      session[:request_ids].each { |id|
         @student_request = StudentRequest.find id
         if(@student_request.state == StudentRequest::WITHDRAWN_STATE)
           flash[:warning] = "Student has already withdrawn their request"
         else
-          if(params[:multi_state_sel] != "Select State")
+          if(session[:multi_state_sel] != "Select State")
             isUpdate = true
-            @student_request.state = params[:multi_state_sel]
-            @student_request.save!
+            @student_request.state = session[:multi_state_sel]
+              @student_request.save!
+              message = params[:email_message]
+              puts message.to_s
+            temporary_email(id, message)
           end
           # if(params[:multi_priority_sel] != "Select Priority")
           #   isUpdate = true
@@ -402,6 +428,8 @@ class StudentRequestsController < ApplicationController
     @allPriorityStates = ["Select Priority",StudentRequest::VERYHIGH_PRIORITY, StudentRequest::HIGH_PRIORITY, StudentRequest::NORMAL_PRIORITY, StudentRequest::LOW_PRIORITY, StudentRequest::VERYLOW_PRIORITY]
     @student_by_id =  StudentRequest.where(request_id: params[:id])
   end
+
+
 
   def deleteall
     @student_requests = StudentRequest.all.as_json
