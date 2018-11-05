@@ -11,7 +11,9 @@
             = label :student_request, :name, 'Full Name'
           %td  
             = @students[0].name
-
+        %tr
+          %td
+            =@level_student
         %tr
           %td  
             = label :student_request, :major, 'Major'
@@ -40,7 +42,7 @@
           %td   
             = label :student_request, :expected_graduation, 'Expected Graduation*'
           %td 
-            = select :student_request, 'expected_graduation', @YearSemester
+            = select :student_request, 'expected_graduation', @YearSemester 
         %tr
           %td   
             = label :student_request, :request_semester, 'Request Semester*'
@@ -71,3 +73,4 @@
       
     =  form_tag(students_show_path, method: :get) do
       = submit_tag 'Cancel', :id => 'request_button_right'
+       

@@ -327,7 +327,6 @@ DEPENDENCIES
   selenium-webdriver
   simplecov
   spring
-  sprockets (~> 3.7.2)
   themoviedb
   turbolinks
   tzinfo-data
@@ -338,4 +337,4 @@ RUBY VERSION
    ruby 2.4.3p205
 
 BUNDLED WITH
-   1.16.6
+   1.17.1

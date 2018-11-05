@@ -28,10 +28,15 @@ gem "audited", "~> 4.3"
 gem "attr_encrypted", "~> 3.0.0"
 
 gem "figaro"
+<<<<<<< HEAD
 gem 'pg', '~> 0.21'
 
 gem 'sprockets', '~> 3.7.2'
 
+=======
+
+gem 'pg', '~> 0.21'
+>>>>>>> ec59955b719a44c044906ad78f3baebea0e6e914
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

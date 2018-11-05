@@ -34,6 +34,8 @@ class StudentRequestsController < ApplicationController
       @student_request = StudentRequest.new(student_request_params_with_uin)
       @student_request.state = StudentRequest::ACTIVE_STATE
       @student_request.priority = StudentRequest::NORMAL_PRIORITY
+      
+      
       if @student_request.save
         flash[:notice] = "Student Request was successfully created."
         redirect_to student_requests_adminprivileges_path
@@ -56,7 +58,7 @@ class StudentRequestsController < ApplicationController
     ##### HACK!!!!!! Because course id and section id are encrypted data (FERPA) it cannot be searched by.
     found = false
     @student_requests.each do |r|
-
+ 
 
 
       if r.course_id == params[:student_request][:course_id] and
@@ -65,25 +67,43 @@ class StudentRequestsController < ApplicationController
          break
       end
     end
+    #select limit for the student 
+    
+    @flagclass= 0 
+    @level_student = @students[0].classification.to_s
+    if  @level_student.eql? "G7"
+        @flagclass= 3
+      else
+        @flagclass= 5
+    end
+    
+    
     # if StudentRequest.exists?(:uin => session_get(:uin), :course_id => params[:student_request][:course_id], :section_id => params[:student_request][:section_id])
     if found
         flash[:warning] = "You have already submitted a force request for CSCE" +  params[:student_request][:course_id] + "-" + params[:student_request][:section_id]
         initForNewForceRequest
         render :new
+      
     else
         @student_request = StudentRequest.new(student_request_params_with_uin)
         @student_request.state = StudentRequest::ACTIVE_STATE
         #@student_request.priority = StudentRequest::NORMAL_PRIORITY
-
-        if @student_request.save
-          flash[:notice] = "Student Request was successfully created."
-          # This is where an email will be sent to comfirm the force request.
-          StudentMailer.confirm_force_request(@students[0], @student_request).deliver
-          redirect_to students_show_path
+        if  @student_requests = StudentRequest.where(:uin => session_get(:uin)).count >= @flagclass
+            flash[:notice] = "Maximum limit of force request reached "
+            redirect_to students_show_path
         else
-          flash[:warning] = @student_request.errors.full_messages.join(", ")
-          initForNewForceRequest
-          render :new
+            if @student_request.save
+              
+              flash[:notice] = "Student Request was successfully created."
+              # This is where an email will be sent to comfirm the force request.
+              StudentMailer.confirm_force_request(@students[0], @student_request).deliver
+              redirect_to students_show_path
+             
+            else
+              flash[:warning] = @student_request.errors.full_messages.join(", ")
+              initForNewForceRequest
+              render :new
+            end
         end
     end
 
@@ -354,7 +374,6 @@ class StudentRequestsController < ApplicationController
   def sample_controller
     session[:request_ids] = params[:request_ids]
     session[:multi_state_sel] = params[:multi_state_sel]
-    @textmessage = "This is a sample message"
     # @array_of_students= []
     
     # @temp = params[:multi_state_sel]
@@ -414,6 +433,7 @@ class StudentRequestsController < ApplicationController
     @requestSemester = StudentRequest::REQUEST_SEMESTER
     @requestPriority = StudentRequest::PRIORITY_LIST
     @majorList = Major.pluck(:major_id)
+    
   end
 
   def adminprivileges
