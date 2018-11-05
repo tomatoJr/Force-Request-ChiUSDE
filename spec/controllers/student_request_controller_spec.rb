@@ -125,6 +125,18 @@ describe StudentRequestsController, :type => :controller do
       end
     end
 
+    # context 'limit on the number of force request' do
+    #   it 'limits the number of request raised by a student' do
+        
+    #     #Then
+    #     expect(flash[:notice]).to eq("Student Request was successfully created.")
+    #     assert_response :redirect, :action => 'students_show_path'
+        
+    #   end
+
+        
+    # end
+      
 
     context 'on mal formatted create request' do
       it 'attempts to create a new a New Force Request' do
@@ -277,6 +289,18 @@ describe StudentRequestsController, :type => :controller do
       #Then
       expect(student_request.state).to eq(StudentRequest::APPROVED_STATE)
       assert_response :redirect, :action => 'student_requests_adminview_path'
+    end
+    
+    it "should be able to set admin priority" do
+      student = FactoryGirl.create(:student)
+      student_request = FactoryGirl.create(:student_request)
+
+      StudentRequest.should_receive(:find).once.and_return(student_request)
+      # StudentRequest::HIGH_PRIORITY
+      put :updaterequestbyadmin, :priority => StudentRequest::HIGH_PRIORITY
+      
+      expect(student_request.priority).to eq(StudentRequest::HIGH_PRIORITY)
+    
     end
 
     it "should Reject a student request" do
