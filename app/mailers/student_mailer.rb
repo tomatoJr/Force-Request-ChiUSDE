@@ -18,9 +18,10 @@ class StudentMailer < ActionMailer::Base
         mail(:to => @student.email, :subject => "Reset Your Password")
     end
     
-    def update_force_state(student, req)
+    def update_force_state(student, req, message)
         @student = student
         @req =req
+        @message = message
         mail(:to => @student.email, :subject => "Updates on Your Force Request")
     
     end

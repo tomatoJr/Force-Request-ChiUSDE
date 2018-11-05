@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   
   put 'student_requests/updaterequestbyadmin' => 'student_requests#updaterequestbyadmin'
   put 'student_requests/multiupdate' => 'student_requests#multiupdate'
+  put 'student_requests/sample_controller' => 'student_requests#sample_controller'
 
   post 'student_requests/login' => 'student_requests#login'
   get 'student_requests/getSpreadsheet' => 'student_requests#getSpreadsheet'

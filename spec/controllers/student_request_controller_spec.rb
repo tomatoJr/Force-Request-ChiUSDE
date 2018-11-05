@@ -28,6 +28,38 @@ describe StudentRequestsController, :type => :controller do
     end
   end
 
+  describe "Priority" do
+    context 'on properly formatted create request' do
+      it 'creates a student request' do
+
+       #Given
+       student = FactoryGirl.create(:student)
+       student_request = FactoryGirl.create(:student_request)
+       Student.should_receive(:where).once.and_return([student])
+       StudentMailer.should_receive(:confirm_force_request).once.and_return( double("Mailer", :deliver => true) );
+
+
+       #When
+       post :create, :student_request => {:name => student_request.name,
+                                          :uin => student_request.uin,
+                                          :major => student_request.major,
+                                          :classification => student_request.classification,
+                                          :email => student_request.email,
+                                          :request_semester => student_request.request_semester,
+                                          :course_id => student_request.course_id,
+                                          :priority => student_request.priority,
+                                          :phone => student_request.phone,
+                                          :section_id => 505
+       }
+
+       #Then
+       expect(student_request.priority).to eq(StudentRequest::HIGH_PRIORITY)
+       #expect(flash[:notice]).to eq("Student Request was successfully created.")
+       #assert_response :redirect, :action => 'students_show_path'
+
+      end
+    end
+    end
 
   describe "Create Student Request: " do
     context 'on a a student request that already exists' do
