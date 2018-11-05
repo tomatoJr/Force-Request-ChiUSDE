@@ -8,7 +8,7 @@ class StudentRequestsController < ApplicationController
   # before_filter CASClient::Frameworks::Rails::Filter
 
   def student_request_params
-    params.require(:student_request).permit(:request_id, :uin, :name, :major , :classification, :minor, :email, :phone, :expected_graduation, :request_semester, :course_id, :section_id, :notes, :state, :priority)
+    params.require(:student_request).permit(:request_id, :uin, :name, :major , :classification, :minor, :email, :phone, :expected_graduation, :request_semester, :course_id, :section_id, :notes, :state, :priority, :admin_priority)
   end
 
   def index
@@ -159,7 +159,7 @@ class StudentRequestsController < ApplicationController
       @all_request_semesters = [StudentRequest::SPRING, StudentRequest::FALL, StudentRequest::SUMMER,StudentRequest::NSPRING, StudentRequest::NFALL, StudentRequest::NSUMMER]
       @all_states = [StudentRequest::ACTIVE_STATE, StudentRequest::REJECTED_STATE, StudentRequest::APPROVED_STATE, StudentRequest::HOLD_STATE]
       @default_states = [StudentRequest::ACTIVE_STATE, StudentRequest::HOLD_STATE, StudentRequest::APPROVED_STATE]
-
+    
       if params[:state_sel] == nil
         if session_get(:state_sel) != nil
           @all_states.each { |state|
@@ -231,19 +231,25 @@ class StudentRequestsController < ApplicationController
         @student_request.state = params[:state]
         isUpdated = true
       end
-    #  if(StudentRequest::PRIORITY_LIST.include? params[:priority])
-    #     @student_request.priority = params[:priority]
-    #     isUpdated = true
-    #  end
-
-     # unless params[:notes_for_myself].nil? or params[:notes_for_myself].empty?
+    if(StudentRequest::PRIORITY_LIST.include? params[:priority])
+      @student_request.priority = params[:priority]
+      isUpdated = true
+    end
+ 
+    # unless params[:notes_for_myself].nil? or params[:notes_for_myself].empty?
       if params[:notes_for_myself].nil? or params[:notes_for_myself].empty?
         @student_request.admin_notes = nil
       else
         @student_request.admin_notes = params[:notes_for_myself]
       end
-      
+      #if params[:admin_priority].nil? or params[:admin_priority].empty?
+      #@student_request.admin_priority = nil
+      #else
+      if(StudentRequest::PRIORITY_LIST.include? params[:admin_priority])
+        @student_request.admin_priority = params[:admin_priority]
+      end
       isUpdated = true
+      
   #    end
 
     #  unless params[:notes_for_student].nil? or params[:notes_for_student].empty?

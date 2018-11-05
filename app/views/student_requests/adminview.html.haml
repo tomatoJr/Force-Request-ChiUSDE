@@ -59,7 +59,8 @@
               %th Expected Graduation
               %th Request Semester
               %th State
-              %th Priority
+              %th Student Priority
+              %th Admin Priority
               %th Creation date
               %th Admin Notes
               %th View Details
@@ -79,8 +80,9 @@
                 %td= record.section_id
                 %td= record.expected_graduation
                 %td= record.request_semester
-                %td= record.priority
                 %td= record.state
+                %td= record.priority
+                %td= if record.admin_priority then record.admin_priority else "(View details to add priority)" end
                 %td= record.creation_date.strftime("%Y-%m-%d %H:%M:%S")
                 %td= if record.admin_notes then record.admin_notes else "(View details to add notes)" end
                 %td
@@ -92,7 +94,8 @@
             %table{ :class => "multiUpdate" }
               %tr
                 %td= select_tag("multi_state_sel", options_for_select(@allAdminStates))
-                // %td= select_tag("multi_priority_sel", options_for_select(@allPriorityStates))
+                //%td= select_tag("state", options_for_select(@allPriorityStates))
+                //%td= select_tag("multi_priority_sel", options_for_select(@allPriorityStates))
                 %td= submit_tag "Update Selected"
                 %td= link_to "Email Selected", "", :onclick => "multi_email(\"#{course}\"); return false"
               %tr{ :class => "excel_sheet"}

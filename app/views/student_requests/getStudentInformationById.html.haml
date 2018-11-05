@@ -35,6 +35,19 @@
     %tr  
       %th Notes by Student
       %td= record.notes
+      
+      
+    %tr
+      %th Admin Priority
+      //%td= record.admin_priority
+      //%td   
+      //  = label :student_request, :admin_priority, 'Priority*'
+      //%td 
+      //%td= select :student_request, 'admin priority', @requestPriority
+      %td= record.admin_priority
+      //%td= select_tag("admin_priority", options_for_select(@allPriorityStates))
+      
+      
     %tr  
       %th Notes by Admin(seen by admins only)
       %td= record.admin_notes
@@ -47,6 +60,7 @@
             //%textarea{:name => "notes_for_student", :placeholder => "Notes for student", :class => "notes"}
             %input{:name => "notes_for_myself", :placeholder => "Notes for Myself", :class => "notes",
               :value => (record.admin_notes if record.admin_notes)}
+            = select_tag("admin_priority", options_for_select(@allPriorityStates))
             = select_tag("state", options_for_select(@allAdminStates))
             = submit_tag 'Update'
         

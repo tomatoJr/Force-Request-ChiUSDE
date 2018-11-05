@@ -17,7 +17,7 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_url_options = { host: 'https://b44c5f27e9854996b6db0388357235dc.vfs.cloud9.us-east-2.amazonaws.com'}
+  config.action_mailer.default_url_options = { host: 'https://3301a31b7b7e4e6aa991191521be8e9e.vfs.cloud9.us-east-2.amazonaws.com'}
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',

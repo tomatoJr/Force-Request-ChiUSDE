@@ -23,6 +23,8 @@ class CreateStudents < ActiveRecord::Migration
     t.string   "request_uuid"
     t.datetime "created_at"
   end
+  
+  
 
   add_index "audits", ["associated_id", "associated_type"], name: "associated_index", using: :btree
   add_index "audits", ["auditable_id", "auditable_type"], name: "auditable_index", using: :btree
@@ -97,6 +99,8 @@ class CreateStudents < ActiveRecord::Migration
     t.datetime "updated_at"
   end
 
+
+  
   
   # def up
   #   create_table 'students' do |t|
