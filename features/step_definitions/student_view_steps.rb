@@ -324,11 +324,3 @@ Then(/^I should see the request with priority$/) do
   page.should have_content("Student Request was successfully created.")
   page.should have_content("High")
 end
-
-
-
-
-
-
-
-

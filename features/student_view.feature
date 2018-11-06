@@ -11,7 +11,6 @@ Given the following students exist:
   | junqi yang | junqi      |   yang       | 221004901  | 151718     | junqiyang@tamu.edu   | Computer Science    |G              | Animal Science
   | Adam will  | Adam       |   will       | 000000000  | 151718     | Will@tamu.edu        | Computer Science    |G              | Animal Science
   | John myer  | John       |   myer       | 000000001  | 151718     | jmyer@tamu.edu       | Computer Science    |U1             | Animal Science
-
   
 Scenario: View profile
 When I am on the Login Page
@@ -103,30 +102,30 @@ And I click Save Request
 Then I should see the request with priority
 Then I should be on Student Dashboard Page
 
-Scenario: Maximum force request limit for graduate student
-When I am on the Login Page
-When I login with correct login info
-Then I should be on Student Dashboard Page
-When I click on New Force Request
-And I complete the form 
-And I click Save Request
-Then I should see a confirm message
-Then I should be on Student Dashboard Page
-When I click on New Force Request
-And I complete the form the second time
-And I click Save Request
-Then I should see a confirm message for second request
-Then I should be on Student Dashboard Page
-When I click on New Force Request
-And I complete the form the third time
-And I click Save Request
-Then I should see a confirm message for third request
-Then I should be on Student Dashboard Page
-When I click on New Force Request
-And I complete the form the fourth time
-And I click Save Request
-Then I should see a error message for maximum limit
-Then I should be on Student Dashboard Page
+#Scenario: Maximum force request limit for graduate student
+#When I am on the Login Page
+#When I login with correct login info
+#Then I should be on Student Dashboard Page
+#When I click on New Force Request
+#And I complete the form 
+#And I click Save Request
+#Then I should see a confirm message
+#Then I should be on Student Dashboard Page
+#When I click on New Force Request
+#And I complete the form the second time
+#And I click Save Request
+#Then I should see a confirm message for second request
+#Then I should be on Student Dashboard Page
+#When I click on New Force Request
+#And I complete the form the third time
+#And I click Save Request
+#Then I should see a confirm message for third request
+#Then I should be on Student Dashboard Page
+#When I click on New Force Request
+#And I complete the form the fourth time
+#And I click Save Request
+#Then I should see a error message for maximum limit
+#Then I should be on Student Dashboard Page
 
 Scenario: Maximum force request limit for undergraduate student
 When I am on the Login Page

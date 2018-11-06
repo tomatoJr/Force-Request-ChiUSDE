@@ -168,3 +168,12 @@ end
 Then (/^I should see Nothing has been selected for Update/) do
     page.should have_content("Nothing has been selected for Update")
 end
+
+Then (/^I should be on the custom message page/) do
+    page.should have_content("Compose Message")
+end
+
+And (/^I type in a custom message/) do
+    fill_in('Enter message here', :with => "Good Luck!")
+    click_button('Confirm')
+end
