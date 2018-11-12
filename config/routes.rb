@@ -23,7 +23,9 @@ Rails.application.routes.draw do
   put 'student_requests/reject' => 'student_requests#reject'
   put 'student_requests/hold' => 'student_requests#hold'
   put 'student_requests/email_the_status' => 'student_requests#email_the_status'
-
+  
+  get 'student_requests/set_request_limit' => 'student_requests#set_request_limit'
+  post 'students_requests/createlimits' => 'student_requests#createlimits'
   
   delete 'student_requests/deleteall' => 'student_requests#deleteall'
   get 'student_requests/homeRedirect' => 'student_requests#homeRedirect'

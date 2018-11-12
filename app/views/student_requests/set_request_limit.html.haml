@@ -1,0 +1,37 @@
+%h1 Set limit for requests
+.signuppage
+  =  form_tag('/students_requests/createlimits', method: :post) do
+    %table{:border => "0"}
+      %tr
+        %td
+          = label :session, :classification, 'Select the classification'
+        %td
+          = select :session, 'classification', @limit, :required => true
+      %tr  
+        %td
+          = label :session, :Very_high, 'Very High'
+        %td
+          = text_field(:session, :Very_high, class: 'input-field', placeholder: '99', :required => true) 
+      %tr  
+        %td
+          = label :session, :High, 'High'
+        %td
+          = text_field(:session, :High, class: 'input-field', placeholder: '99', :required => true) 
+      %tr  
+        %td
+          = label :session, :Normal, 'Normal'
+        %td
+          = text_field(:session, :Normal, class: 'input-field', placeholder: '99', :required => true) 
+      %tr  
+        %td
+          = label :session, :Low, 'Low'
+        %td
+          = text_field(:session, :Low, class: 'input-field', placeholder: '99', :required => true) 
+      %tr  
+        %td
+          = label :session, :Very_low, 'Very Low'
+        %td
+          = text_field(:session, :Very_low, class: 'input-field', placeholder: '99', :required => true) 
+    = submit_tag 'Submit', :id => 'submit_limit'
+  = form_tag(student_requests_adminprivileges_path, method: :get) do
+    = submit_tag  "Cancel", :id => 'signup_button_right'

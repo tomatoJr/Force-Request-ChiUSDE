@@ -69,13 +69,19 @@ class StudentRequestsController < ApplicationController
     end
     #select limit for the student 
     
-    @flagclass= 0 
-    @level_student = @students[0].classification.to_s
-    if  @level_student.eql? "G7"
-        @flagclass= 3
-      else
-        @flagclass= 5
-    end
+   
+    level_student = @students[0].classification.to_s
+    temp_priority = params[:student_request][:priority]
+    puts(temp_priority)
+    @flagclass= Limit.find(temp_priority).where(:classification => level_student)
+    @existing_request = StudentRequest.where(:uin => session_get(:uin), :priority => temp_priority).count
+    puts(flagclass)
+    puts(existing_request)
+    #if  @level_student.eql? "G7"
+    #    @flagclass= 3
+    #  else
+    #    @flagclass= 5
+    #end
     
     
     # if StudentRequest.exists?(:uin => session_get(:uin), :course_id => params[:student_request][:course_id], :section_id => params[:student_request][:section_id])
@@ -88,7 +94,8 @@ class StudentRequestsController < ApplicationController
         @student_request = StudentRequest.new(student_request_params_with_uin)
         @student_request.state = StudentRequest::ACTIVE_STATE
         #@student_request.priority = StudentRequest::NORMAL_PRIORITY
-        if  @student_requests = StudentRequest.where(:uin => session_get(:uin)).count >= @flagclass
+        #if  @student_requests = StudentRequest.where(:uin => session_get(:uin)).count >= @flagclass
+        if  @student_requests = @existing_request >= @flagclass
             flash[:notice] = "Maximum limit of force request reached "
             redirect_to students_show_path
         else
@@ -474,4 +481,22 @@ class StudentRequestsController < ApplicationController
   def add_new_force_request
     initForNewForceRequest
   end
+  
+  def set_request_limit
+    @limit = Limit.uniq.pluck(:classification)
+  end
+  
+  def createlimits
+    classification = params[:session][:classification]
+    very_high = params[:session][:Very_high]
+    high = params[:session][:High]
+    normal = params[:session][:Normal]
+    low = params[:session][:Low]
+    very_low = params[:session][:Very_low]
+    puts classification
+    puts high
+    Limit.where(:classification => classification).update_all(:very_high => very_high, :high => high, :normal => normal, :low => low, :very_low => very_low)
+    redirect_to student_requests_adminprivileges_path
+  end
+  
 end

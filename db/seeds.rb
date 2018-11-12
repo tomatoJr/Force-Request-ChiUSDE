@@ -144,8 +144,17 @@ majors = [
             {:major_id => 'Others'}]
             
 admins = [{:uin => '123456789', :name => 'admin', :password => 'tamu2017', :email => '123456789@tamu.edu'}]
+limits = [{:classification => 'G', :very_high => '99', :high => '99', :normal => '99', :low => '99', :very_low => '99'}, 
+          {:classification => 'U1', :very_high => '99', :high => '99', :normal => '99', :low => '99', :very_low => '99'},
+          {:classification => 'U2', :very_high => '99', :high => '99', :normal => '99', :low => '99', :very_low => '99'},
+          {:classification => 'U3', :very_high => '99', :high => '99', :normal => '99', :low => '99', :very_low => '99'},
+          {:classification => 'U4', :very_high => '99', :high => '99', :normal => '99', :low => '99', :very_low => '99'}]
 
 students = []
+
+limits.each do |limit|
+  Limit.create!(limit)
+end
 
 students.each do |student|
    Student.create!(student) 

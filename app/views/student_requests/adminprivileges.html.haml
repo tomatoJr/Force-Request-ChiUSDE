@@ -9,5 +9,8 @@
 %br
 = link_to '<button type="button" class="regularbutton">Delete All Force Requests</button>'.html_safe, student_requests_deleteall_path, :data => { confirm: 'Are you sure that you want to delete everything?'}
 %br
+= link_to '<button type="button" class="regularbutton">Set Force Request Limit</button>'.html_safe, student_requests_set_request_limit_path
+%br
 = link_to '<button type="button" class="regularbutton">Cancel</button>'.html_safe, student_requests_adminview_path
+
 
