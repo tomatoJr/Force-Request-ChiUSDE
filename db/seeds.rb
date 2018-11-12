@@ -144,11 +144,11 @@ majors = [
             {:major_id => 'Others'}]
             
 admins = [{:uin => '123456789', :name => 'admin', :password => 'tamu2017', :email => '123456789@tamu.edu'}]
-limits = [{:classification => 'G', :very_high => '99', :high => '99', :normal => '99', :low => '99', :very_low => '99'}, 
-          {:classification => 'U1', :very_high => '99', :high => '99', :normal => '99', :low => '99', :very_low => '99'},
-          {:classification => 'U2', :very_high => '99', :high => '99', :normal => '99', :low => '99', :very_low => '99'},
-          {:classification => 'U3', :very_high => '99', :high => '99', :normal => '99', :low => '99', :very_low => '99'},
-          {:classification => 'U4', :very_high => '99', :high => '99', :normal => '99', :low => '99', :very_low => '99'}]
+limits = [{:classification => 'G7', "Very High".to_sym => '99', :High => '99', :Normal => '99', :Low => '99', "Very Low".to_sym => '99'}, 
+          {:classification => 'U1', "Very High".to_sym => '99', :High => '99', :Normal => '99', :Low => '99', "Very Low".to_sym => '99'},
+          {:classification => 'U2', "Very High".to_sym => '99', :High => '99', :Normal => '99', :Low => '99', "Very Low".to_sym => '99'},
+          {:classification => 'U3', "Very High".to_sym => '99', :High => '99', :Normal => '99', :Low => '99', "Very Low".to_sym => '99'},
+          {:classification => 'U4', "Very High".to_sym => '99', :High => '99', :Normal => '99', :Low => '99', "Very Low".to_sym => '99'}]
 
 students = []
 

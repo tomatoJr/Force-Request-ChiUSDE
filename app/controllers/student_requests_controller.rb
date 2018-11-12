@@ -72,17 +72,23 @@ class StudentRequestsController < ApplicationController
    
     level_student = @students[0].classification.to_s
     temp_priority = params[:student_request][:priority]
-    puts(temp_priority)
-    @flagclass= Limit.find(temp_priority).where(:classification => level_student)
+    limit_val = Limit.where(:classification => level_student)
+
+    case temp_priority
+    when "Very High"
+      @flagclass = limit_val.first['Very High']
+    when "High"
+      @flagclass = limit_val.first['High']
+    when "Normal"
+      @flagclass = limit_val.first['Normal']
+    when "Low"
+      @flagclass = limit_val.first['Low']
+    when "Very Low"
+      @flagclass = limit_val.first['Very Low']
+    end
+      
     @existing_request = StudentRequest.where(:uin => session_get(:uin), :priority => temp_priority).count
-    puts(flagclass)
-    puts(existing_request)
-    #if  @level_student.eql? "G7"
-    #    @flagclass= 3
-    #  else
-    #    @flagclass= 5
-    #end
-    
+
     
     # if StudentRequest.exists?(:uin => session_get(:uin), :course_id => params[:student_request][:course_id], :section_id => params[:student_request][:section_id])
     if found
@@ -94,7 +100,6 @@ class StudentRequestsController < ApplicationController
         @student_request = StudentRequest.new(student_request_params_with_uin)
         @student_request.state = StudentRequest::ACTIVE_STATE
         #@student_request.priority = StudentRequest::NORMAL_PRIORITY
-        #if  @student_requests = StudentRequest.where(:uin => session_get(:uin)).count >= @flagclass
         if  @student_requests = @existing_request >= @flagclass
             flash[:notice] = "Maximum limit of force request reached "
             redirect_to students_show_path
@@ -495,7 +500,7 @@ class StudentRequestsController < ApplicationController
     very_low = params[:session][:Very_low]
     puts classification
     puts high
-    Limit.where(:classification => classification).update_all(:very_high => very_high, :high => high, :normal => normal, :low => low, :very_low => very_low)
+    Limit.where(:classification => classification).update_all("Very High".to_sym => very_high, :High => high, :Normal => normal, :Low => low, "Very Low".to_sym => very_low)
     redirect_to student_requests_adminprivileges_path
   end
   

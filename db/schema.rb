@@ -47,11 +47,11 @@ ActiveRecord::Schema.define(version: 20181111223121) do
 
   create_table "limits", force: :cascade do |t|
     t.string   "classification"
-    t.integer  "very_high"
-    t.integer  "high"
-    t.integer  "normal"
-    t.integer  "low"
-    t.integer  "very_low"
+    t.integer  "Very High"
+    t.integer  "High"
+    t.integer  "Normal"
+    t.integer  "Low"
+    t.integer  "Very Low"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end

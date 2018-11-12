@@ -2,11 +2,11 @@ class CreateLimits < ActiveRecord::Migration[5.0]
   def change
     create_table :limits do |t|
       t.string :classification
-      t.integer :very_high
-      t.integer :high
-      t.integer :normal
-      t.integer :low
-      t.integer :very_low
+      t.integer "Very High".to_sym
+      t.integer :High
+      t.integer :Normal
+      t.integer :Low
+      t.integer "Very Low".to_sym
 
       t.timestamps
     end
