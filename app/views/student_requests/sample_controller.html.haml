@@ -1,5 +1,8 @@
+= include_gon
 %h1 Compose Message
 = form_tag(student_requests_multiupdate_path(), method: "put") do
-
-  = text_area 'email_message', nil, rows: 10, cols: 25, placeholder: 'Enter message here', class: 'notes'
+  = javascript_include_tag "/home/ec2-user/environment/Force-Request-ChiUSDE/app/assets/javascripts/template.js"
+  
+  
+  = text_area 'email_message', nil, rows: 10, cols: 25, placeholder: 'Enter message here', class: 'notes', id: "messagetemplate"
   = submit_tag 'Confirm', :id => 'submit_button'
