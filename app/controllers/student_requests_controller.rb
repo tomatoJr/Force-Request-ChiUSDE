@@ -504,4 +504,13 @@ class StudentRequestsController < ApplicationController
     redirect_to student_requests_adminprivileges_path
   end
   
+  def get_email_template
+    @template = Emailtemplate.pluck(:body)
+  end
+  
+  def edit_email_template
+    template = params[:session][:Body]
+    Emailtemplate.update(:body => template)
+    redirect_to student_requests_adminprivileges_path
+  end
 end
