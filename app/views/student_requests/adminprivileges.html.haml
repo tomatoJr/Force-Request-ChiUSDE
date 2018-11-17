@@ -1,3 +1,4 @@
+= include_gon 
 - unless session[:uin].nil?
   = render 'layouts/login'
 #adminprivileges
@@ -11,7 +12,7 @@
 %br
 = link_to '<button type="button" class="regularbutton">Set Force Request Limit</button>'.html_safe, student_requests_set_request_limit_path
 %br
-= link_to '<button type="button" class="regularbutton">Edit Email Template</button>'.html_safe, student_requests_get_email_template_path
+= link_to '<button type="button" class="regularbutton">Edit Email Template</button>'.html_safe, student_requests_get_email_template_path, :method => :put
 %br
 = link_to '<button type="button" class="regularbutton">Cancel</button>'.html_safe, student_requests_adminview_path
 

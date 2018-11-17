@@ -392,17 +392,10 @@ class StudentRequestsController < ApplicationController
   def sample_controller
     session[:request_ids] = params[:request_ids]
     session[:multi_state_sel] = params[:multi_state_sel]
-    # @array_of_students= []
-    
-    # @temp = params[:multi_state_sel]
-    # if(params[:request_ids] != nil)
-    #   params[:request_ids].each { |id|
-    #     @student_request = StudentRequest.find id
-    #     student = Student.where(:uin => @student_request.uin)
-    #     @array_of_students << student[0]
-    #     puts @array_of_students
-    #   }
-    # end
+    path = "/home/ec2-user/environment/Force-Request-ChiUSDE/app/views/student_mailer/email_template.text.erb"  
+    @body_message = ""
+    @body_message = IO.read(path)
+    gon.body_message = @body_message
   end
   
   def multiupdate
@@ -417,15 +410,9 @@ class StudentRequestsController < ApplicationController
             isUpdate = true
             @student_request.state = session[:multi_state_sel]
               @student_request.save!
-              message = params[:email_message]
-              puts message.to_s
+              message = params[:email_message][0]
             temporary_email(id, message)
           end
-          # if(params[:multi_priority_sel] != "Select Priority")
-          #   isUpdate = true
-          #   @student_request.priority = params[:multi_priority_sel]
-          #   @student_request.save!
-          # end
         end
       }
       if(isUpdate)
@@ -467,8 +454,6 @@ class StudentRequestsController < ApplicationController
     @student_by_id =  StudentRequest.where(request_id: params[:id])
   end
 
-
-
   def deleteall
     @student_requests = StudentRequest.all.as_json
     @student_requests.each do |record|
@@ -506,11 +491,21 @@ class StudentRequestsController < ApplicationController
   
   def get_email_template
     @template = Emailtemplate.pluck(:body)
+    path = "/home/ec2-user/environment/Force-Request-ChiUSDE/app/views/student_mailer/email_template.text.erb"  
+    @body_template = ""
+    @body_template = IO.read(path)
+    gon.body_template = @body_template
+      
   end
   
   def edit_email_template
-    template = params[:session][:Body]
-    Emailtemplate.update(:body => template)
+    path = "/home/ec2-user/environment/Force-Request-ChiUSDE/app/views/student_mailer/email_template.text.erb"   
+    body = ""
+    template = params[:email_template]
+    body << template[0]
+    File.open(path, "w+") do |f|
+      f.write(body)
+    end
     redirect_to student_requests_adminprivileges_path
   end
 end

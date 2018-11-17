@@ -1,13 +1,9 @@
+= include_gon 
 %h1 Edit email template
-//.signuppage
-= form_tag('/students_requests/editemailtemplate', method: :post) do
-  //  %table{:border => "0"}
-  //    %tr  
-  //      %td
-  //        = label :session, :Body, 'Body'
-  //      %td
-  //        = text_field(:session, :Body, class: 'input-field', placeholder: @template, :required => true)
-  = text_area(:session, :Body, class: 'input-field', rows: 10, cols: 50, placeholder: @template, :required => true)
+= form_tag(students_requests_edit_email_template_path(), method: "post") do
+  = javascript_include_tag "/home/ec2-user/environment/Force-Request-ChiUSDE/app/assets/javascripts/default_template.js"
+  = text_area 'email_template', nil, rows: 10, cols: 200, placeholder: 'Enter message here', class: 'notes', id: "defaulttemplate"
   = submit_tag 'Submit', :id => 'submit_limit'
+  
 = form_tag(student_requests_adminprivileges_path, method: :get) do
   = submit_tag  "Cancel", :id => 'signup_button_right'
