@@ -5,6 +5,13 @@ When(/^I login with correct login info$/) do
   click_button('Login')
 end
 
+When(/^I login with correct login info as undergraduate student$/) do
+  @user_info = {:email => "jmyer@tamu.edu",  :password => "151718"}
+  fill_in('Enter your Email', :with => @user_info[:email])
+  fill_in('Enter your password', :with => @user_info[:password])
+  click_button('Login')
+end
+
 Then (/^I should be on Student Dashboard Page$/) do
   page.should have_content("New Force Request")
   page.should have_content("Your Profile")
@@ -77,9 +84,53 @@ When(/^I click on New Force Request$/) do
 end
 
 
-
 And(/^I complete the form$/) do
   @student_request = {:minor=>"None", :expected_graduation=>"2018 Fall", :request_semester=>"2018 Fall", :course_id=>"629", :section_id => "600"}
+  page.has_content?("123123123")
+  select(@student_request[:expected_graduation], from:'Expected Graduation*')
+  select(@student_request[:request_semester], from:'Request Semester*')
+  fill_in('Course Id*', :with => @student_request[:course_id])
+  fill_in('Section Id*', :with => @student_request[:section_id]) 
+end
+
+And(/^I complete the form the second time$/) do
+  @student_request = {:minor=>"None", :expected_graduation=>"2018 Fall", :request_semester=>"2018 Fall", :course_id=>"630", :section_id => "600"}
+  page.has_content?("123123123")
+  select(@student_request[:expected_graduation], from:'Expected Graduation*')
+  select(@student_request[:request_semester], from:'Request Semester*')
+  fill_in('Course Id*', :with => @student_request[:course_id])
+  fill_in('Section Id*', :with => @student_request[:section_id]) 
+end
+
+And(/^I complete the form the third time$/) do
+  @student_request = {:minor=>"None", :expected_graduation=>"2018 Fall", :request_semester=>"2018 Fall", :course_id=>"631", :section_id => "600"}
+  page.has_content?("123123123")
+  select(@student_request[:expected_graduation], from:'Expected Graduation*')
+  select(@student_request[:request_semester], from:'Request Semester*')
+  fill_in('Course Id*', :with => @student_request[:course_id])
+  fill_in('Section Id*', :with => @student_request[:section_id]) 
+end
+
+And(/^I complete the form the fourth time$/) do
+  @student_request = {:minor=>"None", :expected_graduation=>"2018 Fall", :request_semester=>"2018 Fall", :course_id=>"632", :section_id => "600"}
+  page.has_content?("123123123")
+  select(@student_request[:expected_graduation], from:'Expected Graduation*')
+  select(@student_request[:request_semester], from:'Request Semester*')
+  fill_in('Course Id*', :with => @student_request[:course_id])
+  fill_in('Section Id*', :with => @student_request[:section_id]) 
+end
+
+And(/^I complete the form the fifth time$/) do
+  @student_request = {:minor=>"None", :expected_graduation=>"2018 Fall", :request_semester=>"2018 Fall", :course_id=>"633", :section_id => "600"}
+  page.has_content?("123123123")
+  select(@student_request[:expected_graduation], from:'Expected Graduation*')
+  select(@student_request[:request_semester], from:'Request Semester*')
+  fill_in('Course Id*', :with => @student_request[:course_id])
+  fill_in('Section Id*', :with => @student_request[:section_id]) 
+end
+
+And(/^I complete the form the sixth time$/) do
+  @student_request = {:minor=>"None", :expected_graduation=>"2018 Fall", :request_semester=>"2018 Fall", :course_id=>"634", :section_id => "600"}
   page.has_content?("123123123")
   select(@student_request[:expected_graduation], from:'Expected Graduation*')
   select(@student_request[:request_semester], from:'Request Semester*')
@@ -91,12 +142,58 @@ And(/^I click Save Request$/) do
   click_button('Save')
 end
 
-
-
 Then(/^I should see a confirm message$/) do
   page.should have_content("Student Request was successfully created.")
   page.should have_content("629")
   page.should have_content("600")
+end
+
+Then(/^I should see a confirm message for second request$/) do
+  page.should have_content("Student Request was successfully created.")
+  page.should have_content("629")
+  page.should have_content("600")
+  page.should have_content("630")
+  page.should have_content("600")
+end
+
+Then(/^I should see a confirm message for third request$/) do
+  page.should have_content("Student Request was successfully created.")
+  page.should have_content("629")
+  page.should have_content("600")
+  page.should have_content("630")
+  page.should have_content("600")
+  page.should have_content("631")
+  page.should have_content("600")
+end
+
+Then(/^I should see a confirm message for fourth request$/) do
+  page.should have_content("Student Request was successfully created.")
+  page.should have_content("629")
+  page.should have_content("600")
+  page.should have_content("630")
+  page.should have_content("600")
+  page.should have_content("631")
+  page.should have_content("600")
+  page.should have_content("632")
+  page.should have_content("600")
+end
+
+Then(/^I should see a confirm message for fifth request$/) do
+  page.should have_content("Student Request was successfully created.")
+  page.should have_content("629")
+  page.should have_content("600")
+  page.should have_content("630")
+  page.should have_content("600")
+  page.should have_content("631")
+  page.should have_content("600")
+  page.should have_content("632")
+  page.should have_content("600")
+  page.should have_content("633")
+  page.should have_content("600")
+end
+
+Then(/^I should see a error message for maximum limit$/) do
+  page.should have_content("Maximum limit of force request reached")
 end
 
 When(/^I click on Delete$/) do
@@ -227,11 +324,3 @@ Then(/^I should see the request with priority$/) do
   page.should have_content("Student Request was successfully created.")
   page.should have_content("High")
 end
-
-
-
-
-
-
-
-

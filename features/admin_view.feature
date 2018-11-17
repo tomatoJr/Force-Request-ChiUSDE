@@ -9,8 +9,6 @@ And I use admin account to login
 Then I should be on Admin View page
 And I should see all requests here
 
-
-
 Scenario: Admin Actions
 Given I am on the Login Page as admin
 And I use admin account to login
@@ -74,4 +72,6 @@ Scenario: Update Request with nothing changed
 Given I am on the Login Page as admin
 And I use admin account to login
 And I click first Update Selected
+Then I should be on the custom message page
+And I type in a custom message
 Then I should see Nothing has been selected for Update

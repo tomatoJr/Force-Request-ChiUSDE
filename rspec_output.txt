@@ -1,0 +1,106 @@
+..........FFF.FF................***..*....F..User password: DarthVader123
+Given password: DarthVader123
+.User password: DarthVader123
+Given password: DarthVader123
+.User password: DarthVader123
+Given password: DarthVader123
+.*................*
+
+Pending: (Failures listed here are expected and do not affect your suite's status)
+
+  1) StudentRequestsController Load Admin Page should set the priority when params has a :priority_sel but session does not
+     # Temporarily skipped with xit
+     # ./spec/controllers/student_request_controller_spec.rb:381
+
+  2) StudentRequestsController Load Admin Page should set the priority when neither  params nor session has :priority_sel
+     # Temporarily skipped with xit
+     # ./spec/controllers/student_request_controller_spec.rb:401
+
+  3) StudentRequestsController Load Admin Page should set the priority from the params when available
+     # Temporarily skipped with xit
+     # ./spec/controllers/student_request_controller_spec.rb:421
+
+  4) StudentRequestsController updaterequestbyadmin should add notes to a student if available
+     # Temporarily skipped with xit
+     # ./spec/controllers/student_request_controller_spec.rb:464
+
+  5) UsersHelper add some examples to (or delete) /home/ec2-user/environment/pp/Force-Request-ChiUSDE/spec/helpers/users_helper_spec.rb
+     # Not yet implemented
+     # ./spec/helpers/users_helper_spec.rb:14
+
+  6) users/new.html.erb add some examples to (or delete) /home/ec2-user/environment/pp/Force-Request-ChiUSDE/spec/views/users/new.html.erb_spec.rb
+     # Not yet implemented
+     # ./spec/views/users/new.html.erb_spec.rb:4
+
+Failures:
+
+  1) StudentRequestsController MultiUpdate should issue a flash warning when attempting to update a withdrawn request
+     Failure/Error: expect(flash[:warning]).to eq("Student has already withdrawn their request")
+
+       expected: "Student has already withdrawn their request"
+            got: "Nothing has been selected for Update"
+
+       (compared using ==)
+     # ./spec/controllers/student_request_controller_spec.rb:13:in `block (3 levels) in <top (required)>'
+
+  2) StudentRequestsController MultiUpdate should update the student_request
+     Failure/Error: expect(assigns(:student_request).state).to eq(StudentRequest::WITHDRAWN_STATE)
+
+     NoMethodError:
+       undefined method `state' for nil:NilClass
+     # ./spec/controllers/student_request_controller_spec.rb:25:in `block (3 levels) in <top (required)>'
+
+  3) StudentRequestsController Priority on properly formatted create request creates a student request
+     Failure/Error: StudentMailer.should_receive(:confirm_force_request).once.and_return( double("Mailer", :deliver => true) );
+
+       (StudentMailer (class)).confirm_force_request(*(any args))
+           expected: 1 time with any arguments
+           received: 0 times with any arguments
+     # ./spec/controllers/student_request_controller_spec.rb:39:in `block (4 levels) in <top (required)>'
+
+  4) StudentRequestsController Create Student Request:  on properly formatted create request creates a student request
+     Failure/Error: expect(flash[:notice]).to eq("Student Request was successfully created.")
+
+       expected: "Student Request was successfully created."
+            got: nil
+
+       (compared using ==)
+     # ./spec/controllers/student_request_controller_spec.rb:122:in `block (4 levels) in <top (required)>'
+
+  5) StudentRequestsController Create Student Request:  on mal formatted create request attempts to create a new a New Force Request
+     Failure/Error: if  @student_requests = StudentRequest.where(:uin => session_get(:uin)).count >= @flagclass
+
+       (StudentRequest(id: integer, request_id: string, uin: string, name: string, major: string, classification: string, minor: string, email: string, phone: string, expected_graduation: string, request_semester: string, encrypted_course_id: string, encrypted_section_id: string, encrypted_course_id_iv: string, encrypted_section_id_iv: string, notes: text, state: string, priority: string, creation_date: datetime, last_updated: datetime, notes_to_student: text, admin_notes: text, admin_priority: string) (class)).where({:uin=>nil})
+           expected: 1 time with any arguments
+           received: 2 times with arguments: ({:uin=>nil})
+     # ./app/controllers/student_requests_controller.rb:91:in `create'
+     # /usr/local/rvm/gems/ruby-2.4.3/gems/audited-4.8.0/lib/audited/sweeper.rb:14:in `around'
+     # /usr/local/rvm/gems/ruby-2.4.3/gems/audited-4.8.0/lib/audited/sweeper.rb:14:in `around'
+     # /usr/local/rvm/gems/ruby-2.4.3/gems/rails-controller-testing-1.0.2/lib/rails/controller/testing/template_assertions.rb:61:in `process'
+     # /usr/local/rvm/gems/ruby-2.4.3/gems/rails-controller-testing-1.0.2/lib/rails/controller/testing/integration.rb:12:in `block (2 levels) in <module:Integration>'
+     # ./spec/controllers/student_request_controller_spec.rb:153:in `block (4 levels) in <top (required)>'
+
+  6) StudentRequestsController login should display a flash warning when account doesn't exist
+     Failure/Error: expect(flash[:warning]).to eq("The account doesn't exist. Please sign up first.")
+
+       expected: "The account doesn't exist. Please sign up first."
+            got: "The account doesn't exsit. Please sign up first."
+
+       (compared using ==)
+     # ./spec/controllers/student_request_controller_spec.rb:519:in `block (3 levels) in <top (required)>'
+
+3 deprecation warnings total
+
+Finished in 0.97066 seconds (files took 2.06 seconds to load)
+66 examples, 6 failures, 6 pending
+
+Failed examples:
+
+rspec ./spec/controllers/student_request_controller_spec.rb:6 # StudentRequestsController MultiUpdate should issue a flash warning when attempting to update a withdrawn request
+rspec ./spec/controllers/student_request_controller_spec.rb:17 # StudentRequestsController MultiUpdate should update the student_request
+rspec ./spec/controllers/student_request_controller_spec.rb:33 # StudentRequestsController Priority on properly formatted create request creates a student request
+rspec ./spec/controllers/student_request_controller_spec.rb:99 # StudentRequestsController Create Student Request:  on properly formatted create request creates a student request
+rspec ./spec/controllers/student_request_controller_spec.rb:142 # StudentRequestsController Create Student Request:  on mal formatted create request attempts to create a new a New Force Request
+rspec ./spec/controllers/student_request_controller_spec.rb:514 # StudentRequestsController login should display a flash warning when account doesn't exist
+
+Coverage report generated for RSpec to /home/ec2-user/environment/pp/Force-Request-ChiUSDE/coverage. 673 / 775 LOC (86.84%) covered.

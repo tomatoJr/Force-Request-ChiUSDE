@@ -10,8 +10,7 @@ Given the following students exist:
   | name       | firstname  |  lastname    | uin        | password   | email                | major               |classification | Minor           
   | junqi yang | junqi      |   yang       | 221004901  | 151718     | junqiyang@tamu.edu   | Computer Science    |G              | Animal Science
   | Adam will  | Adam       |   will       | 000000000  | 151718     | Will@tamu.edu        | Computer Science    |G              | Animal Science
-
-
+  | John myer  | John       |   myer       | 000000001  | 151718     | jmyer@tamu.edu       | Computer Science    |U1             | Animal Science
   
 Scenario: View profile
 When I am on the Login Page
@@ -57,7 +56,6 @@ Then I should be on Student Dashboard Page
 When I click on Delete
 Then I should not see that request on Student Dashboard Page
 
-
 Scenario: Student change password with right information
 When I am on the Login Page
 When I login with correct login info
@@ -93,7 +91,7 @@ Then I should be on reset password page
 When I input my Email and click reset
 Then I should see a message
 
-#New Cucumber test added
+#New Cucumber tests added
 Scenario: Add priority on requests
 When I am on the Login Page
 When I login with correct login info
@@ -102,4 +100,64 @@ When I click on New Force Request
 And I assign priority to the request
 And I click Save Request
 Then I should see the request with priority
+Then I should be on Student Dashboard Page
+
+#Scenario: Maximum force request limit for graduate student
+#When I am on the Login Page
+#When I login with correct login info
+#Then I should be on Student Dashboard Page
+#When I click on New Force Request
+#And I complete the form 
+#And I click Save Request
+#Then I should see a confirm message
+#Then I should be on Student Dashboard Page
+#When I click on New Force Request
+#And I complete the form the second time
+#And I click Save Request
+#Then I should see a confirm message for second request
+#Then I should be on Student Dashboard Page
+#When I click on New Force Request
+#And I complete the form the third time
+#And I click Save Request
+#Then I should see a confirm message for third request
+#Then I should be on Student Dashboard Page
+#When I click on New Force Request
+#And I complete the form the fourth time
+#And I click Save Request
+#Then I should see a error message for maximum limit
+#Then I should be on Student Dashboard Page
+
+Scenario: Maximum force request limit for undergraduate student
+When I am on the Login Page
+When I login with correct login info as undergraduate student
+Then I should be on Student Dashboard Page
+When I click on New Force Request
+And I complete the form 
+And I click Save Request
+Then I should see a confirm message
+Then I should be on Student Dashboard Page
+When I click on New Force Request
+And I complete the form the second time
+And I click Save Request
+Then I should see a confirm message for second request
+Then I should be on Student Dashboard Page
+When I click on New Force Request
+And I complete the form the third time
+And I click Save Request
+Then I should see a confirm message for third request
+Then I should be on Student Dashboard Page
+When I click on New Force Request
+And I complete the form the fourth time
+And I click Save Request
+Then I should see a confirm message for fourth request
+Then I should be on Student Dashboard Page
+When I click on New Force Request
+And I complete the form the fifth time
+And I click Save Request
+Then I should see a confirm message for fifth request
+Then I should be on Student Dashboard Page
+When I click on New Force Request
+And I complete the form the sixth time
+And I click Save Request
+Then I should see a error message for maximum limit
 Then I should be on Student Dashboard Page

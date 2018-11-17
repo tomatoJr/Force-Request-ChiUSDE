@@ -23,7 +23,7 @@ Feature: admin SignUp and login
     Then I should be on Admin View page   # features/step_definitions/admin_steps.rb:25
     And I should see all requests here    # features/step_definitions/admin_steps.rb:31
 
-  Scenario: Admin Actions                          # features/admin_view.feature:14
+  Scenario: Admin Actions                          # features/admin_view.feature:12
     Given I am on the Login Page as admin          # features/step_definitions/admin_steps.rb:1
     And I use admin account to login               # features/step_definitions/admin_steps.rb:17
     Then I should be on Admin View page            # features/step_definitions/admin_steps.rb:25
@@ -42,7 +42,7 @@ Feature: admin SignUp and login
     And I fill the info of new request             # features/step_definitions/admin_steps.rb:86
     Then I should go to action page                # features/step_definitions/admin_steps.rb:42
 
-  Scenario: Admin Control                      # features/admin_view.feature:34
+  Scenario: Admin Control                      # features/admin_view.feature:32
     Given I am on the Login Page as admin      # features/step_definitions/admin_steps.rb:1
     And I use admin account to login           # features/step_definitions/admin_steps.rb:17
     Then I should be on Admin View page        # features/step_definitions/admin_steps.rb:25
@@ -52,21 +52,21 @@ Feature: admin SignUp and login
     When I click course name button            # features/step_definitions/admin_steps.rb:123
     Then the page collapse                     # features/step_definitions/admin_steps.rb:127
 
-  Scenario: Approve request               # features/admin_view.feature:45
+  Scenario: Approve request               # features/admin_view.feature:43
     Given I am on the Login Page as admin # features/step_definitions/admin_steps.rb:1
     And I use admin account to login      # features/step_definitions/admin_steps.rb:17
     Then I should be on Admin View page   # features/step_definitions/admin_steps.rb:25
     When I click Approve                  # features/step_definitions/admin_steps.rb:132
     Then I should see Approved            # features/step_definitions/admin_steps.rb:136
 
-  Scenario: Reject request                # features/admin_view.feature:52
+  Scenario: Reject request                # features/admin_view.feature:50
     Given I am on the Login Page as admin # features/step_definitions/admin_steps.rb:1
     And I use admin account to login      # features/step_definitions/admin_steps.rb:17
     Then I should be on Admin View page   # features/step_definitions/admin_steps.rb:25
     When I click Reject                   # features/step_definitions/admin_steps.rb:140
     Then I should see Rejected            # features/step_definitions/admin_steps.rb:144
 
-  Scenario: Hold request                  # features/admin_view.feature:59
+  Scenario: Hold request                  # features/admin_view.feature:57
     Given I am on the Login Page as admin # features/step_definitions/admin_steps.rb:1
     And I use admin account to login      # features/step_definitions/admin_steps.rb:17
     Then I should be on Admin View page   # features/step_definitions/admin_steps.rb:25
@@ -79,10 +79,12 @@ Feature: admin SignUp and login
   # Then I should be on Admin View page
   # When I click View Details
   # Then I should see Request Id Details
-  Scenario: Update Request with nothing changed            # features/admin_view.feature:73
+  Scenario: Update Request with nothing changed            # features/admin_view.feature:71
     Given I am on the Login Page as admin                  # features/step_definitions/admin_steps.rb:1
     And I use admin account to login                       # features/step_definitions/admin_steps.rb:17
     And I click first Update Selected                      # features/step_definitions/admin_steps.rb:164
+    Then I should be on the custom message page            # features/step_definitions/admin_steps.rb:172
+    And I type in a custom message                         # features/step_definitions/admin_steps.rb:176
     Then I should see Nothing has been selected for Update # features/step_definitions/admin_steps.rb:168
 
 Feature: students Login
@@ -151,7 +153,7 @@ G7********
 ***********************
 Creating password: junqi
 Created Password: 321312
-Encrypted Password: mTeO1ZVZxDlPwVWk4soo0uuqMcSYIA==
+Encrypted Password: LZ3WzRxlX4DlF/LgGiA0azQYp3j94A==
     And I click SignUp                                  # features/step_definitions/student_signup_steps.rb:78
     Then I should see my account create successfully    # features/step_definitions/student_signup_steps.rb:113
 
@@ -166,130 +168,192 @@ Feature: Student View
       | name       | firstname | lastname | uin       | password | email              | major            | classification |
       | junqi yang | junqi     | yang     | 221004901 | 151718   | junqiyang@tamu.edu | Computer Science | G              |
       | Adam will  | Adam      | will     | 000000000 | 151718   | Will@tamu.edu      | Computer Science | G              |
+      | John myer  | John      | myer     | 000000001 | 151718   | jmyer@tamu.edu     | Computer Science | U1             |
 
-  Scenario: View profile                       # features/student_view.feature:16
+  Scenario: View profile                       # features/student_view.feature:15
     When I am on the Login Page                # features/step_definitions/student_login_steps.rb:7
 User password: 151718
 Given password: 151718
     When I login with correct login info       # features/step_definitions/student_view_steps.rb:1
-    Then I should be on Student Dashboard Page # features/step_definitions/student_view_steps.rb:8
-    When I click my profile                    # features/step_definitions/student_view_steps.rb:24
-    Then I should see my personal information  # features/step_definitions/student_view_steps.rb:28
-    And I click OK                             # features/step_definitions/student_view_steps.rb:35
-    Then I should go back to dashboard         # features/step_definitions/student_view_steps.rb:43
+    Then I should be on Student Dashboard Page # features/step_definitions/student_view_steps.rb:15
+    When I click my profile                    # features/step_definitions/student_view_steps.rb:31
+    Then I should see my personal information  # features/step_definitions/student_view_steps.rb:35
+    And I click OK                             # features/step_definitions/student_view_steps.rb:42
+    Then I should go back to dashboard         # features/step_definitions/student_view_steps.rb:50
 
-  Scenario: Update profile                     # features/student_view.feature:25
+  Scenario: Update profile                     # features/student_view.feature:24
     When I am on the Login Page                # features/step_definitions/student_login_steps.rb:7
 User password: 151718
 Given password: 151718
     When I login with correct login info       # features/step_definitions/student_view_steps.rb:1
-    Then I should be on Student Dashboard Page # features/step_definitions/student_view_steps.rb:8
-    When I click my profile                    # features/step_definitions/student_view_steps.rb:24
-    Then I should see my personal information  # features/step_definitions/student_view_steps.rb:28
+    Then I should be on Student Dashboard Page # features/step_definitions/student_view_steps.rb:15
+    When I click my profile                    # features/step_definitions/student_view_steps.rb:31
+    Then I should see my personal information  # features/step_definitions/student_view_steps.rb:35
 URL: 
 https://services.tamu.edu/directory-search/people/55c1493722e37d59ec69a2187d10f1a6/?branch=people&givenName=junqi&sn=yang&tamuEduPersonMajor=Computer%20Science
 ***********************
 G7********
 ***********************
 None
-    And I click Update                         # features/step_definitions/student_view_steps.rb:39
-    Then I should be on root page              # features/step_definitions/student_view_steps.rb:182
-    And I should see update success            # features/step_definitions/student_view_steps.rb:49
+    And I click Update                         # features/step_definitions/student_view_steps.rb:46
+    Then I should be on root page              # features/step_definitions/student_view_steps.rb:279
+    And I should see update success            # features/step_definitions/student_view_steps.rb:56
 
-  Scenario: Update profile                         # features/student_view.feature:35
+  Scenario: Update profile                         # features/student_view.feature:34
     When I am on the Login Page                    # features/step_definitions/student_login_steps.rb:7
 User password: 151718
 Given password: 151718
     When I login with correct login info           # features/step_definitions/student_view_steps.rb:1
-    Then I should be on Student Dashboard Page     # features/step_definitions/student_view_steps.rb:8
-    When I click my profile                        # features/step_definitions/student_view_steps.rb:24
-    Then I should see my personal information      # features/step_definitions/student_view_steps.rb:28
-    When I fill out the UIN worng                  # features/step_definitions/student_view_steps.rb:54
+    Then I should be on Student Dashboard Page     # features/step_definitions/student_view_steps.rb:15
+    When I click my profile                        # features/step_definitions/student_view_steps.rb:31
+    Then I should see my personal information      # features/step_definitions/student_view_steps.rb:35
+    When I fill out the UIN worng                  # features/step_definitions/student_view_steps.rb:61
 URL: 
 https://services.tamu.edu/directory-search/people/55c1493722e37d59ec69a2187d10f1a6/?branch=people&givenName=junqi&sn=yang&tamuEduPersonMajor=Computer%20Science
 ***********************
 G7********
 ***********************
-    And I click Update                             # features/step_definitions/student_view_steps.rb:39
-    Then I should see error message for same UIN   # features/step_definitions/student_view_steps.rb:62
-    When I fill out the email worng                # features/step_definitions/student_view_steps.rb:58
+    And I click Update                             # features/step_definitions/student_view_steps.rb:46
+    Then I should see error message for same UIN   # features/step_definitions/student_view_steps.rb:69
+    When I fill out the email worng                # features/step_definitions/student_view_steps.rb:65
 URL: 
 https://services.tamu.edu/directory-search/people/55c1493722e37d59ec69a2187d10f1a6/?branch=people&givenName=junqi&sn=yang&tamuEduPersonMajor=Computer%20Science
 ***********************
 G7********
 ***********************
-    And I click Update                             # features/step_definitions/student_view_steps.rb:39
-    Then I should see error message for same email # features/step_definitions/student_view_steps.rb:66
+    And I click Update                             # features/step_definitions/student_view_steps.rb:46
+    Then I should see error message for same email # features/step_definitions/student_view_steps.rb:73
 
-  Scenario: Add/withdraw new requests                            # features/student_view.feature:48
+  Scenario: Add/withdraw new requests                            # features/student_view.feature:47
     When I am on the Login Page                                  # features/step_definitions/student_login_steps.rb:7
 User password: 151718
 Given password: 151718
     When I login with correct login info                         # features/step_definitions/student_view_steps.rb:1
-    Then I should be on Student Dashboard Page                   # features/step_definitions/student_view_steps.rb:8
-    When I click on New Force Request                            # features/step_definitions/student_view_steps.rb:75
-    And I complete the form                                      # features/step_definitions/student_view_steps.rb:81
-    And I click Save Request                                     # features/step_definitions/student_view_steps.rb:90
-    Then I should see a confirm message                          # features/step_definitions/student_view_steps.rb:96
-    Then I should be on Student Dashboard Page                   # features/step_definitions/student_view_steps.rb:8
-    When I click on Delete                                       # features/step_definitions/student_view_steps.rb:102
-    Then I should not see that request on Student Dashboard Page # features/step_definitions/student_view_steps.rb:106
+    Then I should be on Student Dashboard Page                   # features/step_definitions/student_view_steps.rb:15
+    When I click on New Force Request                            # features/step_definitions/student_view_steps.rb:82
+    And I complete the form                                      # features/step_definitions/student_view_steps.rb:87
+    And I click Save Request                                     # features/step_definitions/student_view_steps.rb:141
+    Then I should see a confirm message                          # features/step_definitions/student_view_steps.rb:145
+    Then I should be on Student Dashboard Page                   # features/step_definitions/student_view_steps.rb:15
+    When I click on Delete                                       # features/step_definitions/student_view_steps.rb:199
+    Then I should not see that request on Student Dashboard Page # features/step_definitions/student_view_steps.rb:203
 
-  Scenario: Student change password with right information # features/student_view.feature:61
+  Scenario: Student change password with right information # features/student_view.feature:59
     When I am on the Login Page                            # features/step_definitions/student_login_steps.rb:7
 User password: 151718
 Given password: 151718
     When I login with correct login info                   # features/step_definitions/student_view_steps.rb:1
-    Then I should be on Student Dashboard Page             # features/step_definitions/student_view_steps.rb:8
-    When I click change password button                    # features/step_definitions/student_view_steps.rb:115
-    Then I should be on change password page               # features/step_definitions/student_view_steps.rb:119
-    When I fill the form and confirm                       # features/step_definitions/student_view_steps.rb:142
-    Then I should read a successful message                # features/step_definitions/student_view_steps.rb:125
+    Then I should be on Student Dashboard Page             # features/step_definitions/student_view_steps.rb:15
+    When I click change password button                    # features/step_definitions/student_view_steps.rb:212
+    Then I should be on change password page               # features/step_definitions/student_view_steps.rb:216
+    When I fill the form and confirm                       # features/step_definitions/student_view_steps.rb:239
+    Then I should read a successful message                # features/step_definitions/student_view_steps.rb:222
 
-  Scenario: Student change password with wrong information # features/student_view.feature:70
+  Scenario: Student change password with wrong information # features/student_view.feature:68
     When I am on the Login Page                            # features/step_definitions/student_login_steps.rb:7
 User password: 151718
 Given password: 151718
     When I login with correct login info                   # features/step_definitions/student_view_steps.rb:1
-    Then I should be on Student Dashboard Page             # features/step_definitions/student_view_steps.rb:8
-    And I click change password button                     # features/step_definitions/student_view_steps.rb:115
-    Then I should be on change password page               # features/step_definitions/student_view_steps.rb:119
-    When I fill the old password wrongly                   # features/step_definitions/student_view_steps.rb:130
-    Then I stay on the page on recieve warining            # features/step_definitions/student_view_steps.rb:138
-    When I fill the new password wrongly                   # features/step_definitions/student_view_steps.rb:151
-    Then I stay on the page on recieve another warining    # features/step_definitions/student_view_steps.rb:159
-    When I withdraw this request                           # features/step_definitions/student_view_steps.rb:163
-    Then I will back to student dashboard                  # features/step_definitions/student_view_steps.rb:167
+    Then I should be on Student Dashboard Page             # features/step_definitions/student_view_steps.rb:15
+    And I click change password button                     # features/step_definitions/student_view_steps.rb:212
+    Then I should be on change password page               # features/step_definitions/student_view_steps.rb:216
+    When I fill the old password wrongly                   # features/step_definitions/student_view_steps.rb:227
+    Then I stay on the page on recieve warining            # features/step_definitions/student_view_steps.rb:235
+    When I fill the new password wrongly                   # features/step_definitions/student_view_steps.rb:248
+    Then I stay on the page on recieve another warining    # features/step_definitions/student_view_steps.rb:256
+    When I withdraw this request                           # features/step_definitions/student_view_steps.rb:260
+    Then I will back to student dashboard                  # features/step_definitions/student_view_steps.rb:264
 
-  Scenario: Student Logout               # features/student_view.feature:83
+  Scenario: Student Logout               # features/student_view.feature:81
     When I am on the Login Page          # features/step_definitions/student_login_steps.rb:7
 User password: 151718
 Given password: 151718
     When I login with correct login info # features/step_definitions/student_view_steps.rb:1
-    And I click logout button            # features/step_definitions/student_view_steps.rb:177
-    Then I should be on root page        # features/step_definitions/student_view_steps.rb:182
+    And I click logout button            # features/step_definitions/student_view_steps.rb:274
+    Then I should be on root page        # features/step_definitions/student_view_steps.rb:279
 
-  Scenario: Student Forget Password         # features/student_view.feature:89
+  Scenario: Student Forget Password         # features/student_view.feature:87
     When I am on the Login Page             # features/step_definitions/student_login_steps.rb:7
-    And I click forget password             # features/step_definitions/student_view_steps.rb:193
-    Then I should be on reset password page # features/step_definitions/student_view_steps.rb:197
-    When I input my Email and click reset   # features/step_definitions/student_view_steps.rb:201
-    Then I should see a message             # features/step_definitions/student_view_steps.rb:206
+    And I click forget password             # features/step_definitions/student_view_steps.rb:290
+    Then I should be on reset password page # features/step_definitions/student_view_steps.rb:294
+    When I input my Email and click reset   # features/step_definitions/student_view_steps.rb:298
+    Then I should see a message             # features/step_definitions/student_view_steps.rb:303
 
-  #New Cucumber test added
-  Scenario: Add priority on requests            # features/student_view.feature:97
+  #New Cucumber tests added
+  Scenario: Add priority on requests            # features/student_view.feature:95
     When I am on the Login Page                 # features/step_definitions/student_login_steps.rb:7
 User password: 151718
 Given password: 151718
     When I login with correct login info        # features/step_definitions/student_view_steps.rb:1
-    Then I should be on Student Dashboard Page  # features/step_definitions/student_view_steps.rb:8
-    When I click on New Force Request           # features/step_definitions/student_view_steps.rb:75
-    And I assign priority to the request        # features/step_definitions/student_view_steps.rb:216
-    And I click Save Request                    # features/step_definitions/student_view_steps.rb:90
-    Then I should see the request with priority # features/step_definitions/student_view_steps.rb:226
-    Then I should be on Student Dashboard Page  # features/step_definitions/student_view_steps.rb:8
+    Then I should be on Student Dashboard Page  # features/step_definitions/student_view_steps.rb:15
+    When I click on New Force Request           # features/step_definitions/student_view_steps.rb:82
+    And I assign priority to the request        # features/step_definitions/student_view_steps.rb:313
+    And I click Save Request                    # features/step_definitions/student_view_steps.rb:141
+    Then I should see the request with priority # features/step_definitions/student_view_steps.rb:323
+    Then I should be on Student Dashboard Page  # features/step_definitions/student_view_steps.rb:15
 
-20 scenarios (20 passed)
-168 steps (168 passed)
-0m19.768s
-Coverage report generated for Cucumber Features to /home/ec2-user/environment/Force-Request-ChiUSDE/coverage. 870 / 1000 LOC (87.0%) covered.
+  #Scenario: Maximum force request limit for graduate student
+  #When I am on the Login Page
+  #When I login with correct login info
+  #Then I should be on Student Dashboard Page
+  #When I click on New Force Request
+  #And I complete the form
+  #And I click Save Request
+  #Then I should see a confirm message
+  #Then I should be on Student Dashboard Page
+  #When I click on New Force Request
+  #And I complete the form the second time
+  #And I click Save Request
+  #Then I should see a confirm message for second request
+  #Then I should be on Student Dashboard Page
+  #When I click on New Force Request
+  #And I complete the form the third time
+  #And I click Save Request
+  #Then I should see a confirm message for third request
+  #Then I should be on Student Dashboard Page
+  #When I click on New Force Request
+  #And I complete the form the fourth time
+  #And I click Save Request
+  #Then I should see a error message for maximum limit
+  #Then I should be on Student Dashboard Page
+  Scenario: Maximum force request limit for undergraduate student # features/student_view.feature:130
+    When I am on the Login Page                                   # features/step_definitions/student_login_steps.rb:7
+User password: 151718
+Given password: 151718
+    When I login with correct login info as undergraduate student # features/step_definitions/student_view_steps.rb:8
+    Then I should be on Student Dashboard Page                    # features/step_definitions/student_view_steps.rb:15
+    When I click on New Force Request                             # features/step_definitions/student_view_steps.rb:82
+    And I complete the form                                       # features/step_definitions/student_view_steps.rb:87
+    And I click Save Request                                      # features/step_definitions/student_view_steps.rb:141
+    Then I should see a confirm message                           # features/step_definitions/student_view_steps.rb:145
+    Then I should be on Student Dashboard Page                    # features/step_definitions/student_view_steps.rb:15
+    When I click on New Force Request                             # features/step_definitions/student_view_steps.rb:82
+    And I complete the form the second time                       # features/step_definitions/student_view_steps.rb:96
+    And I click Save Request                                      # features/step_definitions/student_view_steps.rb:141
+    Then I should see a confirm message for second request        # features/step_definitions/student_view_steps.rb:151
+    Then I should be on Student Dashboard Page                    # features/step_definitions/student_view_steps.rb:15
+    When I click on New Force Request                             # features/step_definitions/student_view_steps.rb:82
+    And I complete the form the third time                        # features/step_definitions/student_view_steps.rb:105
+    And I click Save Request                                      # features/step_definitions/student_view_steps.rb:141
+    Then I should see a confirm message for third request         # features/step_definitions/student_view_steps.rb:159
+    Then I should be on Student Dashboard Page                    # features/step_definitions/student_view_steps.rb:15
+    When I click on New Force Request                             # features/step_definitions/student_view_steps.rb:82
+    And I complete the form the fourth time                       # features/step_definitions/student_view_steps.rb:114
+    And I click Save Request                                      # features/step_definitions/student_view_steps.rb:141
+    Then I should see a confirm message for fourth request        # features/step_definitions/student_view_steps.rb:169
+    Then I should be on Student Dashboard Page                    # features/step_definitions/student_view_steps.rb:15
+    When I click on New Force Request                             # features/step_definitions/student_view_steps.rb:82
+    And I complete the form the fifth time                        # features/step_definitions/student_view_steps.rb:123
+    And I click Save Request                                      # features/step_definitions/student_view_steps.rb:141
+    Then I should see a confirm message for fifth request         # features/step_definitions/student_view_steps.rb:181
+    Then I should be on Student Dashboard Page                    # features/step_definitions/student_view_steps.rb:15
+    When I click on New Force Request                             # features/step_definitions/student_view_steps.rb:82
+    And I complete the form the sixth time                        # features/step_definitions/student_view_steps.rb:132
+    And I click Save Request                                      # features/step_definitions/student_view_steps.rb:141
+    Then I should see a error message for maximum limit           # features/step_definitions/student_view_steps.rb:195
+    Then I should be on Student Dashboard Page                    # features/step_definitions/student_view_steps.rb:15
+
+21 scenarios (21 passed)
+204 steps (204 passed)
+0m42.933s
+Coverage report generated for Cucumber Features to /home/ec2-user/environment/Force-Request-ChiUSDE/coverage. 969 / 1111 LOC (87.22%) covered.
