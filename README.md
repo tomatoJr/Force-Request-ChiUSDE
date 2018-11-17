@@ -30,7 +30,7 @@ Shamshu Shahid Raja Mohamed
 
 
 #### <i class="icon-folder-open"></i> Customer Interview Link:
-https://vimeo.com/205962216
+https://vimeo.com/294268751
 
 
 #### <i class="icon-folder-open"></i> Heroku Deployment Link:
@@ -38,7 +38,8 @@ http://force-request-2018.herokuapp.com
 
 
 #### <i class="icon-folder-open"></i> Demo Video Link:
-https://vimeo.com/216542739
+2018: Yet to be out
+2017: https://vimeo.com/216542739
 
 
 #### <i class="icon-folder-open"></i> Student Information Retrieval
