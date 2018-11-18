@@ -20,6 +20,33 @@ class StudentRequestsController < ApplicationController
     initForNewForceRequest
     render :new
   end
+  
+  def edit_request
+    unless params[:id].nil?
+      @student_request = StudentRequest.find params[:id]
+      @id = @student_request.id
+      puts @id
+      initForNewForceRequest
+      @course_id = @student_request.course_id
+      @section_id = @student_request.section_id
+      @name = @student_request.name
+      @classification = @student_request.classification
+      @major = @student_request.major
+      @minor = @student_request.minor
+      @email = @student_request.email
+      @request_semester = @student_request.request_semester
+    end
+  end
+  
+  def update_request
+    id = params[:student_request][:request_id]
+    request = StudentRequest.find(id)
+    request.notes = params[:student_request][:notes]
+    request.expected_graduation = params[:student_request][:expected_graduation]
+    request.priority = params[:student_request][:priority]
+    request.save!
+    redirect_to students_show_path
+  end
 
   def add_force_request #create force requests by admin
     @students = Student.where(:uin => params[:admin_request][:uin])

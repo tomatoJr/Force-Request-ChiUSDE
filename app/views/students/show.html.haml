@@ -38,4 +38,4 @@
           %td 
             -if record.state == StudentRequest::ACTIVE_STATE or record.state == StudentRequest::HOLD_STATE
               = button_to 'Delete', {:action => "update", :id => record.request_id, :controller => "student_requests"}, :method => :put, :data => { confirm: 'Are you sure?', disable_with: 'loading...' }
-
+              = button_to 'Edit', {:action => "edit_request", :id => record.request_id, :controller => "student_requests"}, :method => :put

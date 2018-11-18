@@ -1,0 +1,79 @@
+- unless session[:uin].nil?
+  = render 'layouts/login'
+%body{:onload => "pageinit()"}
+  %h1 Edit Force Request
+  .form_new_request
+    // this is student_request new view with submit to student_request create action
+    = form_tag student_requests_update_request_path, method: :put do
+      %table{:border => "0"}
+        %tr
+          %td
+            = label :student_request, :name, 'Full Name'
+          %td  
+            = @name
+        %tr
+          %td  
+            = label :student_request, :major, 'Major'
+          %td
+            = @major
+            
+        %tr{:style=>"display: none;"}
+          %td   
+            = label :student_request, :request_id, 'Request ID'
+          %td
+            = text_area :student_request, 'request_id'
+            
+        %tr
+          %td   
+            = label :student_request, :classification, 'Classification'
+          %td
+            = @classification
+            
+        %tr
+          %td    
+            = label :student_request, :minor, 'Minor'
+          %td  
+            = @minor
+
+        %tr
+          %td 
+            = label :student_request, :email, 'Email'
+          %td  
+            = @email
+
+        %tr
+          %td   
+            = label :student_request, :expected_graduation, 'Expected Graduation*'
+          %td 
+            = select :student_request, 'expected_graduation', @YearSemester 
+        %tr
+          %td   
+            = label :student_request, :request_semester, 'Request Semester*'
+          %td  
+            = @request_semester
+        %tr
+          %td   
+            = label :student_request, :course_id, 'Course Id*'
+          %td  
+            = @course_id
+        %tr
+          %td   
+            = label :student_request, :section_id, 'Section Id*'
+          %td  
+            = @section_id
+        %tr
+          %td   
+            = label :student_request, :priority, 'Priority*'
+          %td 
+            = select :student_request, 'priority', @requestPriority
+        %tr
+          %td   
+            = label :student_request, :notes, 'Notes '
+          %td  
+            = text_area :student_request, 'notes', class: 'notes'
+      
+      = submit_tag 'Save', :id => 'request_button_left'
+      
+    =  form_tag(students_show_path, method: :get) do
+      = submit_tag 'Cancel', :id => 'request_button_right'
+       
