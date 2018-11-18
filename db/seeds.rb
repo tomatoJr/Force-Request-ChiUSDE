@@ -152,15 +152,6 @@ limits = [{:classification => 'G7', "Very High".to_sym => '99', :High => '99', :
 
 students = []
 
-emailtemplates = [{:body => 'Hi <%= @student.name %>,
-
-The state of Force request for CSCE <%= @req.course_id %>-<%= @req.section_id %> has been update to <%= @req.state%> .
-Special Notes<%= @message %>'}]
-
-emailtemplates.each do |emailtemplate|
-  Emailtemplate.create!(emailtemplate)
-end
-
 limits.each do |limit|
   Limit.create!(limit)
 end

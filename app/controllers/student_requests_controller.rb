@@ -490,7 +490,6 @@ class StudentRequestsController < ApplicationController
   end
   
   def get_email_template
-    @template = Emailtemplate.pluck(:body)
     path = "/home/ec2-user/environment/Force-Request-ChiUSDE/app/views/student_mailer/email_template.text.erb"  
     @body_template = ""
     @body_template = IO.read(path)
