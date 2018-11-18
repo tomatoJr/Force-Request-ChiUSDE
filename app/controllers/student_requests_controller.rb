@@ -20,6 +20,35 @@ class StudentRequestsController < ApplicationController
     initForNewForceRequest
     render :new
   end
+  
+  def edit_request
+    unless params[:id].nil?
+      @student_request = StudentRequest.find params[:id]
+      @id = @student_request.id
+      puts @id
+      initForNewForceRequest
+      @course_id = @student_request.course_id
+      @section_id = @student_request.section_id
+      @name = @student_request.name
+      @classification = @student_request.classification
+      @major = @student_request.major
+      @minor = @student_request.minor
+      @email = @student_request.email
+      @request_semester = @student_request.request_semester
+    end
+  end
+  
+  def update_request
+    id = params[:student_request][:request_id]
+    request = StudentRequest.find(id)
+    request.notes = params[:student_request][:notes]
+    request.expected_graduation = params[:student_request][:expected_graduation]
+    request.priority = params[:student_request][:priority]
+    request.save!
+    log = Log.new(:request_id => request.request_id, :timestamp => Time.now, :notes => "Request was updated")
+    log.save
+    redirect_to students_show_path
+  end
 
   def add_force_request #create force requests by admin
     @students = Student.where(:uin => params[:admin_request][:uin])
@@ -105,7 +134,8 @@ class StudentRequestsController < ApplicationController
             redirect_to students_show_path
         else
             if @student_request.save
-              
+              log = Log.new(:request_id => @student_request.request_id, :timestamp => Time.now, :notes => "Request was created")
+              log.save
               flash[:notice] = "Student Request was successfully created."
               # This is where an email will be sent to comfirm the force request.
               StudentMailer.confirm_force_request(@students[0], @student_request).deliver
@@ -431,6 +461,11 @@ class StudentRequestsController < ApplicationController
     end
     redirect_to student_requests_adminview_path
   end
+  
+  def admin_log(request)
+    log = Log.new(:request_id => @request.request_id, :timestamp => Time.now, :notes => "Request was created")
+    log.save
+  end
 
   def initForNewForceRequest
     @classificationList = StudentRequest::CLASSIFICATION_LIST
@@ -490,7 +525,6 @@ class StudentRequestsController < ApplicationController
   end
   
   def get_email_template
-    @template = Emailtemplate.pluck(:body)
     path = "/home/ec2-user/environment/Force-Request-ChiUSDE/app/views/student_mailer/email_template.text.erb"  
     @body_template = ""
     @body_template = IO.read(path)

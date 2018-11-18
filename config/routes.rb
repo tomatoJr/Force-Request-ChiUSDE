@@ -34,6 +34,9 @@ Rails.application.routes.draw do
   get 'student_requests/homeRedirect' => 'student_requests#homeRedirect'
   
   post 'student_requests/logout' => 'student_requests#logout'
+  
+  put 'student_requests/edit_request' => 'student_requests#edit_request'
+   put 'student_requests/update_request' => 'student_requests#update_request'
 
   resources :student_requests
   

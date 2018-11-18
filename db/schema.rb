@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181117025323) do
+ActiveRecord::Schema.define(version: 20181118192709) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,12 +45,6 @@ ActiveRecord::Schema.define(version: 20181117025323) do
     t.index ["user_id", "user_type"], name: "user_index", using: :btree
   end
 
-  create_table "emailtemplates", force: :cascade do |t|
-    t.text     "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "limits", force: :cascade do |t|
     t.string   "classification"
     t.integer  "Very High"
@@ -60,6 +54,14 @@ ActiveRecord::Schema.define(version: 20181117025323) do
     t.integer  "Very Low"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+  end
+
+  create_table "logs", force: :cascade do |t|
+    t.string   "request_id"
+    t.text     "notes"
+    t.datetime "timestamp"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "majors", force: :cascade do |t|
