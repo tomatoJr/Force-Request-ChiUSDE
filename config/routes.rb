@@ -27,6 +27,9 @@ Rails.application.routes.draw do
   get 'student_requests/set_request_limit' => 'student_requests#set_request_limit'
   post 'students_requests/createlimits' => 'student_requests#createlimits'
   
+  put 'student_requests/get_email_template' => 'student_requests#get_email_template'
+  post 'students_requests/edit_email_template' => 'student_requests#edit_email_template'
+  
   delete 'student_requests/deleteall' => 'student_requests#deleteall'
   get 'student_requests/homeRedirect' => 'student_requests#homeRedirect'
   
