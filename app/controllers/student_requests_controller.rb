@@ -45,6 +45,8 @@ class StudentRequestsController < ApplicationController
     request.expected_graduation = params[:student_request][:expected_graduation]
     request.priority = params[:student_request][:priority]
     request.save!
+    log = Log.new(:request_id => request.request_id, :timestamp => Time.now, :notes => "Request was updated")
+    log.save
     redirect_to students_show_path
   end
 
@@ -132,7 +134,8 @@ class StudentRequestsController < ApplicationController
             redirect_to students_show_path
         else
             if @student_request.save
-              
+              log = Log.new(:request_id => @student_request.request_id, :timestamp => Time.now, :notes => "Request was created")
+              log.save
               flash[:notice] = "Student Request was successfully created."
               # This is where an email will be sent to comfirm the force request.
               StudentMailer.confirm_force_request(@students[0], @student_request).deliver
@@ -457,6 +460,11 @@ class StudentRequestsController < ApplicationController
       flash[:warning] = "Nothing has been selected for Update"
     end
     redirect_to student_requests_adminview_path
+  end
+  
+  def admin_log(request)
+    log = Log.new(:request_id => @request.request_id, :timestamp => Time.now, :notes => "Request was created")
+    log.save
   end
 
   def initForNewForceRequest
