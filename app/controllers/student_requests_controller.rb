@@ -525,15 +525,15 @@ class StudentRequestsController < ApplicationController
   end
   
   def get_email_template
-    path = "/home/ec2-user/environment/Force-Request-ChiUSDE/app/views/student_mailer/email_template.text.erb"  
+    path = "./app/views/student_mailer/email_template.text.erb"  
     @body_template = ""
     @body_template = IO.read(path)
     gon.body_template = @body_template
       
   end
-  
+  # "/home/ec2-user/environment/Force-Request-ChiUSDE/app/views/student_mailer/email_template.text.erb"
   def edit_email_template
-    path = "/home/ec2-user/environment/Force-Request-ChiUSDE/app/views/student_mailer/email_template.text.erb"   
+    path = "./app/views/student_mailer/email_template.text.erb"   
     body = ""
     template = params[:email_template]
     body << template[0]
