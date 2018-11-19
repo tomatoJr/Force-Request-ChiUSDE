@@ -100,9 +100,11 @@ class StudentRequestsController < ApplicationController
     
    
     level_student = @students[0].classification.to_s
+    puts level_student
     temp_priority = params[:student_request][:priority]
+    puts temp_priority
     limit_val = Limit.where(:classification => level_student)
-
+    puts limit_val
     case temp_priority
     when "Very High"
       @flagclass = limit_val.first['Very High']
