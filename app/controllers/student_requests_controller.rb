@@ -422,7 +422,8 @@ class StudentRequestsController < ApplicationController
   def sample_controller
     session[:request_ids] = params[:request_ids]
     session[:multi_state_sel] = params[:multi_state_sel]
-    path = "/home/ec2-user/environment/Force-Request-ChiUSDE/app/views/student_mailer/email_template.text.erb"  
+    # "/home/ec2-user/environment/Force-Request-ChiUSDE/app/views/student_mailer/email_template.text.erb"
+    path = "./app/views/student_mailer/email_template.text.erb"  
     @body_message = ""
     @body_message = IO.read(path)
     gon.body_message = @body_message
