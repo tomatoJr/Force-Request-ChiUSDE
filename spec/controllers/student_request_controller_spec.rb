@@ -173,6 +173,51 @@ describe StudentRequestsController, :type => :controller do
         end
       end
     end
+    
+  describe "set Limit on prioritized request: " do
+    context 'on a a student who has raised maximum allowed force request with high priority' do
+          it 'should give error' do
+                  #Given
+                  
+            # put :createlimits, :session => {:classification => "G7"}
+            limits ={:classification => 'G7', :very_high => '1', :high => '1', :normal => '1', :low => '1', :very_low => '1'}
+            
+            put :set_request_limit, limits
+            
+            
+            student = FactoryGirl.create(:student)
+            Student.should_receive(:where).once.and_return([student])
+            student_request = FactoryGirl.create(:student_request)
+
+        #When
+        put :create, :student_request => {:name => student_request.name,
+                                          :uin => student_request.uin,
+                                          :major => student_request.major,
+                                          :classification => "G7",
+                                          :email => student_request.email,
+                                          :request_semester => student_request.request_semester,
+                                          :course_id => student_request.course_id,
+                                          :priority => 'high',
+                                          :phone => student_request.phone,
+                                          :section_id => 505
+        }
+        
+        put :create, :student_request => {:name => student_request.name,
+                                          :uin => student_request.uin,
+                                          :major => student_request.major,
+                                          :classification => "G7",
+                                          :email => student_request.email,
+                                          :request_semester => student_request.request_semester,
+                                          :course_id => 606,
+                                          :priority => 'high',
+                                          :phone => student_request.phone,
+                                          :section_id => 505
+        }
+        #Then
+        expect(flash[:notice]).to eq("Student Request was failed to create. Maximum limit on priority type reached")
+        end
+      end
+    end
 
 
   describe "Update Request" do
