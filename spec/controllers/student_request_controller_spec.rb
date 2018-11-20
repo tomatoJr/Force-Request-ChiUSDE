@@ -158,6 +158,22 @@ describe StudentRequestsController, :type => :controller do
       end
     end
   end
+  describe "Update student request: " do
+    context 'on a a student request that already exists' do
+          it 'should update the graduation semester' do
+                  #Given
+            student_request = FactoryGirl.create(:student_request)
+            StudentRequest.should_receive(:find).with("14").and_return(student_request)
+      
+            put :update_request, :student_request => {:request_id => 14 ,:priority =>student_request.priority, :expected_graduation => "2021 FALL"}
+      
+            # expect(flash[:notice]).to eq("Student Request was successfully created.")
+            expect(student_request.expected_graduation).to eq("2021 FALL")
+
+        end
+      end
+    end
+
 
   describe "Update Request" do
     context "When Student Request ACTIVE_STATE" do
