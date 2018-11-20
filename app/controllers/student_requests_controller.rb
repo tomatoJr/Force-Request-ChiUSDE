@@ -41,12 +41,15 @@ class StudentRequestsController < ApplicationController
   def update_request
     id = params[:student_request][:request_id]
     request = StudentRequest.find(id)
-    request.notes = params[:student_request][:notes]
-    request.expected_graduation = params[:student_request][:expected_graduation]
-    request.priority = params[:student_request][:priority]
-    request.save!
-    log = Log.new(:request_id => request.request_id, :timestamp => Time.now, :notes => "Request was updated")
-    log.save
+    comparison = compare_request(request, params)
+    
+    if comparison[:check]
+      request.notes = params[:student_request][:notes]
+      request.expected_graduation = params[:student_request][:expected_graduation]
+      request.priority = params[:student_request][:priority]
+      request.save!
+      admin_log(id, comparison[:message])
+    end
     redirect_to students_show_path
   end
 
@@ -136,8 +139,7 @@ class StudentRequestsController < ApplicationController
             redirect_to students_show_path
         else
             if @student_request.save
-              log = Log.new(:request_id => @student_request.request_id, :timestamp => Time.now, :notes => "Request was created")
-              log.save
+              admin_log(@student_request.request_id, "Student Request was successfully created")
               flash[:notice] = "Student Request was successfully created."
               # This is where an email will be sent to comfirm the force request.
               StudentMailer.confirm_force_request(@students[0], @student_request).deliver
@@ -175,6 +177,7 @@ class StudentRequestsController < ApplicationController
     @student_request.state = StudentRequest::APPROVED_STATE
     @student_request.save
     email_the_status()
+    admin_log(@student_request.request_id, "Status of the request was updated to #{@student_request.state} by #{session[:uin]}")
     redirect_to student_requests_adminview_path
   end
 
@@ -183,6 +186,7 @@ class StudentRequestsController < ApplicationController
     @student_request.state = StudentRequest::REJECTED_STATE
     @student_request.save
     email_the_status()
+    admin_log(@student_request.request_id, "Status of the request was updated to #{@student_request.state} by #{session[:uin]}")
     redirect_to student_requests_adminview_path
   end
 
@@ -191,6 +195,7 @@ class StudentRequestsController < ApplicationController
     @student_request = StudentRequest.find params[:id]
     @student_request.state = StudentRequest::HOLD_STATE
     @student_request.save
+    admin_log(@student_request.request_id, "Status of the request was updated to #{@student_request.state} by #{session[:uin]}")
     redirect_to student_requests_adminview_path
   end
 
@@ -329,7 +334,8 @@ class StudentRequestsController < ApplicationController
 
       if(isUpdated)
         @student_request.save!
-        flash[:notice] = "The " + @student_request.request_id + " request was successfully updated"
+        flash[:notice] = "The request was successfully updated"
+        admin_log(@student_request.request_id, "Status of the request was updated to #{@student_request.state} by #{session[:uin]}")
       else
         flash[:warning] = "Please Select Appropriate action "
       end
@@ -445,6 +451,7 @@ class StudentRequestsController < ApplicationController
               @student_request.save!
               message = params[:email_message][0]
             temporary_email(id, message)
+            admin_log(@student_request.request_id, "Status of the request was updated to #{@student_request.state} by #{session[:uin]}")
           end
         end
       }
@@ -465,8 +472,26 @@ class StudentRequestsController < ApplicationController
     redirect_to student_requests_adminview_path
   end
   
-  def admin_log(request)
-    log = Log.new(:request_id => @request.request_id, :timestamp => Time.now, :notes => "Request was created")
+  def compare_request(request, param)
+    message = ""
+    check = false
+    if (request.notes != param[:student_request][:notes])
+      message << " Notes was updated from #{request.notes} to #{param[:student_request][:notes]} <br>"
+      check = true
+    end
+    if (request.priority != param[:student_request][:priority])
+      message << " Priority was updated from #{request.priority} to #{param[:student_request][:priority]} <br>"
+      check = true
+    end
+    if (request.expected_graduation != param[:student_request][:expected_graduation])
+      message << " Expected Graduation was updated from #{request.expected_graduation} to #{param[:student_request][:expected_graduation]} <br>"
+      check = true
+    end
+    return {:check => check, :message => message}
+  end
+  
+  def admin_log(request_id, message)
+    log = Log.new(:request_id => request_id, :timestamp => Time.now, :notes => message)
     log.save
   end
 
@@ -544,5 +569,18 @@ class StudentRequestsController < ApplicationController
       f.write(body)
     end
     redirect_to student_requests_adminprivileges_path
+  end
+  
+  def view_logs
+    request_id = params[:id]
+    @logs = Log.where(:request_id => request_id).order('timestamp DESC')
+  end
+  
+  def get_position(index)
+    if index % 2 == 0
+      return "container.left"
+    else
+      return "container.right"
+    end
   end
 end

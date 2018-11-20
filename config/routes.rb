@@ -31,12 +31,14 @@ Rails.application.routes.draw do
   post 'students_requests/edit_email_template' => 'student_requests#edit_email_template'
   
   delete 'student_requests/deleteall' => 'student_requests#deleteall'
+  get 'student_requests/viewlogs' => 'student_requests#view_logs'
+  
   get 'student_requests/homeRedirect' => 'student_requests#homeRedirect'
   
   post 'student_requests/logout' => 'student_requests#logout'
   
   put 'student_requests/edit_request' => 'student_requests#edit_request'
-   put 'student_requests/update_request' => 'student_requests#update_request'
+  put 'student_requests/update_request' => 'student_requests#update_request'
 
   resources :student_requests
   

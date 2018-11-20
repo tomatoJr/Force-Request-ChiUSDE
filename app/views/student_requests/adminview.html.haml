@@ -63,6 +63,7 @@
               %th Admin Priority
               %th Creation date
               %th Admin Notes
+              %th View Logs
               %th View Details
               %th Actions
         
@@ -85,6 +86,7 @@
                 %td= if record.admin_priority then record.admin_priority else "(View details to add priority)" end
                 %td= record.creation_date.strftime("%Y-%m-%d %H:%M:%S")
                 %td= if record.admin_notes then record.admin_notes else "(View details to add notes)" end
+                %td= (link_to 'View Logs', {:action => "view_logs", :controller => "student_requests", :id => record.request_id}, :method => :get)   
                 %td
                   %a{:onclick => "return getDetailsById('#{record.request_id}')"} #{"View Details"}
                   

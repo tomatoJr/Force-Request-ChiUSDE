@@ -1,0 +1,10 @@
+%link{:type => "text/css", :rel => "stylesheet", :href => "/app/assets/stylesheets/timeline.css"}
+.important
+  %h2 Student Request Logs
+  
+  - @logs.each do |log|
+    .timeline
+      .container.right
+        .content
+          %h2= log.timestamp
+          %p= log.notes
