@@ -39,7 +39,7 @@ class StudentRequest < ActiveRecord::Base
     
     
     #Classification
-    CLASSIFICATION_LIST = ['U1', 'U2', 'U3', 'U4', 'G']
+    CLASSIFICATION_LIST = ['U1', 'U2', 'U3', 'U4', 'U5', 'G7', 'G8']
     MAJOR_LIST = [      
              'None',    
              'Computer Science', 

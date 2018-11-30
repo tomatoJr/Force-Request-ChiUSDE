@@ -10,7 +10,7 @@
 student_requests = []
 
 majors = [                 
-            {:major_id => 'Computer Science'},         
+            {:major_id => 'Computer Science '},         
             {:major_id => 'Computer Engineering'},
             {:major_id => 'Electrical Engineering'},
             {:major_id => 'Applied Mathematical Sciences'},            
@@ -148,7 +148,9 @@ limits = [{:classification => 'G7', "Very High".to_sym => '99', :High => '99', :
           {:classification => 'U1', "Very High".to_sym => '99', :High => '99', :Normal => '99', :Low => '99', "Very Low".to_sym => '99'},
           {:classification => 'U2', "Very High".to_sym => '99', :High => '99', :Normal => '99', :Low => '99', "Very Low".to_sym => '99'},
           {:classification => 'U3', "Very High".to_sym => '99', :High => '99', :Normal => '99', :Low => '99', "Very Low".to_sym => '99'},
-          {:classification => 'U4', "Very High".to_sym => '99', :High => '99', :Normal => '99', :Low => '99', "Very Low".to_sym => '99'}]
+          {:classification => 'U4', "Very High".to_sym => '99', :High => '99', :Normal => '99', :Low => '99', "Very Low".to_sym => '99'},
+          {:classification => 'U5', "Very High".to_sym => '99', :High => '99', :Normal => '99', :Low => '99', "Very Low".to_sym => '99'},
+          {:classification => 'G8', "Very High".to_sym => '99', :High => '99', :Normal => '99', :Low => '99', "Very Low".to_sym => '99'}]
 
 students = []
 

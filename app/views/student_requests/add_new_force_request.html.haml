@@ -23,7 +23,7 @@
           = select :student_request, 'request_semester', @requestSemester, :required => true
       %tr
         %td   
-          = label :student_request, :course_id, 'Course Id*'
+          = label :student_request, :course_id, 'Course Id* (CSCE)'
         %td  
           = text_field :student_request, 'course_id', class: 'input-field', :required => true, placeholder: 'i.e. to choose course CSCE 629-600, enter 629', :pattern => "[0-9]{3}", :oninvalid => "this.setCustomValidity('Please enter 3 numbers of Course ID')", :oninput => "this.setCustomValidity('')", :required => true
       %tr

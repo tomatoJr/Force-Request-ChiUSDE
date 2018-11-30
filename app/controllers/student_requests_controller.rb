@@ -418,6 +418,7 @@ class StudentRequestsController < ApplicationController
 
   def getSpreadsheetAllCourses
     @student = StudentRequest.all
+    #@logs = Log.all
     respond_to do |format|
     format.csv { send_data @student.to_csv, :filename => "All_force_requests"+".csv" }
     end
@@ -429,7 +430,12 @@ class StudentRequestsController < ApplicationController
   
   def sample_controller
     session[:request_ids] = params[:request_ids]
-    session[:multi_state_sel] = params[:multi_state_sel]
+    selected_state = params[:multi_state_sel]
+    session[:multi_state_sel] = selected_state
+    if(selected_state == StudentRequest::HOLD_STATE)
+      redirect_to student_requests_multiupdate_path()
+      #redirect_to :controller => 'put', :action => 'student_requests_multiupdate'
+    end
     # "/home/ec2-user/environment/Force-Request-ChiUSDE/app/views/student_mailer/email_template.text.erb"
     path = "./app/views/student_mailer/email_template.text.erb"  
     @body_message = ""
@@ -438,6 +444,7 @@ class StudentRequestsController < ApplicationController
   end
   
   def multiupdate
+    puts "Hold was selected"
     if (session[:request_ids] != nil)
       isUpdate = false
       session[:request_ids].each { |id|
@@ -450,8 +457,10 @@ class StudentRequestsController < ApplicationController
             @student_request.state = session[:multi_state_sel]
               @student_request.save!
               message = params[:email_message][0]
-            temporary_email(id, message)
             admin_log(@student_request.request_id, "Status of the request was updated to #{@student_request.state} by #{session[:uin]}")
+            if(@student_request.state != StudentRequest::HOLD_STATE)
+              temporary_email(id, message)
+            end
           end
         end
       }
