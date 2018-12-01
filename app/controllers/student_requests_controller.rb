@@ -271,7 +271,7 @@ class StudentRequestsController < ApplicationController
 
 
 
-      @allAdminStates = ["Select State",StudentRequest::APPROVED_STATE, StudentRequest::REJECTED_STATE, StudentRequest::HOLD_STATE]
+      @allAdminStates = ["Select State",StudentRequest::APPROVED_STATE, StudentRequest::REJECTED_STATE]
       @allViewAdminStates = [StudentRequest::ACTIVE_STATE,StudentRequest::APPROVED_STATE, StudentRequest::REJECTED_STATE, StudentRequest::HOLD_STATE]
 
 
@@ -418,9 +418,16 @@ class StudentRequestsController < ApplicationController
 
   def getSpreadsheetAllCourses
     @student = StudentRequest.all
-    #@logs = Log.all
+    @logs = Log.all
     respond_to do |format|
     format.csv { send_data @student.to_csv, :filename => "All_force_requests"+".csv" }
+    end
+  end
+  
+  def getAllLogs
+    @logs = Log.all
+    respond_to do |format|
+    format.csv { send_data @logs.to_csv, :filename => "All_request_logs"+".csv" }
     end
   end
 
@@ -460,6 +467,7 @@ class StudentRequestsController < ApplicationController
             admin_log(@student_request.request_id, "Status of the request was updated to #{@student_request.state} by #{session[:uin]}")
             if(@student_request.state != StudentRequest::HOLD_STATE)
               temporary_email(id, message)
+              admin_log(@student_request.request_id, "Email Sent by #{session[:uin]} with following message: #{message}")
             end
           end
         end
@@ -521,7 +529,7 @@ class StudentRequestsController < ApplicationController
   end
 
   def getStudentInformationById
-    @allAdminStates = ["Select State",StudentRequest::APPROVED_STATE, StudentRequest::REJECTED_STATE, StudentRequest::HOLD_STATE]
+    @allAdminStates = ["Select State",StudentRequest::APPROVED_STATE, StudentRequest::REJECTED_STATE]
     @allPriorityStates = ["Select Priority",StudentRequest::VERYHIGH_PRIORITY, StudentRequest::HIGH_PRIORITY, StudentRequest::NORMAL_PRIORITY, StudentRequest::LOW_PRIORITY, StudentRequest::VERYLOW_PRIORITY]
     @student_by_id =  StudentRequest.where(request_id: params[:id])
   end

@@ -10,6 +10,13 @@ div#main {
   margin: 0;
   padding: 0 20px 20px;
 }
+th > a {
+  background: transparent;
+  color: white;
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: 0.75rem;
+}
 a {
   background: transparent;
   color: maroon;
@@ -33,6 +40,21 @@ h1.title {
   font-size: 2em;
   font-style: normal;
 }
+
+td.Rejected {
+  background-color: #a84a4a !important;
+  color: white !important;
+}
+
+td.Hold {
+  background-color: #a7a71d !important; 
+  color: white !important;
+}
+td.Approved {
+  background-color: #71c365 !important;
+  color: white !important;
+}
+
 .title_click {
   color: #E0E0E0;
   background-color: brown;
@@ -190,7 +212,7 @@ table th {
   border: 2px solid white;
   font-weight: bold;
   color: white;
-  background-color: #d55d5d;
+  background-color: #707373;
 }
 table th, table td {
   padding: 10px;

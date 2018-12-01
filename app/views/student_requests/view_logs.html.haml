@@ -7,4 +7,7 @@
       .container.right
         .content
           %h2= log.timestamp
-          %p= log.notes
+          - log.notes.to_s.split("<br>").each do |l|
+            %p= l
+            %br
+          
