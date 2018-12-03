@@ -50,6 +50,7 @@ class StudentRequestsController < ApplicationController
       request.save!
       admin_log(id, comparison[:message])
     end
+    flash[:notice] = "Course was successfully edited"
     redirect_to students_show_path
   end
 
@@ -271,7 +272,7 @@ class StudentRequestsController < ApplicationController
 
 
 
-      @allAdminStates = ["Select State",StudentRequest::APPROVED_STATE, StudentRequest::REJECTED_STATE]
+      @allAdminStates = ["Select State",StudentRequest::APPROVED_STATE, StudentRequest::REJECTED_STATE, StudentRequest::HOLD_STATE]
       @allViewAdminStates = [StudentRequest::ACTIVE_STATE,StudentRequest::APPROVED_STATE, StudentRequest::REJECTED_STATE, StudentRequest::HOLD_STATE]
 
 
@@ -418,16 +419,9 @@ class StudentRequestsController < ApplicationController
 
   def getSpreadsheetAllCourses
     @student = StudentRequest.all
-    @logs = Log.all
+    #@logs = Log.all
     respond_to do |format|
     format.csv { send_data @student.to_csv, :filename => "All_force_requests"+".csv" }
-    end
-  end
-  
-  def getAllLogs
-    @logs = Log.all
-    respond_to do |format|
-    format.csv { send_data @logs.to_csv, :filename => "All_request_logs"+".csv" }
     end
   end
 
@@ -467,7 +461,6 @@ class StudentRequestsController < ApplicationController
             admin_log(@student_request.request_id, "Status of the request was updated to #{@student_request.state} by #{session[:uin]}")
             if(@student_request.state != StudentRequest::HOLD_STATE)
               temporary_email(id, message)
-              admin_log(@student_request.request_id, "Email Sent by #{session[:uin]} with following message: #{message}")
             end
           end
         end
@@ -493,7 +486,7 @@ class StudentRequestsController < ApplicationController
     message = ""
     check = false
     if (request.notes != param[:student_request][:notes])
-      message << " Notes was updated from #{request.notes} to #{param[:student_request][:notes]} <br>"
+      message << " Notes was updated from #{request.notes} to #{param[:student_request][:notes]} \%\b\r"
       check = true
     end
     if (request.priority != param[:student_request][:priority])
@@ -529,7 +522,7 @@ class StudentRequestsController < ApplicationController
   end
 
   def getStudentInformationById
-    @allAdminStates = ["Select State",StudentRequest::APPROVED_STATE, StudentRequest::REJECTED_STATE]
+    @allAdminStates = ["Select State",StudentRequest::APPROVED_STATE, StudentRequest::REJECTED_STATE, StudentRequest::HOLD_STATE]
     @allPriorityStates = ["Select Priority",StudentRequest::VERYHIGH_PRIORITY, StudentRequest::HIGH_PRIORITY, StudentRequest::NORMAL_PRIORITY, StudentRequest::LOW_PRIORITY, StudentRequest::VERYLOW_PRIORITY]
     @student_by_id =  StudentRequest.where(request_id: params[:id])
   end
@@ -566,6 +559,7 @@ class StudentRequestsController < ApplicationController
     puts classification
     puts high
     Limit.where(:classification => classification).update_all("Very High".to_sym => very_high, :High => high, :Normal => normal, :Low => low, "Very Low".to_sym => very_low)
+    flash[:notice] = "Limits were successfully set"
     redirect_to student_requests_adminprivileges_path
   end
   
@@ -585,6 +579,7 @@ class StudentRequestsController < ApplicationController
     File.open(path, "w+") do |f|
       f.write(body)
     end
+    flash[:notice] = "Email template was successfully updated"
     redirect_to student_requests_adminprivileges_path
   end
   
