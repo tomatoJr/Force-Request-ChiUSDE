@@ -69,7 +69,7 @@ When(/^I enter correct information$/) do
   fill_in 'ReEnter your UIN', :with => @user_info[:UIN]
   fill_in 'Enter your UIN', :with => @user_info[:UIN]
   fill_in 'Enter your email', :with => @user_info[:email]
-  select "G", :from => "Select your classification"
+  select "G7", :from => "Select your classification"
   select "Computer Science", :from => "Select your Major"
   fill_in('Enter your password', :with => @user_info[:password])
   fill_in('ReEnter your password', :with => @user_info[:password])

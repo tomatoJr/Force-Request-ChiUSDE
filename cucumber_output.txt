@@ -10,7 +10,15 @@ Feature: admin process force request
     Then I should be on Admin View page                          # features/step_definitions/admin_steps.rb:25
     And I should see all requests here                           # features/step_definitions/admin_steps.rb:31
     And I click Download button                                  # features/step_definitions/admin_actions_steps.rb:1
-    Then I should get a download with the All_force_requests.csv # features/step_definitions/admin_actions_steps.rb:5
+    Then I should get a download with the All_force_requests.csv # features/step_definitions/admin_actions_steps.rb:9
+
+  Scenario: Admin download                                     # features/admin_action.feature:14
+    Given I am on the Login Page as admin                      # features/step_definitions/admin_steps.rb:1
+    And I use admin account to login                           # features/step_definitions/admin_steps.rb:17
+    Then I should be on Admin View page                        # features/step_definitions/admin_steps.rb:25
+    And I should see all requests here                         # features/step_definitions/admin_steps.rb:31
+    And I click Download logs button                           # features/step_definitions/admin_actions_steps.rb:5
+    Then I should get a download with the All_request_logs.csv # features/step_definitions/admin_actions_steps.rb:13
 
 Feature: admin SignUp and login
   As an administrator
@@ -30,16 +38,16 @@ Feature: admin SignUp and login
     And I should see all requests here             # features/step_definitions/admin_steps.rb:31
     When I click More Actions                      # features/step_definitions/admin_steps.rb:37
     Then I should go to action page                # features/step_definitions/admin_steps.rb:42
-    When I add a new admin                         # features/step_definitions/admin_steps.rb:48
-    And I fill the info of new admin               # features/step_definitions/admin_steps.rb:52
-    Then I should back to admin dashboard          # features/step_definitions/admin_steps.rb:61
+    When I add a new admin                         # features/step_definitions/admin_steps.rb:50
+    And I fill the info of new admin               # features/step_definitions/admin_steps.rb:54
+    Then I should back to admin dashboard          # features/step_definitions/admin_steps.rb:63
     When I click More Actions                      # features/step_definitions/admin_steps.rb:37
     Then I should go to action page                # features/step_definitions/admin_steps.rb:42
-    When I click add a new student                 # features/step_definitions/admin_steps.rb:66
-    And I fill the info of new student             # features/step_definitions/admin_steps.rb:70
+    When I click add a new student                 # features/step_definitions/admin_steps.rb:68
+    And I fill the info of new student             # features/step_definitions/admin_steps.rb:72
     Then I should go to action page                # features/step_definitions/admin_steps.rb:42
-    When I click add a new force request to system # features/step_definitions/admin_steps.rb:82
-    And I fill the info of new request             # features/step_definitions/admin_steps.rb:86
+    When I click add a new force request to system # features/step_definitions/admin_steps.rb:84
+    And I fill the info of new request             # features/step_definitions/admin_steps.rb:88
     Then I should go to action page                # features/step_definitions/admin_steps.rb:42
 
   Scenario: Admin Control                      # features/admin_view.feature:32
@@ -47,31 +55,31 @@ Feature: admin SignUp and login
     And I use admin account to login           # features/step_definitions/admin_steps.rb:17
     Then I should be on Admin View page        # features/step_definitions/admin_steps.rb:25
     And I should see all requests here         # features/step_definitions/admin_steps.rb:31
-    When I filter the requests                 # features/step_definitions/admin_steps.rb:109
-    Then I have the requests in desired domain # features/step_definitions/admin_steps.rb:119
-    When I click course name button            # features/step_definitions/admin_steps.rb:123
-    Then the page collapse                     # features/step_definitions/admin_steps.rb:127
+    When I filter the requests                 # features/step_definitions/admin_steps.rb:111
+    Then I have the requests in desired domain # features/step_definitions/admin_steps.rb:121
+    When I click course name button            # features/step_definitions/admin_steps.rb:125
+    Then the page collapse                     # features/step_definitions/admin_steps.rb:129
 
   Scenario: Approve request               # features/admin_view.feature:43
     Given I am on the Login Page as admin # features/step_definitions/admin_steps.rb:1
     And I use admin account to login      # features/step_definitions/admin_steps.rb:17
     Then I should be on Admin View page   # features/step_definitions/admin_steps.rb:25
-    When I click Approve                  # features/step_definitions/admin_steps.rb:132
-    Then I should see Approved            # features/step_definitions/admin_steps.rb:136
+    When I click Approve                  # features/step_definitions/admin_steps.rb:134
+    Then I should see Approved            # features/step_definitions/admin_steps.rb:138
 
   Scenario: Reject request                # features/admin_view.feature:50
     Given I am on the Login Page as admin # features/step_definitions/admin_steps.rb:1
     And I use admin account to login      # features/step_definitions/admin_steps.rb:17
     Then I should be on Admin View page   # features/step_definitions/admin_steps.rb:25
-    When I click Reject                   # features/step_definitions/admin_steps.rb:140
-    Then I should see Rejected            # features/step_definitions/admin_steps.rb:144
+    When I click Reject                   # features/step_definitions/admin_steps.rb:142
+    Then I should see Rejected            # features/step_definitions/admin_steps.rb:146
 
   Scenario: Hold request                  # features/admin_view.feature:57
     Given I am on the Login Page as admin # features/step_definitions/admin_steps.rb:1
     And I use admin account to login      # features/step_definitions/admin_steps.rb:17
     Then I should be on Admin View page   # features/step_definitions/admin_steps.rb:25
-    When I click Hold                     # features/step_definitions/admin_steps.rb:148
-    Then I should see Hold                # features/step_definitions/admin_steps.rb:152
+    When I click Hold                     # features/step_definitions/admin_steps.rb:150
+    Then I should see Hold                # features/step_definitions/admin_steps.rb:154
 
   # Scenario: Add Notes
   # Given I am on the Login Page as admin
@@ -82,10 +90,37 @@ Feature: admin SignUp and login
   Scenario: Update Request with nothing changed            # features/admin_view.feature:71
     Given I am on the Login Page as admin                  # features/step_definitions/admin_steps.rb:1
     And I use admin account to login                       # features/step_definitions/admin_steps.rb:17
-    And I click first Update Selected                      # features/step_definitions/admin_steps.rb:164
-    Then I should be on the custom message page            # features/step_definitions/admin_steps.rb:172
-    And I type in a custom message                         # features/step_definitions/admin_steps.rb:176
-    Then I should see Nothing has been selected for Update # features/step_definitions/admin_steps.rb:168
+    And I click first Update Selected                      # features/step_definitions/admin_steps.rb:166
+    Then I should be on the custom message page            # features/step_definitions/admin_steps.rb:174
+Hold was selected
+    And I type in a custom message                         # features/step_definitions/admin_steps.rb:178
+    Then I should see Nothing has been selected for Update # features/step_definitions/admin_steps.rb:170
+
+  Scenario: Admin set limits on courses     # features/admin_view.feature:79
+    Given I am on the Login Page as admin   # features/step_definitions/admin_steps.rb:1
+    And I use admin account to login        # features/step_definitions/admin_steps.rb:17
+    Then I should be on Admin View page     # features/step_definitions/admin_steps.rb:25
+    And I should see all requests here      # features/step_definitions/admin_steps.rb:31
+    When I click More Actions               # features/step_definitions/admin_steps.rb:37
+    Then I should go to action page         # features/step_definitions/admin_steps.rb:42
+    Then I click Set Force Request Limit    # features/step_definitions/admin_steps.rb:183
+    Then I should be on the set limits page # features/step_definitions/admin_steps.rb:200
+
+5
+    And I enter the limits                  # features/step_definitions/admin_steps.rb:187
+    Then I should see limits were set       # features/step_definitions/admin_steps.rb:196
+
+  Scenario: Edit email template                     # features/admin_view.feature:91
+    Given I am on the Login Page as admin           # features/step_definitions/admin_steps.rb:1
+    And I use admin account to login                # features/step_definitions/admin_steps.rb:17
+    Then I should be on Admin View page             # features/step_definitions/admin_steps.rb:25
+    And I should see all requests here              # features/step_definitions/admin_steps.rb:31
+    When I click More Actions                       # features/step_definitions/admin_steps.rb:37
+    Then I should go to action page                 # features/step_definitions/admin_steps.rb:42
+    Then I click Edit Email Template                # features/step_definitions/admin_steps.rb:204
+    Then I should be on the email template page     # features/step_definitions/admin_steps.rb:208
+    And I edit the template                         # features/step_definitions/admin_steps.rb:212
+    Then I should see that the template was updated # features/step_definitions/admin_steps.rb:217
 
 Feature: students Login
   As a student
@@ -153,7 +188,7 @@ G7********
 ***********************
 Creating password: junqi
 Created Password: 321312
-Encrypted Password: LZ3WzRxlX4DlF/LgGiA0azQYp3j94A==
+Encrypted Password: j6iKrbVfTplN0wj4tY2GKKrgCOFSVg==
     And I click SignUp                                  # features/step_definitions/student_signup_steps.rb:78
     Then I should see my account create successfully    # features/step_definitions/student_signup_steps.rb:113
 
@@ -232,6 +267,8 @@ Given password: 151718
     Then I should be on Student Dashboard Page                   # features/step_definitions/student_view_steps.rb:15
     When I click on New Force Request                            # features/step_definitions/student_view_steps.rb:82
     And I complete the form                                      # features/step_definitions/student_view_steps.rb:87
+G
+Very High
     And I click Save Request                                     # features/step_definitions/student_view_steps.rb:141
     Then I should see a confirm message                          # features/step_definitions/student_view_steps.rb:145
     Then I should be on Student Dashboard Page                   # features/step_definitions/student_view_steps.rb:15
@@ -288,72 +325,48 @@ Given password: 151718
     Then I should be on Student Dashboard Page  # features/step_definitions/student_view_steps.rb:15
     When I click on New Force Request           # features/step_definitions/student_view_steps.rb:82
     And I assign priority to the request        # features/step_definitions/student_view_steps.rb:313
+G
+High
     And I click Save Request                    # features/step_definitions/student_view_steps.rb:141
     Then I should see the request with priority # features/step_definitions/student_view_steps.rb:323
     Then I should be on Student Dashboard Page  # features/step_definitions/student_view_steps.rb:15
 
-  #Scenario: Maximum force request limit for graduate student
-  #When I am on the Login Page
-  #When I login with correct login info
-  #Then I should be on Student Dashboard Page
-  #When I click on New Force Request
-  #And I complete the form
-  #And I click Save Request
-  #Then I should see a confirm message
-  #Then I should be on Student Dashboard Page
-  #When I click on New Force Request
-  #And I complete the form the second time
-  #And I click Save Request
-  #Then I should see a confirm message for second request
-  #Then I should be on Student Dashboard Page
-  #When I click on New Force Request
-  #And I complete the form the third time
-  #And I click Save Request
-  #Then I should see a confirm message for third request
-  #Then I should be on Student Dashboard Page
-  #When I click on New Force Request
-  #And I complete the form the fourth time
-  #And I click Save Request
-  #Then I should see a error message for maximum limit
-  #Then I should be on Student Dashboard Page
-  Scenario: Maximum force request limit for undergraduate student # features/student_view.feature:130
-    When I am on the Login Page                                   # features/step_definitions/student_login_steps.rb:7
+  Scenario: Maximum force request limit for graduate student # features/student_view.feature:105
+    When I am on the Login Page                              # features/step_definitions/student_login_steps.rb:7
 User password: 151718
 Given password: 151718
-    When I login with correct login info as undergraduate student # features/step_definitions/student_view_steps.rb:8
-    Then I should be on Student Dashboard Page                    # features/step_definitions/student_view_steps.rb:15
-    When I click on New Force Request                             # features/step_definitions/student_view_steps.rb:82
-    And I complete the form                                       # features/step_definitions/student_view_steps.rb:87
-    And I click Save Request                                      # features/step_definitions/student_view_steps.rb:141
-    Then I should see a confirm message                           # features/step_definitions/student_view_steps.rb:145
-    Then I should be on Student Dashboard Page                    # features/step_definitions/student_view_steps.rb:15
-    When I click on New Force Request                             # features/step_definitions/student_view_steps.rb:82
-    And I complete the form the second time                       # features/step_definitions/student_view_steps.rb:96
-    And I click Save Request                                      # features/step_definitions/student_view_steps.rb:141
-    Then I should see a confirm message for second request        # features/step_definitions/student_view_steps.rb:151
-    Then I should be on Student Dashboard Page                    # features/step_definitions/student_view_steps.rb:15
-    When I click on New Force Request                             # features/step_definitions/student_view_steps.rb:82
-    And I complete the form the third time                        # features/step_definitions/student_view_steps.rb:105
-    And I click Save Request                                      # features/step_definitions/student_view_steps.rb:141
-    Then I should see a confirm message for third request         # features/step_definitions/student_view_steps.rb:159
-    Then I should be on Student Dashboard Page                    # features/step_definitions/student_view_steps.rb:15
-    When I click on New Force Request                             # features/step_definitions/student_view_steps.rb:82
-    And I complete the form the fourth time                       # features/step_definitions/student_view_steps.rb:114
-    And I click Save Request                                      # features/step_definitions/student_view_steps.rb:141
-    Then I should see a confirm message for fourth request        # features/step_definitions/student_view_steps.rb:169
-    Then I should be on Student Dashboard Page                    # features/step_definitions/student_view_steps.rb:15
-    When I click on New Force Request                             # features/step_definitions/student_view_steps.rb:82
-    And I complete the form the fifth time                        # features/step_definitions/student_view_steps.rb:123
-    And I click Save Request                                      # features/step_definitions/student_view_steps.rb:141
-    Then I should see a confirm message for fifth request         # features/step_definitions/student_view_steps.rb:181
-    Then I should be on Student Dashboard Page                    # features/step_definitions/student_view_steps.rb:15
-    When I click on New Force Request                             # features/step_definitions/student_view_steps.rb:82
-    And I complete the form the sixth time                        # features/step_definitions/student_view_steps.rb:132
-    And I click Save Request                                      # features/step_definitions/student_view_steps.rb:141
-    Then I should see a error message for maximum limit           # features/step_definitions/student_view_steps.rb:195
-    Then I should be on Student Dashboard Page                    # features/step_definitions/student_view_steps.rb:15
+    When I login with correct login info                     # features/step_definitions/student_view_steps.rb:1
+    Then I should be on Student Dashboard Page               # features/step_definitions/student_view_steps.rb:15
+    When I click on New Force Request                        # features/step_definitions/student_view_steps.rb:82
+    And I complete the form                                  # features/step_definitions/student_view_steps.rb:87
+G
+Very High
+    And I click Save Request                                 # features/step_definitions/student_view_steps.rb:141
+    Then I should see a confirm message                      # features/step_definitions/student_view_steps.rb:145
+    Then I should be on Student Dashboard Page               # features/step_definitions/student_view_steps.rb:15
+    When I click on New Force Request                        # features/step_definitions/student_view_steps.rb:82
+    And I complete the form the second time                  # features/step_definitions/student_view_steps.rb:96
+G
+Very High
+    And I click Save Request                                 # features/step_definitions/student_view_steps.rb:141
+    Then I should see a confirm message for second request   # features/step_definitions/student_view_steps.rb:151
+    Then I should be on Student Dashboard Page               # features/step_definitions/student_view_steps.rb:15
+    When I click on New Force Request                        # features/step_definitions/student_view_steps.rb:82
+    And I complete the form the third time                   # features/step_definitions/student_view_steps.rb:105
+G
+Very High
+    And I click Save Request                                 # features/step_definitions/student_view_steps.rb:141
+    Then I should see a confirm message for third request    # features/step_definitions/student_view_steps.rb:159
+    Then I should be on Student Dashboard Page               # features/step_definitions/student_view_steps.rb:15
+    When I click on New Force Request                        # features/step_definitions/student_view_steps.rb:82
+    And I complete the form the fourth time                  # features/step_definitions/student_view_steps.rb:114
+G
+Very High
+    And I click Save Request                                 # features/step_definitions/student_view_steps.rb:141
+    Then I should see a error message for maximum limit      # features/step_definitions/student_view_steps.rb:195
+    Then I should be on Student Dashboard Page               # features/step_definitions/student_view_steps.rb:15
 
-21 scenarios (21 passed)
-204 steps (204 passed)
-0m42.933s
-Coverage report generated for Cucumber Features to /home/ec2-user/environment/Force-Request-ChiUSDE/coverage. 969 / 1111 LOC (87.22%) covered.
+24 scenarios (24 passed)
+220 steps (220 passed)
+0m30.237s
+Coverage report generated for Cucumber Features to /home/ec2-user/environment/Force-Request-ChiUSDE/coverage. 1034 / 1257 LOC (82.26%) covered.

@@ -43,6 +43,8 @@ Then(/^I should go to action page$/) do
      page.should have_content("Add New Force Admin")
      page.should have_content("Add New Force Request")  
      page.should have_content("Add New Student")
+     page.should have_content("Set Force Request Limit")
+     page.should have_content("Edit Email Template")
 end
 
 When(/^I add a new admin$/) do
@@ -177,3 +179,42 @@ And (/^I type in a custom message/) do
     fill_in('Enter message here', :with => "Good Luck!")
     click_button('Confirm')
 end
+
+Then (/^I click Set Force Request Limit$/) do
+    click_link('Set Force Request Limit')
+end
+
+And (/^I enter the limits/) do
+    fill_in('Very High', :with => "5")
+    fill_in('High', :with => "5")
+    fill_in('Normal', :with => "5")
+    fill_in('Low', :with => "5")
+    fill_in('Very Low', :with => "5")
+    click_button('Submit')
+end
+
+Then (/^I should see limits were set$/) do
+    page.should have_content("Limits were successfully set")
+end
+
+Then (/^I should be on the set limits page/) do
+    page.should have_content("Set limit for requests")
+end
+
+Then (/^I click Edit Email Template$/) do
+    click_link('Edit Email Template')
+end
+
+Then (/^I should be on the email template page/) do
+    page.should have_content("Edit email template")
+end
+
+And (/^I edit the template/) do
+    #fill_in('Edit email template', :with => "Good Luck!")
+    click_button('Submit')
+end
+
+Then (/^I should see that the template was updated$/) do
+    page.should have_content("Email template was successfully updated")
+end
+

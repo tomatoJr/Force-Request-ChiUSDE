@@ -42,7 +42,7 @@ class StudentRequest < ActiveRecord::Base
     CLASSIFICATION_LIST = ['U1', 'U2', 'U3', 'U4', 'U5', 'G7', 'G8']
     MAJOR_LIST = [      
              'None',    
-             'Computer Science (CSCE)', 
+             'Computer Science', 
 
              'Computer Engineering (CSCE)',
              'Computer Engineering (ECEN)',

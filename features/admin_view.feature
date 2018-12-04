@@ -75,3 +75,27 @@ And I click first Update Selected
 Then I should be on the custom message page
 And I type in a custom message
 Then I should see Nothing has been selected for Update
+
+Scenario: Admin set limits on courses
+Given I am on the Login Page as admin
+And I use admin account to login
+Then I should be on Admin View page
+And I should see all requests here
+When I click More Actions
+Then I should go to action page
+Then I click Set Force Request Limit
+Then I should be on the set limits page
+And I enter the limits
+Then I should see limits were set
+
+Scenario: Edit email template
+Given I am on the Login Page as admin
+And I use admin account to login
+Then I should be on Admin View page
+And I should see all requests here
+When I click More Actions
+Then I should go to action page
+Then I click Edit Email Template
+Then I should be on the email template page
+And I edit the template
+Then I should see that the template was updated

@@ -10,7 +10,7 @@
 student_requests = []
 
 majors = [                 
-            {:major_id => 'Computer Science '},         
+            {:major_id => 'Computer Science'},         
             {:major_id => 'Computer Engineering'},
             {:major_id => 'Electrical Engineering'},
             {:major_id => 'Applied Mathematical Sciences'},            
