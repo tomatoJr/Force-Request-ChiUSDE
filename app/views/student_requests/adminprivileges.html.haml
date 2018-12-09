@@ -7,8 +7,8 @@
 = link_to '<button type="button" class="regularbutton">Add New Student</button>'.html_safe, students_add_new_student_path
 %br
 = link_to '<button type="button" class="regularbutton">Add New Force Request</button>'.html_safe, student_requests_add_new_force_request_path
-%br
-= link_to '<button type="button" class="regularbutton">Delete All Force Requests</button>'.html_safe, student_requests_deleteall_path, :data => { confirm: 'Are you sure that you want to delete everything?'}, :method => :delete
+/%br
+/= link_to '<button type="button" class="regularbutton">Delete All Force Requests</button>'.html_safe, student_requests_deleteall_path, :data => { confirm: 'Are you sure that you want to delete everything?'}, :method => :delete
 %br
 = link_to '<button type="button" class="regularbutton">Set Force Request Limit</button>'.html_safe, student_requests_set_request_limit_path
 %br
