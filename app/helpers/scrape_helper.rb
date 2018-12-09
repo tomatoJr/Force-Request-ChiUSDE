@@ -4,9 +4,10 @@ module ScrapeHelper
         require 'nokogiri'
         require 'open-uri' 
         
-        acronym = major.match(/( \((.*)\))/)[1]
-        
-        major.slice! acronym
+        if (major.match(/( \((.*)\))/) != nil)
+            acronym = major.match(/( \((.*)\))/)[1]
+            major.slice! acronym
+        end
         
         #split_name = name.split(/, */)
         #lastName = split_name[0]
