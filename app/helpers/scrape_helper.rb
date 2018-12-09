@@ -3,7 +3,11 @@ module ScrapeHelper
         require 'rubygems'
         require 'nokogiri'
         require 'open-uri' 
-
+        
+        acronym = major.match(/( \((.*)\))/)[1]
+        
+        major.slice! acronym
+        
         #split_name = name.split(/, */)
         #lastName = split_name[0]
         #firstName = split_name[1]
