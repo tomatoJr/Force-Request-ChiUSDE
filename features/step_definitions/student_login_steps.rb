@@ -37,7 +37,7 @@ When(/^I should stay at the same page$/) do
 end
 
 Then(/^I should see a non-account exsits message$/) do
-  page.should have_content("The account doesn't exsit. Please sign up first.")
+  page.should have_content("The account doesn't exist. Please sign up first.")
 end
 
 Then(/^I should see a error message$/) do

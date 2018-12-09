@@ -283,7 +283,7 @@ Then(/^I should see the request with priority$/) do
 end
 
 When(/^I click on Edit$/) do
-  click_button('Delete')
+  click_button('Edit')
 end
 
 And(/^I edit the request$/) do

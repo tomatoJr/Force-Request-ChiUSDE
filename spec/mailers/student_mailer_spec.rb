@@ -23,6 +23,21 @@ RSpec.describe StudentMailer, type: :mailer do
     end
   end
 
+  describe 'update_force_state' do
+    before :each do
+      @student = Student.new( name: 'Sulav Adhikari', email: 'saberMonkey47@tamu.edu', password: 'welcome1', uin: 12345678)
+      @fake_student_request = FactoryGirl.create(:student_request)
+      @student.save
+    end
+    let(:mail) { described_class.update_force_state(@student,@fake_student_request,"Sample Message").deliver_now }
+    
+    it 'renders the subject' do
+      StudentMailer.update_force_state(@student, @fake_student_request,"Sample Message")
+      expect(mail.subject).to eq('Updates on Your Force Request')
+      expect(mail.to).to eq(['saberMonkey47@tamu.edu'])
+    end
+  end
+
   describe 'confirm_force_request' do
     before :each do
       @fake_student_request = FactoryGirl.create(:student_request)

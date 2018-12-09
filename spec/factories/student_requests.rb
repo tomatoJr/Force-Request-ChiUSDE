@@ -11,6 +11,12 @@ FactoryGirl.define do
     priority "High"
     phone "9793459799"
     section_id "505"
+    state "Withdraw"
+  end
+  
+  factory :limit do
+    classification "G8"
+    High 5
   end
 
   factory :student do

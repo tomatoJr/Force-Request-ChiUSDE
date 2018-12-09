@@ -40,19 +40,19 @@ When I click course name button
 Then the page collapse
 
 
-Scenario: Approve request
-Given I am on the Login Page as admin
-And I use admin account to login
-Then I should be on Admin View page
-When I click Approve
-Then I should see Approved
+# Scenario: Approve request
+# Given I am on the Login Page as admin
+# And I use admin account to login
+# Then I should be on Admin View page
+# When I click Approve
+# Then I should see Approved
 
-Scenario: Reject request
-Given I am on the Login Page as admin
-And I use admin account to login
-Then I should be on Admin View page
-When I click Reject
-Then I should see Rejected
+# Scenario: Reject request
+# Given I am on the Login Page as admin
+# And I use admin account to login
+# Then I should be on Admin View page
+# When I click Reject
+# Then I should see Rejected
 
 Scenario: Hold request
 Given I am on the Login Page as admin
@@ -67,6 +67,7 @@ Then I should see Hold
 # Then I should be on Admin View page
 # When I click View Details
 # Then I should see Request Id Details
+
 
 Scenario: Update Request with nothing changed
 Given I am on the Login Page as admin
