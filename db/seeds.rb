@@ -143,7 +143,8 @@ majors = [
             {:major_id => 'Zoology'},           
             {:major_id => 'Others'}]
             
-admins = [{:uin => '123456789', :name => 'admin', :password => 'tamu2017', :email => '123456789@tamu.edu'}]
+admins = [{:uin => '123456789', :name => 'admin', :password => 'tamu2017', :email => '123456789@tamu.edu'},
+          {:uin => '987654321', :name => 'admin2', :password => 'tamu2017', :email => '123456780@tamu.edu'}]
 limits = [{:classification => 'G7', "Very High".to_sym => '99', :High => '99', :Normal => '99', :Low => '99', "Very Low".to_sym => '99'}, 
           {:classification => 'U1', "Very High".to_sym => '99', :High => '99', :Normal => '99', :Low => '99', "Very Low".to_sym => '99'},
           {:classification => 'U2', "Very High".to_sym => '99', :High => '99', :Normal => '99', :Low => '99', "Very Low".to_sym => '99'},
