@@ -121,7 +121,8 @@ class StudentRequestsController < ApplicationController
     when "Very Low"
       @flagclass = limit_val.first['Very Low']
     end
-      
+    #@flagclass = 3
+    puts limit_val
     @existing_request = StudentRequest.where(:uin => session_get(:uin), :priority => temp_priority).count
 
     
@@ -535,14 +536,14 @@ class StudentRequestsController < ApplicationController
   end
 
   def deleteall
-    @student_requests = StudentRequest.all.as_json
-    @student_requests.each do |record|
-      record.delete('id')
-      StudentRequestArchival.create!(record)
-    end
-    StudentRequest.delete_all
-    puts("here**********************************")
-    redirect_to student_requests_adminview_path
+    #@student_requests = StudentRequest.all.as_json
+    #@student_requests.each do |record|
+    #  record.delete('id')
+    #  #StudentRequestArchival.create!(record)
+    #end
+    #StudentRequest.delete_all
+    #puts("here**********************************")
+    #redirect_to student_requests_adminview_path
   end
   
   def cancel

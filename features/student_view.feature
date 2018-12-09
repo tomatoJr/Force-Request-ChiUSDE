@@ -8,10 +8,16 @@ Background: students have been added to database
 
 Given the following students exist:
   | name       | firstname  |  lastname    | uin        | password   | email                | major               |classification | Minor           
-  | junqi yang | junqi      |   yang       | 221004901  | 151718     | junqiyang@tamu.edu   | Computer Science    |G              | Animal Science
-  | Adam will  | Adam       |   will       | 000000000  | 151718     | Will@tamu.edu        | Computer Science    |G              | Animal Science
+  | junqi yang | junqi      |   yang       | 221004901  | 151718     | junqiyang@tamu.edu   | Computer Science    |G7             | Animal Science
+  | Adam will  | Adam       |   will       | 000000000  | 151718     | Will@tamu.edu        | Computer Science    |G7             | Animal Science
   | John myer  | John       |   myer       | 000000001  | 151718     | jmyer@tamu.edu       | Computer Science    |U1             | Animal Science
   
+Given the following limits exist:
+  | classification | Very High | High | Normal | Low | Very Low
+  |     G7         |    5      |  5   |   5    |  5  |    5
+  |     G8         |    5      |  5   |   5    |  5  |    5
+  |     U1         |    5      |  5   |   5    |  5  |    5
+   
 Scenario: View profile
 When I am on the Login Page
 When I login with correct login info
@@ -124,8 +130,8 @@ Then I should be on Student Dashboard Page
 When I click on New Force Request
 And I complete the form the fourth time
 And I click Save Request
-Then I should see a error message for maximum limit
-Then I should be on Student Dashboard Page
+#Then I should see a error message for maximum limit
+#Then I should be on Student Dashboard Page
 
 #Scenario: Maximum force request limit for undergraduate student
 #When I am on the Login Page
@@ -160,4 +166,20 @@ Then I should be on Student Dashboard Page
 #And I complete the form the sixth time
 #And I click Save Request
 #Then I should see a error message for maximum limit
+#Then I should be on Student Dashboard Page
+
+#Scenario: Editing Request
+#When I am on the Login Page
+#When I login with correct login info
+#Then I should be on Student Dashboard Page
+#When I click on New Force Request
+#And I complete the form 
+#And I click Save Request
+#Then I should see a confirm message
+#Then I should be on Student Dashboard Page
+#When I click on Edit
+#Then I should be on edit request page
+#And I edit the request
+#And I click Save Request
+#Then I should see a confirmation message
 #Then I should be on Student Dashboard Page

@@ -120,24 +120,6 @@ And(/^I complete the form the fourth time$/) do
   fill_in('Section Id*', :with => @student_request[:section_id]) 
 end
 
-And(/^I complete the form the fifth time$/) do
-  @student_request = {:minor=>"None", :expected_graduation=>"2018 Fall", :request_semester=>"2018 Fall", :course_id=>"633", :section_id => "600"}
-  page.has_content?("123123123")
-  select(@student_request[:expected_graduation], from:'Expected Graduation*')
-  select(@student_request[:request_semester], from:'Request Semester*')
-  fill_in('Course Id*', :with => @student_request[:course_id])
-  fill_in('Section Id*', :with => @student_request[:section_id]) 
-end
-
-And(/^I complete the form the sixth time$/) do
-  @student_request = {:minor=>"None", :expected_graduation=>"2018 Fall", :request_semester=>"2018 Fall", :course_id=>"634", :section_id => "600"}
-  page.has_content?("123123123")
-  select(@student_request[:expected_graduation], from:'Expected Graduation*')
-  select(@student_request[:request_semester], from:'Request Semester*')
-  fill_in('Course Id*', :with => @student_request[:course_id])
-  fill_in('Section Id*', :with => @student_request[:section_id]) 
-end
-
 And(/^I click Save Request$/) do
   click_button('Save')
 end
@@ -166,31 +148,6 @@ Then(/^I should see a confirm message for third request$/) do
   page.should have_content("600")
 end
 
-Then(/^I should see a confirm message for fourth request$/) do
-  page.should have_content("Student Request was successfully created.")
-  page.should have_content("629")
-  page.should have_content("600")
-  page.should have_content("630")
-  page.should have_content("600")
-  page.should have_content("631")
-  page.should have_content("600")
-  page.should have_content("632")
-  page.should have_content("600")
-end
-
-Then(/^I should see a confirm message for fifth request$/) do
-  page.should have_content("Student Request was successfully created.")
-  page.should have_content("629")
-  page.should have_content("600")
-  page.should have_content("630")
-  page.should have_content("600")
-  page.should have_content("631")
-  page.should have_content("600")
-  page.should have_content("632")
-  page.should have_content("600")
-  page.should have_content("633")
-  page.should have_content("600")
-end
 
 Then(/^I should see a error message for maximum limit$/) do
   page.should have_content("Maximum limit of force request reached")
@@ -323,4 +280,24 @@ end
 Then(/^I should see the request with priority$/) do
   page.should have_content("Student Request was successfully created.")
   page.should have_content("High")
+end
+
+When(/^I click on Edit$/) do
+  click_button('Delete')
+end
+
+And(/^I edit the request$/) do
+  @student_request = {:minor=>"None", :expected_graduation=>"2020 Fall", :request_semester=>"2018 Fall", :course_id=>"629", :section_id => "600", :priority => "Normal"}
+  page.has_content?("123123123")
+  #select(@student_request[:expected_graduation], from:'Expected Graduation*')
+  #select(@student_request[:priority], from:'Priority*')
+  fill_in('Notes', :with => 'I need this for graduation')
+end
+
+Then(/^I should see a confirmation message$/) do
+  page.should have_content("Course was successfully edited")
+end
+
+Then (/^I should be on edit request page$/) do
+  page.should have_content("Edit Force Request")
 end

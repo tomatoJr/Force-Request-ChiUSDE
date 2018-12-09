@@ -5,6 +5,12 @@ Given /the following students exist/ do |students_table|
     end
 end
 
+Given /the following limits exist/ do |limits_table|
+    limits_table.hashes.each do |limit|
+        @tmp = Limit.create limit
+    end
+end
+
 Given(/^I am a student want to sign up for an account$/) do
   visit('/')
   page.should have_content("Login Page")
