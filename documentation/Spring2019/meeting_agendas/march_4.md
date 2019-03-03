@@ -7,7 +7,7 @@
 
 ---
 
-#### Discuss different responsibilities given on the professor website:
+#### Discuss different responsibilities given on the professor's website:
 
 - Google drive document
 - Customer meeting location\time (Manoj’s responsibility)
