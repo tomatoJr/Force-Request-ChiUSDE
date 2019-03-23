@@ -22,9 +22,13 @@ class StudentMailer < ActionMailer::Base
         @student = student
         @req =req
         @message = message
-        mail(:to => @student.email, :subject => "Updates on Your Force Request")
+        
+        @admins = Admin.all
+        @admin_emails = Array.new
+        @admins.each do |admin|
+            @admin_emails.push(admin.email)
+        end
+        
+        mail(:to => @student.email, :bcc => @admin_emails,  :subject => "Updates on Your Force Request")
     end
-
-    
-
 end
