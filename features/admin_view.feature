@@ -89,14 +89,26 @@ Then I should be on the set limits page
 And I enter the limits
 Then I should see limits were set
 
-Scenario: Edit email template
+Scenario: Edit approval email template
 Given I am on the Login Page as admin
 And I use admin account to login
 Then I should be on Admin View page
 And I should see all requests here
 When I click More Actions
 Then I should go to action page
-Then I click Edit Email Template
-Then I should be on the email template page
+Then I click Edit Approval Email Template
+Then I should be on the approval email template page
+And I edit the template
+Then I should see that the template was updated
+
+Scenario: Edit rejection email template
+Given I am on the Login Page as admin
+And I use admin account to login
+Then I should be on Admin View page
+And I should see all requests here
+When I click More Actions
+Then I should go to action page
+Then I click Edit Reject Email Template
+Then I should be on the reject email template page
 And I edit the template
 Then I should see that the template was updated
