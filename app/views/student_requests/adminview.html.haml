@@ -65,7 +65,7 @@
               %th Admin Notes
               %th Logs
               %th Details
-              %th Actions
+              /%th Actions
         
           %tbody
             - @coursestudentlist[course].each do |record|
@@ -91,7 +91,7 @@
                   %a{:onclick => "return getDetailsById('#{record.request_id}')"} #{"View Details"}
                   
                   
-                %td= (link_to 'Hold', {:action => "hold", :controller => "student_requests", :id => record.request_id,:message => "You are on Hold"}, :method => :put)   
+                /%td= (link_to 'Hold', {:action => "hold", :controller => "student_requests", :id => record.request_id,:message => "You are on Hold"}, :method => :put)   
                 
             %table{ :class => "multiUpdate" }
               %tr

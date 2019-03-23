@@ -273,7 +273,7 @@ class StudentRequestsController < ApplicationController
 
 
 
-      @allAdminStates = ["Select State",StudentRequest::APPROVED_STATE, StudentRequest::REJECTED_STATE]
+      @allAdminStates = ["Select State",StudentRequest::APPROVED_STATE, StudentRequest::REJECTED_STATE,StudentRequest::HOLD_STATE ]
       @allViewAdminStates = [StudentRequest::ACTIVE_STATE,StudentRequest::APPROVED_STATE, StudentRequest::REJECTED_STATE, StudentRequest::HOLD_STATE]
 
 
@@ -441,8 +441,9 @@ class StudentRequestsController < ApplicationController
     selected_state = params[:multi_state_sel]
     session[:multi_state_sel] = selected_state
     if(selected_state == StudentRequest::HOLD_STATE)
-      redirect_to student_requests_multiupdate_path()
+      #redirect_to student_requests_multiupdate_path()
       #redirect_to :controller => 'put', :action => 'student_requests_multiupdate'
+      
     end
     # "/home/ec2-user/environment/Force-Request-ChiUSDE/app/views/student_mailer/email_template.text.erb"
     if(selected_state == StudentRequest::APPROVED_STATE)
@@ -458,6 +459,7 @@ class StudentRequestsController < ApplicationController
     @body_message = IO.read(path)
     gon.body_message = @body_message
     end
+    
   end
   
   def multiupdate
@@ -473,11 +475,13 @@ class StudentRequestsController < ApplicationController
             isUpdate = true
             @student_request.state = session[:multi_state_sel]
               @student_request.save!
-              message = params[:email_message][0]
+              
             admin_log(@student_request.request_id, "Status of the request was updated to #{@student_request.state} by #{session[:uin]}")
             if(@student_request.state != StudentRequest::HOLD_STATE)
+              message = params[:email_message][0]
               temporary_email(id, message)
               admin_log(@student_request.request_id, "Email Sent by #{session[:uin]} with following message: #{message}")
+              
             end
           end
         end
@@ -539,7 +543,7 @@ class StudentRequestsController < ApplicationController
   end
 
   def getStudentInformationById
-    @allAdminStates = ["Select State",StudentRequest::APPROVED_STATE, StudentRequest::REJECTED_STATE]
+    @allAdminStates = ["Select State",StudentRequest::APPROVED_STATE, StudentRequest::REJECTED_STATE,StudentRequest::HOLD_STATE]
     @allPriorityStates = ["Select Priority",StudentRequest::VERYHIGH_PRIORITY, StudentRequest::HIGH_PRIORITY, StudentRequest::NORMAL_PRIORITY, StudentRequest::LOW_PRIORITY, StudentRequest::VERYLOW_PRIORITY]
     @student_by_id =  StudentRequest.where(request_id: params[:id])
   end
