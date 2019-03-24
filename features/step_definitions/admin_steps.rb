@@ -205,12 +205,8 @@ Then (/^I click Edit Email Template$/) do
     click_link('Edit Email Template')
 end
 
-Then (/^I should be on the approval email template page/) do
-    page.should have_content("Edit approval email template")
-end
-
-Then (/^I should be on the reject email template page/) do
-    page.should have_content("Edit reject email template")
+Then (/^I should be on the email template page/) do
+    page.should have_content("Edit email template")
 end
 
 And (/^I edit the template/) do
