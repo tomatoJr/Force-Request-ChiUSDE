@@ -44,8 +44,7 @@ Then(/^I should go to action page$/) do
      page.should have_content("Add New Force Request")  
      page.should have_content("Add New Student")
      page.should have_content("Set Force Request Limit")
-     page.should have_content("Edit Approval Email Template")
-     page.should have_content("Edit Reject Email Template")  
+     page.should have_content("Edit Email Template")  
 end
 
 When(/^I add a new admin$/) do
@@ -202,12 +201,8 @@ Then (/^I should be on the set limits page/) do
     page.should have_content("Set limit for requests")
 end
 
-Then (/^I click Edit Approval Email Template$/) do
-    click_link('Edit Approval Email Template')
-end
-
-Then (/^I click Edit Reject Email Template$/) do
-    click_link('Edit Reject Email Template')
+Then (/^I click Edit Email Template$/) do
+    click_link('Edit Email Template')
 end
 
 Then (/^I should be on the approval email template page/) do
