@@ -464,9 +464,9 @@ class StudentRequestsController < ApplicationController
             isUpdate = true
             @student_request.state = session[:multi_state_sel]
               @student_request.save!
-              message = params[:email_message][0]
             admin_log(@student_request.request_id, "Status of the request was updated to #{@student_request.state} by #{session[:uin]}")
             if(@student_request.state != StudentRequest::HOLD_STATE)
+              message = params[:email_message][0].dup
               temporary_email(id, message)
               admin_log(@student_request.request_id, "Email Sent by #{session[:uin]} with following message: #{message}")
             end
