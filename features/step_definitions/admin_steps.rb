@@ -127,7 +127,7 @@ When(/^I click course name button$/) do
 end
 
 Then(/^the page collapse$/) do
-    page.has_content?('	FRS44fe477f6025c48c6fb9')
+    page.has_content?(' FRS44fe477f6025c48c6fb9')
 end
 
 
@@ -209,6 +209,11 @@ Then (/^I should be on the email template page/) do
     page.should have_content("Edit email template")
 end
 
+And (/^I should see template message/) do
+    fill_in 'Enter message here', :with => "./app/views/student_mailer/email_template.text.erb"
+    page.should has_content?(:all, "CSCE Academic Advising Team")
+end
+
 And (/^I edit the template/) do
     #fill_in('Edit email template', :with => "Good Luck!")
     click_button('Submit')
@@ -217,4 +222,3 @@ end
 Then (/^I should see that the template was updated$/) do
     page.should have_content("Email template was successfully updated")
 end
-
