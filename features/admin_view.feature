@@ -98,5 +98,6 @@ When I click More Actions
 Then I should go to action page
 Then I click Edit Email Template
 Then I should be on the email template page
+And I should see template message
 And I edit the template
 Then I should see that the template was updated
