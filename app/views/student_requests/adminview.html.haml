@@ -97,6 +97,7 @@
               %tr
                 %td= select_tag("multi_state_sel", options_for_select(@allAdminStates))
                 //%td= select_tag("state", options_for_select(@allPriorityStates))
+                //update
                 //%td= select_tag("multi_priority_sel", options_for_select(@allPriorityStates))
                 %td= submit_tag "Update Selected"
                 %td= link_to "Email Selected", "", :onclick => "multi_email(\"#{course}\"); return false"
