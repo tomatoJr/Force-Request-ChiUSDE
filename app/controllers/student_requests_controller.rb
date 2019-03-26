@@ -440,17 +440,17 @@ class StudentRequestsController < ApplicationController
     session[:request_ids] = params[:request_ids]
     selected_state = params[:multi_state_sel]
     session[:multi_state_sel] = selected_state
-    if(selected_state == StudentRequest::HOLD_STATE)
+    #if(selected_state == StudentRequest::HOLD_STATE)
       #redirect_to student_requests_multiupdate_path()
       #redirect_to :controller => 'put', :action => 'student_requests_multiupdate'
       
-    end
+    #end
     # "/home/ec2-user/environment/Force-Request-ChiUSDE/app/views/student_mailer/email_template.text.erb"
-    path = "./app/views/student_mailer/email_template.text.erb"  
+    if(selected_state == StudentRequest::APPROVED_STATE)
+    path = "./app/views/student_mailer/email_template_approve.text.erb"  
     @body_message = ""
     @body_message = IO.read(path)
     gon.body_message = @body_message
-<<<<<<< HEAD
     end
 
     if(selected_state == StudentRequest::REJECTED_STATE)
@@ -460,8 +460,6 @@ class StudentRequestsController < ApplicationController
     gon.body_message = @body_message
     end
     
-=======
->>>>>>> d5ae15665b80c0f140bd28e892b6b39d89371ca0
   end
   
   def multiupdate
@@ -477,16 +475,10 @@ class StudentRequestsController < ApplicationController
             isUpdate = true
             @student_request.state = session[:multi_state_sel]
               @student_request.save!
-<<<<<<< HEAD
               
             admin_log(@student_request.request_id, "Status of the request was updated to #{@student_request.state} by #{session[:uin]}")
             if(@student_request.state != StudentRequest::HOLD_STATE)
               message = params[:email_message][0]
-=======
-            admin_log(@student_request.request_id, "Status of the request was updated to #{@student_request.state} by #{session[:uin]}")
-            if(@student_request.state != StudentRequest::HOLD_STATE)
-              message = params[:email_message][0].dup
->>>>>>> d5ae15665b80c0f140bd28e892b6b39d89371ca0
               temporary_email(id, message)
               admin_log(@student_request.request_id, "Email Sent by #{session[:uin]} with following message: #{message}")
               
@@ -592,16 +584,22 @@ class StudentRequestsController < ApplicationController
     redirect_to student_requests_adminprivileges_path
   end
   
-  def get_email_template
-    path = "./app/views/student_mailer/email_template.text.erb"  
+  def get_approve_email_template
+    path = "./app/views/student_mailer/email_template_approve.text.erb"  
+    @body_template = ""
+    @body_template = IO.read(path)
+    gon.body_template = @body_template      
+  end
+
+  def get_reject_email_template
+    path = "./app/views/student_mailer/email_template_reject.text.erb"  
     @body_template = ""
     @body_template = IO.read(path)
     gon.body_template = @body_template
-      
   end
   # "/home/ec2-user/environment/Force-Request-ChiUSDE/app/views/student_mailer/email_template.text.erb"
-  def edit_email_template
-    path = "./app/views/student_mailer/email_template.text.erb"   
+  def edit_approve_email_template
+    path = "./app/views/student_mailer/email_template_approve.text.erb"   
     body = ""
     template = params[:email_template]
     body << template[0]
@@ -612,6 +610,18 @@ class StudentRequestsController < ApplicationController
     redirect_to student_requests_adminprivileges_path
   end
   
+  def edit_reject_email_template
+    path = "./app/views/student_mailer/email_template_reject.text.erb"   
+    body = ""
+    template = params[:email_template]
+    body << template[0]
+    File.open(path, "w+") do |f|
+      f.write(body)
+    end
+    flash[:notice] = "Email template was successfully updated"
+    redirect_to student_requests_adminprivileges_path
+  end
+
   def view_logs
     request_id = params[:id]
     @logs = Log.where(:request_id => request_id).order('timestamp DESC')
