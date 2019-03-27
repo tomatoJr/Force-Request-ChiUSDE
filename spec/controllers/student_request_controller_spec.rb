@@ -364,21 +364,21 @@ describe StudentRequestsController, :type => :controller do
     
     end
 
-    # it "should Reject a student request" do
-    #   #Given
-    #   student_request = FactoryGirl.create(:student_request)
-    #   StudentRequest.should_receive(:find).with("14").twice.and_return(student_request)
-    #   student_request.should_receive(:save)
-    #   StudentMailer.should_receive(:update_force_state).once.and_return( double("Mailer", :deliver => true) );
+    it "should Reject a student request" do
+      #Given
+      student_request = FactoryGirl.create(:student_request)
+      StudentRequest.should_receive(:find).with("14").twice.and_return(student_request)
+      student_request.should_receive(:save)
+      StudentMailer.should_receive(:update_force_state).once.and_return( double("Mailer", :deliver => true) );
 
 
-    #   #When
-    #   put :reject, :id => 14
+      #When
+      put :reject, :id => 14
 
-    #   #Then
-    #   expect(student_request.state).to eq(StudentRequest::REJECTED_STATE)
-    #   assert_response :redirect, :action => 'student_requests_adminview_path'
-    # end
+      #Then
+      expect(student_request.state).to eq(StudentRequest::REJECTED_STATE)
+      assert_response :redirect, :action => 'student_requests_adminview_path'
+    end
 
     it "should hold a student request" do
       #Given

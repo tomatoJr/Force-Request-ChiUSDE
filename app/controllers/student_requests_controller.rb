@@ -183,14 +183,14 @@ class StudentRequestsController < ApplicationController
   #   redirect_to student_requests_adminview_path
   # end
 
-  # def reject
-  #   @student_request = StudentRequest.find params[:id]
-  #   @student_request.state = StudentRequest::REJECTED_STATE
-  #   @student_request.save
-  #   email_the_status()
-  #   admin_log(@student_request.request_id, "Status of the request was updated to #{@student_request.state} by #{session[:uin]}")
-  #   redirect_to student_requests_adminview_path
-  # end
+  def reject
+    @student_request = StudentRequest.find params[:id]
+    @student_request.state = StudentRequest::REJECTED_STATE
+    @student_request.save
+    email_the_status()
+    admin_log(@student_request.request_id, "Status of the request was updated to #{@student_request.state} by #{session[:uin]}")
+    redirect_to student_requests_adminview_path
+  end
 
 
   def hold
