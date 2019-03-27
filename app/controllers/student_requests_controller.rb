@@ -450,18 +450,6 @@ class StudentRequestsController < ApplicationController
     @body_message = ""
     @body_message = IO.read(path)
     gon.body_message = @body_message
-<<<<<<< HEAD
-    end
-
-    if(selected_state == StudentRequest::REJECTED_STATE)
-    path = "./app/views/student_mailer/email_template_reject.text.erb"  
-    @body_message = ""
-    @body_message = IO.read(path)
-    gon.body_message = @body_message
-    end
-    
-=======
->>>>>>> d5ae15665b80c0f140bd28e892b6b39d89371ca0
   end
   
   def multiupdate
@@ -477,16 +465,9 @@ class StudentRequestsController < ApplicationController
             isUpdate = true
             @student_request.state = session[:multi_state_sel]
               @student_request.save!
-<<<<<<< HEAD
-              
-            admin_log(@student_request.request_id, "Status of the request was updated to #{@student_request.state} by #{session[:uin]}")
-            if(@student_request.state != StudentRequest::HOLD_STATE)
-              message = params[:email_message][0]
-=======
             admin_log(@student_request.request_id, "Status of the request was updated to #{@student_request.state} by #{session[:uin]}")
             if(@student_request.state != StudentRequest::HOLD_STATE)
               message = params[:email_message][0].dup
->>>>>>> d5ae15665b80c0f140bd28e892b6b39d89371ca0
               temporary_email(id, message)
               admin_log(@student_request.request_id, "Email Sent by #{session[:uin]} with following message: #{message}")
               
