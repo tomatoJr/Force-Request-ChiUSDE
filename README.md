@@ -42,7 +42,6 @@ Deepak D Nadiminti
 #### <i class="icon-folder-open"></i> Customer Interview Link:
 https://vimeo.com/294268751
 
-
 #### <i class="icon-folder-open"></i> Heroku Deployment Link:
 http://csceforcerequest.herokuapp.com
 
