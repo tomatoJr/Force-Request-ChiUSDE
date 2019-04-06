@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181118192709) do
+ActiveRecord::Schema.define(version: 20190406031514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -133,6 +133,7 @@ ActiveRecord::Schema.define(version: 20181118192709) do
     t.datetime "email_confirm_sent_at"
     t.string   "reset_password_confirm_token"
     t.datetime "reset_sent_at"
+    t.boolean  "isVerified"
   end
 
 end

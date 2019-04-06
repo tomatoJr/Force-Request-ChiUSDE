@@ -280,13 +280,13 @@ class StudentRequestsController < ApplicationController
       allcourses = StudentRequest.all
 
       @coursestudentlist = Hash.new
-
+      
       allcourses.each do |req|
         next if req.state == StudentRequest::WITHDRAWN_STATE
         next if @state_selected[req.state] == false
         next if @request_semester_selected[req.request_semester] == false
 
-
+      
         if !@coursestudentlist.has_key?(req.course_id)
           @coursestudentlist[req.course_id] = []
         end
@@ -535,6 +535,8 @@ class StudentRequestsController < ApplicationController
     @allAdminStates = ["Select State",StudentRequest::APPROVED_STATE, StudentRequest::REJECTED_STATE,StudentRequest::HOLD_STATE]
     @allPriorityStates = ["Select Priority",StudentRequest::VERYHIGH_PRIORITY, StudentRequest::HIGH_PRIORITY, StudentRequest::NORMAL_PRIORITY, StudentRequest::LOW_PRIORITY, StudentRequest::VERYLOW_PRIORITY]
     @student_by_id =  StudentRequest.where(request_id: params[:id])
+    students = Student.where(uin: @student_by_id[0].uin) 
+    @isVerified = students[0].isVerified ? "Verified" : "Unverified"
   end
 
   def deleteall

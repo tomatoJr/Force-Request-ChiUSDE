@@ -4,7 +4,10 @@
   - @student_by_id.each do |record|
     %tr
       %th UIN
-      %td= record.uin 
+      %td= record.uin
+    %tr
+      %th Account Status
+      %td= @isVerified 
     %tr
       %th Full Name
       %td= record.name
