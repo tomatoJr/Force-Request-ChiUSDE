@@ -86,7 +86,7 @@ When(/^I click add a new force request to system$/) do
 end
 
 And(/^I fill the info of new request$/) do
-    @user_info = {:UIN => "777888999", :expected_graduation => "2018 Fall",  :request_semester => "2018 Fall", :course_id => '314', :section_id => '100'}
+    @user_info = {:UIN => "777888999", :expected_graduation => "2019 Fall",  :request_semester => "2019 Fall", :course_id => '314', :section_id => '100'}
     fill_in('UIN of student*', :with => @user_info[:UIN])
     select(@user_info[:expected_graduation], from:'Expected Graduation*')
     select(@user_info[:request_semester], from:'Request Semester*')
