@@ -41,52 +41,58 @@ class StudentsController < ApplicationController
             end      
         end
         
+        @student[0].uin = params[:student_request][:uin]
+        @student[0].email = params[:student_request][:email]
+        @student[0].minor = params[:student_request][:minor]
         if record.length() != 0
             @student[0].major = record['Major']
             @student[0].classification = record['Classification']
-            @student[0].uin = params[:student_request][:uin]
-            @student[0].email = params[:student_request][:email]
-            puts(params[:student_request][:minor])            
-            @student[0].minor = params[:student_request][:minor]
+            @student[0].isVerified = true
             @student[0].save
-            flash[:notice] = "The change has been applied."
-            redirect_to root_path
         else
-            flash[:warning] = "Something went wrong, try again."
-            redirect_to students_profile_path
+            @student[0].major = params[:student_request][:major]
+            @student[0].classification = params[:student_request][:classification]
+            @student[0].isVerified = false
+            @student[0].save
         end
-
+        session_update(:name, @student[0][:name])
+        session_update(:current_state, "student")
+        session_update(:uin, @student[0].uin)
+        flash[:notice] = "The change has been applied."
+        redirect_to students_show_path
     end
     
     
     def add_student_to_database(id)
         record = scrape_info(params[:session][:lastname], params[:session][:firstname], params[:session][:major], params[:session][:email])
-        if  record.length() != 0#scrape the record
+        # if  record.length() != 0 #scrape the record check disabled
         # sign up email confirm feature
-            puts "Creating password: #{params[:session][:firstname]}"
-            if(id.nil?)
+        if(id.nil?)
+            if(record.length() != 0)
                 @newStudent = Student.new(:name => record['First Name']+' '+record['Last Name'], :firstname => record['First Name'], :lastname => record['Last Name'],  :uin => params[:session][:uin], :email => record['Email Address'], :password => params[:session][:password],
-                                              :major => record['Major'], :classification => record['Classification'], :minor => params[:session][:minor])
+                                          :major => record['Major'], :classification => record['Classification'], :minor => params[:session][:minor], :isVerified => true)
             else
-                @newStudent = Student.find(id)
+                @newStudent = Student.new(:name => params[:session][:firstname]+' '+params[:session][:lastname], :firstname => params[:session][:firstname], :lastname => params[:session][:lastname],  :uin => params[:session][:uin], :email => params[:session][:email], :password => params[:session][:password],
+                                          :major => params[:session][:major], :classification => params[:session][:classification], :minor => params[:session][:minor], :isVerified => false)
             end
-                    
-            puts "Created Password: #{@newStudent.password}"
-            puts "Encrypted Password: #{@newStudent.encrypted_password}"
-            @newStudent.email_confirm_sent_at = DateTime.now
-            
-            if @newStudent.save#succeed to create the account of student
-                StudentMailer.registration_confirmation(@newStudent).deliver
-                flash[:notice] = "An account has been created. A email has been sent to the provided email address, click the link to activate your account."
-                redirect_to root_path
-            else
-                flash[:warning] = "Something went wrong, try again."
-                redirect_to root_path
-            end
-        else#can't scrape the record
-            flash[:warning] = "Your name and email didn't match the record in the TAMU system. Please visit: https://services.tamu.edu/directory-search/#adv-search for details"
-            redirect_to students_signup_path
-        end  
+        else
+            @newStudent = Student.find(id)
+        end
+        @newStudent.email_confirm_sent_at = DateTime.now
+        
+        if @newStudent.save#succeed to create the account of student
+            StudentMailer.registration_confirmation(@newStudent).deliver
+            flash[:notice] = "An account has been created. A email has been sent to the provided email address, click the link to activate your account."
+            redirect_to root_path
+        else
+            flash[:warning] = "Something went wrong, try again."
+            redirect_to root_path
+        end
+        #below directory check bypassed 
+        # else#can't scrape the record 
+        #     flash[:warning] = "Your name and email didn't match the record in the TAMU system. Please visit: https://services.tamu.edu/directory-search/#adv-search for details"
+        #     redirect_to students_signup_path
+        # end  
     end
     
     # create a new student

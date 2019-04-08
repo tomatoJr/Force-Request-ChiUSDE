@@ -18,20 +18,20 @@
         %td  
           = label :student_request, :major, 'Major'
         %td  
-          = text_field :student_request, 'major', class: 'input-field', value: @students[0].major, :readonly => true
+          = select :student_request, 'major', @majorList, :required => true, selected: @students[0].major,  value: @students[0].major
   
     
       %tr
         %td  
           = label :student_request, :minor, 'Minor'
         %td  
-          = select :student_request, 'minor', @majorList, :required => true, selected: @students[0].minor
+          = select :student_request, 'minor', @majorList, :required => true, selected: @students[0].minor ,value: @students[0].minor
     
       %tr
         %td   
           = label :student_request, :classification, 'Classification'
         %td  
-          = @students[0].classification
+          = select :student_request, 'classification', @classificationList, :required => true, selected: @students[0].classification,value: @students[0].classification
       %tr
         %td 
           = label :student_request, :email, 'Email'

@@ -1,5 +1,4 @@
 class StudentRequest < ActiveRecord::Base
-  
   audited
   # States of the students 
     ACTIVE_STATE = "Active"
@@ -46,6 +45,7 @@ class StudentRequest < ActiveRecord::Base
              'BA Computing',
              'Computer Engineering (CSCE)',
              'Computer Engineering (ECEN)',
+             'Computer Engineering',
              'Electrical Engineering',
              'Applied Mathematical Sciences',            
             
