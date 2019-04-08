@@ -211,7 +211,7 @@ end
 
 And (/^I should see template message/) do
     fill_in 'Enter message here', :with => "./app/views/student_mailer/email_template.text.erb"
-    page.should has_content?(:all, "CSCE Academic Advising Team")
+    page.should have_content(:all, "CSCE Academic Advising Team")
 end
 
 And (/^I edit the template/) do
