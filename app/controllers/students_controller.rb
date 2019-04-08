@@ -41,21 +41,25 @@ class StudentsController < ApplicationController
             end      
         end
         
+        @student[0].uin = params[:student_request][:uin]
+        @student[0].email = params[:student_request][:email]
+        @student[0].minor = params[:student_request][:minor]
         if record.length() != 0
             @student[0].major = record['Major']
             @student[0].classification = record['Classification']
-            @student[0].uin = params[:student_request][:uin]
-            @student[0].email = params[:student_request][:email]
-            puts(params[:student_request][:minor])            
-            @student[0].minor = params[:student_request][:minor]
+            @student[0].isVerified = true
             @student[0].save
-            flash[:notice] = "The change has been applied."
-            redirect_to root_path
         else
-            flash[:warning] = "Something went wrong, try again."
-            redirect_to students_profile_path
+            @student[0].major = params[:student_request][:major]
+            @student[0].classification = params[:student_request][:classification]
+            @student[0].isVerified = false
+            @student[0].save
         end
-
+        session_update(:name, @student[0][:name])
+        session_update(:current_state, "student")
+        session_update(:uin, @student[0].uin)
+        flash[:notice] = "The change has been applied."
+        redirect_to students_show_path
     end
     
     
