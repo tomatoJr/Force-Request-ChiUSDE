@@ -18,10 +18,10 @@ When I enter two different password or UIN information
 And I click SignUp
 Then I should stay on the same page
 And I should recieve a mismatch warning massage
-When I enter a email does not exsiting in TAMU system
-And I click SignUp
-Then I should stay on the same page
-And I should recieve a no-record warning massage
+# When I enter a email does not exsiting in TAMU system
+# And I click SignUp
+# Then I should stay on the same page
+# And I should recieve a no-record warning massage
 When I use a UIN which already been used to sign up
 And I click SignUp
 Then I should return to root page

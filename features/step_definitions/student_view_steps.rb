@@ -85,7 +85,7 @@ end
 
 
 And(/^I complete the form$/) do
-  @student_request = {:minor=>"None", :expected_graduation=>"2018 Fall", :request_semester=>"2018 Fall", :course_id=>"629", :section_id => "600"}
+  @student_request = {:minor=>"None", :expected_graduation=>"2019 Fall", :request_semester=>"2019 Fall", :course_id=>"629", :section_id => "600"}
   page.has_content?("123123123")
   select(@student_request[:expected_graduation], from:'Expected Graduation*')
   select(@student_request[:request_semester], from:'Request Semester*')
@@ -94,7 +94,7 @@ And(/^I complete the form$/) do
 end
 
 And(/^I complete the form the second time$/) do
-  @student_request = {:minor=>"None", :expected_graduation=>"2018 Fall", :request_semester=>"2018 Fall", :course_id=>"630", :section_id => "600"}
+  @student_request = {:minor=>"None", :expected_graduation=>"2019 Fall", :request_semester=>"2019 Fall", :course_id=>"630", :section_id => "600"}
   page.has_content?("123123123")
   select(@student_request[:expected_graduation], from:'Expected Graduation*')
   select(@student_request[:request_semester], from:'Request Semester*')
@@ -103,7 +103,7 @@ And(/^I complete the form the second time$/) do
 end
 
 And(/^I complete the form the third time$/) do
-  @student_request = {:minor=>"None", :expected_graduation=>"2018 Fall", :request_semester=>"2018 Fall", :course_id=>"631", :section_id => "600"}
+  @student_request = {:minor=>"None", :expected_graduation=>"2019 Fall", :request_semester=>"2019 Fall", :course_id=>"631", :section_id => "600"}
   page.has_content?("123123123")
   select(@student_request[:expected_graduation], from:'Expected Graduation*')
   select(@student_request[:request_semester], from:'Request Semester*')
@@ -112,7 +112,7 @@ And(/^I complete the form the third time$/) do
 end
 
 And(/^I complete the form the fourth time$/) do
-  @student_request = {:minor=>"None", :expected_graduation=>"2018 Fall", :request_semester=>"2018 Fall", :course_id=>"632", :section_id => "600"}
+  @student_request = {:minor=>"None", :expected_graduation=>"2019 Fall", :request_semester=>"2019 Fall", :course_id=>"632", :section_id => "600"}
   page.has_content?("123123123")
   select(@student_request[:expected_graduation], from:'Expected Graduation*')
   select(@student_request[:request_semester], from:'Request Semester*')
@@ -268,7 +268,7 @@ end
 
 
 And(/^I assign priority to the request$/) do
-  @student_request = {:minor=>"None", :expected_graduation=>"2018 Fall", :request_semester=>"2018 Fall", :course_id=>"606", :section_id => "600" , :priority => "High"}
+  @student_request = {:minor=>"None", :expected_graduation=>"2019 Fall", :request_semester=>"2019 Fall", :course_id=>"606", :section_id => "600" , :priority => "High"}
   page.has_content?("123123123")
   select(@student_request[:expected_graduation], from:'Expected Graduation*')
   select(@student_request[:request_semester], from:'Request Semester*')
@@ -287,7 +287,7 @@ When(/^I click on Edit$/) do
 end
 
 And(/^I edit the request$/) do
-  @student_request = {:minor=>"None", :expected_graduation=>"2020 Fall", :request_semester=>"2018 Fall", :course_id=>"629", :section_id => "600", :priority => "Normal"}
+  @student_request = {:minor=>"None", :expected_graduation=>"2020 Fall", :request_semester=>"2019 Fall", :course_id=>"629", :section_id => "600", :priority => "Normal"}
   page.has_content?("123123123")
   #select(@student_request[:expected_graduation], from:'Expected Graduation*')
   #select(@student_request[:priority], from:'Priority*')
