@@ -8,15 +8,15 @@
 
 
 student_requests = [{:uin => '126003824', :name => 'Mo Li', 
-                     :major => 'Computer Engineering - CEEN', :classification => 'G7', :minor => 'CECN', :email => 'king_lm@tamu.edu', :phone => '9797797697', 
+                     :major => 'CEEN', :classification => 'G7', :minor => 'CECN', :email => 'king_lm@tamu.edu', :phone => '9797797697', 
                      :expected_graduation => '2019 Fall', :request_semester => '2019 Fall',
                      :course_id => '026', :section_id => '101', :notes => 'Requirement for graduation.',:priority => 'Very High' , :state => 'Active'},
                      {:uin => '126003824', :name => 'Mo Li', 
-                      :major => 'Computer Engineering - CEEN', :classification => 'G7', :minor => 'CECN', :email => 'king_lm@tamu.edu', :phone => '9797769279', 
+                      :major => 'CEEN', :classification => 'G7', :minor => 'CECN', :email => 'king_lm@tamu.edu', :phone => '9797769279', 
                       :expected_graduation => '2019 Fall', :request_semester => '2019 Fall',
                       :course_id => '026', :section_id => '101', :notes => 'I need this course as my summer intern will deal with this.',:priority => 'Very High' , :state => 'Active'},
                       {:uin => '126003824', :name => 'Mo Li', 
-                      :major => 'Computer Engineering - CEEN', :classification => 'G7', :minor => 'CECN', :email => 'king_lm@tamu.edu', :phone => '9793477979', 
+                      :major => 'CEEN', :classification => 'G7', :minor => 'CECN', :email => 'king_lm@tamu.edu', :phone => '9793477979', 
                       :expected_graduation => '2019 Fall', :request_semester => '2019 Fall',
                       :course_id => '027', :section_id => '101', :notes => 'My research advisor has recommended this course.' ,:priority => 'Very High', :state => 'Active'},
                       
