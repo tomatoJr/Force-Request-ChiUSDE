@@ -76,7 +76,8 @@ $ rake db:schema:load
 
 $ rake db:setup
 :   Creates all the tables i.e. runs the /db/schema.rb file
-
+$ figaro heroku:set -e production -a csceforcerequest
+:   sets environment variables in production setup
 $ rake db:seed
 :   Add the dummy data to the database
 
