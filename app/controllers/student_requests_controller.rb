@@ -8,7 +8,9 @@ class StudentRequestsController < ApplicationController
   # before_filter CASClient::Frameworks::Rails::Filter
 
   def student_request_params
-    params.require(:student_request).permit(:request_id, :uin, :name, :major , :classification, :minor, :email, :phone, :expected_graduation, :request_semester, :course_id, :section_id, :notes, :state, :priority, :admin_priority)
+    params.require(:student_request).permit(:request_id, :uin, :name, :major , :classification, :minor, :email, 
+                        :phone, :expected_graduation, :request_semester, :course_id, :section_id, 
+                        :notes, :state, :priority, :admin_priority)
   end
 
   def index
@@ -67,8 +69,6 @@ class StudentRequestsController < ApplicationController
       @student_request = StudentRequest.new(student_request_params_with_uin)
       @student_request.state = StudentRequest::ACTIVE_STATE
       @student_request.priority = StudentRequest::NORMAL_PRIORITY
-      
-      
       if @student_request.save
         flash[:notice] = "Student Request was successfully created."
         redirect_to student_requests_adminprivileges_path
@@ -83,7 +83,8 @@ class StudentRequestsController < ApplicationController
   def create  #create force requests by student
     @students = Student.where(:uin => session_get(:uin))
     student_request_params_with_uin = {:uin => session[:uin], :name  => @students[0].name, :major => @students[0].major,
-                                        :email => @students[0].email, :classification => @students[0].classification, :minor => @students[0].minor}
+                                        :email => @students[0].email, :classification => @students[0].classification, 
+                                        :minor => @students[0].minor}
     student_request_params_with_uin.merge!(student_request_params)#update the session[:uin] to :uin in student_request
     # if StudentRequest.exists?(:uin => session_get(:uin), :course_id => params[:student_request][:course_id], :section_id => params[:student_request][:section_id])
     @student_requests = StudentRequest.where(:email => @students[0].email)
@@ -91,9 +92,6 @@ class StudentRequestsController < ApplicationController
     ##### HACK!!!!!! Because course id and section id are encrypted data (FERPA) it cannot be searched by.
     found = false
     @student_requests.each do |r|
- 
-
-
       if r.course_id == params[:student_request][:course_id] and
          r.section_id == params[:student_request][:section_id]
          found = true
@@ -101,14 +99,9 @@ class StudentRequestsController < ApplicationController
       end
     end
     #select limit for the student 
-    
-   
     level_student = @students[0].classification.to_s
-    puts level_student
     temp_priority = params[:student_request][:priority]
-    puts temp_priority
     limit_val = Limit.where(:classification => level_student)
-    puts limit_val
     case temp_priority
     when "Very High"
       @flagclass = limit_val.first['Very High']
@@ -122,39 +115,49 @@ class StudentRequestsController < ApplicationController
       @flagclass = limit_val.first['Very Low']
     end
     #@flagclass = 3
-    puts limit_val
-    @existing_request = StudentRequest.where(:uin => session_get(:uin), :priority => temp_priority).count
-
-    
+    @requests = StudentRequest.where(:uin => session_get(:uin), :priority => temp_priority)
+    unique_sections = Hash.new
+    @requests.each do |request2|
+      unique_sections[request2.course_id] = 1  
+    end
+    @existing_request = unique_sections.length
     # if StudentRequest.exists?(:uin => session_get(:uin), :course_id => params[:student_request][:course_id], :section_id => params[:student_request][:section_id])
     if found
         flash[:warning] = "You have already submitted a force request for CSCE" +  params[:student_request][:course_id] + "-" + params[:student_request][:section_id]
         initForNewForceRequest
         render :new
-      
     else
-        @student_request = StudentRequest.new(student_request_params_with_uin)
-        @student_request.state = StudentRequest::ACTIVE_STATE
-        #@student_request.priority = StudentRequest::NORMAL_PRIORITY
-        if  @student_requests = @existing_request >= @flagclass
+        if @existing_request >= @flagclass
             flash[:notice] = "Maximum limit of force request reached "
             redirect_to students_show_path
         else
-            if @student_request.save
-              admin_log(@student_request.request_id, "Student Request was successfully created")
-              flash[:notice] = "Student Request was successfully created."
-              # This is where an email will be sent to comfirm the force request.
-              StudentMailer.confirm_force_request(@students[0], @student_request).deliver
-              redirect_to students_show_path
-             
-            else
-              flash[:warning] = @student_request.errors.full_messages.join(", ")
-              initForNewForceRequest
-              render :new
-            end
+          sections = params[:student_request][:section_id].split(",")
+          @students = Student.where(:uin => session_get(:uin))
+          submission_success = true
+          sections.each do |section|
+            student_request_params_with_uin_section = student_request_params_with_uin
+            student_request_params_with_uin_section[:section_id] = section
+              @student_request = StudentRequest.new(student_request_params_with_uin_section)
+              @student_request.state = StudentRequest::ACTIVE_STATE
+              if @student_request.save
+                StudentMailer.confirm_force_request(@students[0], @student_request).deliver
+              else
+                submission_success = false
+                break
+              end
+          end
+          if submission_success
+            admin_log(@student_request.request_id, "Student Request was successfully created")
+            flash[:notice] = "Student Request was successfully created."
+            redirect_to students_show_path
+          else
+            flash[:warning] = @student_request.errors.full_messages.join(", ")
+            initForNewForceRequest
+            render :new
+          end
+          
         end
     end
-
   end
 
   def update
