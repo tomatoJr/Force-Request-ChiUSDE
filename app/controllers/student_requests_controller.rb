@@ -441,7 +441,7 @@ class StudentRequestsController < ApplicationController
     selected_state = params[:multi_state_sel]
     session[:multi_state_sel] = selected_state
     if(selected_state == StudentRequest::HOLD_STATE)
-      redirect_to student_requests_multiupdate_without_notification_path()
+      #redirect_to student_requests_multiupdate_without_notification_path()
       #redirect_to student_requests_multiupdate_path()
       #redirect_to :controller => 'put', :action => 'student_requests_multiupdate'
       
