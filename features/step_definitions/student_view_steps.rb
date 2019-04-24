@@ -90,7 +90,7 @@ And(/^I complete the form$/) do
   select(@student_request[:expected_graduation], from:'Expected Graduation*')
   select(@student_request[:request_semester], from:'Request Semester*')
   fill_in('Course Id*', :with => @student_request[:course_id])
-  fill_in('Section Id*', :with => @student_request[:section_id]) 
+  fill_in('Section Id(s)*', :with => @student_request[:section_id]) 
 end
 
 And(/^I complete the form the second time$/) do
@@ -99,7 +99,7 @@ And(/^I complete the form the second time$/) do
   select(@student_request[:expected_graduation], from:'Expected Graduation*')
   select(@student_request[:request_semester], from:'Request Semester*')
   fill_in('Course Id*', :with => @student_request[:course_id])
-  fill_in('Section Id*', :with => @student_request[:section_id]) 
+  fill_in('Section Id(s)*', :with => @student_request[:section_id]) 
 end
 
 And(/^I complete the form the third time$/) do
@@ -108,7 +108,7 @@ And(/^I complete the form the third time$/) do
   select(@student_request[:expected_graduation], from:'Expected Graduation*')
   select(@student_request[:request_semester], from:'Request Semester*')
   fill_in('Course Id*', :with => @student_request[:course_id])
-  fill_in('Section Id*', :with => @student_request[:section_id]) 
+  fill_in('Section Id(s)*', :with => @student_request[:section_id]) 
 end
 
 And(/^I complete the form the fourth time$/) do
@@ -117,7 +117,7 @@ And(/^I complete the form the fourth time$/) do
   select(@student_request[:expected_graduation], from:'Expected Graduation*')
   select(@student_request[:request_semester], from:'Request Semester*')
   fill_in('Course Id*', :with => @student_request[:course_id])
-  fill_in('Section Id*', :with => @student_request[:section_id]) 
+  fill_in('Section Id(s)*', :with => @student_request[:section_id]) 
 end
 
 And(/^I click Save Request$/) do
@@ -273,7 +273,7 @@ And(/^I assign priority to the request$/) do
   select(@student_request[:expected_graduation], from:'Expected Graduation*')
   select(@student_request[:request_semester], from:'Request Semester*')
   fill_in('Course Id*', :with => @student_request[:course_id])
-  fill_in('Section Id*', :with => @student_request[:section_id]) 
+  fill_in('Section Id(s)*', :with => @student_request[:section_id]) 
   select(@student_request[:priority], from:'Priority*')
 end
 
