@@ -172,7 +172,7 @@ limits = [{:classification => 'G7', "Very High".to_sym => '99', :High => '99', :
           {:classification => 'U5', "Very High".to_sym => '99', :High => '99', :Normal => '99', :Low => '99', "Very Low".to_sym => '99'},
           {:classification => 'G8', "Very High".to_sym => '99', :High => '99', :Normal => '99', :Low => '99', "Very Low".to_sym => '99'}]
 
-students = [{uin: "126003824", password: "123123", major: "CEEN", classification: "G7-Graduate, Master's Level", name: "Mo Li", email: "king_lm@tamu.edu"},
+students = [{uin: "126003824", password: "123123", major: "CEEN", classification: "G7-Graduate, Master's Level", name: "Mo Li", email: "king_lm@tamu.edu", email_confirmed: true},
             {uin: "123123123", password: "321", major: "CEEN", classification: "G8-Graduate", name: "Mian Qin", email: "celery1124@tamu.edu"},
             {uin: "222111333", password: "zxc", major: "CEEN", classification: "G7-Graduate, Master's Level", name: "Jiechen Zhong", email: "chen0209app@tamu.edu"},
             ]

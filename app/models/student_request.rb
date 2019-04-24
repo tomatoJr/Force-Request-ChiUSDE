@@ -258,7 +258,10 @@ class StudentRequest < ActiveRecord::Base
     def self.to_csv(options = {})
       CSV.generate(options) do |csv|
         csv << column_names
-        all.each do |student_request|
+        all.each do |student_request| 
+          student_request.encrypted_course_id = student_request.course_id
+          student_request.encrypted_section_id = student_request.section_id
+          #debugger
           csv << student_request.attributes.values_at(*column_names)
         end
       end
