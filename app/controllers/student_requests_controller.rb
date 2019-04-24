@@ -444,6 +444,7 @@ class StudentRequestsController < ApplicationController
     selected_state = params[:multi_state_sel]
     session[:multi_state_sel] = selected_state
     if(selected_state == StudentRequest::HOLD_STATE)
+      #redirect_to student_requests_multiupdate_without_notification_path()
       #redirect_to student_requests_multiupdate_path()
       #redirect_to :controller => 'put', :action => 'student_requests_multiupdate'
       
@@ -495,6 +496,40 @@ class StudentRequestsController < ApplicationController
     redirect_to student_requests_adminview_path
   end
   
+  def multiupdate_without_notification
+    puts "Hold was selected"
+    if (session[:request_ids] != nil)
+      isUpdate = false
+      session[:request_ids].each { |id|
+        @student_request = StudentRequest.find id
+        if(@student_request.state == StudentRequest::WITHDRAWN_STATE)
+          flash[:warning] = "Student has already withdrawn their request"
+        else
+          if(session[:multi_state_sel] != "Select State")
+            isUpdate = true
+            @student_request.state = session[:multi_state_sel]
+              @student_request.save!
+            admin_log(@student_request.request_id, "Status of the request was updated to #{@student_request.state} by #{session[:uin]}")
+          end
+        end
+      }
+      if(isUpdate)
+        if(flash[:warning].nil?)
+          flash[:notice] = "Requests have been updated"
+        else
+          flash[:notice] = "Some Requests have been updated"
+        end
+      else
+        if(flash[:warning].nil?)
+          flash[:warning] = "No State or Priority Selected"
+        end
+      end
+    else
+      flash[:warning] = "Nothing has been selected for Update"
+    end
+    redirect_to student_requests_adminview_path
+  end
+
   def compare_request(request, param)
     message = ""
     check = false

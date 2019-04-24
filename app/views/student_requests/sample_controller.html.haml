@@ -6,3 +6,6 @@
   
   = text_area 'email_message', nil, rows: 10, cols: 25, placeholder: 'Enter message here', class: 'notes', id: "messagetemplate"
   = submit_tag 'Confirm', :id => 'submit_button'
+
+= form_tag(student_requests_multiupdate_without_notification_path(), method: "put") do
+  = submit_tag 'Confirm without notification', :id => 'submit_button'
