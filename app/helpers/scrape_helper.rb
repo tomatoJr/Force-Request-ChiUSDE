@@ -18,9 +18,7 @@ module ScrapeHelper
         # Old pattern for name in signup.html.haml: :pattern => "[a-zA-ZüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{3,}"
 
         #get the search url of specific name / major
-        # urlSearch = 'https://services.tamu.edu/directory-search/?branch=people&givenName=' + firstName + '&sn=' + lastName + '&tamuEduPersonMajor=' + major + '#adv-search'
-        # URL can be parsed only with the name of the student
-        urlSearch = 'https://services.tamu.edu/directory-search/?branch=people&givenName=' + firstName + '&sn=' + lastName + '#adv-search'
+        urlSearch = 'https://services.tamu.edu/directory-search/?branch=people&givenName=' + firstName + '&sn=' + lastName + '&tamuEduPersonMajor=' + major + '#adv-search'
         page = Nokogiri::HTML(open(urlSearch))
         
         # https://stackoverflow.com/questions/4232345/get-div-nested-in-div-element-using-nokogiri
