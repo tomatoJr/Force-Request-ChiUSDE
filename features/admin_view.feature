@@ -54,12 +54,12 @@ Then the page collapse
 # When I click Reject
 # Then I should see Rejected
 
-Scenario: Hold request
-Given I am on the Login Page as admin
-And I use admin account to login
-Then I should be on Admin View page
-When I click Hold 
-Then I should see Hold
+#Scenario: Hold request
+#Given I am on the Login Page as admin
+#And I use admin account to login
+#Then I should be on Admin View page
+#When I click Hold 
+#Then I should see Hold
 
 # Scenario: Add Notes
 # Given I am on the Login Page as admin
