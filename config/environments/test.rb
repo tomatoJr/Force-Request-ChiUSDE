@@ -46,14 +46,16 @@ Rails.application.configure do
   # config.gem "cucumber", :lib => false, :version => ">=0.2.2"
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_url_options = { host: 'https://b44c5f27e9854996b6db0388357235dc.vfs.cloud9.us-east-2.amazonaws.com'}#for heroku
+  # config.action_mailer.default_url_options = { host: 'https://b44c5f27e9854996b6db0388357235dc.vfs.cloud9.us-east-2.amazonaws.com'}#for heroku
+  config.action_mailer.default_url_options = { host: 'https://042825f8335d48aba172f1e0aed9c08e.vfs.cloud9.us-east-2.amazonaws.com'}
+
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
     port:                 587,
     domain:               'gmail.com',
     user_name:            'forcerequestspring19@gmail.com',
-    password:             'frspring19',
+    password:             'ForceRequestFall19',
     authentication:       'plain',
     enable_starttls_auto: true  }
   

@@ -14,6 +14,15 @@ class StudentRequest < ActiveRecord::Base
     LOW_PRIORITY = "Low"
     VERYLOW_PRIORITY = "Very Low"
     
+    # ------------- fall 2019 --------------
+    COURSE_KEY_1 = "629"
+    COURSE_KEY_2 = "606"
+    
+    SESSION_ID_629_1 = "600"
+    SESSION_ID_629_2 = "601"
+    SESSION_ID_606_1 = "000"
+    #---------------------------------------
+    
     Time.zone = 'Central Time (US & Canada)'
     time = Time.zone.now()
         # List Year and Semester
@@ -36,6 +45,11 @@ class StudentRequest < ActiveRecord::Base
     PRIORITY_LIST = [StudentRequest::VERYHIGH_PRIORITY, StudentRequest::HIGH_PRIORITY, StudentRequest::NORMAL_PRIORITY, StudentRequest::LOW_PRIORITY, StudentRequest::VERYLOW_PRIORITY]
     SEMESTER_LIST = [StudentRequest::NSPRING, StudentRequest::NFALL, StudentRequest::NSUMMER,StudentRequest::SPRING, StudentRequest::FALL, StudentRequest::SUMMER]
     
+    # ------------- fall 2019 --------------
+    COURSE_LIST = [StudentRequest::COURSE_KEY_1,COURSE_KEY_2]
+    SESSION_LIST_629 = [SESSION_ID_629_1,SESSION_ID_629_2]
+    SESSION_LIST_606 = [StudentRequest::SESSION_ID_606_1]
+    #------------- fall 2019 --------------
     
     #Classification
     CLASSIFICATION_LIST = ['U1', 'U2', 'U3', 'U4', 'U5', 'G7', 'G8']

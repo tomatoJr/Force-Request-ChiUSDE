@@ -558,6 +558,13 @@ class StudentRequestsController < ApplicationController
     @YearSemester = StudentRequest::YEAR_SEMESTER
     @requestSemester = StudentRequest::REQUEST_SEMESTER
     @requestPriority = StudentRequest::PRIORITY_LIST
+    
+    #------------- fall 2019 --------------
+    @requestCourse = StudentRequest::COURSE_LIST
+    @requestSession = StudentRequest::SESSION_LIST_629
+    @requestSession = StudentRequest::SESSION_LIST_606
+    #------------- fall 2019 --------------
+    
     @majorList = Major.pluck(:major_id)
     
   end
