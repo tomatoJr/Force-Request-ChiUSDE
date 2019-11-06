@@ -47,8 +47,8 @@ class StudentRequest < ActiveRecord::Base
     
     # ------------- fall 2019 --------------
     COURSE_LIST = [StudentRequest::COURSE_KEY_1,COURSE_KEY_2]
-    SESSION_LIST_629 = [SESSION_ID_629_1,SESSION_ID_629_2]
-    SESSION_LIST_606 = [StudentRequest::SESSION_ID_606_1]
+    # SESSION_LIST_629 = [SESSION_ID_629_1,SESSION_ID_629_2]
+    SESSION_LIST = [StudentRequest::SESSION_ID_606_1]
     #------------- fall 2019 --------------
     
     #Classification

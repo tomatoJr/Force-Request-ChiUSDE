@@ -61,14 +61,11 @@
             // ------------- fall 2019 --------------
         %tr
           %td   
-            = label :student_request, :section_id, params
+            = label :student_request, :section_id, "Section Id*"
           %td  
             // = @section_id
             // ------------- fall 2019 --------------
-            -if params[:course_id] == "629"
-              = select :student_request, 'section_id', @requestSession_629
-            -else
-              = select :student_request, 'section_id', @requestSession_606
+              = select :student_request, 'section_id', @requestSession
             // ------------- fall 2019 --------------
         %tr
           %td   
