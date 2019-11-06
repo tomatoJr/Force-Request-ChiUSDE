@@ -562,7 +562,7 @@ class StudentRequestsController < ApplicationController
     #------------- fall 2019 --------------
     @requestCourse = StudentRequest::COURSE_LIST
     # @requestSession_629 = StudentRequest::SESSION_LIST_629
-    @requestSession = StudentRequest::SESSION_LIST
+    @requestSection = StudentRequest::SESSION_LIST
     #------------- fall 2019 --------------
     
     @majorList = Major.pluck(:major_id)
