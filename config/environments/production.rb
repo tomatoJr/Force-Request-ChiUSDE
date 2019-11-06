@@ -72,7 +72,7 @@ Rails.application.configure do
     port:                 587,
     domain:               'gmail.com',
     user_name:            'forcerequestspring19@gmail.com',
-    password:             'ForceRequestFall2019',
+    password:             'ForceRequestFall19',
     authentication:       'plain',
     enable_starttls_auto: true  }
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
