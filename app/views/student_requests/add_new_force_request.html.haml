@@ -35,7 +35,7 @@
         %td  
           // = text_field :student_request, 'section_id', class: 'input-field', :required => true, placeholder: 'i.e. to choose course CSCE 629-600, enter 600', :pattern => "[0-9]{3}", :oninvalid => "this.setCustomValidity('Please enter 3 numbers of Section ID')", :oninput => "this.setCustomValidity('')", :required => true
            // ---------------19 fall ---------------------------
-            = select :student_request, 'section_id', @requestSession, :required => true
+          = select :student_request, 'section_id', @requestSession, :required => true
           // ---------------19 fall ---------------------------
       %tr
         %td   
