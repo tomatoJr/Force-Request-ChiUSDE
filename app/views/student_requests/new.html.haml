@@ -66,7 +66,8 @@
               alert("hello")
               $(document).ready(function(){
                 alert("hello from inner")
-                $("select#course_id").on('change',function(){
+                $("select#course_id").change(function(){
+                  alert($(this).val())
                   if($(this).val()=="629"){
                     $("select#section_id").html(section1);
                   }else if($(this).val()=="606"){
