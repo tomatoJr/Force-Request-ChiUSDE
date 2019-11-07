@@ -561,7 +561,6 @@ class StudentRequestsController < ApplicationController
     
     #------------- fall 2019 --------------
     @requestCourse = StudentRequest::COURSE_LIST
-    # @requestSession_629 = StudentRequest::SESSION_LIST_629
     @requestSection = StudentRequest::SESSION_LIST
     #------------- fall 2019 --------------
     
