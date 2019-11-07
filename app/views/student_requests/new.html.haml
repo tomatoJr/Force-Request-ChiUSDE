@@ -66,13 +66,13 @@
               alert("hello")
               $(document).ready(function(){
                 alert("hello from inner")
-                $("select#course_id").change(function(){
-                  alert($(this).val())
-                  if($(this).val()=="629"){
-                    $("select#section_id").html(section1);
-                  }else if($(this).val()=="606"){
-                    $("select#section_id").html(section2);
-                  }
+              $("#course_id").change(function(){
+                alert($(this).val())
+                if($(this).val()=="629"){
+                  $("#section_id").html(section1);
+                }else if($(this).val()=="606"){
+                  $("#section_id").html(section2);
+                }
                 });
               });
             // ---------------19 fall ---------------------------
