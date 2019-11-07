@@ -82,13 +82,18 @@ class StudentRequestsController < ApplicationController
 
   def create  #create force requests by student
     @students = Student.where(:uin => session_get(:uin))
+    
+    puts "test1" 
+    
     student_request_params_with_uin = {:uin => session[:uin], :name  => @students[0].name, :major => @students[0].major,
                                         :email => @students[0].email, :classification => @students[0].classification, 
                                         :minor => @students[0].minor}
+    puts "test2"
     student_request_params_with_uin.merge!(student_request_params)#update the session[:uin] to :uin in student_request
     # if StudentRequest.exists?(:uin => session_get(:uin), :course_id => params[:student_request][:course_id], :section_id => params[:student_request][:section_id])
+    puts "test3"
     @student_requests = StudentRequest.where(:email => @students[0].email)
-
+    puts "test4"
     ##### HACK!!!!!! Because course id and section id are encrypted data (FERPA) it cannot be searched by.
     found = false
     @student_requests.each do |r|
@@ -98,6 +103,7 @@ class StudentRequestsController < ApplicationController
          break
       end
     end
+    puts "test5"
     #select limit for the student 
     level_student = @students[0].classification.to_s
     temp_priority = params[:student_request][:priority]
