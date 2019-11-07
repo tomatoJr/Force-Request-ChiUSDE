@@ -65,16 +65,19 @@
               var section2 = '<option selected="selected" value=""> Choose Section </option><option value="000">000</option>';
               alert("hello")
               $(document).ready(function(){
-                alert("hello from inner")
-              $("#course_id").change(function(){
-                alert($(this).val())
-                if($(this).val()=="629"){
-                  $("#section_id").html(section1);
-                }else if($(this).val()=="606"){
-                  $("#section_id").html(section2);
-                }
+                alert($("select#course_id").val())
+                $("#course_id").change(function(){
+                  alert($(this).val())
+                  if($(this).val()=="629")
+                  {
+                    $("#section_id").html(section1);
+                  }
+                  else if($(this).val()=="606")
+                  {
+                    $("#section_id").html(section2);
+                  }
+                  });
                 });
-              });
             // ---------------19 fall ---------------------------
         %tr
           %td   
