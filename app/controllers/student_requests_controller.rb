@@ -82,18 +82,13 @@ class StudentRequestsController < ApplicationController
 
   def create  #create force requests by student
     @students = Student.where(:uin => session_get(:uin))
-    
-    puts @students
-    
     student_request_params_with_uin = {:uin => session[:uin], :name  => @students[0].name, :major => @students[0].major,
                                         :email => @students[0].email, :classification => @students[0].classification, 
                                         :minor => @students[0].minor}
-    puts student_request_params_with_uin
     student_request_params_with_uin.merge!(student_request_params)#update the session[:uin] to :uin in student_request
     # if StudentRequest.exists?(:uin => session_get(:uin), :course_id => params[:student_request][:course_id], :section_id => params[:student_request][:section_id])
     puts student_request_params_with_uin
     @student_requests = StudentRequest.where(:email => @students[0].email)
-    puts @student_requests
     ##### HACK!!!!!! Because course id and section id are encrypted data (FERPA) it cannot be searched by.
     found = false
     @student_requests.each do |r|
@@ -103,7 +98,6 @@ class StudentRequestsController < ApplicationController
          break
       end
     end
-    puts @student_requests
     #select limit for the student 
     level_student = @students[0].classification.to_s
     temp_priority = params[:student_request][:priority]
@@ -145,8 +139,6 @@ class StudentRequestsController < ApplicationController
             student_request_params_with_uin_section = student_request_params_with_uin
             student_request_params_with_uin_section[:section_id] = section
               @student_request = StudentRequest.new(student_request_params_with_uin_section)
-              puts @student_request + "test"
-              puts @student_request_params_with_uin_section + "test"
               @student_request.state = StudentRequest::ACTIVE_STATE
               if @student_request.save
                 StudentMailer.confirm_force_request(@students[0], @student_request).deliver
