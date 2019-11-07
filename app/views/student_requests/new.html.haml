@@ -65,8 +65,8 @@
               var section2 = '<option selected="selected" value=""> Choose Section </option><option value="000">000</option>';
               alert("hello")
               $(document).ready(function(){
+                alert("hello from inner")
                 $("select#course_id").on('change',function(){
-                  alert("hello from inner")
                   if($(this).val()=="629"){
                     $("select#section_id").html(section1);
                   }else if($(this).val()=="606"){
