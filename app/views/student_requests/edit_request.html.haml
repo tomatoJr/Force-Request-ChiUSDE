@@ -1,5 +1,10 @@
 - unless session[:uin].nil?
   = render 'layouts/login'
+// -------------------------fall19---------------
+%script(type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+:javascript
+  window.jQuery || document.write('<script src="js/jquery-1.7.1.js">\x3C/script>')
+// --------------------------fall19----------------
 %body{:onload => "pageinit()"}
   %h1 Edit Force Request
   .form_new_request
@@ -57,7 +62,22 @@
           %td  
             // = @course_id
             // ------------- fall 2019 --------------
-            = select :student_request, 'course_id', @requestCourse
+            = select :student_request, 'course_id', @requestCourse, id => "course_id"
+            :javascript 
+              var section1 = '<option selected="selected" value=""> Choose Section </option><option value="600">600</option><option value="601">601</option>';
+              var section2 = '<option selected="selected" value=""> Choose Section </option><option value="000">000</option>';
+              $(document).ready(function(){
+                $("select#student_request_course_id").change(function(){
+                  if($(this).val()=="629")
+                  {
+                    $("#student_request_section_id").html(section1);
+                  }
+                  else if($(this).val()=="606")
+                  {
+                    $("#student_request_section_id").html(section2);
+                  }
+                  });
+                });
             // ------------- fall 2019 --------------
         %tr
           %td   
@@ -65,7 +85,7 @@
           %td  
             // = @section_id
             // ------------- fall 2019 --------------
-            = select :student_request, 'section_id', @requestSession
+            = select :student_request, 'section_id', @requestSession, :id => "section_id"
             // ------------- fall 2019 --------------
         %tr
           %td   

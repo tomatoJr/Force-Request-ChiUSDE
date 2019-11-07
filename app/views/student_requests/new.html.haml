@@ -63,11 +63,8 @@
             :javascript 
               var section1 = '<option selected="selected" value=""> Choose Section </option><option value="600">600</option><option value="601">601</option>';
               var section2 = '<option selected="selected" value=""> Choose Section </option><option value="000">000</option>';
-              alert("hello")
               $(document).ready(function(){
-                alert($("select#course_id").val())
                 $("select#student_request_course_id").change(function(){
-                  alert($(this).val())
                   if($(this).val()=="629")
                   {
                     $("#student_request_section_id").html(section1);
