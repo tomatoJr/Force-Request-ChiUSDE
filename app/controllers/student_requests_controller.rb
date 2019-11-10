@@ -354,7 +354,7 @@ class StudentRequestsController < ApplicationController
   def login
     session_update(:current_state, nil)
     #first, check the current user is student or admin
-
+    byebug
 
     if params[:session][:user] == 'admin'
         #check if the uin of admin is valid
