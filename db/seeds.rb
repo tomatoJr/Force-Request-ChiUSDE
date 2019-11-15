@@ -175,7 +175,7 @@ limits = [{:classification => 'G7', "Very High".to_sym => '99', :High => '99', :
 students = [{:uin => "126003824", :password => "123123", :major => "CEEN", :classification => "G7-Graduate, Master's Level", :name => "Mo Li", :email => "king_lm@tamu.edu"},
             {uin: "123123123", password: "321", major: "CEEN", classification: "G8-Graduate", name: "Mian Qin", email: "celery1124@tamu.edu"},
             {uin: "222111333", password: "zxc", major: "CEEN", classification: "G7-Graduate, Master's Level", name: "Jiechen Zhong", email: "chen0209app@tamu.edu"},
-            {uin: "123456789", password: "zlhzlh", major: "CECN", classification: "G7-Graduate, Master's Level", name: "Lianghao Zou", email: "frankzoulh3@tamu.edu"},
+            {uin: "123456789", password: "", major: "CECN", classification: "G7-Graduate, Master's Level", name: "Lianghao Zou", email: "frankzoulh3@tamu.edu"},
             ]
 
 
