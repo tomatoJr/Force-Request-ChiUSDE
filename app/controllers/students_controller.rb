@@ -68,6 +68,7 @@ class StudentsController < ApplicationController
         # if  record.length() != 0 #scrape the record check disabled
         # sign up email confirm feature
         if(id.nil?)
+            puts "====================" + params[:session][:password] + "====================================="
             if(record.length() != 0)
                 @newStudent = Student.new(:name => record['First Name']+' '+record['Last Name'], :firstname => record['First Name'], :lastname => record['Last Name'],  :uin => params[:session][:uin], :email => record['Email Address'], :password => params[:session][:password],
                                           :major => record['Major'], :classification => record['Classification'], :minor => params[:session][:minor], :isVerified => true)

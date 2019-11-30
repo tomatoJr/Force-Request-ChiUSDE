@@ -102,6 +102,7 @@ class StudentRequestsController < ApplicationController
     level_student = @students[0].classification.to_s
     temp_priority = params[:student_request][:priority]
     limit_val = Limit.where(:classification => level_student)
+    byebug
     case temp_priority
     when "Very High"
       @flagclass = limit_val.first['Very High']
@@ -354,7 +355,7 @@ class StudentRequestsController < ApplicationController
   def login
     session_update(:current_state, nil)
     #first, check the current user is student or admin
-    byebug
+    # byebug
 
     if params[:session][:user] == 'admin'
         #check if the uin of admin is valid

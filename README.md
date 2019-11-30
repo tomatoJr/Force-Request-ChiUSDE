@@ -93,3 +93,17 @@ $ rails s \-p \$PORT -b $IP
  * The law requires FERPA information to be protected, this means the student's courses cannot be linked to
    them without being encrypted. The current encryption model works on local, but had issues running on heroku.
     
+
+
+----------
+Developer Team 2019 Fall
+-------------
+Jianghao Shen (Product Owner),
+Dongwei Qi (Scrum Master),
+Jing Jiang,
+Fangsheng Wu,
+Cheng Chen,
+Lianghao Zou
+
+#### <i class="icon-folder-open"></i> Heroku App link:
+http://csceforcerequest.herokuapp.com
