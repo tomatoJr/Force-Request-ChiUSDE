@@ -18,7 +18,9 @@
             = @students[0].name
         %tr
           %td
-            =@level_student
+            = label :student_request, :uin, 'UIN'
+          %td
+            = @students[0].uin
         %tr
           %td  
             = label :student_request, :major, 'Major'
@@ -60,6 +62,7 @@
             // = text_field :student_request, 'course_id', class: 'input-field', :required => true, placeholder: 'i.e. to choose course CSCE 629-600, enter 629', :pattern => "[0-9]{3}", :oninvalid => "this.setCustomValidity('Please enter 3 numbers of Course ID')", :oninput => "this.setCustomValidity('')", :required => true
             // ---------------19 fall ---------------------------
             = select :student_request, 'course_id', @requestCourse, :required => true, :id => "course_id"
+            // = select :course, 'course_id', @courses, :required => true, :id => "course_id"
             :javascript 
               var section1 = '<option selected="selected" value="600">600</option><option value="601">601</option>';
               var section2 = '<option selected="selected" value="600">600</option>';

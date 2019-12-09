@@ -81,7 +81,7 @@ $ figaro heroku:set -e production -a csceforcerequest
 $ rake db:seed
 :   Add the dummy data to the database
 
-$ rails s \-p \$PORT -b $IP
+$ rails s \-p \$PORT -b \$IP
 :   Starts the rails application
 
 #### <i class="icon-file"></i> Notes for future development team:

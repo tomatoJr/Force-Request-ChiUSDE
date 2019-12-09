@@ -173,15 +173,23 @@ limits = [{:classification => 'G7', "Very High".to_sym => '99', :High => '99', :
           {:classification => 'G8', "Very High".to_sym => '99', :High => '99', :Normal => '99', :Low => '99', "Very Low".to_sym => '99'}]
 
 students = [{:uin => "126003824", :password => "123123", :major => "CEEN", :classification => "G7-Graduate, Master's Level", :name => "Mo Li", :email => "king_lm@tamu.edu"},
-            {uin: "123123123", password: "321", major: "CEEN", classification: "G8-Graduate", name: "Mian Qin", email: "celery1124@tamu.edu"},
-            {uin: "222111333", password: "zxc", major: "CEEN", classification: "G7-Graduate, Master's Level", name: "Jiechen Zhong", email: "chen0209app@tamu.edu", email_confirmed: true},
-            {uin: "123456789", password: "123", major: "CECN", classification: "G7-Graduate, Master's Level", name: "Lianghao Zou", email: "frankzoulh3@tamu.edu", email_confirmed: true},
+            {uin: "123123123", password: "321", major: "CEEN", classification: "G8", name: "Mian Qin", email: "celery1124@tamu.edu"},
+            {uin: "222111333", password: "zxc", major: "CEEN", classification: "G7", name: "Jiechen Zhong", email: "chen0209app@tamu.edu", email_confirmed: true},
+            {uin: "123456789", password: "123", major: "CECN", classification: "G7", lastname: "Zou", firstname: "Lianghao",
+            name: "Lianghao Zou", email: "frankzoulh3@tamu.edu", email_confirmed: true, isVerified: true},
             ]
+            
+courses = [{:course_id => "606", :course_name => "Software Engineering", :section_id => "600"},
+           {:course_id => "629", :course_name => "Analysis of Algorithm", :section_id => "600"},
+           {:course_id => "629", :course_name => "Analysis of Algorithm", :section_id => "601"},
+           ]
 
-
+courses.each do |course|
+   Course.create!(course)
+end 
 
 limits.each do |limit|
-  Limit.create!(limit)
+   Limit.create!(limit)
 end
 
 students.each do |student|

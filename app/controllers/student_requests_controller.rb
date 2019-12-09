@@ -19,6 +19,11 @@ class StudentRequestsController < ApplicationController
   def new
     # default: render 'new' template
     @students = Student.where(:uin => session_get(:uin))
+    # temp = Course.all
+    # @courses = Array.new
+    # temp.each do |i|
+    #   @courses.push(i.course_id)
+    # end 
     initForNewForceRequest
     render :new
   end
@@ -102,7 +107,7 @@ class StudentRequestsController < ApplicationController
     level_student = @students[0].classification.to_s
     temp_priority = params[:student_request][:priority]
     limit_val = Limit.where(:classification => level_student)
-    byebug
+    #byebug
     case temp_priority
     when "Very High"
       @flagclass = limit_val.first['Very High']
@@ -586,14 +591,14 @@ class StudentRequestsController < ApplicationController
   end
 
   def deleteall
-    #@student_requests = StudentRequest.all.as_json
-    #@student_requests.each do |record|
-    #  record.delete('id')
-    #  #StudentRequestArchival.create!(record)
-    #end
-    #StudentRequest.delete_all
-    #puts("here**********************************")
-    #redirect_to student_requests_adminview_path
+    @student_requests = StudentRequest.all.as_json
+    @student_requests.each do |record|
+      record.delete('id')
+      #StudentRequestArchival.create!(record)
+    end
+    StudentRequest.delete_all
+    # puts("here**********************************")
+    redirect_to student_requests_adminview_path
   end
   
   def cancel

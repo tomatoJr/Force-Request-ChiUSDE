@@ -7,7 +7,7 @@ class Student < ActiveRecord::Base
     validates_format_of :name, :with => /\w+/, :multiline => true
     # # attr_accessor :name, :email
     
-    # attr_encrypted :password, key: ENV['PASSWORD_KEY'].truncate(32) 
+    attr_encrypted :password, key: ENV['PASSWORD_KEY'].truncate(32) 
     
     before_create :confirmation_token
     
