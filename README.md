@@ -98,12 +98,12 @@ $ rails s \-p \$PORT -b \$IP
 ----------
 Developer Team 2019 Fall
 -------------
-Jianghao Shen (Product Owner),
+Lianghao Zou (Product Owner),
 Dongwei Qi (Scrum Master),
 Jing Jiang,
 Fangsheng Wu,
 Cheng Chen,
-Lianghao Zou
+Jianghao Shen
 
 #### <i class="icon-folder-open"></i> Heroku App link:
 http://csceforcerequest.herokuapp.com
