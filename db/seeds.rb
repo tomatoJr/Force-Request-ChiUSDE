@@ -160,8 +160,8 @@ majors = [
 {:major_id => 'Others'}               
             ]
             
-admins = [{:uin => '123456789', :name => 'admin', :password => 'tamu2017', :email => '123456789@tamu.edu'},
-          {:uin => '987654321', :name => 'admin2', :password => 'tamu2017', :email => '123456780@tamu.edu'}]
+admins = [{:uin => '123456789', :name => 'admin', :password => 'f7e59c09e1d415108b97139ba3306e77', :email => '123456789@tamu.edu'},
+          {:uin => '987654321', :name => 'admin2', :password => 'f7e59c09e1d415108b97139ba3306e77', :email => '123456780@tamu.edu'}]
 
 
 limits = [{:classification => 'G7', "Very High".to_sym => '99', :High => '99', :Normal => '99', :Low => '99', "Very Low".to_sym => '99'}, 
@@ -175,7 +175,7 @@ limits = [{:classification => 'G7', "Very High".to_sym => '99', :High => '99', :
 students = [{:uin => "126003824", :password => "123123", :major => "CEEN", :classification => "G7-Graduate, Master's Level", :name => "Mo Li", :email => "king_lm@tamu.edu"},
             {uin: "123123123", password: "321", major: "CEEN", classification: "G8", name: "Mian Qin", email: "celery1124@tamu.edu"},
             {uin: "222111333", password: "zxc", major: "CEEN", classification: "G7", name: "Jiechen Zhong", email: "chen0209app@tamu.edu", email_confirmed: true},
-            {uin: "123456789", password: "123", major: "CECN", classification: "G7", lastname: "Zou", firstname: "Lianghao",
+            {uin: "123456789", password: "f7e59c09e1d415108b97139ba3306e77", major: "CECN", classification: "G7", lastname: "Zou", firstname: "Lianghao",
             name: "Lianghao Zou", email: "frankzoulh3@tamu.edu", email_confirmed: true, isVerified: true},
             ]
             

@@ -1,6 +1,7 @@
 class StudentsController < ApplicationController
     include SessionHelper
     include ScrapeHelper
+    require 'digest/md5'
     
     #show the student dashboard page
     def show
@@ -68,12 +69,12 @@ class StudentsController < ApplicationController
         # if  record.length() != 0 #scrape the record check disabled
         # sign up email confirm feature
         if(id.nil?)
-            puts "====================" + params[:session][:password] + "====================================="
+            #puts "====================" + params[:session][:password] + "====================================="
             if(record.length() != 0)
-                @newStudent = Student.new(:name => record['First Name']+' '+record['Last Name'], :firstname => record['First Name'], :lastname => record['Last Name'],  :uin => params[:session][:uin], :email => record['Email Address'], :password => params[:session][:password],
+                @newStudent = Student.new(:name => record['First Name']+' '+record['Last Name'], :firstname => record['First Name'], :lastname => record['Last Name'],  :uin => params[:session][:uin], :email => record['Email Address'], :password => Digest::MD5.hexdigest(params[:session][:password]),
                                           :major => record['Major'], :classification => record['Classification'], :minor => params[:session][:minor], :isVerified => true)
             else
-                @newStudent = Student.new(:name => params[:session][:firstname]+' '+params[:session][:lastname], :firstname => params[:session][:firstname], :lastname => params[:session][:lastname],  :uin => params[:session][:uin], :email => params[:session][:email], :password => params[:session][:password],
+                @newStudent = Student.new(:name => params[:session][:firstname]+' '+params[:session][:lastname], :firstname => params[:session][:firstname], :lastname => params[:session][:lastname],  :uin => params[:session][:uin], :email => params[:session][:email], :password => Digest::MD5.hexdigest(params[:session][:password]),
                                           :major => params[:session][:major], :classification => params[:session][:classification], :minor => params[:session][:minor], :isVerified => false)
             end
         else
@@ -141,7 +142,7 @@ class StudentsController < ApplicationController
         if @student[0].password == params[:session][:oldPassword]
             if params[:session][:password] == params[:session][:password2]
                
-                @student[0].update_attribute(:password, params[:session][:password])
+                @student[0].update_attribute(:password, Digest::MD5.hexdigest(params[:session][:password]))
                 flash[:notice] = "Your password has been changed!"
                 redirect_to students_show_path
             else
@@ -182,7 +183,7 @@ class StudentsController < ApplicationController
     def update_reset_password
         @student = Student.where(:uin => session_get(:uin))
         if params[:session][:password] == params[:session][:password2]
-            @student[0].update_attribute(:password, params[:session][:password])
+            @student[0].update_attribute(:password, Digest::MD5.hexdigest(params[:session][:password]))
             @student[0].password_reset_done#finish the reset password
             session_update(:name, @student[0][:name])
             session_update(:current_state, "student")
@@ -220,7 +221,7 @@ class StudentsController < ApplicationController
           if @students[0].nil?
             #if scrape_info(params[:session][:name], params[:session][:email]) != {}
               # record = scrape_info(params[:session][:name], params[:session][:email])
-              @newStudent = Student.create!(:name => params[:session][:name], :uin => params[:session][:uin], :email => params[:session][:email], :password => params[:session][:password],
+              @newStudent = Student.create!(:name => params[:session][:name], :uin => params[:session][:uin], :email => params[:session][:email], :password => Digest::MD5.hexdigest(params[:session][:password]),
                                                   :major => params[:session][:major], :classification => params[:session][:classification])
               flash[:notice] = "Name:#{@newStudent.name}, UIN: #{@newStudent.uin}, Email: #{@newStudent.email} signed up successfully."
               StudentMailer.registration_confirmation(@newStudent).deliver
