@@ -1,3 +1,5 @@
+require 'digest/md5'
+
 Given(/^I am on the Login Page as admin$/) do
   visit('/')
   # fill_in('Enter your Name', :with => "1234312")
@@ -16,10 +18,12 @@ end
 
 And(/^I use admin account to login$/) do
   choose('session_user_admin')
-  @user_info = {:UIN => "123456789@tamu.edu",  :password => "tamu2017"}
+  @user_info = {:UIN => "123456789@tamu.edu",  :password => Digest::MD5.hexdigest("tamu2017"), :role => "session_user_admin"}
   fill_in('Enter your Email', :with => @user_info[:UIN])
   fill_in('Enter your password', :with => @user_info[:password])
+#   select(@user_info[:role], from:'Login as')
   click_button('Login')
+
 end
 
 Then(/^I should be on Admin View page$/) do
@@ -86,7 +90,7 @@ When(/^I click add a new force request to system$/) do
 end
 
 And(/^I fill the info of new request$/) do
-    @user_info = {:UIN => "777888999", :expected_graduation => "2019 Fall",  :request_semester => "2019 Fall", :course_id => '314', :section_id => '100'}
+    @user_info = {:UIN => "777888999", :expected_graduation => "2019 Fall",  :request_semester => "2020 Fall", :course_id => '314', :section_id => '100'}
     fill_in('UIN of student*', :with => @user_info[:UIN])
     select(@user_info[:expected_graduation], from:'Expected Graduation*')
     select(@user_info[:request_semester], from:'Request Semester*')

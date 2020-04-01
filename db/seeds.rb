@@ -160,7 +160,7 @@ majors = [
 {:major_id => 'Others'}               
             ]
             
-admins = [{:uin => '123456789', :name => 'admin', :password => 'f7e59c09e1d415108b97139ba3306e77', :email => '123456789@tamu.edu'},
+admins = [{:uin => '123456789', :name => 'admin', :password => 'f7e59c09e1d415108b97139ba3306e77', :email => '123456789@tamu.edu'}, # tamu2020
           {:uin => '987654321', :name => 'admin2', :password => 'f7e59c09e1d415108b97139ba3306e77', :email => '123456780@tamu.edu'}]
 
 

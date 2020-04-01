@@ -24,7 +24,7 @@ describe StudentRequest do
         @student_request.email == "johndoe@tamu.edu"
     end
     it 'should include request_semester' do
-        @student_request.request_semester == "2019 Spring"
+        @student_request.request_semester == "2020 Spring"
     end
     it 'should include course_id' do
         @student_request.course_id == "633"
