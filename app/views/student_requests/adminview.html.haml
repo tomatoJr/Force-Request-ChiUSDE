@@ -4,6 +4,10 @@
   Admin Dashboard Page
 = link_to '<button type="button" class="regularbutton">More Actions</button>'.html_safe, student_requests_adminprivileges_path
 %h2= "Howdy! Welcome back #{session_get(:name)} "
+
+%p= link_to "Download Force Request System data (.csv)", student_requests_getSpreadsheetAllCourses_path(format: "csv"), :id => 'download_table'
+%p= link_to "Download Force Request System Logs data (.csv)", student_requests_getAllLogs_path(format: "csv"), :id => 'download_table'
+
 = form_tag student_requests_adminview_path, :method => :get do
   %h4
   .filter_form1
@@ -26,15 +30,13 @@
       %tr
         %td= check_box_tag "state_sel[#{state}]", 'true', @state_selected[state]      
         %td= state
-    = submit_tag 'Refresh', class: "filter"
-  .filter_form2
+    // = submit_tag 'Refresh', class: "filter"
+    .filter_form2
+    %br
     %strong Filter Requests - Request Semester:
     %br
     %table
-    - @all_request_semesters.each do |request_semester, index|
-      %td= check_box_tag "request_semester_sel[#{request_semester}]", 'true', @request_semester_selected[request_semester]    
-      %td= request_semester
-
+    = select_tag("request_semester_selected", options_for_select(@all_request_semesters), multiple: true, size: "4", style: "height: 100%;")
     %br
     = submit_tag 'Refresh', class: "filter"
 
@@ -101,9 +103,6 @@
                 %td= link_to "Email Selected", "", :onclick => "multi_email(\"#{course}\"); return false"
               %tr{ :class => "excel_sheet"}
                
-              
-%p= link_to "Download the entire Force Request System data as an Excel Sheet", student_requests_getSpreadsheetAllCourses_path(format: "csv"), :id => 'download_table'
-%p= link_to "Download the entire Force Request System Logs data as an Excel Sheet", student_requests_getAllLogs_path(format: "csv"), :id => 'download_table'
 #myModal.modal
   %span.close{:onclick => "return spanclick()"} x
   .modal-content

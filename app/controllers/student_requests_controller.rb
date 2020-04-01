@@ -246,7 +246,10 @@ class StudentRequestsController < ApplicationController
       @all_request_semesters = [StudentRequest::SPRING, StudentRequest::FALL, StudentRequest::SUMMER,StudentRequest::NSPRING, StudentRequest::NFALL, StudentRequest::NSUMMER]
       @all_states = [StudentRequest::ACTIVE_STATE, StudentRequest::REJECTED_STATE, StudentRequest::APPROVED_STATE, StudentRequest::HOLD_STATE]
       @default_states = [StudentRequest::ACTIVE_STATE, StudentRequest::HOLD_STATE, StudentRequest::APPROVED_STATE]
-    
+      
+      puts '1'
+      puts session_get(:state_sel)
+      
       if params[:state_sel] == nil
         if session_get(:state_sel) != nil
           @all_states.each { |state|
@@ -263,7 +266,10 @@ class StudentRequestsController < ApplicationController
         }
         session_update(:state_sel, params[:state_sel])
       end
-
+      
+      puts '2'
+      puts session_get(:request_semester_sel)
+        
       if params[:request_semester_sel] == nil
         if session_get(:request_semester_sel) != nil
           @all_request_semesters.each { |request_semester|
@@ -512,7 +518,7 @@ class StudentRequestsController < ApplicationController
         if(@student_request.state == StudentRequest::WITHDRAWN_STATE)
           flash[:warning] = "Student has already withdrawn their request"
         else
-          if(session[:multi_state_sel] != "Select State")
+          if(session[:semester] != "Select State")
             isUpdate = true
             @student_request.state = session[:multi_state_sel]
               @student_request.save!
