@@ -6,7 +6,7 @@ FactoryGirl.define do
     major "CSCE"
     classification "G8"
     email "johndoe@tamu.edu"
-    request_semester "2020 Spring"
+    request_semester "2020 Fall"
     course_id "633"
     priority "High"
     phone "9793459799"

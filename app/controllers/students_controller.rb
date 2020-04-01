@@ -139,7 +139,7 @@ class StudentsController < ApplicationController
     #after login to update the password(create new password)
     def update_password
         @student = Student.where(:uin => session_get(:uin))
-        if @student[0].password == params[:session][:oldPassword]
+        if @student[0].password == Digest::MD5.hexdigest(params[:session][:oldPassword])
             if params[:session][:password] == params[:session][:password2]
                
                 @student[0].update_attribute(:password, Digest::MD5.hexdigest(params[:session][:password]))
@@ -224,7 +224,7 @@ class StudentsController < ApplicationController
               @newStudent = Student.create!(:name => params[:session][:name], :uin => params[:session][:uin], :email => params[:session][:email], :password => Digest::MD5.hexdigest(params[:session][:password]),
                                                   :major => params[:session][:major], :classification => params[:session][:classification])
               flash[:notice] = "Name:#{@newStudent.name}, UIN: #{@newStudent.uin}, Email: #{@newStudent.email} signed up successfully."
-              StudentMailer.registration_confirmation(@newStudent).deliver
+              StudentMailer.registration_confirmation(@newStudent).deliver 
               redirect_to student_requests_adminprivileges_path
             #else
               #flash[:notice] = "Student information is incorrect!\nPlease use TAMU email!\nUse name as which is on Student ID!"

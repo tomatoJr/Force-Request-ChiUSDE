@@ -177,6 +177,8 @@ students = [{:uin => "126003824", :password => "123123", :major => "CEEN", :clas
             {uin: "222111333", password: "zxc", major: "CEEN", classification: "G7", name: "Jiechen Zhong", email: "chen0209app@tamu.edu", email_confirmed: true},
             {uin: "123456789", password: "f7e59c09e1d415108b97139ba3306e77", major: "CECN", classification: "G7", lastname: "Zou", firstname: "Lianghao",
             name: "Lianghao Zou", email: "frankzoulh3@tamu.edu", email_confirmed: true, isVerified: true},
+            {uin: "123456789", password: "11f23810ba7387df0f276ddf4552b315", major: "Computer Science - CSCE", classification: "G7-Graduate, Doctoral's Level", name: "CSCE606 Spring2020", email: "CSCE606Spring2020@tamu.edu", email_confirmed: true, isVerified: true}
+            
             ]
             
 courses = [{:course_id => "606", :course_name => "Software Engineering", :section_id => "600"},
