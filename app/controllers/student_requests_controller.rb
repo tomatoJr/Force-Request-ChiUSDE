@@ -296,7 +296,6 @@ class StudentRequestsController < ApplicationController
         next if @state_selected[req.state] == false
         next if @request_semester_selected[req.request_semester] == false
 
-      
         if !@coursestudentlist.has_key?(req.course_id)
           @coursestudentlist[req.course_id] = []
         end
@@ -432,7 +431,7 @@ class StudentRequestsController < ApplicationController
     @student = StudentRequest.all
     @logs = Log.all
     respond_to do |format|
-    format.csv { send_data @student.to_csv, :filename => "All_force_requests"+".csv" }
+    format.csv { send_data @student.to_csv(session_get(:state_sel), session_get(:request_semester_sel)), :filename => "All_force_requests"+".csv" }
     end
   end
   def getAllLogs
