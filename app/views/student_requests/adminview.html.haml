@@ -32,11 +32,12 @@
         %td= state
     // = submit_tag 'Refresh', class: "filter"
     .filter_form2
-    %br
     %strong Filter Requests - Request Semester:
     %br
     %table
-    = select_tag("request_semester_selected", options_for_select(@all_request_semesters), multiple: true, size: "4", style: "height: 100%;")
+    = select_tag("request_semester_sel", options_for_select(@all_request_semesters), value: 'true', multiple: true, size: "5", style: "height: 100%;")
+    - @request_semester_selected.each do |item|
+      = item.to_s
     %br
     = submit_tag 'Refresh', class: "filter"
 
