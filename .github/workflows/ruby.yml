@@ -26,16 +26,17 @@ jobs:
       run: |
         curl -sSL https://get.rvm.io | bash
 
-    - name: Set up Ruby from .ruby-version
-      run: |
-        source $HOME/.rvm/scripts/rvm
-        rvm install 2.4.3 --binary
-        rvm --default use 2.4.3
+    
 
     - name: Install PostgreSQL 11 client
       run: |
         sudo apt-get -yqq install libpq-dev
-
+        
+#     - name: Set up Ruby from .ruby-version
+#       run: |
+#         source $HOME/.rvm/scripts/rvm
+#         rvm install 2.4.3 --binary
+#         rvm --default use 2.4.3
 #     - name: Build App
 #       env:
 #         PGHOST: localhost
