@@ -39,16 +39,15 @@ jobs:
 #         source $HOME/.rvm/scripts/rvm
 #         rvm install 2.4.3 --binary
 #         rvm --default use 2.4.3
-#     - name: Build App
-#       env:
-#         PGHOST: localhost
-#         PGUSER: postgres
-#         RAILS_ENV: test
-#       run: |
-#         source $HOME/.rvm/scripts/rvm
-# gem install bundler
-# bundle install --jobs 4 --retry 3
-# bin/rails db:setup
+    - name: Build App
+      env:
+        PGHOST: localhost
+        PGUSER: postgres
+        RAILS_ENV: test
+      run: |
+        gem install bundler
+        bundle install --jobs 4 --retry 3
+        bin/rails db:setup
 
 #     - name: Run Tests
 #       env:
