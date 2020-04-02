@@ -31,7 +31,9 @@ jobs:
     - name: Install PostgreSQL 11 client
       run: |
         sudo apt-get -yqq install libpq-dev
-        
+    - name: Install Ruby version specified in `.ruby-version`
+      uses: eregon/use-ruby-action@master # this will use by default the .ruby-version file in your repository
+
 #     - name: Set up Ruby from .ruby-version
 #       run: |
 #         source $HOME/.rvm/scripts/rvm
