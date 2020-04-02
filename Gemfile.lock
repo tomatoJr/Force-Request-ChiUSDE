@@ -67,6 +67,7 @@ GEM
       xpath (~> 3.2)
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
+    choice (0.2.0)
     coderay (1.1.2)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
@@ -186,6 +187,7 @@ GEM
     rack (2.0.5)
     rack-test (0.6.3)
       rack (>= 1.0)
+    railroady (1.5.3)
     rails (5.0.2)
       actioncable (= 5.0.2)
       actionmailer (= 5.0.2)
@@ -205,6 +207,11 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
+    rails-erd (1.6.0)
+      activerecord (>= 4.2)
+      activesupport (>= 4.2)
+      choice (~> 0.2.0)
+      ruby-graphviz (~> 1.2)
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
     rails_12factor (0.0.3)
@@ -226,6 +233,7 @@ GEM
     regexp_parser (1.2.0)
     request_store (1.4.1)
       rack (>= 1.4)
+    rexml (3.2.4)
     rspec (3.8.0)
       rspec-core (~> 3.8.0)
       rspec-expectations (~> 3.8.0)
@@ -247,6 +255,8 @@ GEM
       rspec-mocks (~> 3.8.0)
       rspec-support (~> 3.8.0)
     rspec-support (3.8.0)
+    ruby-graphviz (1.2.5)
+      rexml
     ruby_dep (1.5.0)
     rubyzip (1.2.2)
     sass (3.6.0)
@@ -326,8 +336,10 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   pg (~> 0.21)
+  railroady
   rails (= 5.0.2)
   rails-controller-testing
+  rails-erd
   rails_12factor
   rspec-rails
   rubycas-client!
