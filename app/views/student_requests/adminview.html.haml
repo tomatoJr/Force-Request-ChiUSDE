@@ -36,8 +36,6 @@
     %br
     %table
     = select_tag("request_semester_sel", options_for_select(@all_request_semesters), value: 'true', multiple: true, size: "5", style: "height: 100%;")
-    - @request_semester_selected.each do |item|
-      = item.to_s
     %br
     = submit_tag 'Refresh', class: "filter"
 
