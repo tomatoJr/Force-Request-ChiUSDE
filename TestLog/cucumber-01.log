@@ -1,0 +1,457 @@
+Using the default profile...
+Feature: admin process force request
+  As an administrator
+  So I can see all the force request
+  I want to approve/reject force request
+
+  Scenario: Admin download                                       # features/admin_action.feature:6
+    Given I am on the Login Page as admin                        # features/step_definitions/admin_steps.rb:1
+    And I use admin account to login                             # features/step_definitions/admin_steps.rb:17
+    Then I should be on Admin View page                          # features/step_definitions/admin_steps.rb:25
+      expected to find text "Admin Dashboard Page" in "CSE Force Request System\nYour Email or Password is Incorrect\nLogin Page\nEnter your Email Enter your password (Forgot password) Login as admin student\nSign Up\nIf you encounter any problem with using this system, please email to cse.frs.feedback@gmail.com" (RSpec::Expectations::ExpectationNotMetError)
+      ./features/step_definitions/admin_steps.rb:26:in `/^I should be on Admin View page$/'
+      features/admin_action.feature:9:in `Then I should be on Admin View page'
+    And I should see all requests here                           # features/step_definitions/admin_steps.rb:31
+    And I click Download button                                  # features/step_definitions/admin_actions_steps.rb:1
+    Then I should get a download with the All_force_requests.csv # features/step_definitions/admin_actions_steps.rb:9
+
+  Scenario: Admin download                                     # features/admin_action.feature:14
+    Given I am on the Login Page as admin                      # features/step_definitions/admin_steps.rb:1
+    And I use admin account to login                           # features/step_definitions/admin_steps.rb:17
+    Then I should be on Admin View page                        # features/step_definitions/admin_steps.rb:25
+      expected to find text "Admin Dashboard Page" in "CSE Force Request System\nYour Email or Password is Incorrect\nLogin Page\nEnter your Email Enter your password (Forgot password) Login as admin student\nSign Up\nIf you encounter any problem with using this system, please email to cse.frs.feedback@gmail.com" (RSpec::Expectations::ExpectationNotMetError)
+      ./features/step_definitions/admin_steps.rb:26:in `/^I should be on Admin View page$/'
+      features/admin_action.feature:17:in `Then I should be on Admin View page'
+    And I should see all requests here                         # features/step_definitions/admin_steps.rb:31
+    And I click Download logs button                           # features/step_definitions/admin_actions_steps.rb:5
+    Then I should get a download with the All_request_logs.csv # features/step_definitions/admin_actions_steps.rb:13
+
+Feature: admin SignUp and login
+  As an administrator
+  So that I have all the privilege
+  I want to login to the force request system with password
+
+  Scenario: Admin Login                   # features/admin_view.feature:6
+    Given I am on the Login Page as admin # features/step_definitions/admin_steps.rb:1
+    And I use admin account to login      # features/step_definitions/admin_steps.rb:17
+    Then I should be on Admin View page   # features/step_definitions/admin_steps.rb:25
+      expected to find text "Admin Dashboard Page" in "CSE Force Request System\nYour Email or Password is Incorrect\nLogin Page\nEnter your Email Enter your password (Forgot password) Login as admin student\nSign Up\nIf you encounter any problem with using this system, please email to cse.frs.feedback@gmail.com" (RSpec::Expectations::ExpectationNotMetError)
+      ./features/step_definitions/admin_steps.rb:26:in `/^I should be on Admin View page$/'
+      features/admin_view.feature:9:in `Then I should be on Admin View page'
+    And I should see all requests here    # features/step_definitions/admin_steps.rb:31
+
+  Scenario: Admin Actions                          # features/admin_view.feature:12
+    Given I am on the Login Page as admin          # features/step_definitions/admin_steps.rb:1
+    And I use admin account to login               # features/step_definitions/admin_steps.rb:17
+    Then I should be on Admin View page            # features/step_definitions/admin_steps.rb:25
+      expected to find text "Admin Dashboard Page" in "CSE Force Request System\nYour Email or Password is Incorrect\nLogin Page\nEnter your Email Enter your password (Forgot password) Login as admin student\nSign Up\nIf you encounter any problem with using this system, please email to cse.frs.feedback@gmail.com" (RSpec::Expectations::ExpectationNotMetError)
+      ./features/step_definitions/admin_steps.rb:26:in `/^I should be on Admin View page$/'
+      features/admin_view.feature:15:in `Then I should be on Admin View page'
+    And I should see all requests here             # features/step_definitions/admin_steps.rb:31
+    When I click More Actions                      # features/step_definitions/admin_steps.rb:37
+    Then I should go to action page                # features/step_definitions/admin_steps.rb:42
+    When I add a new admin                         # features/step_definitions/admin_steps.rb:50
+    And I fill the info of new admin               # features/step_definitions/admin_steps.rb:54
+    Then I should back to admin dashboard          # features/step_definitions/admin_steps.rb:63
+    When I click More Actions                      # features/step_definitions/admin_steps.rb:37
+    Then I should go to action page                # features/step_definitions/admin_steps.rb:42
+    When I click add a new student                 # features/step_definitions/admin_steps.rb:68
+    And I fill the info of new student             # features/step_definitions/admin_steps.rb:72
+    Then I should go to action page                # features/step_definitions/admin_steps.rb:42
+    When I click add a new force request to system # features/step_definitions/admin_steps.rb:84
+    And I fill the info of new request             # features/step_definitions/admin_steps.rb:88
+    Then I should go to action page                # features/step_definitions/admin_steps.rb:42
+
+  Scenario: Admin Control                      # features/admin_view.feature:32
+    Given I am on the Login Page as admin      # features/step_definitions/admin_steps.rb:1
+    And I use admin account to login           # features/step_definitions/admin_steps.rb:17
+    Then I should be on Admin View page        # features/step_definitions/admin_steps.rb:25
+      expected to find text "Admin Dashboard Page" in "CSE Force Request System\nYour Email or Password is Incorrect\nLogin Page\nEnter your Email Enter your password (Forgot password) Login as admin student\nSign Up\nIf you encounter any problem with using this system, please email to cse.frs.feedback@gmail.com" (RSpec::Expectations::ExpectationNotMetError)
+      ./features/step_definitions/admin_steps.rb:26:in `/^I should be on Admin View page$/'
+      features/admin_view.feature:35:in `Then I should be on Admin View page'
+    And I should see all requests here         # features/step_definitions/admin_steps.rb:31
+    When I filter the requests                 # features/step_definitions/admin_steps.rb:111
+    Then I have the requests in desired domain # features/step_definitions/admin_steps.rb:121
+    When I click course name button            # features/step_definitions/admin_steps.rb:125
+    Then the page collapse                     # features/step_definitions/admin_steps.rb:129
+
+  # Scenario: Approve request
+  # Given I am on the Login Page as admin
+  # And I use admin account to login
+  # Then I should be on Admin View page
+  # When I click Approve
+  # Then I should see Approved
+  # Scenario: Reject request
+  # Given I am on the Login Page as admin
+  # And I use admin account to login
+  # Then I should be on Admin View page
+  # When I click Reject
+  # Then I should see Rejected
+  Scenario: Hold request                  # features/admin_view.feature:57
+    Given I am on the Login Page as admin # features/step_definitions/admin_steps.rb:1
+    And I use admin account to login      # features/step_definitions/admin_steps.rb:17
+    Then I should be on Admin View page   # features/step_definitions/admin_steps.rb:25
+      expected to find text "Admin Dashboard Page" in "CSE Force Request System\nYour Email or Password is Incorrect\nLogin Page\nEnter your Email Enter your password (Forgot password) Login as admin student\nSign Up\nIf you encounter any problem with using this system, please email to cse.frs.feedback@gmail.com" (RSpec::Expectations::ExpectationNotMetError)
+      ./features/step_definitions/admin_steps.rb:26:in `/^I should be on Admin View page$/'
+      features/admin_view.feature:60:in `Then I should be on Admin View page'
+    When I click Hold                     # features/step_definitions/admin_steps.rb:150
+    Then I should see Hold                # features/step_definitions/admin_steps.rb:154
+
+  # Scenario: Add Notes
+  # Given I am on the Login Page as admin
+  # And I use admin account to login
+  # Then I should be on Admin View page
+  # When I click View Details
+  # Then I should see Request Id Details
+  Scenario: Update Request with nothing changed            # features/admin_view.feature:72
+    Given I am on the Login Page as admin                  # features/step_definitions/admin_steps.rb:1
+    And I use admin account to login                       # features/step_definitions/admin_steps.rb:17
+    And I click first Update Selected                      # features/step_definitions/admin_steps.rb:166
+      expected to find button "Update Selected" at least 1 time but there were no matches (Capybara::ExpectationNotMet)
+      ./features/step_definitions/admin_steps.rb:167:in `/^I click first Update Selected/'
+      features/admin_view.feature:75:in `And I click first Update Selected'
+    Then I should be on the custom message page            # features/step_definitions/admin_steps.rb:174
+    And I type in a custom message                         # features/step_definitions/admin_steps.rb:178
+    Then I should see Nothing has been selected for Update # features/step_definitions/admin_steps.rb:170
+
+  Scenario: Admin set limits on courses     # features/admin_view.feature:80
+    Given I am on the Login Page as admin   # features/step_definitions/admin_steps.rb:1
+    And I use admin account to login        # features/step_definitions/admin_steps.rb:17
+    Then I should be on Admin View page     # features/step_definitions/admin_steps.rb:25
+      expected to find text "Admin Dashboard Page" in "CSE Force Request System\nYour Email or Password is Incorrect\nLogin Page\nEnter your Email Enter your password (Forgot password) Login as admin student\nSign Up\nIf you encounter any problem with using this system, please email to cse.frs.feedback@gmail.com" (RSpec::Expectations::ExpectationNotMetError)
+      ./features/step_definitions/admin_steps.rb:26:in `/^I should be on Admin View page$/'
+      features/admin_view.feature:83:in `Then I should be on Admin View page'
+    And I should see all requests here      # features/step_definitions/admin_steps.rb:31
+    When I click More Actions               # features/step_definitions/admin_steps.rb:37
+    Then I should go to action page         # features/step_definitions/admin_steps.rb:42
+    Then I click Set Force Request Limit    # features/step_definitions/admin_steps.rb:183
+    Then I should be on the set limits page # features/step_definitions/admin_steps.rb:200
+    And I enter the limits                  # features/step_definitions/admin_steps.rb:187
+    Then I should see limits were set       # features/step_definitions/admin_steps.rb:196
+
+  Scenario: Edit email template                     # features/admin_view.feature:92
+    Given I am on the Login Page as admin           # features/step_definitions/admin_steps.rb:1
+    And I use admin account to login                # features/step_definitions/admin_steps.rb:17
+    Then I should be on Admin View page             # features/step_definitions/admin_steps.rb:25
+      expected to find text "Admin Dashboard Page" in "CSE Force Request System\nYour Email or Password is Incorrect\nLogin Page\nEnter your Email Enter your password (Forgot password) Login as admin student\nSign Up\nIf you encounter any problem with using this system, please email to cse.frs.feedback@gmail.com" (RSpec::Expectations::ExpectationNotMetError)
+      ./features/step_definitions/admin_steps.rb:26:in `/^I should be on Admin View page$/'
+      features/admin_view.feature:95:in `Then I should be on Admin View page'
+    And I should see all requests here              # features/step_definitions/admin_steps.rb:31
+    When I click More Actions                       # features/step_definitions/admin_steps.rb:37
+    Then I should go to action page                 # features/step_definitions/admin_steps.rb:42
+    Then I click Edit Email Template                # features/step_definitions/admin_steps.rb:204
+    Then I should be on the email template page     # features/step_definitions/admin_steps.rb:208
+    And I should see template message               # features/step_definitions/admin_steps.rb:212
+    And I edit the template                         # features/step_definitions/admin_steps.rb:217
+    Then I should see that the template was updated # features/step_definitions/admin_steps.rb:222
+
+Feature: students Login
+  As a student
+  So that my information is protected
+  I want to login to the force request system with password
+
+  Background: activators have been added to database # features/student_login.feature:6
+    Given the following activators exist:            # features/step_definitions/student_login_steps.rb:1
+      | name           | uin       | password | email            |
+      | Andrew Bregger | 123123123 | 654321   | adb3649@tamu.edu |
+
+  Scenario: fail to login                              # features/student_login.feature:12
+    When I am on the Login Page                        # features/step_definitions/student_login_steps.rb:7
+    When I login in with a account doesn't exsit       # features/step_definitions/student_login_steps.rb:12
+    Then I should stay at the same page                # features/step_definitions/student_login_steps.rb:35
+    And I should see a non-account exsits message      # features/step_definitions/student_login_steps.rb:39
+    When I enter wrong login information               # features/step_definitions/student_login_steps.rb:19
+    Then I should stay at the same page                # features/step_definitions/student_login_steps.rb:35
+    And I should see a error message                   # features/step_definitions/student_login_steps.rb:43
+    When I login in with account has not been activate # features/step_definitions/student_login_steps.rb:27
+    Then I should stay at the same page                # features/step_definitions/student_login_steps.rb:35
+    And I should see a not-activated message           # features/step_definitions/student_login_steps.rb:47
+      expected to find text "The account has not been activated." in "CSE Force Request System\nEntered Email and Password didn't match. Try again.\nLogin Page\nEnter your Email Enter your password (Forgot password) Login as admin student\nSign Up\nIf you encounter any problem with using this system, please email to cse.frs.feedback@gmail.com" (RSpec::Expectations::ExpectationNotMetError)
+      ./features/step_definitions/student_login_steps.rb:48:in `/^I should see a not-activated message$/'
+      features/student_login.feature:22:in `And I should see a not-activated message'
+
+Feature: students SignUp
+  As a student
+  I want to sign up for a force request account
+  So that I can submit my force request application
+
+  Background: students have been added to database # features/student_signup.feature:6
+    Given the following students exist:            # features/step_definitions/student_signup_steps.rb:1
+      | name           | uin       | password | email            |
+      | Andrew Bregger | 123123123 | 654321   | adb3649@tamu.edu |
+      | Adam will      | 456789789 | 456789   | Will@tamu.edu    |
+
+  Scenario: Student SignUp with incorrect information      # features/student_signup.feature:13
+    Given I am a student want to sign up for an account    # features/step_definitions/student_signup_steps.rb:14
+    When I click on Sign Up                                # features/step_definitions/student_signup_steps.rb:19
+    Then I will be on the Sign Up page                     # features/step_definitions/student_signup_steps.rb:23
+    When I enter two different password or UIN information # features/step_definitions/student_signup_steps.rb:37
+    And I click SignUp                                     # features/step_definitions/student_signup_steps.rb:84
+    Then I should stay on the same page                    # features/step_definitions/student_signup_steps.rb:88
+    And I should recieve a mismatch warning massage        # features/step_definitions/student_signup_steps.rb:105
+      # When I enter a email does not exsiting in TAMU system
+      # And I click SignUp
+      # Then I should stay on the same page
+      # And I should recieve a no-record warning massage
+    When I use a UIN which already been used to sign up    # features/step_definitions/student_signup_steps.rb:48
+    And I click SignUp                                     # features/step_definitions/student_signup_steps.rb:84
+    Then I should return to root page                      # features/step_definitions/student_signup_steps.rb:100
+    And I should recieve a account-exist warning massage   # features/step_definitions/student_signup_steps.rb:109
+
+  Scenario: Student SignUp with correct information     # features/student_signup.feature:31
+    Given I am a student want to sign up for an account # features/step_definitions/student_signup_steps.rb:14
+    When I click on Sign Up                             # features/step_definitions/student_signup_steps.rb:19
+    Then I will be on the Sign Up page                  # features/step_definitions/student_signup_steps.rb:23
+    When I enter correct information                    # features/step_definitions/student_signup_steps.rb:71
+      Unable to find option "Computer Science" within #<Capybara::Node::Element tag="select" path="/html/body/div/div/form[1]/table/tr[5]/td[2]/select"> (Capybara::ElementNotFound)
+      ./features/step_definitions/student_signup_steps.rb:79:in `/^I enter correct information$/'
+      features/student_signup.feature:35:in `When I enter correct information'
+    And I click SignUp                                  # features/step_definitions/student_signup_steps.rb:84
+    Then I should see my account create successfully    # features/step_definitions/student_signup_steps.rb:119
+
+# features/student_view.feature
+Feature: Student View
+  As a student
+  I want to login to my account
+  So I can submit/withdraw force request and update my profile
+
+  Background: students have been added to database # features/student_view.feature:7
+    Given the following students exist:            # features/step_definitions/student_signup_steps.rb:1
+      | name       | firstname | lastname | uin       | password | email              | major            | classification |
+      | junqi yang | junqi     | yang     | 221004901 | 151718   | junqiyang@tamu.edu | Computer Science | G7             |
+      | Adam will  | Adam      | will     | 000000000 | 151718   | Will@tamu.edu      | Computer Science | G7             |
+      | John myer  | John      | myer     | 000000001 | 151718   | jmyer@tamu.edu     | Computer Science | U1             |
+    Given the following limits exist:              # features/step_definitions/student_signup_steps.rb:8
+      | classification | Very High | High | Normal | Low |
+      | G7             | 5         | 5    | 5      | 5   |
+      | G8             | 5         | 5    | 5      | 5   |
+      | U1             | 5         | 5    | 5      | 5   |
+
+  Scenario: View profile                       # features/student_view.feature:21
+    When I am on the Login Page                # features/step_definitions/student_login_steps.rb:7
+    When I login with correct login info       # features/step_definitions/student_view_steps.rb:1
+    Then I should be on Student Dashboard Page # features/step_definitions/student_view_steps.rb:15
+      expected to find text "New Force Request" in "CSE Force Request System\nEntered Email and Password didn't match. Try again.\nLogin Page\nEnter your Email Enter your password (Forgot password) Login as admin student\nSign Up\nIf you encounter any problem with using this system, please email to cse.frs.feedback@gmail.com" (RSpec::Expectations::ExpectationNotMetError)
+      ./features/step_definitions/student_view_steps.rb:16:in `/^I should be on Student Dashboard Page$/'
+      features/student_view.feature:24:in `Then I should be on Student Dashboard Page'
+    When I click my profile                    # features/step_definitions/student_view_steps.rb:31
+    Then I should see my personal information  # features/step_definitions/student_view_steps.rb:35
+    And I click OK                             # features/step_definitions/student_view_steps.rb:42
+    Then I should go back to dashboard         # features/step_definitions/student_view_steps.rb:50
+
+  Scenario: Update profile                     # features/student_view.feature:30
+    When I am on the Login Page                # features/step_definitions/student_login_steps.rb:7
+    When I login with correct login info       # features/step_definitions/student_view_steps.rb:1
+    Then I should be on Student Dashboard Page # features/step_definitions/student_view_steps.rb:15
+      expected to find text "New Force Request" in "CSE Force Request System\nEntered Email and Password didn't match. Try again.\nLogin Page\nEnter your Email Enter your password (Forgot password) Login as admin student\nSign Up\nIf you encounter any problem with using this system, please email to cse.frs.feedback@gmail.com" (RSpec::Expectations::ExpectationNotMetError)
+      ./features/step_definitions/student_view_steps.rb:16:in `/^I should be on Student Dashboard Page$/'
+      features/student_view.feature:33:in `Then I should be on Student Dashboard Page'
+    When I click my profile                    # features/step_definitions/student_view_steps.rb:31
+    Then I should see my personal information  # features/step_definitions/student_view_steps.rb:35
+    And I click Update                         # features/step_definitions/student_view_steps.rb:46
+    Then I should be on root page              # features/step_definitions/student_view_steps.rb:236
+    And I should see update success            # features/step_definitions/student_view_steps.rb:56
+
+  Scenario: Update profile                         # features/student_view.feature:40
+    When I am on the Login Page                    # features/step_definitions/student_login_steps.rb:7
+    When I login with correct login info           # features/step_definitions/student_view_steps.rb:1
+    Then I should be on Student Dashboard Page     # features/step_definitions/student_view_steps.rb:15
+      expected to find text "New Force Request" in "CSE Force Request System\nEntered Email and Password didn't match. Try again.\nLogin Page\nEnter your Email Enter your password (Forgot password) Login as admin student\nSign Up\nIf you encounter any problem with using this system, please email to cse.frs.feedback@gmail.com" (RSpec::Expectations::ExpectationNotMetError)
+      ./features/step_definitions/student_view_steps.rb:16:in `/^I should be on Student Dashboard Page$/'
+      features/student_view.feature:43:in `Then I should be on Student Dashboard Page'
+    When I click my profile                        # features/step_definitions/student_view_steps.rb:31
+    Then I should see my personal information      # features/step_definitions/student_view_steps.rb:35
+    When I fill out the UIN worng                  # features/step_definitions/student_view_steps.rb:61
+    And I click Update                             # features/step_definitions/student_view_steps.rb:46
+    Then I should see error message for same UIN   # features/step_definitions/student_view_steps.rb:69
+    When I fill out the email worng                # features/step_definitions/student_view_steps.rb:65
+    And I click Update                             # features/step_definitions/student_view_steps.rb:46
+    Then I should see error message for same email # features/step_definitions/student_view_steps.rb:73
+
+  Scenario: Add/withdraw new requests                            # features/student_view.feature:53
+    When I am on the Login Page                                  # features/step_definitions/student_login_steps.rb:7
+    When I login with correct login info                         # features/step_definitions/student_view_steps.rb:1
+    Then I should be on Student Dashboard Page                   # features/step_definitions/student_view_steps.rb:15
+      expected to find text "New Force Request" in "CSE Force Request System\nEntered Email and Password didn't match. Try again.\nLogin Page\nEnter your Email Enter your password (Forgot password) Login as admin student\nSign Up\nIf you encounter any problem with using this system, please email to cse.frs.feedback@gmail.com" (RSpec::Expectations::ExpectationNotMetError)
+      ./features/step_definitions/student_view_steps.rb:16:in `/^I should be on Student Dashboard Page$/'
+      features/student_view.feature:56:in `Then I should be on Student Dashboard Page'
+    When I click on New Force Request                            # features/step_definitions/student_view_steps.rb:82
+    And I complete the form                                      # features/step_definitions/student_view_steps.rb:87
+    And I click Save Request                                     # features/step_definitions/student_view_steps.rb:123
+    Then I should see a confirm message                          # features/step_definitions/student_view_steps.rb:127
+    Then I should be on Student Dashboard Page                   # features/step_definitions/student_view_steps.rb:15
+    When I click on Delete                                       # features/step_definitions/student_view_steps.rb:156
+    Then I should not see that request on Student Dashboard Page # features/step_definitions/student_view_steps.rb:160
+
+  Scenario: Student change password with right information # features/student_view.feature:65
+    When I am on the Login Page                            # features/step_definitions/student_login_steps.rb:7
+    When I login with correct login info                   # features/step_definitions/student_view_steps.rb:1
+    Then I should be on Student Dashboard Page             # features/step_definitions/student_view_steps.rb:15
+      expected to find text "New Force Request" in "CSE Force Request System\nEntered Email and Password didn't match. Try again.\nLogin Page\nEnter your Email Enter your password (Forgot password) Login as admin student\nSign Up\nIf you encounter any problem with using this system, please email to cse.frs.feedback@gmail.com" (RSpec::Expectations::ExpectationNotMetError)
+      ./features/step_definitions/student_view_steps.rb:16:in `/^I should be on Student Dashboard Page$/'
+      features/student_view.feature:68:in `Then I should be on Student Dashboard Page'
+    When I click change password button                    # features/step_definitions/student_view_steps.rb:169
+    Then I should be on change password page               # features/step_definitions/student_view_steps.rb:173
+    When I fill the form and confirm                       # features/step_definitions/student_view_steps.rb:196
+    Then I should read a successful message                # features/step_definitions/student_view_steps.rb:179
+
+  Scenario: Student change password with wrong information # features/student_view.feature:74
+    When I am on the Login Page                            # features/step_definitions/student_login_steps.rb:7
+    When I login with correct login info                   # features/step_definitions/student_view_steps.rb:1
+    Then I should be on Student Dashboard Page             # features/step_definitions/student_view_steps.rb:15
+      expected to find text "New Force Request" in "CSE Force Request System\nEntered Email and Password didn't match. Try again.\nLogin Page\nEnter your Email Enter your password (Forgot password) Login as admin student\nSign Up\nIf you encounter any problem with using this system, please email to cse.frs.feedback@gmail.com" (RSpec::Expectations::ExpectationNotMetError)
+      ./features/step_definitions/student_view_steps.rb:16:in `/^I should be on Student Dashboard Page$/'
+      features/student_view.feature:77:in `Then I should be on Student Dashboard Page'
+    And I click change password button                     # features/step_definitions/student_view_steps.rb:169
+    Then I should be on change password page               # features/step_definitions/student_view_steps.rb:173
+    When I fill the old password wrongly                   # features/step_definitions/student_view_steps.rb:184
+    Then I stay on the page on recieve warining            # features/step_definitions/student_view_steps.rb:192
+    When I fill the new password wrongly                   # features/step_definitions/student_view_steps.rb:205
+    Then I stay on the page on recieve another warining    # features/step_definitions/student_view_steps.rb:213
+    When I withdraw this request                           # features/step_definitions/student_view_steps.rb:217
+    Then I will back to student dashboard                  # features/step_definitions/student_view_steps.rb:221
+
+  Scenario: Student Logout               # features/student_view.feature:87
+    When I am on the Login Page          # features/step_definitions/student_login_steps.rb:7
+    When I login with correct login info # features/step_definitions/student_view_steps.rb:1
+    And I click logout button            # features/step_definitions/student_view_steps.rb:231
+      Unable to find button "Logout" (Capybara::ElementNotFound)
+      ./features/step_definitions/student_view_steps.rb:232:in `/^I click logout button$/'
+      features/student_view.feature:90:in `And I click logout button'
+    Then I should be on root page        # features/step_definitions/student_view_steps.rb:236
+
+  Scenario: Student Forget Password         # features/student_view.feature:93
+    When I am on the Login Page             # features/step_definitions/student_login_steps.rb:7
+    And I click forget password             # features/step_definitions/student_view_steps.rb:247
+    Then I should be on reset password page # features/step_definitions/student_view_steps.rb:251
+    When I input my Email and click reset   # features/step_definitions/student_view_steps.rb:255
+      534-5.7.14 <https://accounts.google.com/signin/continue?sarp=1&scc=1&plt=AKgnsbt
+       (Net::SMTPAuthenticationError)
+      ./app/controllers/students_controller.rb:165:in `sent_reset_password_mail'
+      ./features/step_definitions/student_view_steps.rb:257:in `/^I input my Email and click reset$/'
+      features/student_view.feature:97:in `When I input my Email and click reset'
+    Then I should see a message             # features/step_definitions/student_view_steps.rb:260
+
+  #New Cucumber tests added
+  Scenario: Add priority on requests            # features/student_view.feature:101
+    When I am on the Login Page                 # features/step_definitions/student_login_steps.rb:7
+    When I login with correct login info        # features/step_definitions/student_view_steps.rb:1
+    Then I should be on Student Dashboard Page  # features/step_definitions/student_view_steps.rb:15
+      expected to find text "New Force Request" in "CSE Force Request System\nEntered Email and Password didn't match. Try again.\nLogin Page\nEnter your Email Enter your password (Forgot password) Login as admin student\nSign Up\nIf you encounter any problem with using this system, please email to cse.frs.feedback@gmail.com" (RSpec::Expectations::ExpectationNotMetError)
+      ./features/step_definitions/student_view_steps.rb:16:in `/^I should be on Student Dashboard Page$/'
+      features/student_view.feature:104:in `Then I should be on Student Dashboard Page'
+    When I click on New Force Request           # features/step_definitions/student_view_steps.rb:82
+    And I assign priority to the request        # features/step_definitions/student_view_steps.rb:270
+    And I click Save Request                    # features/step_definitions/student_view_steps.rb:123
+    Then I should see the request with priority # features/step_definitions/student_view_steps.rb:280
+    Then I should be on Student Dashboard Page  # features/step_definitions/student_view_steps.rb:15
+
+  Scenario: Maximum force request limit for graduate student # features/student_view.feature:111
+    When I am on the Login Page                              # features/step_definitions/student_login_steps.rb:7
+    When I login with correct login info                     # features/step_definitions/student_view_steps.rb:1
+    Then I should be on Student Dashboard Page               # features/step_definitions/student_view_steps.rb:15
+      expected to find text "New Force Request" in "CSE Force Request System\nEntered Email and Password didn't match. Try again.\nLogin Page\nEnter your Email Enter your password (Forgot password) Login as admin student\nSign Up\nIf you encounter any problem with using this system, please email to cse.frs.feedback@gmail.com" (RSpec::Expectations::ExpectationNotMetError)
+      ./features/step_definitions/student_view_steps.rb:16:in `/^I should be on Student Dashboard Page$/'
+      features/student_view.feature:114:in `Then I should be on Student Dashboard Page'
+    When I click on New Force Request                        # features/step_definitions/student_view_steps.rb:82
+    And I complete the form                                  # features/step_definitions/student_view_steps.rb:87
+    And I click Save Request                                 # features/step_definitions/student_view_steps.rb:123
+    Then I should see a confirm message                      # features/step_definitions/student_view_steps.rb:127
+    Then I should be on Student Dashboard Page               # features/step_definitions/student_view_steps.rb:15
+    When I click on New Force Request                        # features/step_definitions/student_view_steps.rb:82
+    And I complete the form the second time                  # features/step_definitions/student_view_steps.rb:96
+    And I click Save Request                                 # features/step_definitions/student_view_steps.rb:123
+    Then I should see a confirm message for second request   # features/step_definitions/student_view_steps.rb:133
+    Then I should be on Student Dashboard Page               # features/step_definitions/student_view_steps.rb:15
+    When I click on New Force Request                        # features/step_definitions/student_view_steps.rb:82
+    And I complete the form the third time                   # features/step_definitions/student_view_steps.rb:105
+    And I click Save Request                                 # features/step_definitions/student_view_steps.rb:123
+    Then I should see a confirm message for third request    # features/step_definitions/student_view_steps.rb:141
+    Then I should be on Student Dashboard Page               # features/step_definitions/student_view_steps.rb:15
+    When I click on New Force Request                        # features/step_definitions/student_view_steps.rb:82
+    And I complete the form the fourth time                  # features/step_definitions/student_view_steps.rb:114
+    And I click Save Request                                 # features/step_definitions/student_view_steps.rb:123
+
+  #Then I should see a error message for maximum limit
+  #Then I should be on Student Dashboard Page
+  #Scenario: Maximum force request limit for undergraduate student
+  #When I am on the Login Page
+  #When I login with correct login info as undergraduate student
+  #Then I should be on Student Dashboard Page
+  #When I click on New Force Request
+  #And I complete the form
+  #And I click Save Request
+  #Then I should see a confirm message
+  #Then I should be on Student Dashboard Page
+  #When I click on New Force Request
+  #And I complete the form the second time
+  #And I click Save Request
+  #Then I should see a confirm message for second request
+  #Then I should be on Student Dashboard Page
+  #When I click on New Force Request
+  #And I complete the form the third time
+  #And I click Save Request
+  #Then I should see a confirm message for third request
+  #Then I should be on Student Dashboard Page
+  #When I click on New Force Request
+  #And I complete the form the fourth time
+  #And I click Save Request
+  #Then I should see a confirm message for fourth request
+  #Then I should be on Student Dashboard Page
+  #When I click on New Force Request
+  #And I complete the form the fifth time
+  #And I click Save Request
+  #Then I should see a confirm message for fifth request
+  #Then I should be on Student Dashboard Page
+  #When I click on New Force Request
+  #And I complete the form the sixth time
+  #And I click Save Request
+  #Then I should see a error message for maximum limit
+  #Then I should be on Student Dashboard Page
+  Scenario: Editing Request                    # features/student_view.feature:171
+    When I am on the Login Page                # features/step_definitions/student_login_steps.rb:7
+    When I login with correct login info       # features/step_definitions/student_view_steps.rb:1
+    Then I should be on Student Dashboard Page # features/step_definitions/student_view_steps.rb:15
+      expected to find text "New Force Request" in "CSE Force Request System\nEntered Email and Password didn't match. Try again.\nLogin Page\nEnter your Email Enter your password (Forgot password) Login as admin student\nSign Up\nIf you encounter any problem with using this system, please email to cse.frs.feedback@gmail.com" (RSpec::Expectations::ExpectationNotMetError)
+      ./features/step_definitions/student_view_steps.rb:16:in `/^I should be on Student Dashboard Page$/'
+      features/student_view.feature:174:in `Then I should be on Student Dashboard Page'
+    When I click on New Force Request          # features/step_definitions/student_view_steps.rb:82
+    And I complete the form                    # features/step_definitions/student_view_steps.rb:87
+    And I click Save Request                   # features/step_definitions/student_view_steps.rb:123
+    Then I should see a confirm message        # features/step_definitions/student_view_steps.rb:127
+    Then I should be on Student Dashboard Page # features/step_definitions/student_view_steps.rb:15
+    When I click on Edit                       # features/step_definitions/student_view_steps.rb:285
+    Then I should be on edit request page      # features/step_definitions/student_view_steps.rb:301
+    And I edit the request                     # features/step_definitions/student_view_steps.rb:289
+    And I click Save Request                   # features/step_definitions/student_view_steps.rb:123
+    Then I should see a confirmation message   # features/step_definitions/student_view_steps.rb:297
+    Then I should be on Student Dashboard Page # features/step_definitions/student_view_steps.rb:15
+
+Failing Scenarios:
+cucumber features/admin_action.feature:6 # Scenario: Admin download
+cucumber features/admin_action.feature:14 # Scenario: Admin download
+cucumber features/admin_view.feature:6 # Scenario: Admin Login
+cucumber features/admin_view.feature:12 # Scenario: Admin Actions
+cucumber features/admin_view.feature:32 # Scenario: Admin Control
+cucumber features/admin_view.feature:57 # Scenario: Hold request
+cucumber features/admin_view.feature:72 # Scenario: Update Request with nothing changed
+cucumber features/admin_view.feature:80 # Scenario: Admin set limits on courses
+cucumber features/admin_view.feature:92 # Scenario: Edit email template
+cucumber features/student_login.feature:12 # Scenario: fail to login
+cucumber features/student_signup.feature:31 # Scenario: Student SignUp with correct information
+cucumber features/student_view.feature:21 # Scenario: View profile
+cucumber features/student_view.feature:30 # Scenario: Update profile
+cucumber features/student_view.feature:40 # Scenario: Update profile
+cucumber features/student_view.feature:53 # Scenario: Add/withdraw new requests
+cucumber features/student_view.feature:65 # Scenario: Student change password with right information
+cucumber features/student_view.feature:74 # Scenario: Student change password with wrong information
+cucumber features/student_view.feature:87 # Scenario: Student Logout
+cucumber features/student_view.feature:93 # Scenario: Student Forget Password
+cucumber features/student_view.feature:101 # Scenario: Add priority on requests
+cucumber features/student_view.feature:111 # Scenario: Maximum force request limit for graduate student
+cucumber features/student_view.feature:171 # Scenario: Editing Request
+
+23 scenarios (22 failed, 1 passed)
+231 steps (22 failed, 120 skipped, 89 passed)
+0m3.513s
+Coverage report generated for Cucumber Features to /home/ec2-user/environment/Force-Request-ChiUSDE/coverage. 572 / 1275 LOC (44.86%) covered.
