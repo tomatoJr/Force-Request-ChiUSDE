@@ -31,10 +31,10 @@
         %td= check_box_tag "state_sel[#{state}]", 'true', @state_selected[state]      
         %td= state
     // = submit_tag 'Refresh', class: "filter"
+    %br
+    %br
     .filter_form2
     %strong Filter Requests - Request Semester:
-    %br
-    %table
     = select_tag("request_semester_sel", options_for_select(@all_request_semesters), value: 'true', multiple: true, size: "5", style: "height: 100%;")
     %br
     = submit_tag 'Refresh', class: "filter"
