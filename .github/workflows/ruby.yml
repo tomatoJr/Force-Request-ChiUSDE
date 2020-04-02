@@ -43,9 +43,9 @@ jobs:
         RAILS_ENV: test
       run: |
         source $HOME/.rvm/scripts/rvm
-        gem install bundler
-        bundle install --jobs 4 --retry 3
-        bin/rails db:setup
+# gem install bundler
+# bundle install --jobs 4 --retry 3
+# bin/rails db:setup
 
 #     - name: Run Tests
 #       env:
