@@ -32,17 +32,17 @@ jobs:
         rvm install $(cat .ruby-version) --binary
         rvm --default use $(cat .ruby-version)
 
-    - name: Install PostgreSQL 11 client
-      run: |
-        sudo apt-get -yqq install libpq-dev
+#     - name: Install PostgreSQL 11 client
+#       run: |
+#         sudo apt-get -yqq install libpq-dev
 
-    - name: Build App
-      env:
-        PGHOST: localhost
-        PGUSER: postgres
-        RAILS_ENV: test
-      run: |
-        source $HOME/.rvm/scripts/rvm
+#     - name: Build App
+#       env:
+#         PGHOST: localhost
+#         PGUSER: postgres
+#         RAILS_ENV: test
+#       run: |
+#         source $HOME/.rvm/scripts/rvm
 # gem install bundler
 # bundle install --jobs 4 --retry 3
 # bin/rails db:setup
