@@ -1,4 +1,4 @@
-name: Rails Tests
+name: Rails Tests with custom Ruby version
 
 on:
   pull_request:
@@ -7,7 +7,6 @@ on:
   push:
     branches:
       - 'master'
-      - 'Test-CI'
 
 jobs:
   build:
@@ -15,17 +14,22 @@ jobs:
 
     services:
       postgres:
-        image: postgres:11
+        image: postgres:11.5
         ports: ["5432:5432"]
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
     - uses: actions/checkout@v1
 
-    - name: Set up Ruby 2.6
-      uses: actions/setup-ruby@v1
-      with:
-        ruby-version: 2.6.x
+    - name: Set up RVM
+      run: |
+        curl -sSL https://get.rvm.io | bash
+
+    - name: Set up Ruby from .ruby-version
+      run: |
+        source $HOME/.rvm/scripts/rvm
+        rvm install $(cat .ruby-version) --binary
+        rvm --default use $(cat .ruby-version)
 
     - name: Install PostgreSQL 11 client
       run: |
@@ -37,6 +41,7 @@ jobs:
         PGUSER: postgres
         RAILS_ENV: test
       run: |
+        source $HOME/.rvm/scripts/rvm
         gem install bundler
         bundle install --jobs 4 --retry 3
         bin/rails db:setup
@@ -47,7 +52,8 @@ jobs:
 #         PGUSER: postgres
 #         RAILS_ENV: test
 #       run: |
-#       bundle exec rake test
-#       bundle exec rake test:system
-      # or Rspec
-      # bundle exec rspec
+#         source $HOME/.rvm/scripts/rvm
+#         bundle exec rake test
+#         bundle exec rake test:system
+        # or Rspec
+        # bundle exec rspec
