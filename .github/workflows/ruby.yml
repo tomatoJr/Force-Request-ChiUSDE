@@ -26,11 +26,11 @@ jobs:
       run: |
         curl -sSL https://get.rvm.io | bash
 
-    - name: Set up Ruby from .ruby-version
-      run: |
-        source $HOME/.rvm/scripts/rvm
-        rvm install $(cat .ruby-version) --binary
-        rvm --default use $(cat .ruby-version)
+#     - name: Set up Ruby from .ruby-version
+#       run: |
+#         source $HOME/.rvm/scripts/rvm
+#         rvm install $(cat .ruby-version) --binary
+#         rvm --default use $(cat .ruby-version)
 
 #     - name: Install PostgreSQL 11 client
 #       run: |
