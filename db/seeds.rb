@@ -9,7 +9,11 @@
 
 student_requests = [{:uin => '126003824', :name => 'Mo Li', 
                      :major => 'CEEN', :classification => 'G7', :minor => 'CECN', :email => 'king_lm@tamu.edu', :phone => '9797797697', 
+<<<<<<< HEAD
                      :expected_graduation => '2020 Fall', :request_semester => '2020 Fall',
+=======
+                     :expected_graduation => '2019 Fall', :request_semester => '2020 Fall',
+>>>>>>> 58b7ef2d6618a25262cc7234e5dbf67dbb6e0e68
                      :course_id => '026', :section_id => '101', :notes => 'Requirement for graduation.',:priority => 'Very High' , :state => 'Active'},
                      
                      {:uin => '828282828', :name => 'Jane Doe', 
@@ -20,6 +24,7 @@ student_requests = [{:uin => '126003824', :name => 'Mo Li',
                      
                      {:uin => '126003824', :name => 'Mo Li', 
                       :major => 'CEEN', :classification => 'G7', :minor => 'CECN', :email => 'king_lm@tamu.edu', :phone => '9797769279', 
+<<<<<<< HEAD
                       :expected_graduation => '2020 Fall', :request_semester => '2020 Fall',
                       :course_id => '026', :section_id => '101', :notes => 'I need this course as my summer intern will deal with this.',:priority => 'Very High' , :state => 'Active'},
                       {:uin => '126003824', :name => 'Mo Li', 
@@ -35,6 +40,18 @@ student_requests = [{:uin => '126003824', :name => 'Mo Li',
                       :major => 'CEEN', :classification => 'G8', :minor => 'PHYS', :email => 'chen0209app@tamu.edu', :phone => '9797797900', 
                       :expected_graduation => '2020 Fall', :request_semester => '2020 Fall',
                       :course_id => '028', :section_id => '101', :notes => 'I need this subject to graduate.',:priority => 'Very High' , :state => 'Active'},
+=======
+                      :expected_graduation => '2019 Fall', :request_semester => '2020 Fall',
+                      :course_id => '026', :section_id => '101', :notes => 'I need this course as my summer intern will deal with this.',:priority => 'Very High' , :state => 'Active'},
+                      {:uin => '126003824', :name => 'Mo Li', 
+                      :major => 'CEEN', :classification => 'G7', :minor => 'CECN', :email => 'king_lm@tamu.edu', :phone => '9793477979', 
+                      :expected_graduation => '2019 Fall', :request_semester => '2020 Fall',
+                      :course_id => '027', :section_id => '101', :notes => 'My research advisor has recommended this course.' ,:priority => 'Very High', :state => 'Active'},
+                      {:uin => '828282828', :name => 'Jane Doe', 
+                     :major => 'CEEN', :classification => 'G7', :minor => 'CECN', :email => 'janedoe@tamu.edu', :phone => '9797797697', 
+                     :expected_graduation => '2020 Fall', :request_semester => '2021 Fall',
+                     :course_id => '036', :section_id => '201', :notes => 'Requirement for graduation.',:priority => 'Very High' , :state => 'Hold'},
+>>>>>>> 58b7ef2d6618a25262cc7234e5dbf67dbb6e0e68
                   ]
 
 
