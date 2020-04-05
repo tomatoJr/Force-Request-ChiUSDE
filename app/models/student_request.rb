@@ -245,8 +245,8 @@ class StudentRequest < ActiveRecord::Base
     validates :priority, inclusion: {in: PRIORITY_LIST,
       message: "%{value} is not a valid prioroty"}
       
-    attr_encrypted :course_id, key: ENV['COURSE_KEY'].truncate(32)
-    attr_encrypted :section_id, key: ENV['SECTION_KEY'].truncate(32)
+    #attr_encrypted :course_id, key: ENV['COURSE_KEY'].truncate(32)
+    #attr_encrypted :section_id, key: ENV['SECTION_KEY'].truncate(32)
     
     before_create :create_request_id
     before_save :update_time

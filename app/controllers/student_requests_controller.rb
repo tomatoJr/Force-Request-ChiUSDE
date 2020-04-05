@@ -88,6 +88,10 @@ class StudentRequestsController < ApplicationController
 
   def create  #create force requests by student
     @students = Student.where(:uin => session_get(:uin))
+    puts "***********"
+    puts params[:student_request][:course_id]
+    puts "***********"
+    
     student_request_params_with_uin = {:uin => session[:uin], :name  => @students[0].name, :major => @students[0].major,
                                         :email => @students[0].email, :classification => @students[0].classification, 
                                         :minor => @students[0].minor}
