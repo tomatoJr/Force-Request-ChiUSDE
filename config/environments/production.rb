@@ -65,14 +65,14 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_url_options = { host: 'https://csceforcerequest.herokuapp.com'}#for heroku
+  config.action_mailer.default_url_options = { host: 'https://young-refuge-69488.herokuapp.com/'}#for heroku
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
     port:                 587,
     domain:               'gmail.com',
     user_name:            'forcerequestspring19@gmail.com',
-    password:             'ForceRequestFall19',
+    password:             'tamu2017',
     authentication:       'plain',
     enable_starttls_auto: true  }
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
