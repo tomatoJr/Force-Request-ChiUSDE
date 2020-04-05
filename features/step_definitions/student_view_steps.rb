@@ -1,5 +1,6 @@
 When(/^I login with correct login info$/) do
-  @user_info = {:email => "junqiyang@tamu.edu",  :password => "151718"}
+  @user_info = {:email => "CSCE606Spring2020@tamu.edu",  :password => "CSCE606Spring2020"}
+  
   fill_in('Enter your Email', :with => @user_info[:email])
   fill_in('Enter your password', :with => @user_info[:password])
   click_button('Login')
@@ -29,7 +30,7 @@ When(/^I am on Dashboard$/) do
 end
 
 When(/^I click my profile$/) do
-    click_link("Your Profile")
+    click_link("View Your Profile")
 end
 
 Then(/^I should see my personal information$/) do
@@ -85,16 +86,18 @@ end
 
 
 And(/^I complete the form$/) do
-  @student_request = {:minor=>"None", :expected_graduation=>"2019 Fall", :request_semester=>"2019 Fall", :course_id=>"629", :section_id => "600"}
+  @student_request = {:minor=>"None", :expected_graduation=>"2021 Fall", :request_semester=>"2020 Fall", :course_id=>"629", :section_id => "600"}
   page.has_content?("123123123")
   select(@student_request[:expected_graduation], from:'Expected Graduation*')
   select(@student_request[:request_semester], from:'Request Semester*')
-  fill_in('Course Id*', :with => @student_request[:course_id])
-  fill_in('Section Id(s)*', :with => @student_request[:section_id]) 
+  select(@student_request[:course_id], from:'Course Id* (CSCE)')
+  select(@student_request[:section_id], from:'Section Id(s)*')
+  # fill_in('Course Id*', :with => @student_request[:course_id])
+  # fill_in('Section Id(s)*', :with => @student_request[:section_id]) 
 end
 
 And(/^I complete the form the second time$/) do
-  @student_request = {:minor=>"None", :expected_graduation=>"2019 Fall", :request_semester=>"2019 Fall", :course_id=>"630", :section_id => "600"}
+  @student_request = {:minor=>"None", :expected_graduation=>"2021 Fall", :request_semester=>"2020 Fall", :course_id=>"630", :section_id => "600"}
   page.has_content?("123123123")
   select(@student_request[:expected_graduation], from:'Expected Graduation*')
   select(@student_request[:request_semester], from:'Request Semester*')
@@ -103,7 +106,7 @@ And(/^I complete the form the second time$/) do
 end
 
 And(/^I complete the form the third time$/) do
-  @student_request = {:minor=>"None", :expected_graduation=>"2019 Fall", :request_semester=>"2019 Fall", :course_id=>"631", :section_id => "600"}
+  @student_request = {:minor=>"None", :expected_graduation=>"2021 Fall", :request_semester=>"2020 Fall", :course_id=>"631", :section_id => "600"}
   page.has_content?("123123123")
   select(@student_request[:expected_graduation], from:'Expected Graduation*')
   select(@student_request[:request_semester], from:'Request Semester*')
@@ -112,7 +115,7 @@ And(/^I complete the form the third time$/) do
 end
 
 And(/^I complete the form the fourth time$/) do
-  @student_request = {:minor=>"None", :expected_graduation=>"2019 Fall", :request_semester=>"2019 Fall", :course_id=>"632", :section_id => "600"}
+  @student_request = {:minor=>"None", :expected_graduation=>"2021 Fall", :request_semester=>"2020 Fall", :course_id=>"632", :section_id => "600"}
   page.has_content?("123123123")
   select(@student_request[:expected_graduation], from:'Expected Graduation*')
   select(@student_request[:request_semester], from:'Request Semester*')
@@ -194,7 +197,7 @@ Then(/^I stay on the page on recieve warining$/) do
 end
 
 When(/^I fill the form and confirm$/) do
-  @user_info = {:old => "151718",  :new => "qwerty"}
+  @user_info = {:old => "CSCE606Spring2020",  :new => "qwerty"}
   fill_in('Enter your old password', :with => @user_info[:old])
   fill_in('Enter your new password', :with => @user_info[:new])
   fill_in('session[password2]', :with => @user_info[:new])
@@ -268,12 +271,16 @@ end
 
 
 And(/^I assign priority to the request$/) do
-  @student_request = {:minor=>"None", :expected_graduation=>"2019 Fall", :request_semester=>"2019 Fall", :course_id=>"606", :section_id => "600" , :priority => "High"}
+  @student_request = {:minor=>"None", :expected_graduation=>"2021 Fall", :request_semester=>"2020 Fall", :course_id=>"606", :section_id => "600" , :priority => "High"}
   page.has_content?("123123123")
   select(@student_request[:expected_graduation], from:'Expected Graduation*')
   select(@student_request[:request_semester], from:'Request Semester*')
-  fill_in('Course Id*', :with => @student_request[:course_id])
-  fill_in('Section Id(s)*', :with => @student_request[:section_id]) 
+  
+  select(@student_request[:course_id], from:'Course Id* (CSCE)')
+  select(@student_request[:section_id], from:'Section Id(s)*')
+  
+  # fill_in('Course Id*', :with => @student_request[:course_id])
+  # fill_in('Section Id(s)*', :with => @student_request[:section_id]) 
   select(@student_request[:priority], from:'Priority*')
 end
 
@@ -287,7 +294,7 @@ When(/^I click on Edit$/) do
 end
 
 And(/^I edit the request$/) do
-  @student_request = {:minor=>"None", :expected_graduation=>"2020 Fall", :request_semester=>"2019 Fall", :course_id=>"629", :section_id => "600", :priority => "Normal"}
+  @student_request = {:minor=>"None", :expected_graduation=>"2020 Fall", :request_semester=>"2020 Fall", :course_id=>"629", :section_id => "600", :priority => "Normal"}
   page.has_content?("123123123")
   #select(@student_request[:expected_graduation], from:'Expected Graduation*')
   #select(@student_request[:priority], from:'Priority*')

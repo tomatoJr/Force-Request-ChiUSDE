@@ -25,7 +25,7 @@ When(/^I enter wrong login information$/) do
 end
 
 When(/^I login in with account has not been activate$/) do
-  @user_info = {:email => "adb3649@tamu.edu",  :password => "654321"}
+  @user_info = {:email => "notActivate@tamu.edu",  :password => "NOTACTIVATE"}
   fill_in('Enter your Email', :with => @user_info[:email])
   fill_in('Enter your password', :with => @user_info[:password])
   click_button('Login')
