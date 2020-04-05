@@ -8,9 +8,9 @@ Background: students have been added to database
 
 Given the following students exist:
   | name       | firstname  |  lastname    | uin        | password   | email                | major               |classification | Minor           
-  | junqi yang | junqi      |   yang       | 221004901  | 151718     | junqiyang@tamu.edu   | Computer Science    |G7             | Animal Science
-  | Adam will  | Adam       |   will       | 000000000  | 151718     | Will@tamu.edu        | Computer Science    |G7             | Animal Science
-  | John myer  | John       |   myer       | 000000001  | 151718     | jmyer@tamu.edu       | Computer Science    |U1             | Animal Science
+  | junqi yang | junqi      |   yang       | 221004901  | d0d1699f721b379f002fe5fb2f781ebe     | junqiyang@tamu.edu   | Computer Science    |G7             | Animal Science
+  | Adam will  | Adam       |   will       | 000000000  | d0d1699f721b379f002fe5fb2f781ebe     | Will@tamu.edu        | Computer Science    |G7             | Animal Science
+  | John myer  | John       |   myer       | 000000001  | d0d1699f721b379f002fe5fb2f781ebe     | jmyer@tamu.edu       | Computer Science    |U1             | Animal Science
   
 Given the following limits exist:
   | classification | Very High | High | Normal | Low | Very Low

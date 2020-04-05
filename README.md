@@ -107,3 +107,15 @@ Jianghao Shen
 
 #### <i class="icon-folder-open"></i> Heroku App link:
 http://csceforcerequest.herokuapp.com
+
+
+
+----------
+Developer Team 2020 Spring
+-------------
+
+![Rails Tests with custom Ruby version](https://github.com/jncsw/Force-Request-ChiUSDE/workflows/Rails%20Tests%20with%20custom%20Ruby%20version/badge.svg)
+
+
+
+

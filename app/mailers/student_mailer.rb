@@ -5,18 +5,18 @@ class StudentMailer < ActionMailer::Base
     def registration_confirmation(student)
         @student = student
         # mail(:to => "#{student.name} <#{student.email}>", :subject => "Registration Confirmation")
-        mail(:to => @student.email, :subject => "Registration Confirmation")
+        # mail(:to => @student.email, :subject => "Registration Confirmation")
     end
 
     def confirm_force_request(student, req)
         @student = student
         @req = req
-        mail(:to => @student.email, :subject => "Request Confirmation")
+        # mail(:to => @student.email, :subject => "Request Confirmation")
     end
 
     def reset_password(student)
         @student = student
-        mail(:to => @student.email, :subject => "Reset Your Password")
+        # mail(:to => @student.email, :subject => "Reset Your Password")
     end
     
     def update_force_state(student, req, message)
@@ -32,6 +32,6 @@ class StudentMailer < ActionMailer::Base
         @admins.each do |admin|
             @admin_emails.push(admin.email)
         end
-        mail(:to => @student.email, :bcc => @admin_emails,  :subject => "Updates on Your Force Request")
+        # mail(:to => @student.email, :bcc => @admin_emails,  :subject => "Updates on Your Force Request")
     end
 end
