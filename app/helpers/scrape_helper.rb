@@ -1,5 +1,5 @@
 module ScrapeHelper
-    def scrape_info(lastName, firstName, major, realEmail)
+    def scrape_info(lastname, firstname, major, realEmail)
         require 'rubygems'
         require 'nokogiri'
         require 'open-uri' 
@@ -9,18 +9,19 @@ module ScrapeHelper
             major.slice! acronym
         end
         
-        #split_name = name.split(/, */)
-        #lastName = split_name[0]
-        #firstName = split_name[1]
-
-        
-        
+        # split_name = name.split(/, */)
+        # lastName = split_name[0]
+        # firstName = split_name[1]
+        puts '------------------------------'
+        puts major
+        puts realEmail
+        puts '------------------------------'
         # Old pattern for name in signup.html.haml: :pattern => "[a-zA-ZüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{3,}"
 
         #get the search url of specific name / major
         #urlSearch = 'https://services.tamu.edu/directory-search/?branch=people&givenName=' + firstName + '&sn=' + lastName + '&tamuEduPersonMajor=' + major + '#adv-search'
         #url can be parsed only with the name
-        urlSearch = 'https://services.tamu.edu/directory-search/?branch=people&givenName=' + firstName + '&sn=' + lastName + '#adv-search'
+        urlSearch = 'https://services.tamu.edu/directory-search/?branch=people&givenName=' + firstname + '&sn=' + lastname + '#adv-search'
         page = Nokogiri::HTML(open(urlSearch))
         
         # https://stackoverflow.com/questions/4232345/get-div-nested-in-div-element-using-nokogiri
@@ -73,8 +74,8 @@ module ScrapeHelper
             
             
             if pageEmail == realEmail
-                record['First Name'] = firstName
-                record['Last Name'] = lastName
+                record['First Name'] = firstname
+                record['Last Name'] = lastname
                 record['Email Address'] = realEmail
                 record['Major'] = major
                 record['Classification'] = classification

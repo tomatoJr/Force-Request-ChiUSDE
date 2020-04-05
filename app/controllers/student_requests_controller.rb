@@ -108,6 +108,11 @@ class StudentRequestsController < ApplicationController
     level_student = @students[0].classification.to_s
     temp_priority = params[:student_request][:priority]
     limit_val = Limit.where(:classification => level_student)
+    
+    puts '******************************'
+    puts limit_val
+    puts '******************************'
+    
     #byebug
     case temp_priority
     when "Very High"

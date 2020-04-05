@@ -87,7 +87,7 @@ end
 
 And(/^I complete the form$/) do
   @student_request = {:minor=>"None", :expected_graduation=>"2021 Fall", :request_semester=>"2020 Fall", :course_id=>"629", :section_id => "600"}
-  page.has_content?("123123123")
+#   page.has_content?("123123123")
   select(@student_request[:expected_graduation], from:'Expected Graduation*')
   select(@student_request[:request_semester], from:'Request Semester*')
   select(@student_request[:course_id], from:'Course Id* (CSCE)')
@@ -115,7 +115,7 @@ And(/^I complete the form the third time$/) do
 end
 
 And(/^I complete the form the fourth time$/) do
-  @student_request = {:minor=>"None", :expected_graduation=>"2021 Fall", :request_semester=>"2020 Fall", :course_id=>"632", :section_id => "600"}
+  @student_request = {:minor=>"None", :expected_graduation=>"2021 Fall", :request_semester=>"2020 Fall", :course_id=>"629", :section_id => "600"}
   page.has_content?("123123123")
   select(@student_request[:expected_graduation], from:'Expected Graduation*')
   select(@student_request[:request_semester], from:'Request Semester*')
@@ -125,6 +125,7 @@ end
 
 And(/^I click Save Request$/) do
   click_button('Save')
+#   click_link('Save')
 end
 
 Then(/^I should see a confirm message$/) do
