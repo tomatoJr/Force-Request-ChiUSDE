@@ -18,10 +18,13 @@ class StudentRequest < ActiveRecord::Base
     COURSE_KEY_1 = "629"
     COURSE_KEY_2 = "606"
     COURSE_KEY_3 = "605"
+    COURSE_KEY_4 = "604"
+    COURSE_KEY_5 = "603"
+    COURSE_KEY_6 = "602"
+    COURSE_KEY_7 = "601"
     
     SESSION_ID_629_1 = "600"
     SESSION_ID_629_2 = "601"
-    SESSION_ID_606_1 = "000"
     #---------------------------------------
     
     Time.zone = 'Central Time (US & Canada)'
@@ -47,7 +50,8 @@ class StudentRequest < ActiveRecord::Base
     SEMESTER_LIST = [StudentRequest::NSPRING, StudentRequest::NFALL, StudentRequest::NSUMMER,StudentRequest::SPRING, StudentRequest::FALL, StudentRequest::SUMMER]
     
     # ------------- fall 2019 --------------
-    COURSE_LIST = [StudentRequest::COURSE_KEY_1,COURSE_KEY_2]
+    COURSE_LIST = [StudentRequest::COURSE_KEY_1,COURSE_KEY_2,COURSE_KEY_3,COURSE_KEY_4,COURSE_KEY_5,
+                  COURSE_KEY_6, COURSE_KEY_7]
     # SESSION_LIST_629 = [SESSION_ID_629_1,SESSION_ID_629_2]
     SESSION_LIST = [SESSION_ID_629_1, SESSION_ID_629_2]
     # ------------- fall 2019 --------------
