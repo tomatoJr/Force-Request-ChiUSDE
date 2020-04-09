@@ -129,7 +129,7 @@ Then(/^I have the requests in desired domain$/) do
 end
 
 When(/^I click course name button$/) do
-    click_button('CSCE')
+    click_button('CSCE 629')
 end
 
 Then(/^the page collapse$/) do
