@@ -65,7 +65,7 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_url_options = { host: 'https://young-refuge-69488.herokuapp.com/'}#for heroku
+  config.action_mailer.default_url_options = { host: 'https://tamuforcerequest.herokuapp.com/'}#for heroku
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
