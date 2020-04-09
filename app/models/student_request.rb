@@ -285,8 +285,8 @@ class StudentRequest < ActiveRecord::Base
           next if student_request.state == StudentRequest::WITHDRAWN_STATE
           next if @state_selected[student_request.state] == nil
           next if @request_semester_selected[student_request.request_semester] == nil
-          student_request.encrypted_course_id = student_request.course_id
-          student_request.encrypted_section_id = student_request.section_id
+          # student_request.encrypted_course_id = student_request.course_id
+          # student_request.encrypted_section_id = student_request.section_id
           #debugger
           csv << student_request.attributes.values_at(*column_names)
         end
