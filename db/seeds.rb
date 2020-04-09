@@ -9,28 +9,28 @@
 
 student_requests = [{:uin => '126003824', :name => 'Mo Li', 
                      :major => 'CEEN', :classification => 'G7', :minor => 'CECN', :email => 'king_lm@tamu.edu', :phone => '9797797697', 
-                     :expected_graduation => '2019 Fall', :request_semester => '2020 Fall',
-                     :course_id => '026', :section_id => '101', :notes => 'Requirement for graduation.',:priority => 'Very High' , :state => 'Active'},
+                     :expected_graduation => '2021 Fall', :request_semester => '2020 Fall',
+                     :course_id => '629', :section_id => '601', :notes => 'Requirement for graduation.',:priority => 'Very High' , :state => 'Active'},
                      {:uin => '126003824', :name => 'Mo Li', 
                       :major => 'CEEN', :classification => 'G7', :minor => 'CECN', :email => 'king_lm@tamu.edu', :phone => '9797769279', 
-                      :expected_graduation => '2019 Fall', :request_semester => '2020 Fall',
-                      :course_id => '026', :section_id => '101', :notes => 'I need this course as my summer intern will deal with this.',:priority => 'Very High' , :state => 'Active'},
+                      :expected_graduation => '2021 Fall', :request_semester => '2020 Fall',
+                      :course_id => '629', :section_id => '601', :notes => 'I need this course as my summer intern will deal with this.',:priority => 'Very High' , :state => 'Active'},
                       {:uin => '126003824', :name => 'Mo Li', 
                       :major => 'CEEN', :classification => 'G7', :minor => 'CECN', :email => 'king_lm@tamu.edu', :phone => '9793477979', 
-                      :expected_graduation => '2019 Fall', :request_semester => '2020 Fall',
-                      :course_id => '027', :section_id => '101', :notes => 'My research advisor has recommended this course.' ,:priority => 'Very High', :state => 'Active'},
+                      :expected_graduation => '2021 Fall', :request_semester => '2020 Fall',
+                      :course_id => '606', :section_id => '600', :notes => 'My research advisor has recommended this course.' ,:priority => 'Very High', :state => 'Active'},
                       {:uin => '828282828', :name => 'Jane Doe', 
                      :major => 'CEEN', :classification => 'G7', :minor => 'CECN', :email => 'janedoe@tamu.edu', :phone => '9797797697', 
                      :expected_graduation => '2020 Fall', :request_semester => '2021 Fall',
-                     :course_id => '036', :section_id => '201', :notes => 'Requirement for graduation.',:priority => 'Very High' , :state => 'Hold'},
+                     :course_id => '606', :section_id => '600', :notes => 'Requirement for graduation.',:priority => 'Very High' , :state => 'Hold'},
                       {:uin => '222111333', :name => 'Jiechen Zhong', 
                       :major => 'CEEN', :classification => 'G8', :minor => 'MATH', :email => 'chen0209app@tamu.edu', :phone => '9797797900', 
-                      :expected_graduation => '2019 Fall', :request_semester => '2020 Fall',
-                      :course_id => '026', :section_id => '101', :notes => 'I am interested in CS026 as it is my field of research.' ,:priority => 'Very High', :state => 'Active'},
+                      :expected_graduation => '2021 Fall', :request_semester => '2020 Fall',
+                      :course_id => '606', :section_id => '600', :notes => 'I am interested in CS600 as it is my field of research.' ,:priority => 'Very High', :state => 'Active'},
                       {:uin => '222111333', :name => 'Jiechen Zhong', 
                       :major => 'CEEN', :classification => 'G8', :minor => 'PHYS', :email => 'chen0209app@tamu.edu', :phone => '9797797900', 
-                      :expected_graduation => '2019 Fall', :request_semester => '2020 Fall',
-                      :course_id => '028', :section_id => '101', :notes => 'I need this subject to graduate.',:priority => 'Very High' , :state => 'Active'},
+                      :expected_graduation => '2021 Fall', :request_semester => '2020 Fall',
+                      :course_id => '629', :section_id => '600', :notes => 'I need this subject to graduate.',:priority => 'Very High' , :state => 'Active'},
                   ]
 
 
@@ -178,9 +178,9 @@ limits = [{:classification => 'G7', "Very High".to_sym => '99', :High => '99', :
 students = [{:uin => "126003824", :password => "123123", :major => "CEEN", :classification => "G7-Graduate, Master's Level", :name => "Mo Li", :email => "king_lm@tamu.edu"},
             {uin: "123123123", password: "321", major: "CEEN", classification: "G8", name: "Mian Qin", email: "celery1124@tamu.edu"},
             {uin: "222111333", password: "zxc", major: "CEEN", classification: "G7", name: "Jiechen Zhong", email: "chen0209app@tamu.edu", email_confirmed: true},
-            {uin: "123456789", password: "f7e59c09e1d415108b97139ba3306e77", major: "CECN", classification: "G7", lastname: "Zou", firstname: "Lianghao",
+            {uin: "988555444", password: "f7e59c09e1d415108b97139ba3306e77", major: "CECN", classification: "G7", lastname: "Zou", firstname: "Lianghao",
             name: "Lianghao Zou", email: "frankzoulh3@tamu.edu", email_confirmed: true, isVerified: true},
-            {uin: "123456789", password: "11f23810ba7387df0f276ddf4552b315", major: "Computer Science - CSCE", classification: "G7-Graduate, Doctoral's Level", name: "CSCE606 Spring2020", email: "CSCE606Spring2020@tamu.edu", email_confirmed: true, isVerified: true}
+            {uin: "123456789", password: "11f23810ba7387df0f276ddf4552b315", major: "Computer Science - CSCE", classification: "G7", name: "CSCE Spring", lastname: "Spring", firstname: "CSCE", email: "CSCE606Spring2020@tamu.edu", email_confirmed: true, isVerified: true}
             
             ]
             
