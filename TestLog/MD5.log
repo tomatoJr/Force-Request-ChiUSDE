@@ -1,0 +1,11 @@
+2.6.3 :005 > Digest::MD5.hexdigest("123")
+ => "202cb962ac59075b964b07152d234b70" 
+2.6.3 :006 > Digest::MD5.hexdigest("CSCE606Spring2020")                                                                                                                                                 
+ => "11f23810ba7387df0f276ddf4552b315" 
+2.6.3 :007 > Digest::MD5.hexdigest("NOTACTIVATE")                                                                                                                                                       
+ => "e46bae03d631408623e02438b07e4822" 
+2.6.3 :008 > Digest::MD5.hexdigest("151718")                                                                                                                                                            
+ => "d0d1699f721b379f002fe5fb2f781ebe" 
+ 
+ notActivate@tamu.edu
+NOTACTIVATE

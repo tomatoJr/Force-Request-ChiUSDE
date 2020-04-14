@@ -3,6 +3,12 @@ source 'https://rubygems.org'
 ruby '2.4.3'
 # ruby '2.6.3'
 
+# UML
+gem 'rails-erd', group: :development
+group :development, :test do
+    gem 'railroady'
+end
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '5.0.2'
 # Use SCSS for stylesheets

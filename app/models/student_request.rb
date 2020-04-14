@@ -271,10 +271,15 @@ class StudentRequest < ActiveRecord::Base
       end while self.class.exists?(:request_id => request_id)
     end
     
-    def self.to_csv(options = {})
+    def self.to_csv(state_selected, request_semester_selected, options = {})
+      @state_selected = state_selected
+      @request_semester_selected = request_semester_selected
       CSV.generate(options) do |csv|
         csv << column_names
-        all.each do |student_request| 
+        all.each do |student_request|
+          next if student_request.state == StudentRequest::WITHDRAWN_STATE
+          next if @state_selected[student_request.state] == nil
+          next if @request_semester_selected[student_request.request_semester] == nil
           student_request.encrypted_course_id = student_request.course_id
           student_request.encrypted_section_id = student_request.section_id
           #debugger
