@@ -57,7 +57,7 @@ When(/^I use a UIN which already been used to sign up$/) do
 end
 
 When(/^I enter a email does not exsiting in TAMU system$/) do 
- @user_info = {:lastname => "yang", :firstname =>"junqi", :email => "junqiyang@email.tamu.edu", :password => "123456", :UIN => "789789789"}
+@user_info = {:lastname => "yang", :firstname =>"junqi", :email => "junqiyang@email.tamu.edu", :password => "123456", :UIN => "789789789"}
   fill_in('Enter LastName', :with => @user_info[:lastname])
   fill_in('Enter FirstName', :with => @user_info[:firstname])
   fill_in('ReEnter your UIN', :with => @user_info[:UIN])
@@ -69,17 +69,17 @@ end
 
 
 When(/^I enter correct information$/) do 
-  @user_info = {:lastname => "yang", :firstname =>"junqi", :email => "junqiyang@tamu.edu", :major => "Computer Science", :classification => "G", :password => "321312", :UIN => "789789789"}
+  @user_info = {:lastname => "yang", :firstname =>"junqi", :email => "junqiyang@tamu.edu", :major => "CPSC", :classification => "G", :password => "321312", :UIN => "789789789"}
   fill_in 'Enter LastName', :with => @user_info[:lastname]
   fill_in 'Enter FirstName', :with => @user_info[:firstname]
   fill_in 'ReEnter your UIN', :with => @user_info[:UIN]
   fill_in 'Enter your UIN', :with => @user_info[:UIN]
   fill_in 'Enter your email', :with => @user_info[:email]
   select "G7", :from => "Select your classification"
-  select "Computer Science", :from => "Select your Major"
+  select @user_info[:major], :from => "Select your Major"
   fill_in('Enter your password', :with => @user_info[:password])
   fill_in('ReEnter your password', :with => @user_info[:password])
- end
+end
 
 And(/^I click SignUp$/) do
   click_button('Signup')

@@ -2,6 +2,7 @@ class StudentRequestsController < ApplicationController
 
   include SessionHelper
   include ScrapeHelper
+  require 'digest/md5'
   ###The following line is commented right now because the service is not registered with CAS.
   ### Once our service will be registered with CAS, we will uncomment this and handle session.
 
@@ -87,6 +88,10 @@ class StudentRequestsController < ApplicationController
 
   def create  #create force requests by student
     @students = Student.where(:uin => session_get(:uin))
+    puts "***********"
+    puts params[:student_request][:course_id]
+    puts "***********"
+    
     student_request_params_with_uin = {:uin => session[:uin], :name  => @students[0].name, :major => @students[0].major,
                                         :email => @students[0].email, :classification => @students[0].classification, 
                                         :minor => @students[0].minor}
@@ -107,6 +112,11 @@ class StudentRequestsController < ApplicationController
     level_student = @students[0].classification.to_s
     temp_priority = params[:student_request][:priority]
     limit_val = Limit.where(:classification => level_student)
+    
+    puts '******************************'
+    puts limit_val
+    puts '******************************'
+    
     #byebug
     case temp_priority
     when "Very High"
@@ -246,7 +256,10 @@ class StudentRequestsController < ApplicationController
       @all_request_semesters = [StudentRequest::SPRING, StudentRequest::FALL, StudentRequest::SUMMER,StudentRequest::NSPRING, StudentRequest::NFALL, StudentRequest::NSUMMER]
       @all_states = [StudentRequest::ACTIVE_STATE, StudentRequest::REJECTED_STATE, StudentRequest::APPROVED_STATE, StudentRequest::HOLD_STATE]
       @default_states = [StudentRequest::ACTIVE_STATE, StudentRequest::HOLD_STATE, StudentRequest::APPROVED_STATE]
-    
+      
+      puts '1'
+      puts session_get(:request_semester_sel)
+      
       if params[:state_sel] == nil
         if session_get(:state_sel) != nil
           @all_states.each { |state|
@@ -263,7 +276,7 @@ class StudentRequestsController < ApplicationController
         }
         session_update(:state_sel, params[:state_sel])
       end
-
+        
       if params[:request_semester_sel] == nil
         if session_get(:request_semester_sel) != nil
           @all_request_semesters.each { |request_semester|
@@ -275,6 +288,16 @@ class StudentRequestsController < ApplicationController
           }
         end
       else
+        
+        # Fix bug ： add hash into the request_semester_sel
+        temp = {}
+        params[:request_semester_sel].each{ |item|
+          temp[item] = 'true'
+        }
+        params[:request_semester_sel] = temp
+        puts params[:request_semester_sel]
+        # Fix bug
+        
         @all_request_semesters.each { |request_semester|
           @request_semester_selected[request_semester] = params[:request_semester_sel].has_key?(request_semester)
         }
@@ -296,7 +319,6 @@ class StudentRequestsController < ApplicationController
         next if @state_selected[req.state] == false
         next if @request_semester_selected[req.request_semester] == false
 
-      
         if !@coursestudentlist.has_key?(req.course_id)
           @coursestudentlist[req.course_id] = []
         end
@@ -373,7 +395,7 @@ class StudentRequestsController < ApplicationController
           else
             # puts "User password: #{@cur_user[0].password}"
             # puts "Given password: #{params[:session][:password]}"
-            if @cur_user[0].password == params[:session][:password]
+            if @cur_user[0].password == Digest::MD5.hexdigest(params[:session][:password])
               #update the session value which could be used in other pages
               session_update(:name, @cur_user[0][:name])
               #:current_state could indicate the current user is admin or student
@@ -393,10 +415,10 @@ class StudentRequestsController < ApplicationController
           redirect_to root_path
           return#tricky
       else
-        puts "User password: #{@user[0].password}"
-        puts "Given password: #{params[:session][:password]}"
+        ##puts "User password: #{@user[0].password}"
+       # puts "Given password: #{params[:session][:password]}"
 
-        if @user[0].password == params[:session][:password]
+        if @user[0].password == Digest::MD5.hexdigest(params[:session][:password])
           if @user[0].email_confirmed
             #update the session value which could be used in other pages
             session_update(:name, @user[0][:name])
@@ -432,7 +454,7 @@ class StudentRequestsController < ApplicationController
     @student = StudentRequest.all
     @logs = Log.all
     respond_to do |format|
-    format.csv { send_data @student.to_csv, :filename => "All_force_requests"+".csv" }
+    format.csv { send_data @student.to_csv(session_get(:state_sel), session_get(:request_semester_sel)), :filename => "All_force_requests"+".csv" }
     end
   end
   def getAllLogs
@@ -512,7 +534,7 @@ class StudentRequestsController < ApplicationController
         if(@student_request.state == StudentRequest::WITHDRAWN_STATE)
           flash[:warning] = "Student has already withdrawn their request"
         else
-          if(session[:multi_state_sel] != "Select State")
+          if(session[:semester] != "Select State")
             isUpdate = true
             @student_request.state = session[:multi_state_sel]
               @student_request.save!

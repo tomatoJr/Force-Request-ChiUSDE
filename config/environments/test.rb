@@ -47,7 +47,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
   # config.action_mailer.default_url_options = { host: 'https://b44c5f27e9854996b6db0388357235dc.vfs.cloud9.us-east-2.amazonaws.com'}#for heroku
-  config.action_mailer.default_url_options = { host: 'https://042825f8335d48aba172f1e0aed9c08e.vfs.cloud9.us-east-2.amazonaws.com'}
+  config.action_mailer.default_url_options = { host: 'https://461cd0674f184e3bb155bf4be8a31a88.vfs.cloud9.us-east-2.amazonaws.com'}
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
@@ -55,7 +55,7 @@ Rails.application.configure do
     port:                 587,
     domain:               'gmail.com',
     user_name:            'forcerequestspring19@gmail.com',
-    password:             'ForceRequestFall19',
+    password:             'tamu2017',
     authentication:       'plain',
     enable_starttls_auto: true  }
   
